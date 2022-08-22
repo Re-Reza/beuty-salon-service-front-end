@@ -9,9 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "countup.js": "^2.3.2",
+    "font-awesome": "^4.7.0",
+    "formik": "^2.2.9",
     "next": "12.2.5",
+    "node-fetch": "^2.6.1",
+    "persian-number": "^1.5.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-bootstrap": "^2.5.0",
+    "react-countup": "^6.3.0",
+    "react-dom": "18.2.0",
+    "react-multi-date-picker": "^3.3.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "8.22.0",

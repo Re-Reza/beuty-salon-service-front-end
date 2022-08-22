@@ -1,0 +1,190 @@
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: url("https://demo.w3layouts.com/demos_new/template_demo/26-02-2021/beauty-salon-demo_Free/1671668668/web/images/22.jpg") no-repeat center ;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffff;
+    height: 50vh;
+    padding: 1em 0;
+    padding-bottom: 0; 
+    background-position-y: 60%;
+    font-family: Vazir;
+}
+.home-header{
+    height: 90vh;
+}
+.navbarContainer{
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    z-index: 3;
+    position: relative;
+}
+.sticky{
+    position: fixed;
+    top: 0;
+}
+.header-topPart{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1.1em;
+    padding: 0 3.5em;
+}
+.nav-links-container{
+    display: flex;
+    justify-content: space-evenly;
+    width:100%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.nav-link-hover{
+    transition: .3s all;
+    cursor: pointer;
+}
+.nav-link-hover:hover{
+    color: #ffcc54;
+}
+.slider-container{
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+}
+.slider{
+    position: relative;
+    grid-row: 4 / 8;
+    grid-column-start: 2;
+    grid-column-end: 7;
+}
+.slideItem{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1.2s all;
+}
+.show-slide{
+    opacity: 1 !important;
+    visibility: visible;
+}
+.slide-btn{
+    background-color: #ffcc54 !important;
+    color: #ffff !important;
+}
+.slide-title{
+    font-size:1.2em;
+}
+.slide-description{
+    font-size: 2.5em;
+}
+.nav-services{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 1em;
+    border-radius: 10px;
+    width: 141px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0px, -20px);
+    transition: .5s all;
+}
+.show-nav-serive{
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 20px);
+}
+.rotate{
+    transform: rotate(180deg);
+}
+.nav-menu-icon{
+    display: none;
+    align-items: center;
+    padding: .5em 1.5em;
+    background-color: rgba(0, 0, 0, .5);
+    padding: .8em;
+    border-radius: 5px;
+    width: 75%;
+    justify-content: space-between;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.showNavMenu{
+    opacity: 1 !important;
+    transform: translate(0, 0px) !important;
+    visibility: visible !important;
+}
+
+/*------------------------------------------ media queries ---------------------------------*/
+
+@media only screen and (max-width : 980px){
+    .slider{
+        grid-column:  2 / 8;
+    }
+}
+@media only screen and (max-width : 770px){
+    .header{
+        font-size: 14px;
+    }
+    .slider{
+        grid-column:  2 / 11;
+    }
+    .navbarContainer{   
+        flex-direction: column;
+        align-items: center;
+        background-color: inherit;
+        justify-content: center;
+    }
+    .nav-links-container{
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 0, 0, .6);
+        padding: 1em;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(0, -20px);
+        transition: all .5s;
+        width:70%;
+        border-radius: 8px;
+        top: 69px;
+        position: absolute;
+    }
+    .nav-links-container li{
+        margin-bottom: 1em;
+    }
+    .nav-menu-icon{
+        display: flex;
+    }
+
+}
+@media only screen and (max-width : 600px){
+    .slider-container{
+        display: none;
+    }
+    .header-topPart{
+        padding: 0 .5em;
+    }
+}
+
+@media only screen and (max-width : 600px){
+    .header-topPart{
+        padding: 0 .5em;
+    }
+}
+
+
+@media only screen and (max-width : 580px){
+    .header-topPart{
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        padding-right: 1.5em;
+    }
+    .header-logo{
+        grid-column: 1 / -1;
+    }
+}
