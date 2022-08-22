@@ -19,7 +19,10 @@ export function ChooseService() {
         const enValue = selectedItem.value;
         const faValue = selectedItem.innerHTML;
         console.log(enValue, faValue);
-
+        setState( {
+            show: false
+        });
+        
         dispatch ( {
             type: "SET_SERVICE",
             payload : {

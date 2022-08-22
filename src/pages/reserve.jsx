@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useReducer } from 'react'
 
 // Component 
-import Header from "../component/header/Header";
 import Footer from "../component/footer/Footer";
-import { ChooseService, ChooesReserveType} from "../component/reserve";
+import { ChooseService, ChooesReserveType, ReserveNav} from "../component/reserve";
 
 import reserveContext from "../component/reserve/reserveContext";
 import reserveReducer from "../component/reserve/reserveReducer";
@@ -24,11 +23,9 @@ const ReservePage = () => {
         serviceType: {  
             enValue: null,
             faValue : null,
-            // complited: false,            
         },
         employee:{
-            value: {},
-            // complited: false,     
+            value: {},   
         },
         date:{
             day:null,
@@ -37,58 +34,23 @@ const ReservePage = () => {
         } 
     }); 
 
-    // const [stepState, setStepState] = useState({
-    //     chooseService: true,
-    //     chooseEmplyee: false,
-    //     chooseDate: false
-    // });
-
-
-    // useEffect( ()=> {
-    //     axios.get()
-    // }, []);
-
-    // const { chooseEmplyee, chooseDate, chooseService } = stepState; 
-/*     let SelectedStep;
-    if(chooseEmplyee)
-        SelectedStep = ChooseEmplyee;
-    else if(chooseService)
-        SelectedStep = ChooseService;
-    else 
-        SelectedStep = ChooseDate; */
-
 
     return (
         <>
-            <Header homePage={false}/>
 
             <reserveContext.Provider value = { {
                 userChoiceState,
                 dispatch
             } }> 
             
+                {/* <div className={styles["reserve-page-mainContainer"]}> */}
+
                 <div className={ styles['reserve-page']}>
-
-                    {/* <div className={ styles['reserve-stepsContainer']}>
-                        <ul className='d-flex justify-content-between'>
-
-                            <li className={styles['reserve-step']+" "+ styles['selected-step']}>
-                                <span className={"badge rounded-circle bg-dark me-1 "+ styles["stepIcon"]}>۱</span> <span>انتخاب خدمت</span>
-                            </li>
-
-                            <li className={styles['reserve-step']}>
-                                <span className={"badge rounded-circle bg-dark me-1 "+ styles["stepIcon"]}>۲</span> <span>انتخاب کارمند</span>
-                            </li>
-
-                            <li className={styles['reserve-step']}>
-                                <span className={"badge rounded-circle bg-dark me-1 "+ styles["stepIcon"]}>۳</span> <span>انتخاب تاریخ و ساعت</span>
-                            </li>
-                        
-                        </ul>
-                    </div> */}
-
-                   <div className={styles.reserveSelectionContainer}>
-                        
+                
+                    <ReserveNav />
+                    
+                    <div className={styles.reserveSelectionContainer}>
+                        درست سی اس اس ریست نشده المنت پی کامپوننت کارمند مارجین باتم دارد!
                         <ChooseService />
                         
                         {
@@ -97,8 +59,11 @@ const ReservePage = () => {
                         }
                         
                     </div>
+
                 </div>
         
+                {/* </div> */}
+
             </reserveContext.Provider>
             
             <Footer/>
