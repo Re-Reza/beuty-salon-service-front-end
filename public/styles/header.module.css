@@ -33,7 +33,7 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 1.1em;
-    padding: 0 3.5em;
+    padding:  .5em 3.5em;
 }
 .nav-links-container{
     display: flex;
@@ -75,6 +75,7 @@
 .slide-btn{
     background-color: #ffcc54 !important;
     color: #ffff !important;
+    margin-top: 1em;
 }
 .slide-title{
     font-size:1.2em;
@@ -166,7 +167,7 @@
         display: none;
     }
     .header-topPart{
-        padding: 0 .5em;
+        padding: 0em .5em;
     }
 }
 

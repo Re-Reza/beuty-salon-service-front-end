@@ -28,17 +28,17 @@ export const ReserveResult = () => {
     return (
         <div ref={resultRef} className={styles['reserve-result']}>
             <div className='d-flex flex-column'>
-                <label className='mb-3'>نوع خدمت :</label>
+                <label className={'mb-3 '+styles['result-label']}>نوع خدمت :</label>
                 <span className={styles['reserve-result-input']}>{serviceType.faValue || "خدمت مورد نظر را انتخاب کنید"}</span>
             </div>
             
             <div className='d-flex flex-column'>
-                <label className='mb-3'>کارمند :</label>
+                <label className={'mb-3 '+styles['result-label']}>کارمند :</label>
                 <span className={styles['reserve-result-input']}>{Object.keys(employee.value).length>0 ? employeeInfo : "کارمند مورد نظر را انتخاب کنید"}</span>
             </div>
             
             <div className='d-flex flex-column'>
-                <label className='mb-3'>تاریخ :</label>
+                <label className={'mb-3 '+styles['result-label']}>تاریخ :</label>
                 <span className={styles['reserve-result-input']}>{date.day ? selectedDate : "تاریخ مورد نظر را انتخاب کنید"}</span>
             </div>
             {/* تا زمان که تکمیل نشد دکمه غیر فعال باشد */}

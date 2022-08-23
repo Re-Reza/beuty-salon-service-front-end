@@ -4,11 +4,9 @@ import React, { useState, useRef, useEffect } from "react";
 // import { object, string, ref } from "yup";
 import {useRouter} from "next/router"
 
-import Singin from "./Signin";
-import Signup from "./Signup";
+import Signup from "../component/login/Signup";
 
-import  "../../public/styles/login.module.css";
-
+import styles from "../../public/styles/login.module.css";
 
 // //برای فراموشی رمز عبور کامپوننت جدید ساخته شود جهت بررسی کد ارسال به موبایل یا ایمیل
 // // ایمیل نباید الزامی باشد
@@ -40,8 +38,6 @@ import  "../../public/styles/login.module.css";
 //     //         [key] : event.target.value
 //     //     }) );
 //     // }
-
-
 
 //     //const [ ] = useState()
 
@@ -196,26 +192,24 @@ import  "../../public/styles/login.module.css";
     // )
 // }
 
-function ParentForm(){
+function SignupParentForm(){
 
     const [ registerForm, setRegisterForm ] = useState( false );
 
-    const router = useRouter();
-    
-    useEffect( ()=>{
-        const value = pathname === "/signin" ? false : true
-        setRegisterForm( value )
-    }, [pathname] );
+    // const router = useRouter();
+    // console.log(router);
+    // useEffect( ()=>{
+    //     const value = pathname === "/signin" ? false : true
+    //     setRegisterForm( value )
+    // }, [pathname] );
 
     return (
-        <div className="login-container">
+        <div className={styles["login-container"]}>
         {
-            registerForm ? 
-            <Signup/>  : <Singin/>
+            <Signup/>   
         }
         </div>
     )
 }
 
-
-export default ParentForm;
+export default SignupParentForm;

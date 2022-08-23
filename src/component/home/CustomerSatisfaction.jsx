@@ -69,7 +69,7 @@ export function CustomerSatisfaction(){
         <section className={styles["customerSatisfaction-section"]}>
             
             <div>
-                <h2>رضایت مشتریان</h2>
+                <h2 className="fs-3 font-weight-bold">رضایت مشتریان</h2>
             </div>
 
             <div className={styles["customerSatisfaction-rates"]}>

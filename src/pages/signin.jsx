@@ -188,8 +188,6 @@ import styles from "../../public/styles/login.module.css";
             
 //             </form> */}
 
-
-
         // </div>
     // )
 // }
@@ -201,17 +199,16 @@ function ParentForm(){
     const router = useRouter();
     console.log(router);
     
-    useEffect( ()=>{
-        const value = pathname === "/signin" ? false : true
-        setRegisterForm( value )
-    }, [pathname] );
+    // useEffect( ()=>{
+    //     const value = pathname === "/signin" ? false : true
+    //     setRegisterForm( value )
+    // }, [pathname] );
 
     return (
-        <div className="login-container">
-        {
-            registerForm ? 
-            <Signup/>  : <Singin/>
-        }
+        <div className={styles["login-container"]}>
+        
+            <Singin/>
+
         </div>
     )
 }

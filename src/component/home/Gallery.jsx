@@ -20,7 +20,7 @@ export function Gallery(){
         <section className={styles["gallery-section"]+ " flex-column align-items-center"}>
             
             <div className="d-flex justify-content-center mb-3">
-                <h3 className={styles["gallery-section-title"]}> گالری تصاویر</h3>
+                <h3 className={styles["gallery-section-title"]+" fs-3 font-weight-bold"}> گالری تصاویر</h3>
             </div>
 
             <article className={styles["gallery-pictures-container"] }>

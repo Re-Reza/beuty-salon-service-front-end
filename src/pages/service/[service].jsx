@@ -89,17 +89,17 @@ function Service( props) {
                 <section className={styles["service-top"]}>
                     
                     <div className={styles["service-top-introduction"]}>
-                        <h1 data-aos-delay="100" data-aos="fade-up" className={styles["services-title"]}>خدمات <span className={styles.logo}>{title}</span></h1>
+                        <h1 data-aos-delay="100" data-aos="fade-up" className={styles["services-title"]+" fs-2 font-weight-bold"}>خدمات <span className={styles.logo}>{title}</span></h1>
                         <p className="text-muted mt-4">{description}</p>
                     </div>
 
                     <div className={styles["service-top-pictures"]}>
                         <img data-aos-delay="400" data-aos="fade-left" src={pictures["right"]} alt={title} />
                         <div className={"text-center fs-3 "+styles["service-text-picutures"]}>
-                            <p data-aos-delay="300" data-aos="fade-up">بهترین خدمات</p>
-                            <p data-aos-delay="600" data-aos="fade-up">{title} و زیبایی در</p>
-                            <p data-aos-delay="700" data-aos="fade-up" className={styles.logo}> سالن زیبایی </p>
-                            <p data-aos-delay="800" data-aos="fade-up">در اختیار شماست</p>
+                            <p className="mb-3" data-aos-delay="300" data-aos="fade-up">بهترین خدمات</p>
+                            <p className="mb-3" data-aos-delay="600" data-aos="fade-up">{title} و زیبایی در</p>
+                            <p className={"mb-3 "+styles.logo} data-aos-delay="700" data-aos="fade-up"> سالن زیبایی </p>
+                            <p className="mb-3" data-aos-delay="800" data-aos="fade-up">در اختیار شماست</p>
                         </div>
                         <img data-aos-delay="200" data-aos="fade-right" src={pictures["left"]} alt={title} />
                     </div> 
@@ -108,7 +108,7 @@ function Service( props) {
 
                 <section className={styles["service-topEmployees"]}>
                     <div className="d-flex justify-content-center mb-5">
-                        <h2 className="text-muted">برترین کارمندان {title}</h2>
+                        <h2 className="text-muted fs-2 font-weight-bold">برترین کارمندان {title}</h2>
                     </div>
 
                     <div className={styles["service-carousel"]}>
@@ -117,9 +117,9 @@ function Service( props) {
                     <br /><br /><br/>
                 </section>
 
-                <section>
+                {/* <section>
 
-                </section>
+                </section> */}
 
             </div>
             

@@ -21,7 +21,7 @@ export function HeadTop(){
             </div>
             
             <div className={styles["nav-link-hover"]}>
-                <Link href="/login">
+                <Link href="/signin">
                     <a>
                         ورود به حساب     
                         <i className="fa fa-sign-in" aria-hidden="true"></i> 

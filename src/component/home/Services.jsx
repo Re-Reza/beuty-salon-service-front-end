@@ -25,7 +25,7 @@ export function Services (){
             </div>
             
             <div className="mt-5">
-                <h3 className="mb-5">خدمات سالن زیبایی</h3>
+                <h3 className="mb-5 fs-3">خدمات سالن زیبایی</h3>
                 
                 <div className={styles["services-section-imgContainer"]}>
 

@@ -48,9 +48,9 @@ export function ChooseEmployee ( props) {
         <div className={styles['chooseEmployee-section']}>
             {
                 props.isDate ? 
-                <label className='mb-3'>کارمندان قابل انتخاب در تاریخ : {`${PN.convertEnToPe(day)} / ${PN.convertEnToPe(month)} / ${PN.convertEnToPe(year)} `}</label>
+                <label className={'mb-3 '+styles['result-label']}>کارمندان قابل انتخاب در تاریخ : {`${PN.convertEnToPe(day)} / ${PN.convertEnToPe(month)} / ${PN.convertEnToPe(year)} `}</label>
                 :
-                <label className='mb-3'>انتخاب کارمند :</label>
+                <label className={'mb-3 '+styles['result-label']}>انتخاب کارمند :</label>
             }
             <div className={styles['chooseEmployee-container']}>
             {

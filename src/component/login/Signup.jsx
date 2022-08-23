@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { object, string, ref } from "yup";
 import { useFormik } from "formik";
 
+import styles from "../../../public/styles/login.module.css";
+
 const Signup = () => {
 
 
@@ -54,58 +56,58 @@ const Signup = () => {
       router.push("/signin");
     }
 
-    console.log(formik.errors);
+    // console.log(formik.errors);
     const { pass1, pass2 } = showPass;
     const {  handleSubmit, handleChange } = formik;
     const { username, phoneNumber, email, password, confirmPassword }  = formik.errors
 
     return (  
 
-      <form noValidate onSubmit={handleSubmit} id='login-form' action="#">
+      <form noValidate onSubmit={handleSubmit} id={styles['login-form']} action="#">
 
-            <h2 className="text-center mb-4">ایجاد حساب کاربری</h2>
+            <h2 className={"text-center mb-4 "+styles['title']}>ایجاد حساب کاربری</h2>
 
             <div>
-                <input onChange={handleChange} className="login-input" name="username" 
+                <input onChange={handleChange} className={styles["login-input"]} name="username" 
                 type="text" id="username-input" placeholder="نام کاربری" />
-                <span className='text-danger inputError'>{username}</span>
+                <small className={'text-danger '+styles['inputError']}>{username}</small>
             </div>
 
             <div>
                 <input onChange={handleChange} name="phoneNumber" type="tel" 
-                className="login-input" id="phone-input" placeholder="شماره تلفن همراه" />
-                <span className='text-danger inputError'>{phoneNumber}</span>
+                className={styles["login-input"]} id="phone-input" placeholder="شماره تلفن همراه" />
+                <small className={'text-danger '+styles['inputError']}>{phoneNumber}</small>
             
             </div>
    
             <div>
                 <input onChange={handleChange} name = "email" type="email" 
-                className="login-input" id="email-input" placeholder="ایمیل" /> 
-                <span className='text-danger inputError'>{email}</span>
+                className={styles["login-input"]} id="email-input" placeholder="ایمیل" /> 
+                <small className={'text-danger '+styles['inputError']}>{email}</small>
             </div>
 
             <div>
                 <input onChange={handleChange}  name="password" type={pass1? "text" : "password"} 
-                    className="login-input" id="password-input" placeholder="رمز عبور" />
+                    className={styles["login-input"]} id="password-input" placeholder="رمز عبور" />
                     <span onClick={ toggleShowPass.bind(this, "pass1") }>
                     {
-                        pass1 ? <i title="مخفی کردن رمز عبور" className="fa passwordHider fa-eye-slash" aria-hidden="true"></i>
-                        :<i title="نمایش رمز عبور" className="fa fa-eye passwordHider" aria-hidden="true"></i>
+                        pass1 ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider'] } aria-hidden="true"></i>
+                        :<i title="نمایش رمز عبور" className={"fa fa-eye"+" "+styles['passwordHider']} aria-hidden="true"></i>
                     }
                     </span>
-                    <span className='text-danger inputError'>{password}</span>
+                    <small className={'text-danger '+styles['inputError']}>{password}</small>
             </div>
 
             <div>
               <input onChange={handleChange} name = "confirmPassword" type={pass2? "text" : "password"} 
-              className="login-input" id="confirmPassword" placeholder="تکرار رمز عبور" />
+              className={styles["login-input"]} id="confirmPassword" placeholder="تکرار رمز عبور" />
               <span onClick={toggleShowPass.bind(this, "pass2")}>
               {
-                  pass2 ? <i title="مخفی کردن رمز عبور" className="fa passwordHider fa-eye-slash" aria-hidden="true"></i>
-                  :<i title="نمایش رمز عبور" className="fa fa-eye passwordHider" aria-hidden="true"></i>
+                  pass2 ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider'] } aria-hidden="true"></i>
+                  :<i title="نمایش رمز عبور" className={"fa fa-eye"+" "+styles['passwordHider']} aria-hidden="true"></i>
               }
               </span>
-              <span className='text-danger inputError'>{confirmPassword}</span>
+              <small className={'text-danger '+styles['inputError']}>{confirmPassword}</small>
             </div>
 
             <div className="d-flex mt-1 justify-content-end">
@@ -113,12 +115,11 @@ const Signup = () => {
             </div>
 
             <div className="text-center">
-                  <span onClick={navigateSignup } className="text-muted hover-option">ورود به حساب</span>
+                  <span onClick={ navigateSignup } className={styles['hover-option']}>ورود به حساب</span>
             </div>
 
       </form>
-      
-    )
+    );
 }
 
 export default Signup;

@@ -14,7 +14,7 @@ function Footer() {
 
                 <div className={styles['footer-part'] }>
                     <span className={styles['footer-title']}>آدرس</span>
-                    <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان </span>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان </p>
                 </div>
 
                 <div className={styles['footer-part']}>

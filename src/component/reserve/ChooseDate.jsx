@@ -39,8 +39,8 @@ export const ChooseDate = (props) => {
         <div className={styles['choose-date-container']}>
             {
                 props.isDate ? 
-                <label className='mb-3'>انتخاب تاریخ :</label> :
-                <label className='mb-3'>تقویم کاری کارمند :</label> 
+                <label className={'mb-3 '+styles['result-label']}>انتخاب تاریخ :</label> :
+                <label className={'mb-3 '+styles['result-label']}>تقویم کاری کارمند :</label> 
             }
             
             <DatePicker onChange={ setDate }  animations = {[
