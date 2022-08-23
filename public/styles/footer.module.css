@@ -99,6 +99,9 @@
 .footer-hover:hover{
     color: #f6a715 !important;
 }
+.footer-text{
+    line-height: 1.6;
+}
 /* -------------------------------- media queries ------------------------------ */
 @media only screen and (max-width: 768px){
     .footer{
@@ -113,14 +116,36 @@
         width: 100%;
         padding-bottom: .8em;
     }
-}
-@media only screen and (max-width: 768px){
     .footer{
         font-size: 15px;
     }
+    .footer-bottom-iconContainer{
+        justify-content: center;
+    }
 }
+
+/* @media only screen and (max-width: 768px){
+    .footer{
+        font-size: 15px;
+    }
+    .footer-bottom-section{
+        justify-content: center;
+    }
+} */
+
 @media only screen and (max-width: 600px){
     .footer{
         font-size: 13px;
+    }
+}
+@media only screen and (max-width: 500px){
+    .footer{
+        padding: 2em;
+        font-size: 12.5px;
+    }
+}
+@media only screen and (max-width: 345px){
+    .footer{
+        padding: 1em;
     }
 }

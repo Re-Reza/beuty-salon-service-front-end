@@ -43,14 +43,12 @@ const ReservePage = () => {
                 dispatch
             } }> 
             
-                {/* <div className={styles["reserve-page-mainContainer"]}> */}
-
                 <div className={ styles['reserve-page']}>
                 
                     <ReserveNav />
                     
                     <div className={styles.reserveSelectionContainer}>
-                        درست سی اس اس ریست نشده المنت پی کامپوننت کارمند مارجین باتم دارد!
+        
                         <ChooseService />
                         
                         {
@@ -61,8 +59,6 @@ const ReservePage = () => {
                     </div>
 
                 </div>
-        
-                {/* </div> */}
 
             </reserveContext.Provider>
             

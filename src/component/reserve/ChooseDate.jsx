@@ -36,7 +36,7 @@ export const ChooseDate = (props) => {
     }
 
     return (
-        <div className='d-flex flex-column'>
+        <div className={styles['choose-date-container']}>
             {
                 props.isDate ? 
                 <label className='mb-3'>انتخاب تاریخ :</label> :

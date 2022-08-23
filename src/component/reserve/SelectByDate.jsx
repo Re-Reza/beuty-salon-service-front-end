@@ -10,7 +10,7 @@ export function SelectByDate(){
 
     return (
         <div className='d-flex flex-column'>
-            <div className='d-flex justify-content-between'>
+            <div className='d-flex  flex-wrap justify-content-between'>
             <ChooseDate isDate={true} />
             <ChooseEmployee isDate={true} />
      

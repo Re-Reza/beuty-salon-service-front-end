@@ -70,7 +70,7 @@ button{
 	border: none;
 }
 .carousel {
-    width: 50%;
+	width: 50%;
     color: #000 !important;
 }
 .carousel img{
@@ -82,4 +82,7 @@ button{
 .carousel-caption{
     background-color: rgba(0, 0, 0, .5);
     border-radius: 10px;
+}
+p{
+	margin-bottom: 0;
 }

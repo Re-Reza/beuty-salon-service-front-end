@@ -1,5 +1,6 @@
-import '../../public/styles/globals.css';
 import "bootstrap/dist/css/bootstrap.min.css"
+import '../../public/styles/globals.css';//must be after bootsrap to apply css reset
+
 
 import Head from "next/head"; 
 
