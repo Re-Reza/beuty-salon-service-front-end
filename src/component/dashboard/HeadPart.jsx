@@ -7,8 +7,6 @@ export function HeadPart( props ) {
     function showAside(){
         props.asideRef.current.classList.add(styles["show-aside"])
     }
-    
-    console.log(props.asideRef.current)
     //تاریخ از بک اند باید بیاید
 
     return (
@@ -20,26 +18,32 @@ export function HeadPart( props ) {
                 </div>
                 
                 <div className={styles["dashboard-head-wellcomeMessage"]}>
-                    <div>username گرامی خوش آمدید</div>
+                    <div className='d-flex flex-column flex-sm-row align-items-start'>
+                        <span className='ms-1'>
+                            رضا رضایی
+                        </span>
+                        <span>
+                            گرامی خوش آمدید
+                        </span>
+                    </div>
                     <div className={styles["dashboard-date"]}>{new Date().toLocaleDateString("fa-IR")}</div>
                 </div>
                 
             </div>
             
             <div className={styles["dashboard-head-leftPart"]}>
-            {/* <i className="fa fa-home" aria-hidden="true"></i> صفحه اصلی */}
-               
+
                <Link href="/">
-                    <a>
-                        <i className="fa fa-home" aria-hidden="true"></i>
+                    <a className={styles['head-home'] }>
+                        <i className="fa fa-home ms-1" aria-hidden="true"></i>
                          صفحه اصلی
                     </a>
                </Link>
-               {/* قرار دادن پروفایل کاربر در این بخش */}
-               {/* <div className = "dashboard-head-profileContainer">
-                    <img src="" alt="profile-img" /> 
-               </div> */}
             
+                <div className={styles['dashboard-head-left-imgContainer']+" "+"me-2"}>
+                    <img src="/imgs/user.png" className={styles['head-imgAvatar']} alt="profile-alvatar" />
+                </div>
+
             </div>
 
         </header>

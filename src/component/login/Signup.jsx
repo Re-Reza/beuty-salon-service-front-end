@@ -47,6 +47,7 @@ const Signup = () => {
 
     function toggleShowPass( key ){
       setShowPass({
+        ...state,
         [key] : !showPass[key]
       });
     }

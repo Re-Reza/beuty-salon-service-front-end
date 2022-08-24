@@ -61,7 +61,7 @@ const Signin = () => {
 
                 <div>
                     <input onChange={handleChange}  name="password" type={showPassword? "text" : "password"} 
-                            className={styles["login-input" ] } id="password-input" placeholder="رمز عبور" />
+                        className={styles["login-input" ] } id="password-input" placeholder="رمز عبور" />
                     <span onClick={ toggleShowPass }>
                     {
                         showPassword ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider']} aria-hidden="true"></i>

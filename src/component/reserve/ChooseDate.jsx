@@ -17,6 +17,7 @@ export const ChooseDate = (props) => {
     const { userChoiceState, dispatch } = useContext( reserveContext ); 
     console.log(userChoiceState);
     const calenderRef = useRef(null);
+    
     useEffect ( ()=> {
         calenderRef.current.querySelector("input").focus();
     }, []);

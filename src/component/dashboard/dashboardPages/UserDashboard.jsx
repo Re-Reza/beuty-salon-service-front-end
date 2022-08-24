@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
-import { HeadPart, MainPart, ChangeAccountInfo, ReseveList } from "../component/dashboard";
-import Footer from  "../component/footer/Footer";
+import { HeadPart, MainPart, ChangeAccountInfo, ReseveList } from "../../dashboard";
+import Footer from  "../../footer/Footer";
 
-import styles from "../../public/styles/dashboard.module.css";
+import styles from "../../../../public/styles/dashboard.module.css";
 
 
-function Dashboard () {
+function UserDashboard () {
 
     const [showState, setShowState] = useState({
         main: true,
@@ -60,12 +60,15 @@ function Dashboard () {
                     <ul className={styles["dashboard-aside-itemsContainer"]}>
                         <li onClick={()=>{switchPart('main')}} className={main?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"]}>
                             اطلاعات حساب
+                            <i className="fa fa-user" aria-hidden="true"></i>
                         </li>
                         <li onClick={()=>{switchPart('reservedList')}} className={ reservedList ? styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"] }>
                             لیست رزرو ها
+                            <i className="fa fa-calendar-check-o" aria-hidden="true"></i>
                         </li>
                         <li onClick={()=>{switchPart('changeInfo')}} className={changeInfo?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             تغییر اطلاعات حساب
+                            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </li>
                     </ul>
                 </aside>
@@ -88,4 +91,4 @@ function Dashboard () {
     )
 }
 
-export default Dashboard;
+export default UserDashboard;

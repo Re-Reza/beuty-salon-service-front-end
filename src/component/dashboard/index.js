@@ -1,4 +1,5 @@
 export * from "./HeadPart";
 export * from "./MainPart";
-export * from "./UserInfo";
+export * from "./ChangeAccountInfo";
 export * from "./ReserveList";
+export * from "./employeeDashboardParts/EmployeeCustomerReserve";

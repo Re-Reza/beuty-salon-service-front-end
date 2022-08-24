@@ -21,29 +21,69 @@ export function ReseveList(){
         ],
     });
 
+    const [ currentReserve, setCurrentReserve ] = useState (true);
+
+    function toggleReserve(value){
+        setCurrentReserve(value);
+    }
+
+
     return(
         <div className={styles["dashboard-reserveList"]}>
-            <div className="table-responsive-xl">
+            <div className={styles["dashboard-reserveBtnContainer"]}>
+                <button onClick={ ()=>{toggleReserve(false)} } className={ !currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]} >تاریخچه </button>
+                <button onClick={()=>{toggleReserve(true)} } className={ currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]}>رزرو های جاری</button>
+            </div>
+            
+            <div className="table-responsive-xl">   
+                
+            {
+                currentReserve ? 
+
                 <table className="table">
-                    <thead className="thead-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">ردیف</th>
+                        <th scope="col">خدمت</th>
+                        <th scope="col">کارمند</th>
+                        <th scope="col">تاریخ</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {
+                        listState.items.map((item, index) => <ReserveItem  history={false} key={index} item = {{...item ,  row: ++index }} /> )
+                    }
+                    </tbody>
+
+                </table>
+
+                :
+                
+                <table className="table">
+                    <thead>
                         <tr>
                             <th scope="col">ردیف</th>
                             <th scope="col">خدمت</th>
                             <th scope="col">کارمند</th>
                             <th scope="col">تاریخ</th>
-                            <th></th>
+                            <th>وضعیت</th>
                         </tr>
                     </thead>
 
                     <tbody>
                     {
-                        listState.items.map((item, index) => <ReserveItem key={index} item = {{...item ,  row: ++index }} /> )
+                        listState.items.map((item, index) => <ReserveItem history={true} key={index} item = {{...item ,  row: ++index }} /> )
                     }
                     </tbody>
 
                 </table>
+
+            }
+
             </div>
-            
+
         </div>
     )
 }
