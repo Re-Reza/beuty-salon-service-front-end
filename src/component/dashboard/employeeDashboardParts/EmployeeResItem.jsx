@@ -44,20 +44,25 @@ const EmployeeResItem = ( props ) => {
                 props.history ? 
                 <td>{status?"اتمام یافته" : "کنسل شده"}</td>
                 :
-                <td className={styles['employee-date-modifier']}>
-                    <DatePicker onChange={ setCustomerDate }  animations = {[
-                            opacity(),
-                            transition({
-                            from: 40,
-                            transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
-                            }),
-                        ]} 
-                        // inputClass={styles["calendarInput"]}
-                        minDate={ new Date().setDate( new Date().getDate() ) } maxDate = { new Date().setDate( new Date().getDate()+7 ) }
-                        calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
-                    />
-                    <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>تغییر تاریخ</button>
-                </td>
+                <>
+                    <td className={styles['employee-date-modifier']}>
+                        <DatePicker onChange={ setCustomerDate }  animations = {[
+                                opacity(),
+                                transition({
+                                from: 40,
+                                transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
+                                }),
+                            ]} 
+                            // inputClass={styles["calendarInput"]}
+                            minDate={ new Date().setDate( new Date().getDate() ) } maxDate = { new Date().setDate( new Date().getDate()+7 ) }
+                            calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
+                        />
+                        <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال تاریخ</button>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </>
             }
         </tr>
     )

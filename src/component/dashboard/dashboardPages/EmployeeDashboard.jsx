@@ -4,6 +4,8 @@ import { MainPart, EmployeeCustomerReserve, ChangeEmployeeInfo, Notifications } 
 import { HeadPart } from "../HeadPart";
 import Footer from "../../footer/Footer";
 
+import PN from "persian-number";
+
 import styles from "../../../../public/styles/dashboard.module.css";
 
 //هر کامپوننت باید  اطلاعات مربوط به خودش را زمان اپلود شدنش از ای پی ای بگیرد
@@ -20,7 +22,15 @@ const EmployeeDashboard = () => {
         username: "زهرا محمدی",   
         email:"ee@gmail.com",
         phone: '093000000',
-        services: ["مو", "پوست", "ناخن"] 
+        services: ["مو", "پوست", "ناخن"] ,
+        notifications : [
+            {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 5, day: 1} },
+            {title: "مدیریت سایت", message: "تغییر زمان کاری", date:{year: 1401, month: 5, day: 10} },
+            {title: "مدیریت سایت", message: "جلسه جدید در سالن برگزار می گردد", date:{year: 1401, month: 6, day: 5} },
+            {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 6, day: 12} },
+            {title: "مدیریت سایت", message: "جلسه جدید در سالن برگزار می گردد", date:{year: 1401, month: 7, day: 18} },
+            {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 8, day: 14} }
+          ]
     } );
 
     const asideRef = useRef(null);
@@ -83,7 +93,7 @@ const EmployeeDashboard = () => {
                         <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             اعلانات
                             <div className={styles["notification-box"]} >
-                                <span className={styles["notification-count"]}>6</span>
+                                <span className={styles["notification-count"]}>{PN.convertEnToPe(employeeInfo.notifications.length)}</span>
                                 <div className={styles["notification-bell"]}>
                                     <span className={styles["bell-top"]}></span>
                                     <span className={styles["bell-middle"]}></span>

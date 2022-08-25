@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
-export const ChangeEmployeeInfo = () => {
+export const ChangeAdminInfo = () => {
     
   const [ showPasswordState, setShowPasswordState ] = useState({
     currentPass: false,
@@ -44,7 +44,7 @@ export const ChangeEmployeeInfo = () => {
               </div>
               
               <div className={styles['change-info-inputContainer']}>
-
+                
                   <label className='mb-3'>تغییر رمز عبور </label>
                   <div className={'w-100 mb-4 position-relative'}>
                       <input className={styles["change-info-input"]+" "+"w-100"} type={currentPass? "text" : "password"} placeholder='رمز عبور فعلی'/>
@@ -67,9 +67,9 @@ export const ChangeEmployeeInfo = () => {
                   </div>
 
               </div>
-
+                  
               <div className='w-100 d-flex justify-content-end' >
-                  <button onClick={ChangeEmployeeInfo} className="btn btn-success">تغییر اطلاعات</button>
+                  <button onClick={confirmNewInfo} className="btn btn-success">تغییر اطلاعات</button>
               </div>
 
           </div>

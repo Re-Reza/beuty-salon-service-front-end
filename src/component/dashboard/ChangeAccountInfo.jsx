@@ -39,26 +39,28 @@ export function ChangeAccountInfo(){
                 </div>
                 
                 <div className={styles['change-info-inputContainer']}>
+
                     <label className='mb-3'>تغییر رمز عبور </label>
-                    <div className={'w-100 mb-4'}>
+                    <div className={'w-100 mb-4 position-relative'}>
                         <input className={styles["change-info-input"]+" "+"w-100"} type={currentPass? "text" : "password"} placeholder='رمز عبور فعلی'/>
-                        {/* <span onClick={()=>{toggleShowPassword("currentPass")}}>
+                        <span onClick={()=>{toggleShowPassword("currentPass")}}>
                         {
                             currentPass ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider']} aria-hidden="true"></i>
                             :<i title="نمایش رمز عبور" className={"fa fa-eye"+" "+styles['passwordHider']} aria-hidden="true"></i>
                         }
-                        </span> */}
+                        </span>
                     </div>
 
-                    <div className={'w-100 mb-4'}>
+                    <div className={'w-100 mb-4 position-relative'}>
                         <input type={newPass? "text" : "password"}  className={styles["change-info-input"]+" "+"w-100"}  placeholder='رمز عبور جدید'/>
-                        {/* <span onClick={()=>{toggleShowPassword("newPass")}}>
+                        <span onClick={()=>{toggleShowPassword("newPass")}}>
                         {
                             newPass ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider']} aria-hidden="true"></i>
                             :<i title="نمایش رمز عبور" className={"fa fa-eye"+" "+styles['passwordHider']} aria-hidden="true"></i>
                         }
-                        </span> */}
+                        </span>
                     </div>
+                    
                 </div>
                     
                 <div className='w-100 d-flex justify-content-end' >

@@ -23,7 +23,7 @@ function Dashboard( props ){
 
         return ( 
             <RoleDashboard/>
-        )
+        );
 }
 
 export function getServerSideProps(context){

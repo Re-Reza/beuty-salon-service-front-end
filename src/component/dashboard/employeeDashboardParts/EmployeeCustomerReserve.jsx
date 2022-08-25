@@ -46,6 +46,7 @@ export const EmployeeCustomerReserve = () => {
                             <th scope="col">نام مشتری</th>
                             <th scope="col">تاریخ انتخابی مشتری</th>
                             <th scope="col">تغییر تاریخ</th>
+                            <th scope="col">تاریخ نهایی</th>
                         </tr>
                     </thead>
 
