@@ -4,7 +4,7 @@ import { EmployeesList, ChangeAdminInfo } from "../adminDashboardParts";
 import { HeadPart, MainPart } from '../../dashboard';
 import Footer from "../../footer/Footer";
 
-import PN from "persian-number";
+import { convertEnToPe } from "persian-number";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -82,7 +82,7 @@ const AdminDashboard = () => {
                     <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                         اعلانات
                         <div className={styles["notification-box"]} >
-                            <span className={styles["notification-count"]}>{PN.convertEnToPe(6)}</span>
+                            <span className={styles["notification-count"]}>{convertEnToPe(6)}</span>
                             <div className={styles["notification-bell"]}>
                                 <span className={styles["bell-top"]}></span>
                                 <span className={styles["bell-middle"]}></span>

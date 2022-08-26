@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import PN from "persian-number";
+import { convertEnToPe } from "persian-number";
 
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
@@ -36,10 +36,10 @@ const EmployeeResItem = ( props ) => {
 
     return (
         <tr>
-            <th scope="row">{PN.convertEnToPe(row)}</th>
+            <th scope="row">{convertEnToPe(row)}</th>
             <td>{service}</td>
             <td>{customername}</td>
-            <td>{` ${PN.convertEnToPe(year)}/${PN.convertEnToPe(month)}/${PN.convertEnToPe(day)} `}</td>
+            <td>{` ${convertEnToPe(year)}/${convertEnToPe(month)}/${convertEnToPe(day)} `}</td>
             {
                 props.history ? 
                 <td>{status?"اتمام یافته" : "کنسل شده"}</td>

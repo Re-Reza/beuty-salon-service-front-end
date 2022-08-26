@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import PN from "persian-number";
+import { convertEnToPe } from "persian-number";
 
-import EmployeeModalInfo from "./EmployeeModalInfo";
+import EmployeeModalProfile from "./EmModalProfileParts/EmployeeModalProfile";
 
 import  styles from "../../../../public/styles/dashboard.module.css";
 
@@ -14,7 +14,7 @@ const EmployeeItem = ( props ) => {
     return (
         <>
             <tr className='align-middle mb-2'>
-                <th scope="row">{PN.convertEnToPe(row)}</th>
+                <th scope="row">{convertEnToPe(row)}</th>
                 <td >
                     <span className="ms-3">
                         <img className={styles['employee-item-profile']} src="/imgs/user.png" alt="" />
@@ -24,14 +24,14 @@ const EmployeeItem = ( props ) => {
                     </span>
                 </td>
                 <td>{service}</td>
-                <td>{phone}</td>
+                <td>{convertEnToPe(phone)}</td>
                 <td>
                     <button onClick={ ()=> {setOpenMoal(true)} } className='btn btn-dark'>پروفایل کارمند</button>
                 </td>
             </tr>
             {
                 openMoal? 
-                <EmployeeModalInfo openMoal={openMoal} setOpenMoal={setOpenMoal} employee={props.item}/> 
+                <EmployeeModalProfile openMoal={openMoal} setOpenMoal={setOpenMoal} employee={props.item}/> 
                 :<></>
             }
         </>

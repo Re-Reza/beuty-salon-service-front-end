@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import EmployeeItem from "./EmployeeItem";
+import AddEmployeeModal from './AddEmployeeModal';
 
-import  styles from "../../../../public/styles/dashboard.module.css";
+import styles from "../../../../public/styles/dashboard.module.css";
 
 export const EmployeesList = () => {
     
@@ -22,30 +23,45 @@ export const EmployeesList = () => {
         {name: "e13", service:"مو", phone: "09000" }
 
     ]);
+
+    const [ addEmModal, setAddEmModal ] = useState(false);
     
     return (
-        <div className={styles["employeeLiat-container"] }>
-            
-            <div className="table-responsive">
-                <table className="table">
-                    <thead className="bg-dark text-white" >
-                        <tr>
-                            <th>ردیف</th>
-                            <th>نام کارمند</th>
-                            <th>خدمت</th>
-                            <td>شماره موبایل</td>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                    {
-                        employeeList.map( (employee, index) => <EmployeeItem key={index} item={{...employee, row: index+1}} /> )
-                    }
-                    </tbody>
+        <>
+            <div className='d-flex flex-column'>
+                <div className='align-self-end mb-4'>
+                    <button onClick={ ()=> { setAddEmModal(true)} } className='d-flex justify-content-center btn btn-success'>افزودن کارمند جدید<i className="align-self-center me-2 fa fa-plus" aria-hidden="true"></i></button>
+                </div>
 
-                </table>
+                <div className={styles["employeeLiat-container"] }>
+                    <div className="table-responsive">
+                        <table className="table">
+                            <thead className="bg-dark text-white" >
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>نام کارمند</th>
+                                    <th>خدمت</th>
+                                    <td>شماره موبایل</td>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                            {
+                                employeeList.map( (employee, index) => <EmployeeItem key={index} item={{...employee, row: index+1}} /> )
+                            }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-  )
+            {
+                addEmModal ?
+                <AddEmployeeModal isOpen={addEmModal} closeModal={ ()=>{setAddEmModal(false)} }/> :
+                <></>
+            }
+        
+        </>
+    )
 }

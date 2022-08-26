@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PN from "persian-number";
+import { convertEnToPe } from "persian-number";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -34,7 +34,7 @@ const NotificationItem = (props) => {
                 </span>
                 <span style={{borderBottom:"1px solid #3d3d3d"}}>
                 {
-                    `${PN.convertEnToPe(year)}/${PN.convertEnToPe(month)}/${PN.convertEnToPe(day)}`
+                    `${convertEnToPe(year)}/${convertEnToPe(month)}/${convertEnToPe(day)}`
                 }
                 </span>
             </div>

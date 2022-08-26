@@ -676,6 +676,8 @@ position: absolute;
 }
 
 /* --------------------------------- end of notification animation ---------------------------*/ 
+
+/*--------------------------------------- employee modal --------------------------------------*/
 .employeeInofo-modal{
     width: 100%;
     font-family: Vazir;
@@ -711,6 +713,7 @@ position: absolute;
     margin-top: 2.2em;
 }
 .employeeModal-btn-container{
+   
     width: 60%;
     display: flex;
     justify-content: space-between;
@@ -725,6 +728,111 @@ position: absolute;
 .selected-m-btn{
     color: #000;
     border-bottom: 2px #ffcc54 solid;
+}
+.employeeModal-InfoPart{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding-right: 2em;
+    padding-bottom: 3em;
+}
+.Employee-info-input{
+    border: none;
+    background-color: #eee;
+    padding: .5em;
+    border-radius: 5px;
+}
+.modalProfile-weeklycustomers-container{
+    width:90%
+}
+.modalProfile-weeklycustomersPart{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+    grid-row-gap: 20px;
+    width: 100%;
+    padding-left: 0;
+    padding-bottom: 2em;
+}
+.weeklycustomerItem{
+    display: flex;
+    background-color: #eee;
+    border-radius:10px;
+}
+.weeklycustomerItem-date{
+    background-color: #ffcc54;
+    padding: .5em;
+    width: 75px;
+    /* color: #7d7d7d; */
+    color: #7a7a7a;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.weeklycustomerItem-detail{
+    padding: .5em;
+    padding-right: 1em;
+    color:#3d3d3d ;
+    font-size: .9em;
+}
+.weeklycustomerItem-trash{
+    transition: .3s all; 
+}
+.weeklycustomerItem-trash:hover{
+    color: rgb(255, 0,0 );
+}
+.weeklycustomerItem-calendar{
+    transition: .3s all;
+}
+.weeklycustomerItem-calendar:hover{
+    color: #d59b14;
+}
+
+.EmployeeModalProfile-HistoryPart{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#EmployeeModalProfile-History-search-input{
+    width: 228px;
+    border: none;
+    background-color: #eee;    
+    padding: .5em;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #bdbcbc;
+}
+#EmployeeModalProfile-History-search-input:focus{
+    box-shadow: 0 0 8px #ffcc54;
+}
+.EmployeeModalProfile-searchIcon{
+    position: absolute;
+    right: 204px;
+    top: 9px;
+    background-color: #eee;
+    color: #3d3d3d;
+    cursor: pointer;
+    transition: all .5s;
+}
+.EmployeeModalProfile-searchIcon:hover{
+    transform: rotate(359deg);
+}
+
+.addEmModalForm-container{
+    width: 100%;
+    font-family: Vazir;
+}
+.addEmModalForm{
+    background-color: #fff;
+    width: 80%;
+    height:80%;
+    margin: auto;
+    margin-top: 5em;
+}
+.addEmployeeInput{
+    box-shadow: 0 0 8px rgb(198, 196, 196);
+}
+.addEmployeeInput:focus{
+    box-shadow: 0 0 8px #ffcc54;
 }
 
 @media only screen and (max-width:780px){

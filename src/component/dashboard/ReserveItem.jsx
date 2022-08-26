@@ -1,6 +1,6 @@
 import React from 'react';  
 
-import PN from "persian-number";
+import { convertEnToPe } from "persian-number";
 
 export function ReserveItem(props) {
 
@@ -12,10 +12,10 @@ export function ReserveItem(props) {
 
     return (
         <tr>
-            <th scope="row">{PN.convertEnToPe(row)}</th>
+            <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
             <td>{employee}</td>
-            <td>{` ${PN.convertEnToPe(year)}/${PN.convertEnToPe(month)}/${PN.convertEnToPe(day)} `}</td>
+            <td>{` ${convertEnToPe(year)}/${convertEnToPe(month)}/${convertEnToPe(day)} `}</td>
             {
                 props.history?
                 <td>اتمام یافته</td>

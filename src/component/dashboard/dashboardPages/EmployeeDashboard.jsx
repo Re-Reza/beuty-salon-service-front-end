@@ -4,7 +4,7 @@ import { MainPart, EmployeeCustomerReserve, ChangeEmployeeInfo, Notifications } 
 import { HeadPart } from "../HeadPart";
 import Footer from "../../footer/Footer";
 
-import PN from "persian-number";
+import { convertEnToPe } from "persian-number";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -93,7 +93,7 @@ const EmployeeDashboard = () => {
                         <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             اعلانات
                             <div className={styles["notification-box"]} >
-                                <span className={styles["notification-count"]}>{PN.convertEnToPe(employeeInfo.notifications.length)}</span>
+                                <span className={styles["notification-count"]}>{convertEnToPe(employeeInfo.notifications.length)}</span>
                                 <div className={styles["notification-bell"]}>
                                     <span className={styles["bell-top"]}></span>
                                     <span className={styles["bell-middle"]}></span>

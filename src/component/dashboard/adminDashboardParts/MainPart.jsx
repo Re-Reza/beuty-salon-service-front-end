@@ -2,7 +2,6 @@ import React from "react";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
-import PN from "persian-number";
 
 export function MainPart(props){
 

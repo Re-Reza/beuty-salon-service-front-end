@@ -2,16 +2,21 @@ import React, {useState} from "react";
 
 import Modal from 'react-modal';
 
-import styles from "../../../../public/styles/dashboard.module.css";
+import EmInfo from "./Emlnfo";
+import WeeklyCustomersList from "./WeeklyCustomersList";
+import HistoryList from "./HisotryList";
 
-function EmployeeModalInfo( props ){
+import styles from "../../../../../public/styles/dashboard.module.css";
+
+
+function EmployeeModalProfile( props ){
 
     const { openMoal, setOpenMoal, employee : {name, service, phone} } = props; 
     
     const [ showOptionState, setShowOptionState ] = useState({
-        info:true,
-        history: false,
-        currentActivity: false
+        info:false,
+        history:true,
+        weeklyCustomers:false
     });
 
     const customStyles = {
@@ -23,7 +28,7 @@ function EmployeeModalInfo( props ){
             display:"flex",
             margin:"auto",
             padding:"0",
-            borderRadius: "8px"
+            borderRadius: "8px",
         }
     };
     
@@ -42,7 +47,15 @@ function EmployeeModalInfo( props ){
         });
     }
 
-    const { info, history, currentActivity} = showOptionState; 
+    const { info, history, weeklyCustomers} = showOptionState; 
+    
+    let ActiveComponent;
+    if( info )
+        ActiveComponent = EmInfo;
+    else if( weeklyCustomers)
+        ActiveComponent = WeeklyCustomersList;
+    else if( history )
+        ActiveComponent = HistoryList;
 
     Modal.setAppElement("#__next");
 
@@ -50,8 +63,7 @@ function EmployeeModalInfo( props ){
         <>
             <Modal
                 isOpen={openMoal}
-                style={ customStyles }
-            >
+                style={customStyles} >
                 <div className={styles["employeeInofo-modal"]}>
 
                     <div className={styles["employeeInofo-modal-topPart"]} >
@@ -71,9 +83,12 @@ function EmployeeModalInfo( props ){
 
                         <div className={styles["employeeModal-btn-container"]}>
                             <button  onClick={()=>{changeInfoOption("info")}} className={ info ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button"> مشخصات کارمند</button>
+                            <button  onClick={()=>{changeInfoOption("weeklyCustomers")}}className={ weeklyCustomers ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">لیست هفتگی مشتریان</button>
                             <button onClick={()=>{changeInfoOption("history")}} className={ history ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">تاریخچه فعالیت ها</button>    
-                            <button  onClick={()=>{changeInfoOption("currentActivity")}}className={ currentActivity ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">لیست هفتگی مشتریان</button>
-
+                        </div>
+                        
+                        <div className="w-100 d-flex justify-content-center mt-5">
+                            <ActiveComponent info = {props.employee} />
                         </div>
                     
                     </div>
@@ -85,4 +100,4 @@ function EmployeeModalInfo( props ){
     )
 }
 
-export default EmployeeModalInfo;
+export default EmployeeModalProfile;
