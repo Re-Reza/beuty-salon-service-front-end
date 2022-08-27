@@ -7,6 +7,7 @@ export function MainPart(props){
 
 
     return(
+        
         <div className="d-flex flex-column ">
             
             <div className="mb-5">
@@ -17,14 +18,15 @@ export function MainPart(props){
             
             <ul className={styles["UserInfoContainer"]}>   
 
-                <li className={styles["UserInfo-input-container"]}>
+                  
+            <li className={styles["UserInfo-input-container"]}>
                     <span className={styles["UserInfo-input-title"]}>نام کاربری</span>
                     <span>نام کاربر</span>
                 </li>
-
+                
                 <li className={styles["UserInfo-input-container"]}>
                     <span className={styles["UserInfo-input-title"]}>شماره موبایل</span>
-                    <span>00000000000</span>
+                    <span>090550484</span>
                 </li>
                 
                 <li className={styles["UserInfo-input-container"]}>

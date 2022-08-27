@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 import { EmployeesList, ChangeAdminInfo } from "../adminDashboardParts";
+import { Notifications } from '../employeeDashboardParts/Notifications';
 import { HeadPart, MainPart } from '../../dashboard';
 import Footer from "../../footer/Footer";
 
@@ -38,18 +39,15 @@ const AdminDashboard = () => {
   const { main, changeInfo, reserveCustomer, notification, employeeList} = showState;
 
   let ActivePartComponent;
-  if(main)
-      ActivePartComponent = MainPart;
-  // else if(changeInfo)
-  //     ActivePartComponent = ChangeEmployeeInfo;
-  // else if(reserveCustomer)
-  //     ActivePartComponent = EmployeeCustomerReserve;
-  // else if(notification)
-  //     ActivePartComponent = Notifications;
-  if( employeeList )
-      ActivePartComponent = EmployeesList;
+    if(main)
+        ActivePartComponent = MainPart;
+    if( employeeList )
+        ActivePartComponent = EmployeesList;
     else if(changeInfo)
-      ActivePartComponent = ChangeAdminInfo;
+        ActivePartComponent = ChangeAdminInfo;
+    else if(notification)
+        ActivePartComponent = Notifications;
+  
   
   return (
     <>
@@ -67,18 +65,22 @@ const AdminDashboard = () => {
                 </div>
 
                 <ul className={styles["dashboard-aside-itemsContainer"]}>
+                    
                     <li onClick={()=>{switchPart('main')}} className={main?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"]}>
                         اطلاعات پروفایل
                         <i className="fa fa-user" aria-hidden="true"></i>
                     </li>
+
                     <li onClick={()=>{switchPart('reserveCustomer')}} className={ reserveCustomer ? styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"] }>
                         رزرو مشتریان  
                         <i className="fa fa-calendar-check-o" aria-hidden="true"></i>                          
                     </li>
+
                     <li onClick={()=>{switchPart('changeInfo')}} className={changeInfo?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                         تغییر اطلاعات حساب
                         <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </li>
+
                     <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                         اعلانات
                         <div className={styles["notification-box"]} >

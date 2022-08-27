@@ -713,7 +713,6 @@ position: absolute;
     margin-top: 2.2em;
 }
 .employeeModal-btn-container{
-   
     width: 60%;
     display: flex;
     justify-content: space-between;
@@ -722,6 +721,7 @@ position: absolute;
     border: none;
     background-color: inherit;
     color: #7a7a7a;
+    margin-right: .3em;
     padding-bottom: .4em;
     /* margin-left: 2.9em; */
 }
@@ -820,6 +820,7 @@ position: absolute;
 .addEmModalForm-container{
     width: 100%;
     font-family: Vazir;
+    padding-bottom: 1.5em;
 }
 .addEmModalForm{
     background-color: #fff;
@@ -828,6 +829,9 @@ position: absolute;
     margin: auto;
     margin-top: 5em;
 }
+.addEmModalForm-formContainer{
+    height: 480px;
+}
 .addEmployeeInput{
     box-shadow: 0 0 8px rgb(198, 196, 196);
 }
@@ -835,6 +839,15 @@ position: absolute;
     box-shadow: 0 0 8px #ffcc54;
 }
 
+@media only screen and (max-width:800px){
+    .change-user-info{
+        width: 80%;
+    }
+    .employeeInofo-modal{
+        font-size: 13px;
+    }
+    
+}
 @media only screen and (max-width:780px){
     .employee-date-modifier{
         display: flex;
@@ -842,20 +855,41 @@ position: absolute;
         justify-content: center;
         align-items: center;
     }
+    .employeeModal-btn-container{
+        width: 80%;
+    }
     .reserve-send-newDate-btn{
         margin-right: 0!important;
         margin-top: .8em;
     }
-}
-@media only screen and (max-width:800px){
-    .change-user-info{
-        width: 80%;
+    .employeeList-container{
+        font-size: 14px;
+    }
+    .font-responsive{
+        font-size: 14px !important; 
+    }
+    .addEmModalForm-container{
+        font-size: 13px;
     }
 }
-@media only screen and (max-width:460px){
+@media only screen and (max-width:650px){
+    .btn-responsive{
+        font-size: 12px !important; 
+    }
+    .employeeModal-InfoPart{
+        width: 80%;
+        padding-right: 0;
+    }
+}
+@media only screen and (max-width:462px){
     .change-user-info{
         width: 90%;
     }
+    .employeeList-container{
+        font-size: 12px;
+    }
+    .font-responsive{
+        font-size: 12px !important; 
+    }
 }
-
 

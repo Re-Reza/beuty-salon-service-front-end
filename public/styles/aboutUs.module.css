@@ -1,0 +1,36 @@
+.aboutUs-page{
+    font-family: Vazir;
+}
+.aboutUs-top-tile{
+    font-size: 1.8em;
+    color: #7B7D7D;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #ffcc54;
+    /* color: ; */
+    /* text-shadow: 0 0 8px #ffcc54; */
+}
+.aboutUs-top-logo{
+    color: #ffcc54;
+    /* text-shadow: 0 0 8px #ffcc54; */
+    /* color: #7d7d7d; */
+}
+.aboutUs-top-description{
+    text-align: center;
+    font-size: .9em;
+    padding: 0 23.5em;
+    margin-top: 1.3em;
+}
+.aboutUs-top-img{
+    /* width: 100%; */
+    height: 300px;
+    border-radius: 4px;
+}
+.aboutUs-top-content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    padding: 2em 12em;
+}
+
+
+

@@ -28,15 +28,15 @@ export const EmployeesList = () => {
     
     return (
         <>
-            <div className='d-flex flex-column'>
+            <div className={'d-flex flex-column '+styles["employeeList-container"]}>
                 <div className='align-self-end mb-4'>
-                    <button onClick={ ()=> { setAddEmModal(true)} } className='d-flex justify-content-center btn btn-success'>افزودن کارمند جدید<i className="align-self-center me-2 fa fa-plus" aria-hidden="true"></i></button>
+                    <button onClick={ ()=> { setAddEmModal(true)} } className={'d-flex justify-content-center btn btn-success '+styles["font-responsive"]}>افزودن کارمند جدید<i className="align-self-center me-2 fa fa-plus" aria-hidden="true"></i></button>
                 </div>
 
                 <div className={styles["employeeLiat-container"] }>
-                    <div className="table-responsive">
-                        <table className="table">
-                            <thead className="bg-dark text-white" >
+                    <div className={"table-responsive"}>
+                        <table className={"table"}>
+                            <thead className={"bg-dark text-white "+styles['font-responsive']} >
                                 <tr>
                                     <th>ردیف</th>
                                     <th>نام کارمند</th>

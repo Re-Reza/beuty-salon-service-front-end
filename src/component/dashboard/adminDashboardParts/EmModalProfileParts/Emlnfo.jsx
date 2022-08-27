@@ -42,7 +42,7 @@ const EmInfo = (props) =>{
             <div className="d-flex justify-content-end mt-3">
             {
                 chageInfoState.changeMode ? <button onClick={sendNewInfo} className='btn btn-success'>اعمال تغییرات</button>
-                :<button className='btn btn-warning text-white' onClick={changeInfoMode }>تغییر اطلاعات</button>
+                :<button className={'btn btn-warning text-white '+styles["font-responsive"]} onClick={changeInfoMode }>تغییر اطلاعات</button>
             }
             </div>
 

@@ -1,8 +1,10 @@
 import React from "react";
 
+import { useMediaQuery } from 'react-responsive'
+import PN from "persian-number";
+
 import styles from "../../../../public/styles/dashboard.module.css";
 
-import PN from "persian-number";
 
 export function MainPart( props ){
 
@@ -28,7 +30,7 @@ export function MainPart( props ){
                 
                 <li className={styles["UserInfo-input-container"]}>
                     <span className={styles["UserInfo-input-title"]}>شماره موبایل</span>
-                    <span>00000000000</span>
+                    <span>090550484</span>
                 </li>
                 
                 <li className={styles["UserInfo-input-container"]}>

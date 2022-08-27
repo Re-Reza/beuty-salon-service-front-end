@@ -7,6 +7,7 @@ import styles from "../../../../../public/styles/dashboard.module.css";
 
 const HistoryItem = (props) => {
     const { service, date: {year, month, day}, customerName, customerPhone, status } = props.item;
+    
     return(
         <li className={styles["weeklycustomerItem"]}>
             

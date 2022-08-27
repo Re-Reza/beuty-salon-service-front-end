@@ -26,7 +26,7 @@ const EmployeeItem = ( props ) => {
                 <td>{service}</td>
                 <td>{convertEnToPe(phone)}</td>
                 <td>
-                    <button onClick={ ()=> {setOpenMoal(true)} } className='btn btn-dark'>پروفایل کارمند</button>
+                    <button onClick={ () => {setOpenMoal(true)} } className={'btn btn-dark '+styles['font-responsive']}>پروفایل کارمند</button>
                 </td>
             </tr>
             {

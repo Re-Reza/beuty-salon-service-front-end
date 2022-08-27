@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Modal from 'react-modal';
+import { useMediaQuery } from "react-responsive";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -8,12 +9,16 @@ const AddEmployeeModal = ( props ) => {
 
     const { isOpen, closeModal } = props;
 
+    const isTablet = useMediaQuery ({
+        query : '(max-width: 750px) '
+    });
+
     const customStyles = {
         overlay:{
             backgroundColor:"rgba(0,0,0, .5)"
         },
         content:{
-            width: "60%",
+            width: isTablet? "80%" : "70%",
             display:"flex",
             margin:"auto",
             padding:"0",
@@ -40,7 +45,7 @@ const AddEmployeeModal = ( props ) => {
                             <i className="fa text-danger fs-3 fa-times" aria-hidden="true"></i>
                         </div>
                     
-                        <div className='w-100 '>
+                        <div className={'w-100 '+ styles['addEmModalForm-formContainer']}>
                             <form onSubmit={submitNewEmployee} className={styles["addEmModalForm"]} action="#">
 
                                 <div className='d-flex flex-column mb-4'>
@@ -60,7 +65,7 @@ const AddEmployeeModal = ( props ) => {
 
                                 <div>
                                     <label className="mb-3">خدمات</label>
-                                    <div className='d-flex'>
+                                    <div className='d-flex flex-column flex-sm-row'>
 
                                         <div className="form-check ms-4">
                                             <input type="checkbox" className="form-check-input" id="hairservice"/>
@@ -86,7 +91,7 @@ const AddEmployeeModal = ( props ) => {
                                 </div>
 
                                 <div className='d-flex justify-content-end mt-4'>
-                                    <button className='btn btn-success' type='submit'>تایید اطلاعات</button>
+                                    <button className={'btn btn-success '+styles['font-responsive']} type='submit'>تایید اطلاعات</button>
                                 </div>
 
                             </form>

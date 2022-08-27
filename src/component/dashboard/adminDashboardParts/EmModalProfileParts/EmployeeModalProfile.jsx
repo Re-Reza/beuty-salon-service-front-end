@@ -2,6 +2,8 @@ import React, {useState} from "react";
 
 import Modal from 'react-modal';
 
+import { useMediaQuery } from 'react-responsive';
+
 import EmInfo from "./Emlnfo";
 import WeeklyCustomersList from "./WeeklyCustomersList";
 import HistoryList from "./HisotryList";
@@ -13,9 +15,13 @@ function EmployeeModalProfile( props ){
 
     const { openMoal, setOpenMoal, employee : {name, service, phone} } = props; 
     
+    const isTablet = useMediaQuery({
+        query :"(max-width: 950px)"
+    });
+
     const [ showOptionState, setShowOptionState ] = useState({
-        info:false,
-        history:true,
+        info:true,
+        history:false,
         weeklyCustomers:false
     });
 
@@ -24,7 +30,7 @@ function EmployeeModalProfile( props ){
             backgroundColor:"rgba(0,0,0, .5)"
         },
         content:{
-            width: "60%",
+            width: isTablet? "80%" : "70%",
             display:"flex",
             margin:"auto",
             padding:"0",
@@ -82,8 +88,8 @@ function EmployeeModalProfile( props ){
                     <div className={styles["employeeModal-info"]}>
 
                         <div className={styles["employeeModal-btn-container"]}>
-                            <button  onClick={()=>{changeInfoOption("info")}} className={ info ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button"> مشخصات کارمند</button>
-                            <button  onClick={()=>{changeInfoOption("weeklyCustomers")}}className={ weeklyCustomers ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">لیست هفتگی مشتریان</button>
+                            <button onClick={()=>{changeInfoOption("info")}} className={ info ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button"> مشخصات کارمند</button>
+                            <button onClick={()=>{changeInfoOption("weeklyCustomers")}} className={ weeklyCustomers ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">لیست هفتگی مشتریان</button>
                             <button onClick={()=>{changeInfoOption("history")}} className={ history ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">تاریخچه فعالیت ها</button>    
                         </div>
                         
