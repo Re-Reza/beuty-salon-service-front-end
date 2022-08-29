@@ -115,4 +115,12 @@ p{
     height: 100%;
     object-fit: cover;
 }
+/* .swiper-pagination{
+    background-color: rgba(0 , 0, 0, .4);
+} */
+@media only screen and (max-width: 760px){
+    .swiper-slide{
+        margin-left: .5em !important;
+    }
+}
   

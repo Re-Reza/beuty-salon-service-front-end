@@ -16,15 +16,15 @@ export function HeadTop(){
                 </h1>
             </div>
 
-            <div>   
+            {/* <div>   
                 اطلاعات1
-            </div>
+            </div> */}
             
             <div className={styles["nav-link-hover"]}>
                 <Link href="/signin">
                     <a>
                         ورود به حساب     
-                        <i className="fa fa-sign-in" aria-hidden="true"></i> 
+                        <i className="fa fa-sign-in me-2" aria-hidden="true"></i> 
                     </a>
                 </Link>
             </div>

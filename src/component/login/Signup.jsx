@@ -67,6 +67,10 @@ const Signup = () => {
       <form noValidate onSubmit={handleSubmit} id={styles['login-form']} action="#">
 
             <h2 className={"text-center mb-4 "+styles['title']}>ایجاد حساب کاربری</h2>
+      
+            <div className="d-flex justify-content-center">
+                <img className={styles["forgetPassword-img"]} src="/imgs/Sign up-pana.svg" alt="forget-password" />
+            </div>
 
             <div>
                 <input onChange={handleChange} className={styles["login-input"]} name="username" 

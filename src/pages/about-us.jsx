@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import Head from "next/head";
+
 import Aos from "aos";
 import EmployeeSwiper from "../component/aboutus/EmployeeSwiper";
 
@@ -11,7 +13,7 @@ import styles from "../../public/styles/aboutUs.module.css";
 import "aos/dist/aos.css";
 
 
-function AboutUs() {
+function About() {
 
     useEffect(() => {
         
@@ -24,6 +26,10 @@ function AboutUs() {
 
     return (
         <>
+            <Head>
+                <title>درباره ما</title>
+            </Head>
+            
             <Header homePage={false}/>
 
             <div className={styles['aboutUs-page']+" mt-5"}>
@@ -35,8 +41,19 @@ function AboutUs() {
             </div>
 
             <Footer/>
+
+           
         </>
     )
 }
 
-export default AboutUs;
+// export function getServerSideProps(){
+//     console.log("here");
+//     return{
+//         props:{
+
+//         }
+//     }
+// }
+
+export default About;

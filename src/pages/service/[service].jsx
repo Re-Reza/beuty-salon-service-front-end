@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
+import Head from "next/head";
+import Link from "next/link";
 // import { useRouter } from "next/router";
 import Aos from "aos";
-
+import "aos/dist/aos.css";
 //components
 import Header from "../../component/header/Header";
 import Footer from "../../component/footer/Footer";
@@ -13,6 +15,8 @@ import styles from "../../../public/styles/services.module.css";
 function Service( props) {
 
     const { service } = props;
+
+    const counter = useRef(0);
 
     const [ contentState, setContentState ] = useState({
         hair : {
@@ -55,6 +59,7 @@ function Service( props) {
             {picurl: "https://www.gettimely.com/wp-content/uploads/2018/04/timely-rent-a-chair-hero-1400x800.jpg", name:"پرستو یوسفی", rate:10},
         
         ] //must be gotton from api
+        
     });
 
     const serviceData = contentState[service];
@@ -62,27 +67,43 @@ function Service( props) {
 
     useEffect( () => {
         //must send request and get employees
+        //how to refresh aos animation
+        if( counter.current == 0)
+        {
+            console.log("init")
+            Aos.init({
+                duration : 1200, //each animation takes two seconds to complete
+                once: true,
+            });
+        }
+        counter.current++;
+        setTimeout( ()=> {
+            console.log("refresh")
+            Aos.refresh();
+        }, 2000)
 
-        Aos.init({
-            duration:1200,
-            // once:true,
-            // startEvent:"load"
-        });
-        // setTimeout( ()=> {
-        //     console.log("refresh")
-        //     Aos.init({
-        //         duration:1200,
-        //         once:true
-    
-        //     });
-        //     Aos.refresh();
-        // }, 2000)
+    }, [service ]);
 
-    }, [ ]);
+    // useEffect( () => {
+    //     setTimeout( ()=> {
+    //         Aos.refresh();
+    //         console.log("here");
+    //     },1000);
+    // })
 
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     setTimeout(function() { 
+    //         console.log("reload")
+    //         Aos.refresh();
+    //      }, 500);
+    // });
 
     return(
         <>
+            <Head>
+                <title>خدمات {title}</title>
+            </Head>
+
             <Header homePage={false}/>
             
             <div className={styles["service"]}>
@@ -114,12 +135,17 @@ function Service( props) {
                     <div className={styles["service-carousel"]}>
                         <EmplyeesCarousel topEmpolyess={contentState.employees} category = {title}  />
                     </div>   
-                    <br /><br /><br/>
+                    
                 </section>
 
-                {/* <section>
-
-                </section> */}
+                <section>
+                    <Link href="/reserve">
+                        <a className="service-reserveBtn">
+                            <span></span>
+                            رزرو نوبت
+                        </a>
+                    </Link>
+                </section>
 
             </div>
             

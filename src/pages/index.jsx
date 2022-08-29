@@ -14,16 +14,16 @@ function Home(){
     return(
         <>
             <Head>
-                
+                <title>صفحه اصلی</title>
             </Head>
             <div className={styles.home}>
-            <Header homePage={ true } /> 
-            <Services/>
-            <Details/>
-            <Gallery/>
-            <CustomerSatisfaction/> 
-            <Footer/>
-        </div>
+                <Header homePage={ true } /> 
+                <Services/>
+                <Details/>
+                <Gallery/>
+                <CustomerSatisfaction/> 
+                <Footer/>
+            </div>
         </>
     )
 }

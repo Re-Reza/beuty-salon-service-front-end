@@ -2,6 +2,7 @@
 
 .home{
     font-family: Vazir;
+    overflow-x: hidden;
 }
 
 .services-section{

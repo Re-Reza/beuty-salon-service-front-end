@@ -2,9 +2,9 @@ import React, { useState}  from 'react';
 
 import Link from 'next/link';
 
-import Hamburger from 'hamburger-react'
+import Hamburger from 'hamburger-react';
 
-import styles from "../../../public/styles/reservePage.module.css"
+import styles from "../../../public/styles/reservePage.module.css";
 
 export function ReserveNav() {
 

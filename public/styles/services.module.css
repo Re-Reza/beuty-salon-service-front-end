@@ -1,5 +1,7 @@
 .service{
     font-family: Vazir;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 service-carousel.service{
     display: grid;
@@ -61,6 +63,10 @@ service-carousel.service{
 .service-topEmployees{
     grid-column: 1 / -1;
     margin-top: 5em;
+    margin-bottom: 4.5em;
+}
+.service-reserveBtn{
+    /* b; */
 }
 /* .carousel {
     width: 50%;

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState  } from "react";
 
+import { Spin as Hamburger } from 'hamburger-react';
+
 import Link from "next/link";
 import styles from  "../../../public/styles/header.module.css";
  
@@ -33,62 +35,66 @@ export function NavBar(){
 
     return (
         <nav ref={navRef} id="nav" className={styles["navbarContainer"]}>
-            <div onClick={toggleMenuShowState} className={ styles["nav-menu-icon"] }>
-                <span>منو</span>
-                {
-                    showNavState ? <i className="fa fa-times" aria-hidden="true"></i> :
-                    <i className="fa fa-bars" aria-hidden="true"></i>
-                }
+            
+            <div className={styles["nav-menu-icon-container"]}>
+                <div onClick={toggleMenuShowState} className={ showNavState ? styles["nav-menu-icon"] + " " +styles["show-modeicon"]: styles["nav-menu-icon"] }>
+                    <Hamburger/>
+                </div>
             </div>
 
+
             <ul className={showNavState ? styles["nav-links-container"]+" "+ styles["showNavMenu"]: styles["nav-links-container"]}>
+                
                 <li className={styles["nav-link-hover"]}>     
                     <Link href="/">
                         <a>صفحه اصلی</a>
                     </Link>
                 </li>
+                
                 <li  className={styles["nav-link-hover"]}>            
-                    <Link href="/َ">
+                    <Link href="/about-us">
                         <a>درباره ما</a>
                     </Link> 
                 </li>
 
                 <li>
-                    <span onClick={toggleServiceList} className={ styles["nav-link-hover"]}> خدمات  &nbsp;<i className={showState? "fa rotate fa-angle-down rotate" : "fa fa-angle-down"} aria-hidden="true"></i></span>
-                                       
-                        <ul className={showState ? styles["nav-services"]+" "+ styles["show-nav-serive"] : styles["nav-services"]}>
-                            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
-                                <Link href="/service/hair">
-                                    <a>مو</a>
-                                </Link>
-                            </li>
+    
+                    <span onClick={toggleServiceList} className={ styles["nav-link-hover"]}> خدمات  &nbsp;<i className={showState? "fa fa-angle-up" : "fa fa-angle-down"} aria-hidden="true"></i></span>
+           
+                    <ul className={showState ? styles["nav-services"]+" "+ styles["show-nav-serive"] : styles["nav-services"]}>
+                        <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+                            <Link href="/service/hair">
+                                <a>مو</a>
+                            </Link>
+                        </li>
 
-                            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
-                                <Link  href="/service/nail">
-                                    <a>ناخن</a>
-                                </Link>
-                            </li>
+                        <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+                            <Link  href="/service/nail">
+                                <a>ناخن</a>
+                            </Link>
+                        </li>
 
-                            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
-                                <Link href="/service/skin">
-                                    <a>پوست</a>
-                                </Link>
-                            </li>
+                        <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+                            <Link href="/service/skin">
+                                <a>پوست</a>
+                            </Link>
+                        </li>
 
-                            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
-                                <Link href="/service/makeup">
-                                    <a>میکاپ</a>
-                                </Link>
-                            </li>
-                        </ul>
+                        <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+                            <Link href="/service/makeup">
+                                <a>میکاپ</a>
+                            </Link>
+                        </li>
+                    </ul>
                 </li>
 
                 <li  className={styles["nav-link-hover"]}>       
-                    <Link href="/">
-                        <a>درباره ما</a>
+                    <Link href="/reserve">
+                        <a>رزرو نوبت</a>
                     </Link>
                 </li>
                 <li  className={"d-flex align-items-center "+styles["nav-link-hover"]}>
+                    {/* below linke must work related to user role */}
                     <Link href="/">
                         <a className="ms-1">پنل کاربری </a>
                     </Link>
