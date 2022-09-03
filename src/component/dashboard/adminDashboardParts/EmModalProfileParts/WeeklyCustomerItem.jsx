@@ -40,7 +40,7 @@ function WeeklyCustimerItem( props ){
                 
             <div className={styles["weeklycustomerItem-detail"]+" d-flex justify-content-center flex-column"}>
                 <div className='mb-1'>{service}</div>
-                <div className='d-flex justify-content-between'>
+                <div className={'d-flex justify-content-between align-items-center '+styles["weeklycustomerItem-detail-info"]}>
                     <span className='ms-3'>
                     تاریخ : {`${convertEnToPe(year)}/${convertEnToPe(month)}/${convertEnToPe(day)}`}
                     </span>
@@ -52,18 +52,20 @@ function WeeklyCustimerItem( props ){
                     </span>
                     {
                         calendarState.showCalendar? 
-                        <DatePicker animations = {[
-                            opacity(),
-                            transition({
-                            from: 40,
-                            transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
-                            }),
-                        ]} 
-                        // onChange={ setDate }  
-                        // inputClass={styles["calendarInput"]}
-                        minDate={ new Date().setDate( new Date().getDate() ) } maxDate = { new Date().setDate( new Date().getDate()+7 ) }
-                        calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
-                         />
+                        <div className='d-flex align-items-center pb-3 ms-3'>
+                            <DatePicker animations = {[
+                                opacity(),
+                                transition({
+                                from: 40,
+                                transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
+                                }),
+                            ]} 
+                            // onChange={ setDate }  
+                            // inputClass={styles["calendarInput"]}
+                            minDate={ new Date().setDate( new Date().getDate() ) } maxDate = { new Date().setDate( new Date().getDate()+7 ) }
+                            calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
+                            />
+                        </div>
                         : <span onClick={editDate} className={'ms-3 '+styles["weeklycustomerItem-calendar"]} role="button">ویرایش تاریخ <i className="fa fa-calendar-check-o" aria-hidden="true"></i></span>
                         
                     }

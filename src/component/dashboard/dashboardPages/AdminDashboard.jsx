@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import { EmployeesList, ChangeAdminInfo } from "../adminDashboardParts";
 import { Notifications } from '../employeeDashboardParts/Notifications';
-import { HeadPart, MainPart } from '../../dashboard';
+import { HeadPart, MainPart } from '../userDashboardParts';
 import Footer from "../../footer/Footer";
 
 import { convertEnToPe } from "persian-number";
@@ -12,11 +12,11 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const AdminDashboard = () => {
 
     const [showState, setShowState] = useState({
-      main: false,
+      main: true,
       reserveCustomer: false,
       changeInfo : false,
       notification: false,
-      employeeList: true,
+      employeeList: false,
   });
 
 

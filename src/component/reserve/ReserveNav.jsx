@@ -8,8 +8,6 @@ import styles from "../../../public/styles/reservePage.module.css";
 
 export function ReserveNav() {
 
-    //صفحه اصلی
-    // پنل کاربری
 
     const [show, setShow ] = useState(false);
 
@@ -39,22 +37,22 @@ export function ReserveNav() {
 
                     
                     <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/">
+                        <Link href="/services/hair">
                             <a>خدمات</a>
                         </Link>
                     </li>
 
                     <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/">
+                        <Link href="/about-us">
                             <a>درباره ما</a>
                         </Link>
                     </li>
-
+{/* 
                     <li className={styles['reserveNav-mobile-link']}>
                         <Link href="/">
                             <a>ارتباط با ما</a>
                         </Link>
-                    </li>
+                    </li> */}
 
                 </ul>
             
@@ -80,22 +78,22 @@ export function ReserveNav() {
                 <ul className={styles["reserveNav-linkList"]}>
                 
                     <li className={styles['reserveNav-Link'] }>
-                        <Link href="/">
+                        <Link href="/service/hair">
                             <a>خدمات</a>
                         </Link>
                     </li>
                 
                     <li className={styles['reserveNav-Link'] }>
-                        <Link href="/">
+                        <Link href="/about-us">
                             <a>درباره ما</a>
                         </Link>
                     </li>
 
-                    <li className={styles['reserveNav-Link'] }>
+                    {/* <li className={styles['reserveNav-Link'] }>
                         <Link href="/">
                             <a>ارتباط با ما</a>
                         </Link>
-                    </li>
+                    </li> */}
 
                 </ul>
             </div>

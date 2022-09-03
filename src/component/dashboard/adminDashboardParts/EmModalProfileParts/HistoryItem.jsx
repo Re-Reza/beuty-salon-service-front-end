@@ -18,7 +18,7 @@ const HistoryItem = (props) => {
    
             <div className={styles["weeklycustomerItem-detail"]+" d-flex justify-content-center flex-column"}>
                 <div className='mb-1'>{service}</div>
-                <div className='d-flex justify-content-between'>
+                <div className={'d-flex justify-content-between align-items-center '+styles["weeklycustomerItem-detail-info"]}>
                     <span className='ms-3'>
                         تاریخ : {`${convertEnToPe(year)}/${convertEnToPe(month)}/${convertEnToPe(day)}`}
                     </span>

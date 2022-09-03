@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react'
 
+import Head from "next/head";
+
 // Component 
 import Footer from "../component/footer/Footer";
 import { ChooseService, ChooesReserveType, ReserveNav} from "../component/reserve";
@@ -34,9 +36,12 @@ const ReservePage = () => {
         } 
     }); 
 
-
+    //در صورتی که لاگین شده باشد باید بتواند به این صفحه دسترسی داشته باشد
     return (
         <>
+            <Head>
+                <title>رزرو</title>
+            </Head>
 
             <reserveContext.Provider value = { {
                 userChoiceState,

@@ -50,8 +50,8 @@ export const ChangeAdminInfo = () => {
                       <input className={styles["change-info-input"]+" "+"w-100"} type={currentPass? "text" : "password"} placeholder='رمز عبور فعلی'/>
                       <span onClick={()=>{toggleShowPassword("currentPass")}}>
                       {
-                          currentPass ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider']} aria-hidden="true"></i>
-                          :<i title="نمایش رمز عبور" className={"fa fa-eye"+" "+styles['passwordHider']} aria-hidden="true"></i>
+                        currentPass ? <i title="مخفی کردن رمز عبور" className={"fa fa-eye-slash"+" "+styles['passwordHider']} aria-hidden="true"></i>
+                        :<i title="نمایش رمز عبور" className={"fa fa-eye"+" "+styles['passwordHider']} aria-hidden="true"></i>
                       }
                       </span>
                   </div>

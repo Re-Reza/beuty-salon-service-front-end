@@ -15,13 +15,15 @@ const EmployeeItem = ( props ) => {
         <>
             <tr className='align-middle mb-2'>
                 <th scope="row">{convertEnToPe(row)}</th>
-                <td >
-                    <span className="ms-3">
-                        <img className={styles['employee-item-profile']} src="/imgs/user.png" alt="" />
-                    </span>
-                    <span>
-                        {name}
-                    </span>
+                <td>
+                    <div className='d-flex align-items-center'>
+                        <span className="ms-3">
+                            <img className={styles['employee-item-profile']} src="/imgs/user.png" alt="" />
+                        </span>
+                        <span>
+                            {name}
+                        </span>
+                    </div>
                 </td>
                 <td>{service}</td>
                 <td>{convertEnToPe(phone)}</td>

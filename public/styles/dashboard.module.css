@@ -187,9 +187,6 @@
     border: none;
     outline: none;
     padding: .4em .6em;
-    /* display:flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
     border-radius: 5px;
 }
 
@@ -222,7 +219,6 @@
     }
     .dashboard-content-section{
         grid-column: 1/11;
-        /* border: ; */
         border-radius: 0;
     }
     .side-barMenu-button{
@@ -415,17 +411,24 @@
 .head-imgAvatar{
     width:40px;
 }
-.profile-image-upload{
-    width: 180px;
-    height: 180px;
+
+.profile-img-container{
+    width: 230px;
+    border: 2px solid #f9ad03;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 18px #d5d3d3;
+    margin: auto;
+    overflow: hidden;
     position: relative;
     border-radius: 50%;
-    box-shadow: 1px 1px 18px #d5d3d3;
-    border: 2px solid #f9ad03;
-    background: url("/imgs/user.png");
-    background-size: cover;
-    overflow: hidden;
-    margin: auto;
+    clip-path: inset(0 0 0 0 round 200px); /* interesting */
+    -webkit-clip-path: inset(0 0 0 0 round 200px);
+}   
+.profile-img{
+    width: 100%;
+    border: 50%;
 }
 .profile-upload-input{
     position: absolute;
@@ -435,13 +438,13 @@
     outline: none;
     transition: all .5s ;
     cursor: pointer;
-    padding-left: 120px;
+    /* padding-left: 120px; */
     padding-bottom: 12px;
     padding-top: 10px;
     background-color: rgba(0, 0, 0, .3);
     opacity: 0;
 }
-.profile-image-upload:hover .profile-upload-input{
+.profile-upload-input:hover{
     opacity: 1;
 }
 .profile-upload-input::-webkit-file-upload-button{
@@ -451,7 +454,7 @@
     content: "\f030";
     font-family: fontAwesome;
     position: relative;
-    left: 130px;
+    left: 45%;
     color: #fff;
     font-size: 1.5em;
     -webkit-user-select: none;
@@ -498,6 +501,7 @@
     color: #f9ad03;
 }
 .dashboard-reserveBtnContainer{
+    display: flex;
     border-bottom: #3d3d3d 1px solid;
     margin-bottom: 1.8em;
 }
@@ -663,6 +667,7 @@ position: absolute;
     display: flex;
     flex-direction: column;
     margin-right: 1em;
+    margin-left:1em
 }
 /* ----------------------------- employee list table------------------------------------- */
 .employeeLiat-container{
@@ -763,7 +768,6 @@ position: absolute;
     background-color: #ffcc54;
     padding: .5em;
     width: 75px;
-    /* color: #7d7d7d; */
     color: #7a7a7a;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -846,7 +850,6 @@ position: absolute;
     .employeeInofo-modal{
         font-size: 13px;
     }
-    
 }
 @media only screen and (max-width:780px){
     .employee-date-modifier{
@@ -854,6 +857,18 @@ position: absolute;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .weeklycustomerItem{
+        flex-direction: column;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .weeklycustomerItem-date{
+        width: 100%;
+        border-radius: 0;
+    }
+    .weeklycustomerItem-detail-info{
+        overflow-x: scroll;
     }
     .employeeModal-btn-container{
         width: 80%;
@@ -871,6 +886,9 @@ position: absolute;
     .addEmModalForm-container{
         font-size: 13px;
     }
+    .weeklycustomerItem-detail{
+        padding-right: 0.5;
+    }
 }
 @media only screen and (max-width:650px){
     .btn-responsive{
@@ -879,6 +897,9 @@ position: absolute;
     .employeeModal-InfoPart{
         width: 80%;
         padding-right: 0;
+    }
+    .profile-img-container{
+        width: 200px;
     }
 }
 @media only screen and (max-width:462px){
@@ -890,6 +911,15 @@ position: absolute;
     }
     .font-responsive{
         font-size: 12px !important; 
+    }
+    .profile-img-container{
+        width: 180px;
+    }
+    .profile-upload-input::before{
+        left:39%;
+    }
+    .dashboard-reserveBtnContainer{
+        font-size: 14px;
     }
 }
 

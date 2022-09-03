@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import ReserveItem from "./ReserveItem";
 
-import styles from "../../../public/styles/dashboard.module.css";
+import styles from "../../../../public/styles/dashboard.module.css";
 
 export function ReseveList(){
 

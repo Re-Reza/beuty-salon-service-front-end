@@ -1,6 +1,6 @@
 import React, { useState } from  'react';
 
-import styles from "../../../public/styles/dashboard.module.css"
+import styles from "../../../../public/styles/dashboard.module.css"
 
 import { object, string, ref } from "yup"; 
 

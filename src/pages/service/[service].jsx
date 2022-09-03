@@ -138,12 +138,11 @@ function Service( props) {
                     
                 </section>
 
-                <section>
+                <section className={styles["service-reserve-btnContainer"]}>
                     <Link href="/reserve">
-                        <a className="service-reserveBtn">
-                            <span></span>
-                            رزرو نوبت
-                        </a>
+                        <button className={styles["service-reserve-btn"]} >
+                            رزرو
+                        </button>
                     </Link>
                 </section>
 

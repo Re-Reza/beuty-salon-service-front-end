@@ -16,7 +16,8 @@ export function MainPart( props ){
         <div className="d-flex flex-column ">
             
             <div className="mb-5">
-                <div className={ styles["profile-image-upload"]}>
+                <div className={ styles["profile-img-container"]}>
+                    <img src={"/imgs/user.png"} className={styles["profile-img"]} alt="" />
                     <input title="بارگزاری تصویر" type="file" className={styles["profile-upload-input"]}/>
                 </div>
             </div>
