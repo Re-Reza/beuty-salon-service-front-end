@@ -69,6 +69,13 @@ button{
 	outline: none;
 	border: none;
 }
+:root {
+    --yellow: #ffcc54;
+    /* --secondary: white;
+    --font-primary: #8e8e8e;
+    --gradient:  linear-gradient(90deg, #eee, #6b40ce3b);
+    --fontFamily : '' */
+}
 .carousel {
 	width: 50%;
     color: #000 !important;
@@ -115,10 +122,62 @@ p{
     height: 100%;
     object-fit: cover;
 }
-
+.toastContainer{
+    background-color: rgb(31, 150, 31);
+    color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 2%;
+    position: fixed;
+    right: 2%;
+    font-size: 1.2em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 25px 45px;
+    z-index: 10;
+    animation: showToast .5s forwards;
+}
+@keyframes showToast{
+    0%{
+        right: -15%;
+    }
+    100%{
+        right: 2%;
+    }
+}
+@keyframes hideToast{
+    0%{
+        right: 2%;
+    }
+    100%{
+        right: -15%;
+    }
+}
+@media only screen and (max-width: 880px){
+    .carousel{
+        width: 70%;
+    }
+    .toastContainer{
+        font-size: 1em;
+    }
+}
 @media only screen and (max-width: 760px){
     .swiper-slide{
         margin-left: .5em !important;
     }
+    .carousel{
+        width: 80%;
+    }
+
 }
-  
+@media only screen and (max-width: 590px){
+    .carousel{
+        width: 95%;
+    }
+    .toastContainer{
+        padding: 20px 30px;
+    }
+}

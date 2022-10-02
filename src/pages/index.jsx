@@ -6,7 +6,7 @@ import Head from "next/head";
 import Header from "../component/header/Header";
 import Footer from "../component/footer/Footer";
 import {Services, Details, CustomerSatisfaction, Gallery} from "../component/home";
-
+import axioxInstance from "../dataService/axiosInstance";
 import styles from"../../public/styles/home.module.css";
 
 function Home(){

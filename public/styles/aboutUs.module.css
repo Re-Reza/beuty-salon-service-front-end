@@ -1,6 +1,9 @@
 .aboutUs-page{
     font-family: Vazir;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
+}
+.about-use-top{
+    overflow: hidden;
 }
 .aboutUs-top-tile{
     font-size: 1.8em;
@@ -12,8 +15,7 @@
 }
 .aboutUs-top-logo{
     color: #ffcc54;
-    /* text-shadow: 0 0 8px #ffcc54; */
-    /* color: #7d7d7d; */
+
 }
 .aboutUs-top-description{
     text-align: center;

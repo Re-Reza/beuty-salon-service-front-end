@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { useRouter } from "next/router";
 import { object, string } from "yup";
 import { useFormik } from "formik";
+import axiosInstance from "../../dataService/axiosInstance";
+import qs from "qs";
+import Cookies from "js-cookie";
 
 import styles from "../../../public/styles/login.module.css";
 
@@ -10,34 +13,49 @@ const Signin = () => {
 
     const [ state, setState ] = useState({
         showPassword:false,
-        // forgetPassword:false
+        serverError: null
     });
     
 
     const validPhone = /^(?:0|98|\+98|\+980|0098|098|00980)?(9\d{9})$/;
     
     const router = useRouter(); 
-
+    // password : string().required("رمز عبور الزامی است")
+    // .min(8, "رمز عبور باید حداقل شامل هشت کاراکتر باشد")
+    // .matches(/^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+    // " رمز عبور باید حداقل شامل 8 کاراکتر باشد و شما یک حرف بزرگ،حرف کوچک و کاراکتر خاص باشد"),
     const schema = object().shape({
-        phoneNumber: string().required(" شماره موبایل الزامی است").matches(validPhone, "شماره موبایل وارد شده معتبر نیست"),
-        password : string().required("رمز عبور الزامی است")
-                    .min(8, "رمز عبور باید حداقل شامل هشت کاراکتر باشد")
-                    .matches(/^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                    " رمز عبور باید حداقل شامل 8 کاراکتر باشد و شما یک حرف بزرگ،حرف کوچک و کاراکتر خاص باشد"),
+        //matches(validPhone, "شماره موبایل وارد شده معتبر نیست")
+        phone : string().required(" شماره موبایل الزامی است"),
+        password : string().required("رمز عبور الزامی است").min(4 ," رمز عبور باید حداقل شامل چهار کاراکتر باشد")
     }); 
 
     const formik = useFormik({
         initialValues: {
-            phoneNumber: "",
+            phone: "",
             password: "",
         },
         validationSchema: schema,
-        onSubmit : () => {
-            console.log("submited in signin");
-        }
+        onSubmit : (values) => {
+            axiosInstance({
+                method :"POST",
+                url : "login",
+                headers : { "content-type": "application/x-www-form-urlencoded" },
+                data : qs.stringify(values)
+            }).then( response => {
+                // console.log(response);
+                // console.log(response.data.authToken);
+                Cookies.set("authToken", response.data.authToken);
+                router.push("/");
+            
+            }).catch( err => {
+                setState({
+                    ...state,
+                    serverError : err.response.data.error
+                })
+            })
+        }, 
     });
-
-    // console.log(formik.errors);
 
     function toggleShowPass(){
         setState({
@@ -46,10 +64,10 @@ const Signin = () => {
         })
     }
 
-    const {  handleSubmit, handleChange, errors } = formik;
+    const { handleSubmit, handleChange, errors } = formik;
+
 
     function navigateSignup(){
-        // navigate("/signup");
         router.push("/signup");
     }
 
@@ -57,7 +75,7 @@ const Signin = () => {
         router.push("/forgetPassword");
     }
 
-    const { phoneNumber, password } = errors;
+    const { phone, password } = errors;
 
     return (
         <form noValidate onSubmit={handleSubmit} action="#" id={styles['login-form']}> 
@@ -68,10 +86,18 @@ const Signin = () => {
                     <img className={styles["login-img"]} src="/imgs/Mobile login-pana.svg" alt="forget-password" />
                 </div>
 
+                {
+                    state.serverError?
+                    <div className={'text-danger'} style={ { fontWeight: "400"}} >
+                        <p><i className="fa fa-exclamation-triangle" aria-hidden="true"></i> {state.serverError}</p>
+                    </div>
+                    :<></>
+                }
+
                 <div>
-                    <input onChange={handleChange}  name="phoneNumber" type="tel" 
+                    <input onChange={handleChange}  name="phone" type="tel" 
                     className={styles["login-input" ] } id="phone-input" placeholder="شماره تلفن همراه" />
-                    <small className= { 'text-danger '+styles["inputError"] }>{phoneNumber}</small>
+                    <small className= { 'text-danger '+styles["inputError"] }>{phone}</small>
                 </div>
 
                 <div>

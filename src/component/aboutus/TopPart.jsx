@@ -18,7 +18,7 @@ export const TopPart = () => {
     }, []);
 
     return (
-        <section className="d-flex flex-column">
+        <section className={styles["about-use-top"]+" d-flex flex-column"}>
 
             <article className="d-flex flex-column">
 

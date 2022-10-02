@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { EmployeesList, ChangeAdminInfo } from "../adminDashboardParts";
 import { Notifications } from '../employeeDashboardParts/Notifications';
 import { HeadPart, MainPart } from '../userDashboardParts';
+import {EmployeeCustomerReserve} from "../employeeDashboardParts/EmployeeCustomerReserve";
 import Footer from "../../footer/Footer";
 
 import { convertEnToPe } from "persian-number";
@@ -47,7 +48,8 @@ const AdminDashboard = () => {
         ActivePartComponent = ChangeAdminInfo;
     else if(notification)
         ActivePartComponent = Notifications;
-  
+    else if(reserveCustomer) 
+        ActivePartComponent = EmployeeCustomerReserve;
   
   return (
     <>

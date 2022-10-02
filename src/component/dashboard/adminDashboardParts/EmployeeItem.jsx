@@ -3,7 +3,7 @@ import { convertEnToPe } from "persian-number";
 
 import EmployeeModalProfile from "./EmModalProfileParts/EmployeeModalProfile";
 
-import  styles from "../../../../public/styles/dashboard.module.css";
+import styles from "../../../../public/styles/dashboard.module.css";
 
 const EmployeeItem = ( props ) => {
     
