@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState  } from "react";
+import React, { useEffect, useRef, useState, useContext  } from "react";
 
 import { Spin as Hamburger } from 'hamburger-react';
-
+import contextStore from "../../context/contextStore";
 import Link from "next/link";
 import styles from  "../../../public/styles/header.module.css";
  
@@ -10,6 +10,8 @@ export function NavBar(){
     const navRef = useRef( null );
     const [showState, setShowState ] = useState(false); 
     const [ showNavState, setshowNavState ] = useState(false);
+    const { contextState, dispatch } = useContext(contextStore);
+
     useEffect( ()=> {
         
         const nav =  navRef.current;
@@ -94,11 +96,20 @@ export function NavBar(){
                     </Link>
                 </li>
                 <li  className={"d-flex align-items-center "+styles["nav-link-hover"]}>
-                    {/* below linke must work related to user role */}
-                    <Link href="/">
-                        <a className="ms-1">پنل کاربری </a>
-                    </Link>
-                    <i  className="fa fa-user-circle" aria-hidden="true"></i>
+                {
+                    contextState.fName ? 
+                    <>
+                        <Link href="/dashboard">
+                            <a >پنل کاربری  <i  className="fa fa-user-circle" aria-hidden="true"></i> </a>
+                        </Link>
+                         
+                    </>:
+                    <>
+                        <Link href="/signup">
+                            <a className="ms-1">ثبت نامicon</a>
+                        </Link>
+                    </>
+                }
                 </li>
             </ul>
 

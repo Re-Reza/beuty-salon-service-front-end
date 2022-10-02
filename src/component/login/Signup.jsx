@@ -18,7 +18,7 @@ const Signup = () => {
       pass1:false,
       pass2: false,
       serverError : null,
-      tostMsg : null
+      toatData : null
     });
 
     const router = useRouter();
@@ -52,17 +52,21 @@ const Signup = () => {
             url : "register",
             headers : { "content-type": "application/x-www-form-urlencoded" },
             data : qs.stringify(values)
-        }).then( response => {
+          }).then( response => {
           console.log(response);
           setShowPass({
             ...showPass,
             serverError:null,
-            tostMsg : "حساب کاربری با موفقیت ایجاد شد"
+            toatData:{
+              message : "حساب کاربری با موفقیت ایجاد شد",
+              error : false
+            }
           });
           setTimeout( () => {
             setShowPass({
               ...showPass,
-              tostMsg : null
+              toatData : null,
+              serverError:null
             });
         }, 2000)
 
@@ -77,7 +81,7 @@ const Signup = () => {
           setShowPass({
                 ...showPass,
                 serverError : errors,
-                tostMsg : null
+                toatData : null
             })
         })
       }
@@ -103,8 +107,8 @@ const Signup = () => {
     return (  
       <>
           {
-            showPass.tostMsg ? 
-            <Toast message={showPass.tostMsg}/> : <></>
+            showPass.toatData ? 
+            <Toast toatData={showPass.toatData}/> : <></>
           }
           <form noValidate onSubmit={handleSubmit} id={styles['login-form']} action="#">
 

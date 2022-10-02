@@ -5,6 +5,7 @@ import { HeadTop, NavBar } from "../header"
 import Slider from "./slider/Slider";
 import styles from  "../../../public/styles/header.module.css";
 
+
 function Header(props){
 
     const { homePage } = props;
@@ -25,5 +26,16 @@ function Header(props){
         </header>
     )
 }
+
+// export async function getServerSideProps(){
+   
+//     try {
+//         const response = await axiosInstance.get("home/provideUserInfo");
+//         console.log(response);
+//     } catch (error) {
+//         console.log(error);
+//     }
+
+// }
 
 export default memo(Header);

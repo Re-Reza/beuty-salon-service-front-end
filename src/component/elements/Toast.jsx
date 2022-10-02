@@ -2,11 +2,11 @@ import React from 'react';
 
 function Toast(props) {
 
+    const { message, error} = props.toatData;
 
 
-
-    return <div className='toastContainer'>
-        {props.message}
+    return <div className={error? "toastContainer errorToast" : "toastContainer successToast"}>
+        {message}
     </div>
 }
 

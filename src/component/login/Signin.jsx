@@ -43,9 +43,7 @@ const Signin = () => {
                 headers : { "content-type": "application/x-www-form-urlencoded" },
                 data : qs.stringify(values)
             }).then( response => {
-                // console.log(response);
-                // console.log(response.data.authToken);
-                Cookies.set("authToken", response.data.authToken);
+                Cookies.set("authToken", response.data.authToken, {path:"/"});
                 router.push("/");
             
             }).catch( err => {
