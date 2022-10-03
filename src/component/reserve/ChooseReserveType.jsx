@@ -21,7 +21,7 @@ export function ChooesReserveType() {
         <div className={styles.reserveReserveType}>
             <div className={styles.reserveReserveTypeBtnContainer}>
                 <button className = { state.selectByEm ? styles.chooseTypeBtn : styles.chooseTypeBtn +" " + styles.selectBtn  } onClick={()=>{toggleSelectType(false)}}>رزرو برحسب تاریخ</button>
-                <button className =  { !state.selectByEm ? styles.chooseTypeBtn : styles.chooseTypeBtn +" " + styles.selectBtn  } onClick={()=>{toggleSelectType(true)} } > رزرو برحسب کارمند</button>
+                <button className =  { !state.selectByEm ? styles.chooseTypeBtn : styles.chooseTypeBtn +" " + styles.selectBtn  } onClick={()=>{toggleSelectType(true)} } > رزرو برحسب آرایشگر</button>
             </div>
             
             <div>

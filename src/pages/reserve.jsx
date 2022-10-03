@@ -22,12 +22,19 @@ import styles from "../../public/styles/reservePage.module.css";
 const ReservePage = () => {
 
     const [ userChoiceState, dispatch ] = useReducer( reserveReducer, {
-        serviceType: {  
-            enValue: null,
-            faValue : null,
+        category: {  
+            id: null,
+            value : null,
+        },
+        service : {
+            id : null,
+            value : null,
         },
         employee:{
-            value: {},   
+            employeeId : null,
+            personId : null,
+            fName : null,
+            lName : null
         },
         date:{
             day:null,
@@ -57,7 +64,7 @@ const ReservePage = () => {
                         <ChooseService />
                         
                         {
-                            userChoiceState.serviceType.enValue !=null ? 
+                            userChoiceState.service.id !=null ? 
                             <ChooesReserveType /> : <></>
                         }
                         
@@ -71,5 +78,9 @@ const ReservePage = () => {
         </>
     )
 }
+
+// export async function getServerSideProps(context) {
+
+// }
 
 export default ReservePage;

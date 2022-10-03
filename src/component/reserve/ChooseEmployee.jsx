@@ -12,45 +12,28 @@ import reserveContext from "./reserveContext";
 
 import styles from "../../../public/styles/reservePage.module.css";
 
-export function ChooseEmployee ( props) {
+export function ChooseEmployee ( props ) {
 
 
     const [ state, setState ] = useState({
         loading: false,
-        employees:[]
+        employees: []
     });
 
     const { userChoiceState, dispatch}  = useContext( reserveContext );
 
-    const selectedService = userChoiceState.serviceType.enValue;
-    const { year, month, day } = userChoiceState.date;
-    console.log(PN.convertEnToPe(year)+2 / PN.convertEnToPe(month) / PN.convertEnToPe(day));
-    useEffect( ()=>{
-        if(selectedService != null)
-        {
-            setState({
-                ...state,
-                loading: true
-            });
-            console.log(`http://localhost:4000/${selectedService}Employees`)
-            axios.get(`http://localhost:4000/${selectedService}Employees`).then( response => {
-                console.log(response);
-                setState( prevState => ({
-                    ...prevState,
-                    employees : response.data,
-                    loading: false
-                }) );
-            }).catch (err=> console.log(err) );
-        }
-    }, [selectedService]);
+    // const selectedService = userChoiceState.serviceType.enValue;
+    // const { year, month, day } = userChoiceState.date;
+    // console.log(PN.convertEnToPe(year)+2 / PN.convertEnToPe(month) / PN.convertEnToPe(day));
+
 
     return (
         <div className={styles['chooseEmployee-section']}>
             {
                 props.isDate ? 
-                <label className={'mb-3 '+styles['result-label']}>کارمندان قابل انتخاب در تاریخ : {`${PN.convertEnToPe(day)} / ${PN.convertEnToPe(month)} / ${PN.convertEnToPe(year)} `}</label>
+                <label className={'mb-3 '+styles['result-label']}>آرایشگران قابل انتخاب در تاریخ : {`${PN.convertEnToPe(day)} / ${PN.convertEnToPe(month)} / ${PN.convertEnToPe(year)} `}</label>
                 :
-                <label className={'mb-3 '+styles['result-label']}>انتخاب کارمند :</label>
+                <label className={'mb-3 '+styles['result-label']}>انتخاب آرایشگر :</label>
             }
             <div className={styles['chooseEmployee-container']}>
             {
@@ -58,7 +41,7 @@ export function ChooseEmployee ( props) {
                     loding...
                 </div>
                 :
-                state.employees.map( (item, index) => <Employee employee={item} key={index}/> )
+                props.employeeList.map((employee, index) => <Employee employeeData={employee} key={index}/> )
             }
             </div>
         </div>

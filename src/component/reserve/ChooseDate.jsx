@@ -16,16 +16,16 @@ export const ChooseDate = (props) => {
 
     const { userChoiceState, dispatch } = useContext( reserveContext ); 
     console.log(userChoiceState);
+    const { start, end, freeDays } = props.date;
     const calenderRef = useRef(null);
-    
+
     useEffect ( ()=> {
         calenderRef.current.querySelector("input").focus();
     }, []);
 
     function setDate(event){
-      
         const { day, month: {number}, year } = event;
-        console.log(day, number , year)
+        // console.log(day, number , year)
         dispatch({
             type : "SET_DATE",
             payload : {
@@ -34,6 +34,14 @@ export const ChooseDate = (props) => {
                 year : year
             }
         })
+    }
+
+
+    function validateDay(day){
+        //check that giving day is in free days or not
+        console.log(freeDays)
+        const result = freeDays.find( item => item == day);
+        return result ? false : true;
     }
 
     return (
@@ -50,11 +58,21 @@ export const ChooseDate = (props) => {
                 from: 40,
                 transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
                 }),
-            ]} 
+            ]}
+            mapDays={ ({date,}) => {
+            
+                if(date.weekDay.number == 7) 
+                    return{
+                        disabled: true,
+                    } 
+                return {
+                    disabled : validateDay(date.day)
+                }
+            }}
             ref={calenderRef} inputClass={styles["calendarInput"]}
-            minDate={ new Date().setDate( new Date().getDate() ) } maxDate = { new Date().setDate( new Date().getDate()+7 ) }
+            minDate={ start } maxDate = { end }
             calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
-             />
+            />
         </div>
     )
 }

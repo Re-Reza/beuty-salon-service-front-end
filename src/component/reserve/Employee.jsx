@@ -6,29 +6,33 @@ import reserveContext from "./reserveContext";
 
 function Employee( props ){
 
-    const {firstname, lastname, email, id, time_work} = props.employee;
+    const {fName, lName, phone, profileImg, employeeId, personId, roleId} = props.employeeData;
 
     const {userChoiceState, dispatch}  = useContext(reserveContext);
 
     const setEmployee = () => {
         dispatch({
             type : "SET_EMPLOYEE",
-            payload : props.employee 
+            payload : {
+                fName,
+                lName,
+                employeeId,
+                personId
+            } 
         })
     } 
-    //userChoiceState.employee.value.id
     let comStyle = null;
-    if(userChoiceState.employee.value != null ) {
-        comStyle = userChoiceState.employee.value.id == id ?
+    if(userChoiceState.employee.fName != null ) {
+        comStyle = userChoiceState.employee.fName == fName ?
         styles["reserve-employee"]+" "+styles["selectedEmployee"] :  styles["reserve-employee"];
     }
     
     return (
         <div onClick={setEmployee} className={ comStyle || styles["reserve-employee"]}>
-            <img className={styles["reserve-employee-img"]+"  rounded-circle"} src="/imgs/service-imgs/makeup1.png" alt={firstname+lastname}/>
+            <img className={styles["reserve-employee-img"]+"  rounded-circle"} src={profileImg? "http://localhost:4000/"+profileImg: "/imgs/service-imgs/makeup1.png" }alt={fName+lName}/>
             <div className={styles["reserve-employee-info"]}>
-                <p className="text-break">{firstname} {lastname}</p>
-                <p className="text-break">{email}</p>
+                <p className="text-break">{fName} {lName}</p>
+                <p className="text-break">{phone}</p>
             </div>
         </div>
     )

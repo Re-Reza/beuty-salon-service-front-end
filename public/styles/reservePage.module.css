@@ -111,7 +111,7 @@
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 1); */
     background-color: #fff;
-    padding: 2.2em ;
+    padding: 2.2em 1.8em ;
     border-radius: 5px;
     z-index: 2;
 }
@@ -186,6 +186,11 @@
     color: #423f3f;
 }
 /* ------------------------- drop down ------------------------------*/
+.chooseService-section{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 12px;
+}
 .DropDown{
     position:relative;
     color: #fff;
@@ -206,10 +211,10 @@
     padding: 1em;
     z-index: 3;
     position:absolute;
+    grid-row-gap: 18px;
     display: grid;
     grid-template-columns:1fr;
-    grid-template-rows: repeat(5,max-content);
-    grid-auto-flow:column;
+    grid-auto-flow:row;
     grid-auto-columns: 160px;
     grid-column-gap: .8em;
     justify-items: start;
@@ -222,7 +227,7 @@
 }
 .DropDown-options-options{
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     cursor: pointer;
     transition:all .3s;
 }
@@ -234,7 +239,7 @@
     opacity: 1;
     transform: translateY(4px);
 }
-/* ----------------------------reserve nav------------------------------------------*/
+/* -------------------------------reserve nav------------------------------------------*/
 .reserveNav{
     grid-row-start: 1;
     grid-column: 1/-1;
@@ -340,6 +345,10 @@
     }
     .reserveNav-Link{
         padding: .3em .5em;
+    }
+    .chooseService-section{
+        grid-template-columns: 1fr;
+        grid-row-gap: 38px;
     }
 }
 

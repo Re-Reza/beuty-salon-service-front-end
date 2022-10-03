@@ -1,27 +1,68 @@
-import React, {useContext} from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { ChooseEmployee, ChooseDate, ReserveResult} from "../reserve";
 import reserveContext from "./reserveContext";
+import { provideEmployessOfServive, provideEmployeeTimeWork } from "../../dataService/reserviceProvider";
 
 import styles from "../../../public/styles/reservePage.module.css";
 
 export function SelectByEmployee () {
 
-    const employeeValue  = useContext( reserveContext ).userChoiceState.employee.value;
+    const [ state, setState ] = useState({
+        employeeList : [],
+        date : {
+            freeDays : [],
+            start : null, 
+            end : null
+        }
+    });
 
-    const { date } = useContext( reserveContext ).userChoiceState;
+    const { userChoiceState, dispatch } = useContext( reserveContext );
+    // const { date } = useContext( reserveContext ).userChoiceState;
+    const { service, employee, date } = userChoiceState;
+    
+    useEffect(() => {
+        
+        provideEmployessOfServive(service.id).then(response => {
+            // console.log(response);
+            setState({
+                ...state,
+                employeeList : response.data.result
+            })
+        }).catch( err => {
+            console.log(err);
+        });
+
+    }, [service.id]);
+
+    useEffect( () => {
+
+        if(employee.employeeId)
+        {
+            provideEmployeeTimeWork(service.id, employee.id).then( response => {
+                console.log(response);
+                setState({
+                    ...state,
+                    date : response.data.result
+                });
+            }).catch( err => {
+                console.log(err);
+            })
+        }
+        
+    }, [employee.employeeId]);
 
     return (
         <div className={styles.selectedByEmployee}> 
             <div className="d-flex flex-wrap justify-content-between">
-                <ChooseEmployee />
+                <ChooseEmployee employeeList={state.employeeList} />
                 { 
-                    Object.keys(employeeValue).length > 0  ? 
-                    <ChooseDate />  : <></>
+                    employee.employeeId ? 
+                    <ChooseDate date={state.date} />  : <></>
                 }
             </div>
             {
-                date.day &&  Object.keys(employeeValue).length ?
+                date.day &&  employee.employeeId ?
                 <ReserveResult /> : <></>
             }
         </div>
