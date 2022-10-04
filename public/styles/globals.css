@@ -71,6 +71,7 @@ button{
 }
 :root {
     --yellow: #ffcc54;
+    --dark : #323232;
     /* --secondary: white;
     --font-primary: #8e8e8e;
     --gradient:  linear-gradient(90deg, #eee, #6b40ce3b);
@@ -144,6 +145,12 @@ p{
 }
 .successToast {
     background-color: rgb(31, 150, 31);
+}
+.rmdp-day.rmdp-deactive, .rmdp-day.rmdp-disabled span{
+    text-decoration: 1px  line-through rgb(67, 61, 61) !important;
+}
+.rmdp-week .rmdp-week-day{
+    color : var(--dark)!important;
 }
 @keyframes showToast{
     0%{

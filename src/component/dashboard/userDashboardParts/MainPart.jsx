@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { getInfo } from "../../../dataService/userDashboardProvider";
 
 import styles from "../../../../public/styles/dashboard.module.css";
+import InfoBox from "./InfoBox";
 
 
 export function MainPart(props){
 
+    const [ state, setState ] = useState({
+        loading : true,
+        data : []
+    });
+
+    useEffect(() => {
+        getInfo().then( response => {
+            console.log(response);
+
+            setState({
+                loading: false,
+                data : Object.entries(response.data.result)
+            })
+        }).catch( err => {
+            console.log(err);
+        });
+        
+    }, []);
 
     return(
-        
+        state.loading? 
+        <div>loading</div>
+        :
         <div className="d-flex flex-column ">
-            
+        
             <div className="mb-5">
 
                 <div className={ styles["profile-img-container"]}>
@@ -20,23 +43,9 @@ export function MainPart(props){
             </div>
             
             <ul className={styles["UserInfoContainer"]}>   
-
-                  
-            <li className={styles["UserInfo-input-container"]}>
-                    <span className={styles["UserInfo-input-title"]}>نام کاربری</span>
-                    <span>نام کاربر</span>
-                </li>
-                
-                <li className={styles["UserInfo-input-container"]}>
-                    <span className={styles["UserInfo-input-title"]}>شماره موبایل</span>
-                    <span>090550484</span>
-                </li>
-                
-                <li className={styles["UserInfo-input-container"]}>
-                    <span className={styles["UserInfo-input-title"]}>ایمیل</span>
-                    <span>aa@gmail.com</span>
-                </li>
-
+            {
+                state.data.map( (item, index) => <InfoBox item={item} key={index}/> )
+            }
             </ul>
 
         </div>

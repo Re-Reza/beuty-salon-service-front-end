@@ -17,30 +17,27 @@ export function ChooseEmployee ( props ) {
 
     const [ state, setState ] = useState({
         loading: false,
-        employees: []
     });
 
-    const { userChoiceState, dispatch}  = useContext( reserveContext );
-
-    // const selectedService = userChoiceState.serviceType.enValue;
-    // const { year, month, day } = userChoiceState.date;
-    // console.log(PN.convertEnToPe(year)+2 / PN.convertEnToPe(month) / PN.convertEnToPe(day));
-
-
+    const { userChoiceState, dispatch }  = useContext( reserveContext );
+    const { date } = userChoiceState;
+    
+    console.log(props.employeeList);
+    
     return (
         <div className={styles['chooseEmployee-section']}>
             {
                 props.isDate ? 
-                <label className={'mb-3 '+styles['result-label']}>آرایشگران قابل انتخاب در تاریخ : {`${PN.convertEnToPe(day)} / ${PN.convertEnToPe(month)} / ${PN.convertEnToPe(year)} `}</label>
+                <label className={'mb-3 '+styles['result-label']}>آرایشگران قابل انتخاب در تاریخ : {`${PN.convertEnToPe(date.year)}/${PN.convertEnToPe(date.month)}/${PN.convertEnToPe(date.day)} `}</label>
                 :
                 <label className={'mb-3 '+styles['result-label']}>انتخاب آرایشگر :</label>
             }
             <div className={styles['chooseEmployee-container']}>
             {
-                state.loading ? <div>
-                    loding...
-                </div>
-                :
+                // state.loading ? <div>
+                //     loding...
+                // </div>
+                // :
                 props.employeeList.map((employee, index) => <Employee employeeData={employee} key={index}/> )
             }
             </div>

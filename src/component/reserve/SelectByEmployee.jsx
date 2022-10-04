@@ -24,11 +24,12 @@ export function SelectByEmployee () {
     useEffect(() => {
         
         provideEmployessOfServive(service.id).then(response => {
-            // console.log(response);
+
             setState({
                 ...state,
                 employeeList : response.data.result
-            })
+            });
+
         }).catch( err => {
             console.log(err);
         });
@@ -39,7 +40,7 @@ export function SelectByEmployee () {
 
         if(employee.employeeId)
         {
-            provideEmployeeTimeWork(service.id, employee.id).then( response => {
+            provideEmployeeTimeWork(service.id, employee.employeeId).then( response => {
                 console.log(response);
                 setState({
                     ...state,
@@ -58,7 +59,7 @@ export function SelectByEmployee () {
                 <ChooseEmployee employeeList={state.employeeList} />
                 { 
                     employee.employeeId ? 
-                    <ChooseDate date={state.date} />  : <></>
+                    <ChooseDate isDate={false} date={state.date} />  : <></>
                 }
             </div>
             {

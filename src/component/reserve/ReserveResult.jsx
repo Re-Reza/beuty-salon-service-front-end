@@ -1,13 +1,20 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 
 import reserveContext from './reserveContext';
+import { confirmReserve } from "../../dataService/reserviceProvider";
+import  Toast  from "../elements/Toast";
+
 import PN from "persian-number";
 import styles from "../../../public/styles/reservePage.module.css";
 
 export const ReserveResult = () => {
 
     const { date, employee, service} = useContext ( reserveContext ).userChoiceState;
-
+    const [ state, setState ] = useState({ 
+        showToast : false,
+        msg: null,
+        error : false
+    });
 
     const selectedDate =  `${PN.convertEnToPe(date.year)}/${PN.convertEnToPe(date.month)}/${PN.convertEnToPe(date.day)}`;
 
@@ -21,11 +28,40 @@ export const ReserveResult = () => {
     }, []);
 
     function submitReserve(){
-        //send data of reservation to server
+        const reserveData = {
+            reserveDate : `${date.year}/${date.month}/${date.day}`,
+            employeeId : employee.employeeId,
+            employeePersonId : employee.personId, 
+            serviceId : service.id 
+        } 
+
+        confirmReserve( reserveData ).then( response => {
+            setState({
+                showToast : true,
+                msg :  "رزرو با موفقیت ثبت شد",
+                error : false
+            });
+        }).catch( err => {
+            console.log(err.response.status);
+            let errorMsg;
+            if(err.response.status == 401)
+                errorMsg = "برای ثبت رزرو باید ابتدا به حساب خود وارد شوید"
+            else 
+                errorMsg = "در ثبت رزرو خطایی رخ داده است"
+            setState({
+                showToast : true,
+                msg :  errorMsg,
+                error : true
+            });
+        });
     }
 
     return (
         <div ref={resultRef} className={styles['reserve-result']}>
+            {
+                state.showToast ? <Toast toatData={ { message: state.msg, error:state.error } }/> 
+                : <></>
+            }
             <div className='d-flex flex-column'>
                 <label className={'mb-3 '+styles['result-label']}>نوع خدمت :</label>
                 <span className={styles['reserve-result-input']}>{service.value}</span>
@@ -40,9 +76,9 @@ export const ReserveResult = () => {
                 <label className={'mb-3 '+styles['result-label']}>تاریخ :</label>
                 <span className={styles['reserve-result-input']}>{selectedDate}</span>
             </div>
-            {/* تا زمان که تکمیل نشد دکمه غیر فعال باشد */}
-            {/* باز شدن مدال برای تایید */}
-            <button onClick={submitReserve} className={styles['confirm-reserve']+" "+'btn btn-success mt-3'}>تایید رزرو</button>
+            {/* <div className='d-flex justify-content-end'> */}
+                <button onClick={submitReserve} className={styles['confirm-reserve']+" "+'btn btn-success mt-3'}>تایید رزرو</button>
+            {/* </div> */}
         </div>
     )
 }

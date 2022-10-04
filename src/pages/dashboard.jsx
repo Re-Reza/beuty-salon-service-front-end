@@ -2,7 +2,7 @@ import React from "react";
 
 import Head from "next/head";
 
-import { getUserRole } from "../dataService/dashboardProvider";
+import { getUserRole } from "../dataService/userDashboardProvider";
 
 import UserDashboard from "../component/dashboard/dashboardPages/UserDashboard";
 import EmployeeDashboard from "../component/dashboard/dashboardPages/EmployeeDashboard";
@@ -61,8 +61,7 @@ export async function getServerSideProps(context){
         }
     }
     catch( err ){
-        // console.log("in error");
-        // console.log(err);
+
         // redirect user if it had not logged in
         return {
             redirect : {

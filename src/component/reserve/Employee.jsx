@@ -7,7 +7,7 @@ import reserveContext from "./reserveContext";
 function Employee( props ){
 
     const {fName, lName, phone, profileImg, employeeId, personId, roleId} = props.employeeData;
-
+    console.log(props.employeeData)
     const {userChoiceState, dispatch}  = useContext(reserveContext);
 
     const setEmployee = () => {
@@ -21,6 +21,7 @@ function Employee( props ){
             } 
         })
     } 
+    
     let comStyle = null;
     if(userChoiceState.employee.fName != null ) {
         comStyle = userChoiceState.employee.fName == fName ?

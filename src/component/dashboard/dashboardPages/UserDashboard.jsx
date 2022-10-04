@@ -9,8 +9,8 @@ import styles from "../../../../public/styles/dashboard.module.css";
 function UserDashboard () {
 
     const [showState, setShowState] = useState({
-        main: true,
-        reservedList: false,
+        main: false,
+        reservedList: true,
         changeInfo : false,
         notification: false
     });

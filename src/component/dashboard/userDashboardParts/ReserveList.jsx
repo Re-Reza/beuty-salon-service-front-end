@@ -1,33 +1,46 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 
 import ReserveItem from "./ReserveItem";
+import { provideReserveList } from "../../../dataService/userDashboardProvider";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
 export function ReseveList(){
 
-    const [ listState, setListState ] = useState ({
-        items : [
-            {serviceTitle:"مو", employee: "ccc", date: {year:1401 , month:5, day:31 ,} },
-            {serviceTitle:"ناخن", employee: "ccc", date: {year:1401 , month:4, day:1 ,} },
-            {serviceTitle:"مو", employee: "ccc", date: {year:1401 , month:3, day:5 ,} },
-            {serviceTitle:"پوست", employee: "ccc", date: {year:1401 , month:8, day:2 ,} },
-            {serviceTitle:"میکاپ", employee: "ccc", date: {year:1401 , month:12, day:10 ,} },
-            {serviceTitle:"ناخن", employee: "ccc", date: {year:1401 , month:11, day:8 ,} },
-            {serviceTitle:"پوست", employee: "ccc", date: {year:1401 , month:10, day:9 ,} },
-            {serviceTitle:"میکاپ", employee: "ccc", date: {year:1401 , month:9, day:22 ,} },
-            {serviceTitle:"مو", employee: "ccc", date: {year:1401 , month:6, day:28 ,} }
-        ],
+    const [ state, setState ] = useState ({
+        reserveList : [],
+        loading : true,
+        currentReserve : true
     });
 
-    const [ currentReserve, setCurrentReserve ] = useState (true);
+    const { currentReserve, reserveList } = state;
+    //if error happed show toast error message
+    useEffect(() => { 
+
+        provideReserveList(currentReserve ? 0 : 1).then( response => {
+            console.log(response);
+            setState({
+                ...state,
+                loading:false,
+                reserveList:response.data.result
+            })
+        }).catch( err => console.log(err));
+
+    }, []);
+
 
     function toggleReserve(value){
-        setCurrentReserve(value);
+        setState({
+            ...state,
+            currentReserve : value
+        });
     }
 
 
     return(
+        state.loading?
+        <div>loading...</div>
+        :
         <div className={styles["dashboard-reserveList"]}>
             <div className={styles["dashboard-reserveBtnContainer"]}>
                 <button onClick={ ()=>{toggleReserve(false)} } className={ !currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]} >تاریخچه </button>
@@ -40,19 +53,19 @@ export function ReseveList(){
                 currentReserve ? 
 
                 <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ردیف</th>
-                        <th scope="col">خدمت</th>
-                        <th scope="col">کارمند</th>
-                        <th scope="col">تاریخ</th>
-                        <th></th>
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th scope="col">ردیف</th>
+                            <th scope="col">خدمت</th>
+                            <th scope="col">کارمند</th>
+                            <th scope="col">تاریخ</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                <tbody>
+                    <tbody>
                     {
-                        listState.items.map((item, index) => <ReserveItem  history={false} key={index} item = {{...item ,  row: ++index }} /> )
+                        reserveList.map((item, index) => <ReserveItem  history={false} key={index} item = {item} row= {++index } /> )
                     }
                     </tbody>
 
@@ -73,14 +86,13 @@ export function ReseveList(){
 
                     <tbody>
                     {
-                        listState.items.map((item, index) => <ReserveItem history={true} key={index} item = {{...item ,  row: ++index }} /> )
+                        reserveList.map((item, index) => <ReserveItem history={true} key={index} item = {{...item ,  row: ++index }} /> )
                     }
                     </tbody>
 
                 </table>
 
             }
-
             </div>
 
         </div>

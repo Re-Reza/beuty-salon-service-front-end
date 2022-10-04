@@ -54,7 +54,6 @@
     width: 70px;
     height: 70px;
 }
-
 .reserve-employee-info{
     display: flex;
     flex-direction:column;
@@ -143,7 +142,7 @@
 }
 .calendarInput{
     border-radius: 15px;
-    border: 1px #0c8af8 solid;
+    border: 1px var(--yellow) solid;
     padding: 4px 12px;
     background-color: white;
     height: 22px;
@@ -151,8 +150,8 @@
 }
 .calendarInput:focus{
     outline: none;
-  border: 1px solid #0c8af8;
-  box-shadow: 0 0 10px 2px #0074d9;
+  border: 1px solid var(--yellow);
+  box-shadow: 0 0 10px 2px var(--yellow);
 }
 
 /*------------------------------reserve result ---------------------------- */
@@ -224,6 +223,9 @@
     visibility:hidden;
     transform: translateY(-30px);
     opacity: 0;
+}
+.test{
+    position: absolute;
 }
 .DropDown-options-options{
     width: 100%;

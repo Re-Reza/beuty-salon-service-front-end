@@ -11,10 +11,7 @@ function reserveReducer(state, action){
                     month: null,
                     year: null
                 },
-                employee:{
-                    value: {},
-                    // complited: false,     
-                },
+                employee:{},
                 service : {
                     id : null,
                     value : null
@@ -25,7 +22,8 @@ function reserveReducer(state, action){
         case "SET_SERVICE": 
             return{
                 ...state,
-                service : action.payload
+                service : action.payload,
+                employee : {}
             }
 
         case "SET_EMPLOYEE": 
@@ -44,6 +42,13 @@ function reserveReducer(state, action){
             return {
                 ...state,
                 date : action.payload
+            };
+
+        case "SET_DATE_2": 
+            return {
+                ...state,
+                date : action.payload,
+                employee : {}
             };
 
         default: 
