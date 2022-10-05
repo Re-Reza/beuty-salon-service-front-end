@@ -9,8 +9,8 @@ import styles from "../../../../public/styles/dashboard.module.css";
 function UserDashboard () {
 
     const [showState, setShowState] = useState({
-        main: false,
-        reservedList: true,
+        main: true,
+        reservedList: false,
         changeInfo : false,
         notification: false
     });
@@ -104,7 +104,7 @@ function UserDashboard () {
 
             </div>
 
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }

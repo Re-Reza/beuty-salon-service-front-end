@@ -41,6 +41,7 @@ export const ReserveResult = () => {
                 msg :  "رزرو با موفقیت ثبت شد",
                 error : false
             });
+            hideToast();
         }).catch( err => {
             console.log(err.response.status);
             let errorMsg;
@@ -53,32 +54,46 @@ export const ReserveResult = () => {
                 msg :  errorMsg,
                 error : true
             });
+            hideToast();
         });
     }
 
+    function hideToast(){
+        setTimeout(()=>{
+            
+            setState({
+                showToast : false
+            });
+
+        }, 3000);
+    }
+
     return (
-        <div ref={resultRef} className={styles['reserve-result']}>
+        <>
             {
                 state.showToast ? <Toast toatData={ { message: state.msg, error:state.error } }/> 
                 : <></>
             }
-            <div className='d-flex flex-column'>
-                <label className={'mb-3 '+styles['result-label']}>نوع خدمت :</label>
-                <span className={styles['reserve-result-input']}>{service.value}</span>
-            </div>
+            <div ref={resultRef} className={styles['reserve-result']}>
             
-            <div className='d-flex flex-column'>
-                <label className={'mb-3 '+styles['result-label']}>کارمند :</label>
-                <span className={styles['reserve-result-input']}>{employee.fName+" "+employee.lName}</span>
+                <div className='d-flex flex-column'>
+                    <label className={'mb-3 '+styles['result-label']}>نوع خدمت :</label>
+                    <span className={styles['reserve-result-input']}>{service.value}</span>
+                </div>
+                
+                <div className='d-flex flex-column'>
+                    <label className={'mb-3 '+styles['result-label']}>کارمند :</label>
+                    <span className={styles['reserve-result-input']}>{employee.fName+" "+employee.lName}</span>
+                </div>
+                
+                <div className='d-flex flex-column'>
+                    <label className={'mb-3 '+styles['result-label']}>تاریخ :</label>
+                    <span className={styles['reserve-result-input']}>{selectedDate}</span>
+                </div>
+                {/* <div className='d-flex justify-content-end'> */}
+                    <button onClick={submitReserve} className={styles['confirm-reserve']+" "+'btn btn-success mt-3'}>تایید رزرو</button>
+                {/* </div> */}
             </div>
-            
-            <div className='d-flex flex-column'>
-                <label className={'mb-3 '+styles['result-label']}>تاریخ :</label>
-                <span className={styles['reserve-result-input']}>{selectedDate}</span>
-            </div>
-            {/* <div className='d-flex justify-content-end'> */}
-                <button onClick={submitReserve} className={styles['confirm-reserve']+" "+'btn btn-success mt-3'}>تایید رزرو</button>
-            {/* </div> */}
-        </div>
+        </>
     )
 }

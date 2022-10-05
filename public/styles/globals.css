@@ -152,6 +152,10 @@ p{
 .rmdp-week .rmdp-week-day{
     color : var(--dark)!important;
 }
+.progress-bar{
+    background-color: var(--yellow) !important;
+    font-size: 1.2em; 
+}
 @keyframes showToast{
     0%{
         right: -15%;

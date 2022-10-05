@@ -14,7 +14,7 @@ export function ReseveList(){
     });
 
     const { currentReserve, reserveList } = state;
-    //if error happed show toast error message
+
     useEffect(() => { 
 
         provideReserveList(currentReserve ? 0 : 1).then( response => {
@@ -26,16 +26,27 @@ export function ReseveList(){
             })
         }).catch( err => console.log(err));
 
-    }, []);
+    }, [currentReserve]);
 
 
     function toggleReserve(value){
-        setState({
-            ...state,
-            currentReserve : value
-        });
+        if(value != state.currentReserve){
+            setState({
+                ...state,
+                currentReserve : value,
+                loading : true
+            });
+        }
     }
 
+    function deleteReserve(reserveId){
+        console.log("here")
+        const filteredReserves = state.reserveList.filter( item => item.id != reserveId );
+        setState({
+            ...state,
+            reserveList : filteredReserves
+        });
+    }
 
     return(
         state.loading?
@@ -52,20 +63,21 @@ export function ReseveList(){
             {
                 currentReserve ? 
 
-                <table className="table">
+                <table className={"table "+styles['table-font']}>
                     <thead>
                         <tr>
                             <th scope="col">ردیف</th>
                             <th scope="col">خدمت</th>
                             <th scope="col">کارمند</th>
                             <th scope="col">تاریخ</th>
+                            <th scope="col">وضعیت</th>
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
                     {
-                        reserveList.map((item, index) => <ReserveItem  history={false} key={index} item = {item} row= {++index } /> )
+                        reserveList.map((item, index) => <ReserveItem deleteReserve={deleteReserve} history={false} key={index} item = {item} row= {++index } /> )
                     }
                     </tbody>
 
@@ -73,7 +85,7 @@ export function ReseveList(){
 
                 :
                 
-                <table className="table">
+                <table className={"table "+styles['table-font']}>
                     <thead>
                         <tr>
                             <th scope="col">ردیف</th>
@@ -86,7 +98,7 @@ export function ReseveList(){
 
                     <tbody>
                     {
-                        reserveList.map((item, index) => <ReserveItem history={true} key={index} item = {{...item ,  row: ++index }} /> )
+                        reserveList.map((item, index) => <ReserveItem  deleteReserve={deleteReserve} history={true} key={index} item = {item} row = {++index} /> )
                     }
                     </tbody>
 

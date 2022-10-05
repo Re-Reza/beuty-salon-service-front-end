@@ -30,7 +30,7 @@ export function ReserveNav() {
                     </li>
 
                     <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/">
+                        <Link href="/dashboard">
                             <a>پنل کاربری</a>
                         </Link>
                     </li>
@@ -47,8 +47,8 @@ export function ReserveNav() {
                             <a>درباره ما</a>
                         </Link>
                     </li>
-{/* 
-                    <li className={styles['reserveNav-mobile-link']}>
+
+                    {/* <li className={styles['reserveNav-mobile-link']}>
                         <Link href="/">
                             <a>ارتباط با ما</a>
                         </Link>
@@ -67,7 +67,7 @@ export function ReserveNav() {
                     </li>
 
                     <li  className={styles['reserveNav-Link'] }>
-                        <Link href="/">
+                        <Link href="/dashboard">
                             <a>پنل کاربری</a>
                         </Link>
                     </li>

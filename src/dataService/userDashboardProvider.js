@@ -11,6 +11,14 @@ export function getInfo(){
 
 //اگر از تاریخ رزروی گذشته بود در لیست تاریخچه برود
 export function provideReserveList(isHistory){
-    console.log(isHistory);
     return axiosInstance.get(`userDashboard/userReserves?token=${getCookie()}&isHistory=${isHistory}`);
+}
+
+export function cancelReservation(reserveId) {
+    return axiosInstance.delete(`userDashboard/userDeleteReserve/${reserveId}?token=${getCookie()}`);
+}
+
+export function changeUserInfo(newData){
+    console.log(newData);
+    return axiosInstance.put(`userDashboard/changeUserInfo?token=${getCookie()}`, newData);
 }

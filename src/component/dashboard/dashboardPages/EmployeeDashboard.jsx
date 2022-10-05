@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 
-import { MainPart, EmployeeCustomerReserve, ChangeEmployeeInfo, Notifications } from "../employeeDashboardParts";
+import { MainPart, EmployeeCustomerReserve, Notifications } from "../employeeDashboardParts";
 import { HeadPart } from "../HeadPart";
-import Footer from "../../footer/Footer";
+import { ChangeAccountInfo } from "../userDashboardParts";
 
 import { convertEnToPe } from "persian-number";
 
@@ -56,7 +56,7 @@ const EmployeeDashboard = () => {
     if(main)
         ActivePartComponent = MainPart;
     else if(changeInfo)
-        ActivePartComponent = ChangeEmployeeInfo;
+        ActivePartComponent = ChangeAccountInfo;
     else if(reserveCustomer)
         ActivePartComponent = EmployeeCustomerReserve;
     else if(notification)
@@ -117,8 +117,6 @@ const EmployeeDashboard = () => {
                 </section>
 
             </div>
-
-        <Footer/>
     </>
     );
 }
