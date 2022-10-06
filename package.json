@@ -1,5 +1,7 @@
 {
   "name": "beauty-salon",
+  "author": "Reza Rezaee",
+  "description": "beauty-salon front project, nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {

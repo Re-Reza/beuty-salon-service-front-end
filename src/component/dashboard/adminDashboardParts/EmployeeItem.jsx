@@ -9,23 +9,30 @@ const EmployeeItem = ( props ) => {
     
     const [openMoal, setOpenMoal ] = useState(false);
 
-    const { name, row, phone, service } = props.item;
+    console.log(props)
+    const { row, phone, fName, lName, profileImg, services } = props.item;
+    let data="";
+    services.forEach( (item, index) => {
+        data = data.concat( item.serviceTitle + (index==services.length-1? "" : "، ") )
+    })
     
+
+    //یک کانتکس اینجاتغریف کن و پراپس ها رو در ان بریز
     return (
         <>
             <tr className='align-middle mb-2'>
                 <th scope="row">{convertEnToPe(row)}</th>
-                <td>
+                <td style={{minWidth:"180px"}}>
                     <div className='d-flex align-items-center'>
-                        <span className="ms-3">
-                            <img className={styles['employee-item-profile']} src="/imgs/user.png" alt="" />
+                        <span className={"ms-3 "+styles['employee-item-imgContainer']}>
+                            <img className={styles['employee-item-profile']} src={profileImg? "http://localhost:4000/"+profileImg : "/imgs/user.png"} alt="" />
                         </span>
                         <span>
-                            {name}
+                            {fName+" "+lName}
                         </span>
                     </div>
                 </td>
-                <td>{service}</td>
+                <td>{data}</td>
                 <td>{convertEnToPe(phone)}</td>
                 <td>
                     <button onClick={ () => {setOpenMoal(true)} } className={'btn btn-dark '+styles['font-responsive']}>پروفایل کارمند</button>

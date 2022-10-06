@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import EmployeeItem from "./EmployeeItem";
 import AddEmployeeModal from './AddEmployeeModal';
+
+import { provideEmployeeList } from "../../../dataService/aminProvider";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
 export const EmployeesList = () => {
     
-    const [ employeeList, setEmployeeList ] = useState([
-        {name: "e1", service:"پوست", phone: "09000" },
-        {name: "e2", service:"مو", phone: "09000" },
-        {name: "e3", service:"میکاپ", phone: "09000" },
-        {name: "e4", service:"پوست", phone: "09000" },
-        {name: "e5", service:"ناخن", phone: "09000" },
-        {name: "e6", service:"مو", phone: "09000" },
-        {name: "e7", service:"پوست", phone: "09000" },
-        {name: "e8", service:"مو", phone: "09000" },
-        {name: "e9", service:"میکاپ", phone: "09000" },
-        {name: "e10", service:"پوست", phone: "09000" },
-        {name: "e11", service:"میکاپ", phone: "09000" },
-        {name: "e12", service:"پوست", phone: "09000" },
-        {name: "e13", service:"مو", phone: "09000" }
+    const [ state, setState ] = useState({
+        employeeList:[],
+        loading: true
+    });
 
-    ]);
+    useEffect(()=> {
+
+        provideEmployeeList().then( response => {
+            console.log(response);
+            setState({
+                ...state,
+                loading : false,
+                employeeList : response.data.result
+            });
+
+        }).catch(err => console.log(err));
+
+    }, []);
 
     const [ addEmModal, setAddEmModal ] = useState(false);
-    
+    console.log(state);
     return (
+        state.loading?
+        <div>loading</div>:
         <>
             <div className={'d-flex flex-column '+styles["employeeList-container"]}>
                 <div className='align-self-end mb-4'>
@@ -48,7 +54,7 @@ export const EmployeesList = () => {
                             
                             <tbody>
                             {
-                                employeeList.map( (employee, index) => <EmployeeItem key={index} item={{...employee, row: index+1}} /> )
+                                state.employeeList.map( (employee, index) => <EmployeeItem key={index} item={{...employee, row: index+1}} /> )
                             }
                             </tbody>
 

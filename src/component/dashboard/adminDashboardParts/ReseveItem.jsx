@@ -12,10 +12,12 @@ import "react-multi-date-picker/styles/colors/yellow.css"
 import styles from "../../../../public/styles/dashboard.module.css"
 import { useMediaQuery } from 'react-responsive';
 
-const EmployeeResItem = ( props ) => {
+const ReserveItem = ( props ) => {
 
-    const { id, serviceTitle, reserveDate, row, customerId , customerName, customerLastname, customerPhone, reserveTime, status, serviceId } = props.item;
-
+    const { id, serviceTitle, reserveDate, row, customerId , 
+        customerName, customerLastname, customerPhone, 
+        reserveTime, status, serviceId, employeeFname, employeeLname, employeeId } = props.item;
+    
     const [newDateState , setNewDate ] = useState({
         year: null,
         month: null,
@@ -46,7 +48,6 @@ const EmployeeResItem = ( props ) => {
         console.log(newDateState);
         const { year, month, day, hour, minute } = newDateState;
         const newData = hour+":"+minute+"|"+year+"/"+month+"/"+day
-        console.log(newData);
         setFinalTime(id, newData).then( response => {
             setNewDate({
                 reserveTime : response.data.result,
@@ -75,50 +76,56 @@ const EmployeeResItem = ( props ) => {
         <tr>
             <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
-            <td>{customerName +" "+ customerLastname}</td>
+            <td style={{minWidth:"100px"}}>{customerName +" "+ customerLastname}</td>
+            <td style={{minWidth:"150px"}}>{employeeFname+" "+employeeLname}</td>
             <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td>
             {
                 props.history ? 
                 <td>{status == "cancelled" ? "کنسل شده" : "انجام شده" }</td>
                 :
                 <>
-                    <td className={styles['employee-date-modifier']}>
-                    {
-                        newDateState.status == "waiting" ? 
-                        <>
-                        <DatePicker ref={ws} onChange={setCustomerDate} animations = {[
-                            opacity(),
-                            transition({
-                            from: 40,
-                            transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
-                            }),
-                        ]}
-                        plugins={[
-                            <TimePicker hideSeconds key={0} position={isPhone? "bottom" :"left"} />,
-                        ]}
-                        format=" HH:mm , YYYY/MM/DD"
-                        className="yellow"
-                        mapDays={ ({date}) => {     
-                            if(date.weekDay.number == 7) 
-                                return{
-                                        disabled: true,
-                                } 
-                        }}
-                        inputClass={styles["calendarInput"]}
-                        minDate={ props.start } maxDate = { props.end }
-                        calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
-                    />
-                    <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال تاریخ</button>
-                        </>
-                    :<>تاریخ نهایی شده و قابل تغییر نیست</>
-                    }
+                    <td className={styles['employee-date-modifier']} style={{minWidth:"150px"}}>
+                            <DatePicker ref={ws} onChange={setCustomerDate} animations = {[
+                                opacity(),
+                                transition({
+                                from: 40,
+                                transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
+                                }),
+                            ]}
+                            plugins={[
+                                <TimePicker hideSeconds key={0} position={isPhone? "bottom" :"left"} />,
+                            ]}
+                            format=" HH:mm , YYYY/MM/DD"
+                            className="yellow"
+                            mapDays={ ({date}) => {     
+                                if(date.weekDay.number == 7) 
+                                    return{
+                                            disabled: true,
+                                    } 
+                            }}
+                            inputClass={styles["calendarInput"]}
+                            minDate={ props.start } maxDate = { props.end }
+                            calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
+                        />
+                       
                     </td>
-                    <td>
+                    <td style={{minWidth:"100px"}}>
                     {
                         //convertToPersian(newDateState.reserveTime )
                         newDateState.status == "finalized" ?
                         newDateState.reserveTime: ""
                     }
+                    </td>
+                    <td style={{minWidth:"100px"}}>
+                        <select  className="form-select form-select-sm">
+                            <option >انتخاب کنید</option>
+                            <option value="1">انجام شده</option>
+                            <option value="2">کنسل شده</option>
+                        </select>
+                   
+                    </td>
+                    <td style={{minWidth:"100px"}}>
+                        <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال</button>
                     </td>
                 </>
             }
@@ -126,5 +133,5 @@ const EmployeeResItem = ( props ) => {
     )
 }
 
-export default EmployeeResItem;
+export default ReserveItem;
 

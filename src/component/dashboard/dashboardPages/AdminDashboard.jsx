@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
 
-import { EmployeesList, ChangeAdminInfo } from "../adminDashboardParts";
+import { EmployeesList, ReserveList } from "../adminDashboardParts";
 import { Notifications } from '../employeeDashboardParts/Notifications';
-import { HeadPart, MainPart } from '../userDashboardParts';
-import {EmployeeCustomerReserve} from "../employeeDashboardParts/EmployeeCustomerReserve";
+import { HeadPart, MainPart, ChangeAccountInfo } from '../userDashboardParts';
 import Footer from "../../footer/Footer";
 
 import { convertEnToPe } from "persian-number";
@@ -13,11 +12,11 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const AdminDashboard = () => {
 
     const [showState, setShowState] = useState({
-      main: true,
+      main: false,
       reserveCustomer: false,
       changeInfo : false,
       notification: false,
-      employeeList: false,
+      employeeList: true,
   });
 
 
@@ -45,11 +44,11 @@ const AdminDashboard = () => {
     if( employeeList )
         ActivePartComponent = EmployeesList;
     else if(changeInfo)
-        ActivePartComponent = ChangeAdminInfo;
+        ActivePartComponent = ChangeAccountInfo;
     else if(notification)
         ActivePartComponent = Notifications;
     else if(reserveCustomer) 
-        ActivePartComponent = EmployeeCustomerReserve;
+        ActivePartComponent = ReserveList;
   
   return (
     <>
@@ -109,13 +108,12 @@ const AdminDashboard = () => {
                         {/* <Loading2/> */}
                         <></>
                     </div>
-                    :<ActivePartComponent />
+                    :<ActivePartComponent isAdmin={true}/>
                 }
             </section>
 
           </div>
 
-      <Footer />
     </>
   )
 }

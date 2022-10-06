@@ -106,7 +106,7 @@ export function NavBar(){
                     </>:
                     <>
                         <Link href="/signup">
-                            <a className="ms-1">ثبت نامicon</a>
+                            <a className="ms-1">ثبت نام <i className="fa fa-user-plus" aria-hidden="true"></i></a>
                         </Link>
                     </>
                 }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import EmployeeResItem from './EmployeeResItem';
-import { provideCustomerReserves } from "../../../dataService/employeeProvider";
+import EmployeeResItem from './ReseveItem';
 import styles from "../../../../public/styles/dashboard.module.css";
+import { provideReserveList } from "../../../dataService/aminProvider";
 
-export const EmployeeCustomerReserve = () => {
+export const ReserveList = () => {
   
     const [ customersList, setcustomersList] = useState( {
         list : [],
@@ -12,9 +12,12 @@ export const EmployeeCustomerReserve = () => {
         start : null,
         end : null
     });
+    
+    const [ currentReserve, setCurrentReserve ] = useState (true);
 
     useEffect( () => {
-        provideCustomerReserves().then( response =>{
+        const statusCodition = currentReserve ?  ["waiting", "finalized" ] : ["cancelled", "done"]
+        provideReserveList(statusCodition).then( response =>{
             console.log(response);
             setcustomersList({
                 ...customersList,
@@ -26,20 +29,13 @@ export const EmployeeCustomerReserve = () => {
         }).catch( err => {
             console.log(err);
         })
-    }, []);
+    }, [currentReserve]);
     
-    const [ currentReserve, setCurrentReserve ] = useState (true);
 
     function toggleReserve(value){
         setCurrentReserve(value);
     }
 
-    let filteredList;
-    if(currentReserve)
-        filteredList = customersList.list.filter( item => item.status == 'waiting' || item.status == 'finalized');   
-    else 
-        filteredList = customersList.list.filter( item => item.status == 'done' || item.status == 'cancelled');
-    console.log(filteredList)
     return (
         customersList.loading? 
             <div>loading</div>:
@@ -61,16 +57,19 @@ export const EmployeeCustomerReserve = () => {
                         <tr>
                             <th scope="col">ردیف</th>
                             <th scope="col">خدمت</th>
-                            <th scope="col">نام مشتری</th>
+                            <th scope="col">مشتری</th>
                             <th scope="col">تاریخ انتخابی مشتری</th>
+                            <th scope="col">کارمند</th>
                             <th scope="col">تغییر تاریخ</th>
                             <th scope="col">تاریخ نهایی</th>
+                            <th scope='col' style={{minWidth:"100px"}}>تغییر وضعیت رزرو</th>
+                            <th scope='col'></th>
                         </tr>
                     </thead>
 
                     <tbody>
                     {
-                        filteredList.map((item, index) => <EmployeeResItem start={customersList.start} end={customersList.end} history={false} key={index} item = {{...item ,  row: ++index }} /> )
+                        customersList.list.map((item, index) => <EmployeeResItem start={customersList.start} end={customersList.end} history={false} key={index} item = {{...item ,  row: ++index }} /> )
                     }
                     </tbody>
 
@@ -85,13 +84,15 @@ export const EmployeeCustomerReserve = () => {
                             <th scope="col">خدمت</th>
                             <th scope="col">مشتری</th>
                             <th scope="col">تاریخ</th>
-                            <th>وضعیت</th>
+                            <th scope="col">کارمند</th>
+                            <th scope='col'>وضعیت</th>
+                            <th scope='col'></th>
                         </tr>
                     </thead>
 
                     <tbody>
                     {
-                        filteredList.map((item, index) => <EmployeeResItem history={true} key={index} item = {{...item ,  row: ++index }} /> )
+                        customersList.list.map((item, index) => <EmployeeResItem history={true} key={index} item = {{...item ,  row: ++index }} /> )
                     }
                     </tbody>
 

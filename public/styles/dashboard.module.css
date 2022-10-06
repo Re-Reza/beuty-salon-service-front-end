@@ -703,10 +703,15 @@ position: absolute;
     box-shadow: 0 0 12px #d5d3d3;
     padding: 2em;
 }
-.employee-item-profile{
-    width: 45px;
+.employee-item-imgContainer{
+    width: 58px;
+    height: 58px;
 }
-
+.employee-item-profile{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
 /* --------------------------------- end of notification animation ---------------------------*/ 
 
 /*--------------------------------------- employee modal --------------------------------------*/
@@ -715,7 +720,9 @@ position: absolute;
     font-family: Vazir;
 }
 .employeeModal-profileImg{
-    width: 120px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
 }
 .employeeInofo-modal-topPart{
     height: 250px;
@@ -933,6 +940,14 @@ position: absolute;
     }
     .progress-uploadData{
         width: 90%;
+    }
+    .employee-item-imgContainer{
+        width: 50px;
+        height: 50px;
+    }
+    .employeeModal-profileImg{
+        width: 115px;
+        height: 115px;
     }
 }
 @media only screen and (max-width:462px){

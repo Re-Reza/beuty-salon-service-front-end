@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-import { MainPart, EmployeeCustomerReserve, Notifications } from "../employeeDashboardParts";
+import {  EmployeeCustomerReserve, Notifications } from "../employeeDashboardParts";
+import { MainPart } from "../userDashboardParts"
 import { HeadPart } from "../HeadPart";
 import { ChangeAccountInfo } from "../userDashboardParts";
 
@@ -12,17 +13,13 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const EmployeeDashboard = () => {
 
     const [showState, setShowState] = useState({
-        main: true,
-        reserveCustomer: false,
+        main: false,
+        reserveCustomer: true,
         changeInfo : false,
         notification: false
     });
 
     const [employeeInfo, setEmployeeInfo ] = useState( {
-        username: "زهرا محمدی",   
-        email:"ee@gmail.com",
-        phone: '093000000',
-        services: ["مو", "پوست", "ناخن"] ,
         notifications : [
             {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 5, day: 1} },
             {title: "مدیریت سایت", message: "تغییر زمان کاری", date:{year: 1401, month: 5, day: 10} },
@@ -112,7 +109,7 @@ const EmployeeDashboard = () => {
                             {/* <Loading2/> */}
                             <></>
                         </div>
-                        :<ActivePartComponent employeeInfo={ employeeInfo} />
+                        :<ActivePartComponent employeeInfo={ employeeInfo} isEmployee={true} />
                     }
                 </section>
 

@@ -1,3 +1,3 @@
 export * from "./EmployeesList";
-export * from "./MainPart";
-export * from "./ChangeAdminInfo";
+export * from "./ReserveList";
+export * from "./ReseveItem";

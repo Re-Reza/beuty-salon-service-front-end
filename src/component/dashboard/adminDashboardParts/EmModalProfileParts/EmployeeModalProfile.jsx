@@ -13,8 +13,11 @@ import styles from "../../../../../public/styles/dashboard.module.css";
 
 function EmployeeModalProfile( props ){
 
-    const { openMoal, setOpenMoal, employee : {name, service, phone} } = props; 
-    
+    const { openMoal, setOpenMoal, employee : { profileImg, fName, lName, services} } = props; 
+    let data="";
+    services.forEach( (item, index) => {
+        data = data.concat( item.serviceTitle + (index==services.length-1? "" : "، ") )
+    })
     const isTablet = useMediaQuery({
         query :"(max-width: 950px)"
     });
@@ -78,9 +81,9 @@ function EmployeeModalProfile( props ){
                             <i className="fa text-danger fs-3 fa-times" aria-hidden="true"></i>
                         </div>
                         <div className="d-flex flex-column align-items-center">
-                            <img className={styles["employeeModal-profileImg"]} src="/imgs/user.png" alt="profile-img" />
-                            <div className={styles["employeeModal-name"]}>{name}</div>
-                            <div className="text-muted">{service}</div>                            
+                            <img className={styles["employeeModal-profileImg"]} src={profileImg? "http://localhost:4000/"+profileImg :"/imgs/user.png"} alt="profile-img" />
+                            <div className={styles["employeeModal-name"]}>{fName+" "+lName}</div>
+                            <div className="text-muted">{data}</div>                            
                         </div>
 
                     </div>
@@ -94,7 +97,7 @@ function EmployeeModalProfile( props ){
                         </div>
                         
                         <div className="w-100 d-flex justify-content-center mt-5">
-                            <ActiveComponent info = {props.employee} />
+                            <ActiveComponent history={showOptionState.history} info = {props.employee} />
                         </div>
                     
                     </div>

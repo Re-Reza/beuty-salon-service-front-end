@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { getInfo } from "../../../dataService/userDashboardProvider";
+import { provideEmployeeInfo } from "../../../dataService/employeeProvider";
 import FormData from "form-data";
 import styles from "../../../../public/styles/dashboard.module.css";
 import InfoBox from "./InfoBox";
@@ -10,7 +11,7 @@ import { getCookie } from "../../../dataService/cookieProvider";
 import { ProgressBar } from "react-bootstrap";
 import { convertEnToPe } from "persian-number"
 
-export function MainPart(){
+export function MainPart(props){
 
     const [ state, setState ] = useState({
         loading : true,
@@ -37,16 +38,33 @@ export function MainPart(){
     }
 
     useEffect(() => {
-        getInfo().then( response => {
-            setState({
-                ...state,
-                loading: false,
-                data : Object.entries(response.data.result),
-                profileImg : Object.entries(response.data.result)[3][1],
+        if(props.isEmployee == true || props.isAdmin == true){
+            provideEmployeeInfo().then(response => {    
+                // console.log(response)
+                // console.log(Object.entries(response.data.result));
+                setState({
+                    ...state,
+                    loading: false,
+                    data : Object.entries(response.data.result),
+                    profileImg : Object.entries(response.data.result)[3][1],
+                });
+            }).catch(err => {
+                console.log(err);
+            })
+
+        }
+        else{
+            getInfo().then( response => {
+                setState({
+                    ...state,
+                    loading: false,
+                    data : Object.entries(response.data.result),
+                    profileImg : Object.entries(response.data.result)[3][1],
+                });
+            }).catch( err => {
+                console.log(err)
             });
-        }).catch( err => {
-            console.log(err)
-        });
+        }
         
     }, []);
 
@@ -56,15 +74,9 @@ export function MainPart(){
             newProfileImg : event.target.files[0]
         })
     }
-    console.log("rerender")
+
     function sendProfile(event){
         event.preventDefault();
-        const config = {
-            onUploadProgress: progressEvent => {
-                progress = (progressEvent.loaded / progressEvent.total) * 100;
-                setProgress( progress );
-            }
-        }
       
         if(state.newProfileImg != null){
             let formData = new FormData();
@@ -163,7 +175,7 @@ export function MainPart(){
             
             <ul className={styles["UserInfoContainer"]}>   
             {
-                state.data.map( (item, index) => <InfoBox item={item} key={index}/> )
+                state.data.map( (item, index) => <InfoBox isAdmin={props.isAdmin} item={item} key={index}/> )
             }
             </ul>
 
