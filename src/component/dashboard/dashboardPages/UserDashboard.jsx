@@ -12,10 +12,17 @@ function UserDashboard () {
         main: true,
         reservedList: false,
         changeInfo : false,
-        notification: false
+        notification: false,
+        request : false
     });
 
-
+    function setRequest(){
+        setShowState({
+            ...showState,
+            request : !showState.request
+        })
+    }
+    
     const asideRef = useRef(null);
 
     function switchPart(selected){
@@ -50,7 +57,7 @@ function UserDashboard () {
             <div className={styles["dashboard-mainContainer"]}>
 
                 <div id={styles["dashboard-header"]}>
-                    <HeadPart asideRef = {asideRef} />
+                    <HeadPart request={showState.request}  asideRef = {asideRef} />
                 </div>
 
                 <aside ref={asideRef} className={styles["dashboard-aside"]} >
@@ -98,7 +105,7 @@ function UserDashboard () {
                             {/* <Loading2/> */}
                             <></>
                         </div>
-                        :<ActivePartComponent />
+                        :<ActivePartComponent setRequest={setRequest}/>
                     }
                 </section>
 

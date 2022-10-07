@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import EmployeeItem from "./EmployeeItem";
 import AddEmployeeModal from './AddEmployeeModal';
 
-import { provideEmployeeList } from "../../../dataService/aminProvider";
+import { provideEmployeeList, searchEmployee } from "../../../dataService/aminProvider";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -11,8 +11,11 @@ export const EmployeesList = () => {
     
     const [ state, setState ] = useState({
         employeeList:[],
-        loading: true
+        loading: true,
+        reRequset : false
     });
+
+    const searchInput = useRef(null);
 
     useEffect(()=> {
 
@@ -23,19 +26,43 @@ export const EmployeesList = () => {
                 loading : false,
                 employeeList : response.data.result
             });
-
+            
         }).catch(err => console.log(err));
 
-    }, []);
+    }, [state.reRequset]);
 
     const [ addEmModal, setAddEmModal ] = useState(false);
-    console.log(state);
+    
+    function setReRequest(){
+        setState({
+            ...state,
+            reRequset: !state.reRequset
+        });
+    }
+
+    function submitSearch(){
+        const data = searchInput.current.value;
+        console.log(data);
+        searchEmployee(data).then( response => {
+            setState({
+                ...state,
+                employeeList : response.data.result
+            })
+        }).catch( err => console.log(err) );
+    }
+
     return (
         state.loading?
         <div>loading</div>:
         <>
             <div className={'d-flex flex-column '+styles["employeeList-container"]}>
-                <div className='align-self-end mb-4'>
+                <div className='align-self-end d-flex mb-4 w-100 justify-content-between'>
+
+                    <div className='position-relative'>
+                        <input ref={searchInput} id={styles["EmployeeModalProfile-History-search-input"]} type="text" placeholder="نام یا شماره موبایل کارمند مورد نظر"/>
+                        <span onClick={submitSearch} className={styles["EmployeeModalProfile-searchIcon"]}><i className="fa fa-search" aria-hidden="true"></i></span>
+                    </div>
+
                     <button onClick={ ()=> { setAddEmModal(true)} } className={'d-flex justify-content-center btn btn-success '+styles["font-responsive"]}>افزودن کارمند جدید<i className="align-self-center me-2 fa fa-plus" aria-hidden="true"></i></button>
                 </div>
 
@@ -64,7 +91,7 @@ export const EmployeesList = () => {
             </div>
             {
                 addEmModal ?
-                <AddEmployeeModal isOpen={addEmModal} closeModal={ ()=>{setAddEmModal(false)} }/> :
+                <AddEmployeeModal setReRequest={setReRequest} isOpen={addEmModal} closeModal={ ()=>{setAddEmModal(false)} }/> :
                 <></>
             }
         

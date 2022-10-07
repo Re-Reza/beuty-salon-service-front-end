@@ -12,13 +12,20 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const AdminDashboard = () => {
 
     const [showState, setShowState] = useState({
-      main: false,
+      main: true,
       reserveCustomer: false,
       changeInfo : false,
       notification: false,
-      employeeList: true,
+      employeeList: false,
+      request : false
   });
 
+  function setRequest(){
+    setShowState({
+        ...showState,
+        request : !showState.request
+    })
+  }
 
   const asideRef = useRef(null);
 
@@ -55,7 +62,7 @@ const AdminDashboard = () => {
         <div className={styles["dashboard-mainContainer"]}>
   
             <div id={ styles["dashboard-header"] }>
-                <HeadPart asideRef={asideRef} />
+                <HeadPart request={showState.request} asideRef={asideRef} />
             </div>
 
             <aside ref={asideRef} className={styles["dashboard-aside"]} >
@@ -108,7 +115,7 @@ const AdminDashboard = () => {
                         {/* <Loading2/> */}
                         <></>
                     </div>
-                    :<ActivePartComponent isAdmin={true}/>
+                    :<ActivePartComponent setRequest={setRequest} isAdmin={true}/>
                 }
             </section>
 

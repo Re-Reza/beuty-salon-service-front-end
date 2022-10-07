@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
+import { provideGeneralInfo } from "../../dataService/userDashboardProvider";
+
 import styles from "../../../public/styles/dashboard.module.css";
 
+
 export function HeadPart( props ) {
+
+    const [state, setState] = useState({
+        fName : "",
+        lName : "",
+        profileImg : null,
+        date : ""
+    })
+
 
     function showAside(){
         props.asideRef.current.classList.add(styles["show-aside"])
     }
-    //تاریخ از بک اند باید بیاید
+  
+    useEffect(() => {
+        
+        provideGeneralInfo().then( response => {
+            setState({
+                ...state,
+                ...response.data.result
+            })
+        }).catch( err => console.log(err) );
+
+    }, [props.request]);
+
+    const { fName, lName, profileImg, date} = state;
 
     return (
         <header className={styles["dashboard-head"]}>
@@ -20,7 +43,7 @@ export function HeadPart( props ) {
                 <div className={styles["dashboard-head-wellcomeMessage"]}>
                     <div className='d-flex flex-column flex-sm-row align-items-start'>
                         <span className='ms-1'>
-                            رضا رضایی
+                            {fName+" "+lName}
                         </span>
                         <span>
                             گرامی خوش آمدید
@@ -41,7 +64,7 @@ export function HeadPart( props ) {
                </Link>
             
                 <div className={styles['dashboard-head-left-imgContainer']+" "+"me-2"}>
-                    <img src="/imgs/user.png" className={styles['head-imgAvatar']} alt="profile-alvatar" />
+                    <img src={profileImg ? "http://localhost:4000/"+profileImg : "/imgs/user.png"} className={styles['head-imgAvatar']} alt="profile-alvatar" />
                 </div>
 
             </div>

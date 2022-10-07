@@ -51,6 +51,27 @@ function reserveReducer(state, action){
                 employee : {}
             };
 
+        case "RESET_DATA": 
+            return{
+                ...state,
+                employee:{
+                    employeeId : null,
+                    personId : null,
+                    fName : null,
+                    lName : null
+                },
+                date:{
+                    day:null,
+                    month: null,
+                    year: null  
+                } 
+            }
+        case "SET_DATE_REQUEST":
+            return {
+                ...state,
+                requestDate : !state.requestDate
+            }
+
         default: 
             return state;
     }

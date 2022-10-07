@@ -8,7 +8,6 @@ export function getUserRole(authToken){
 export function getInfo(){
     return axiosInstance.get(`userDashboard/userInfo/?token=${getCookie()}`);
 }
-
 //اگر از تاریخ رزروی گذشته بود در لیست تاریخچه برود
 export function provideReserveList(isHistory){
     return axiosInstance.get(`userDashboard/userReserves?token=${getCookie()}&isHistory=${isHistory}`);
@@ -21,4 +20,8 @@ export function cancelReservation(reserveId) {
 export function changeUserInfo(newData){
     console.log(newData);
     return axiosInstance.put(`userDashboard/changeUserInfo?token=${getCookie()}`, newData);
+}
+
+export function provideGeneralInfo(){
+    return axiosInstance.get(`userDashboard/generalInfo?token=${getCookie()}`);
 }

@@ -20,6 +20,51 @@ function WeeklyCustimerItem( props ){
         showCalendar: false
     });
 
+    function splitDate(date){
+        return date.split('/')
+    }
+
+    function splitTime(time){
+        return time.split(':')
+    }
+
+    function convertToPersian(value){
+        if(value!=null && value != undefined )
+        {
+            const parts = value.split('|');
+            const splitedDate = splitDate(parts[1]);
+            const splitedTime = splitTime(parts[0])
+            console.log( convertEnToPe(parseInt(splitedDate[0]) ) +"/"+ convertEnToPe(parseInt(splitedDate[1])) +"/"+ convertEnToPe(parseInt(splitedDate[2]))+" "+convertEnToPe(parseInt(splitedTime[0]) )+":"+convertEnToPe(parseInt(splitedTime[1]) ));
+            return convertEnToPe(parseInt(splitedTime[0]) )+":"+convertEnToPe(parseInt(splitedTime[1])+" "+convertEnToPe(parseInt(splitedDate[0]) ) +"/"+ convertEnToPe(parseInt(splitedDate[1])) +"/"+ convertEnToPe(parseInt(splitedDate[2])) );
+        }
+    }
+
+    function generateDate(){
+        if(reserveTime)
+        {
+            const parts = reserveTime.split('|');
+            const splitedDate = splitDate(parts[1]);
+            console.log(splitedDate);
+            return {
+                day: splitedDate[2],
+                month: splitedDate[1],
+                year : splitedDate[0]
+            }
+        }
+        else {
+            
+            const splitedDate = splitDate(reserveDate);
+            return {
+                day: splitedDate[2],
+                month: splitedDate[1],
+                year : splitedDate[0]
+            }
+    
+        }
+    }
+    console.log(generateDate());
+    const { day, month, year } = generateDate();
+
     let reserveStatus;
     if(status == "done")
         reserveStatus = "انجام شده"
@@ -43,8 +88,8 @@ function WeeklyCustimerItem( props ){
     return(
         <li className={styles["weeklycustomerItem"]}>
             <div className={'d-flex flex-column justify-content-center align-items-center '+styles["weeklycustomerItem-date"]}>
-                {/* <span className='fs-5'>{convertEnToPe(day)}</span> */}
-                {/* <span className='fs-5'>{new pd([year,month,day]).toLocale('fa').format('MMMM')}</span> */}
+                <span className='fs-5'>{convertEnToPe(parseInt(day))}</span>
+                <span className='fs-5'>{new pd([parseInt(year),parseInt(month),parseInt(day)]).toLocale('fa').format('MMMM')}</span>
             </div>
 
                 

@@ -429,7 +429,9 @@
     box-shadow: 0 0 12px #d5d3d3;
 }
 .head-imgAvatar{
-    width:40px;
+    width:43px;
+    height: 43px;
+    border-radius: 50%;
 }
 
 .profile-img-container{
@@ -832,9 +834,9 @@ position: absolute;
     align-items: center;
 }
 #EmployeeModalProfile-History-search-input{
-    width: 228px;
+    width: 261px;
     border: none;
-    background-color: #eee;    
+    background-color: #fff;    
     padding: .5em;
     border-radius: 8px;
     box-shadow: 0 0 8px #bdbcbc;
@@ -844,9 +846,9 @@ position: absolute;
 }
 .EmployeeModalProfile-searchIcon{
     position: absolute;
-    right: 204px;
+    right: 236px;
     top: 9px;
-    background-color: #eee;
+    background-color: #fff;
     color: #3d3d3d;
     cursor: pointer;
     transition: all .5s;
@@ -949,6 +951,17 @@ position: absolute;
         width: 115px;
         height: 115px;
     }
+    #EmployeeModalProfile-History-search-input{
+        width: 210px;
+    }
+    .EmployeeModalProfile-searchIcon{
+        right: 188px;
+    }
+}
+.services-container{
+    display: grid;
+    grid-row-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr) );
 }
 @media only screen and (max-width:462px){
     .change-user-info{

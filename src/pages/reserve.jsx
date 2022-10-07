@@ -40,7 +40,8 @@ const ReservePage = () => {
             day:null,
             month: null,
             year: null  
-        } 
+        },
+        requestDate : false
     }); 
 
     return (

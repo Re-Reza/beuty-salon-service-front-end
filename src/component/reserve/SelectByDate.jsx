@@ -12,12 +12,12 @@ export function SelectByDate(){
 
     });
 
-    const { employee, date, service}  = useContext(reserveContext).userChoiceState;
-    
+    const { employee, date, service, requestDate}  = useContext(reserveContext).userChoiceState;
+    console.log(requestDate);
     useEffect(() => {
         
         provideDateRange().then( response => {
-            
+            console.log(response)
             setState({
                 ...state,
                 date : response.data.result
@@ -27,7 +27,7 @@ export function SelectByDate(){
             console.log(err);
         });
 
-    }, []);
+    }, [requestDate]);
 
     useEffect(()=> {
         
@@ -43,6 +43,9 @@ export function SelectByDate(){
 
     }, [date.day, service.id]);
 
+
+    console.log(employee)
+
     return (
         <div className='d-flex flex-column'>
             <div className='d-flex  flex-wrap justify-content-between'>
@@ -53,7 +56,7 @@ export function SelectByDate(){
                 }
      
             </div> 
-
+                
             <div>
             {
                 date.day &&  employee.employeeId ?

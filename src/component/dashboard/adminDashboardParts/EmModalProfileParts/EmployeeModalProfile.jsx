@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import EmInfo from "./Emlnfo";
 import WeeklyCustomersList from "./WeeklyCustomersList";
-import HistoryList from "./HisotryList";
+
 
 import styles from "../../../../../public/styles/dashboard.module.css";
 
@@ -64,7 +64,7 @@ function EmployeeModalProfile( props ){
     else if( weeklyCustomers)
         ActiveComponent = WeeklyCustomersList;
     else if( history )
-        ActiveComponent = HistoryList;
+        ActiveComponent = WeeklyCustomersList;
 
     Modal.setAppElement("#__next");
 

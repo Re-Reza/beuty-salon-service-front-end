@@ -13,12 +13,20 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const EmployeeDashboard = () => {
 
     const [showState, setShowState] = useState({
-        main: false,
-        reserveCustomer: true,
+        main: true,
+        reserveCustomer: false,
         changeInfo : false,
-        notification: false
+        notification: false,
+        request : false
     });
 
+    function setRequest(){
+        setShowState({
+            ...showState,
+            request : !showState.request
+        })
+    }
+    
     const [employeeInfo, setEmployeeInfo ] = useState( {
         notifications : [
             {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 5, day: 1} },
@@ -64,7 +72,7 @@ const EmployeeDashboard = () => {
             <div className={styles["dashboard-mainContainer"]}>
 
                 <div id={styles["dashboard-header"]}>
-                    <HeadPart asideRef={asideRef} />
+                    <HeadPart request={showState.request}  asideRef={asideRef} />
                 </div>
 
                 <aside ref={asideRef} className={styles["dashboard-aside"]} >
@@ -109,7 +117,7 @@ const EmployeeDashboard = () => {
                             {/* <Loading2/> */}
                             <></>
                         </div>
-                        :<ActivePartComponent employeeInfo={ employeeInfo} isEmployee={true} />
+                        :<ActivePartComponent setRequest={setRequest} employeeInfo={ employeeInfo} isEmployee={true} />
                     }
                 </section>
 

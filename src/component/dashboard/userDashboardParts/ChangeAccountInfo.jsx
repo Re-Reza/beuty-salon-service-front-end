@@ -9,7 +9,7 @@ import Toast from '../../elements/Toast';
 import styles from "../../../../public/styles/dashboard.module.css"
 
 
-export function ChangeAccountInfo(){
+export function ChangeAccountInfo(props){
 
     // const [infoState, setInfoState ] = useState({
     //     fName : "",
@@ -65,6 +65,7 @@ export function ChangeAccountInfo(){
                     showToast : true,
                     msg : "اطلاعات شما با موفقیت تغییر کرد"
                 });
+                props.setRequest();
                 hideToast();
             
             }).catch( err => {

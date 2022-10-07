@@ -19,12 +19,12 @@ export function SelectByEmployee () {
 
     const { userChoiceState, dispatch } = useContext( reserveContext );
     // const { date } = useContext( reserveContext ).userChoiceState;
-    const { service, employee, date } = userChoiceState;
-    
+    const { service, employee, date, requestDate } = userChoiceState;
+    console.log(requestDate)
     useEffect(() => {
         
         provideEmployessOfServive(service.id).then(response => {
-
+            console.log(response);
             setState({
                 ...state,
                 employeeList : response.data.result
@@ -51,7 +51,7 @@ export function SelectByEmployee () {
             })
         }
         
-    }, [employee.employeeId]);
+    }, [employee.employeeId, requestDate]);
 
     return (
         <div className={styles.selectedByEmployee}> 

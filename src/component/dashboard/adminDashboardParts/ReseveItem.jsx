@@ -24,11 +24,9 @@ const ReserveItem = ( props ) => {
         day: null,
         hour: null,
         minute:null,
-        reserveTime : reserveTime ? reserveTime : null, 
-        status : status
     });
 
-    const ws = useRef(null);
+    const selectRef = useRef(null);
 
     const isPhone = useMediaQuery({
         query: "(max-width: 550px)"
@@ -37,22 +35,29 @@ const ReserveItem = ( props ) => {
     const setCustomerDate = (event) => {
         const { year, month, day, hour, minute } = event;
         newDateState.year = year;
-        newDateState.month = month<10? "0"+month.number : month.number;
-        newDateState.day = day<10? "0"+day : day;
-        newDateState.hour = hour<10? "0"+hour : hour;
-        newDateState.minute = minute<10? "0"+minute : minute;
-        console.log(newDateState);
+        // newDateState.month = month<10? "0"+month.number : month.number;
+        // newDateState.day = day<10? "0"+day : day;
+        // newDateState.hour = hour<10? "0"+hour : hour;
+        // newDateState.minute = minute<10? "0"+minute : minute;
+
+        newDateState.month = month.number;
+        newDateState.day = day;
+        newDateState.hour = hour;
+        newDateState.minute = minute;
     }
 
     const sendNewCustomerDate = () => {
         console.log(newDateState);
         const { year, month, day, hour, minute } = newDateState;
-        const newData = hour+":"+minute+"|"+year+"/"+month+"/"+day
+   
+        let newData = {};
+        if(year)
+            newData.newTime = hour+":"+minute+"|"+year+"/"+month+"/"+day;
+        if(selectRef.current.options[selectRef.current.selectedIndex].value !== "null")
+            newData.newStatus = selectRef.current.options[selectRef.current.selectedIndex].value;
+    
         setFinalTime(id, newData).then( response => {
-            setNewDate({
-                reserveTime : response.data.result,
-                status : "finalized"
-            })
+            props.setReRequest();
         }).catch( err => {
             console.log(err);
         })
@@ -63,12 +68,18 @@ const ReserveItem = ( props ) => {
         return date.split('/')
     }
 
+    function splitTime(time){
+        return time.split(':')
+    }
+
     function convertToPersian(value){
-        console.log(value);
-        const parts = value.split('|');
-        console.log(parts)
-        console.log( splitDate(parts[1]) );
-        
+        if(value!=null && value != undefined )
+        {
+            const parts = value.split('|');
+            const splitedDate = splitDate(parts[1]);
+            const splitedTime = splitTime(parts[0])
+            return convertEnToPe(parseInt(splitedTime[0]) )+":"+convertEnToPe(parseInt(splitedTime[1])+" "+convertEnToPe(parseInt(splitedDate[0]) ) +"/"+ convertEnToPe(parseInt(splitedDate[1])) +"/"+ convertEnToPe(parseInt(splitedDate[2])) );
+        }
     }
 
     const dateParts = splitDate(reserveDate);
@@ -77,15 +88,15 @@ const ReserveItem = ( props ) => {
             <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
             <td style={{minWidth:"100px"}}>{customerName +" "+ customerLastname}</td>
-            <td style={{minWidth:"150px"}}>{employeeFname+" "+employeeLname}</td>
             <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td>
+            <td style={{minWidth:"150px"}}>{employeeFname+" "+employeeLname}</td>
             {
                 props.history ? 
                 <td>{status == "cancelled" ? "کنسل شده" : "انجام شده" }</td>
                 :
                 <>
                     <td className={styles['employee-date-modifier']} style={{minWidth:"150px"}}>
-                            <DatePicker ref={ws} onChange={setCustomerDate} animations = {[
+                            <DatePicker onChange={setCustomerDate} animations = {[
                                 opacity(),
                                 transition({
                                 from: 40,
@@ -112,15 +123,15 @@ const ReserveItem = ( props ) => {
                     <td style={{minWidth:"100px"}}>
                     {
                         //convertToPersian(newDateState.reserveTime )
-                        newDateState.status == "finalized" ?
-                        newDateState.reserveTime: ""
+                        status == "finalized" ?
+                        convertToPersian(reserveTime): ""
                     }
                     </td>
                     <td style={{minWidth:"100px"}}>
-                        <select  className="form-select form-select-sm">
-                            <option >انتخاب کنید</option>
-                            <option value="1">انجام شده</option>
-                            <option value="2">کنسل شده</option>
+                        <select ref={selectRef} className="form-select form-select-sm">
+                            <option value="null">انتخاب کنید</option>
+                            <option value="done">انجام شده</option>
+                            <option value="cancelled">کنسل شده</option>
                         </select>
                    
                     </td>

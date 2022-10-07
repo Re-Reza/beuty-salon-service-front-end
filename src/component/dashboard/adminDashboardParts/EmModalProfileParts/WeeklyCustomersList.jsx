@@ -31,6 +31,12 @@ function WeeklyCustimersList (props) {
     else 
         filteredList = state.reserveList.filter( item => item.status == 'waiting' || item.status == 'finalized');   
 
+    
+    if( filteredList.length ==0)
+        return <div className='fs-4' style={{color:"var(--yellow)"}}>
+            رزروی پیدا نشد
+        </div>
+
     return (
             state.loading ? 
             <></> : 

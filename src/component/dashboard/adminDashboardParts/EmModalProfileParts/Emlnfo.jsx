@@ -110,7 +110,7 @@ const EmInfo = (props) =>{
                     chageInfoState.changeMode ?
                     <div className='d-flex flex-column mb-4'>
                         <label className='mb-3'>خدمات</label>
-                        <div>
+                        <div className={styles['services-container']}>
                             {
                                 chageInfoState.allServices.map((service, index) => {
                                     const check = isChecked(service.id);

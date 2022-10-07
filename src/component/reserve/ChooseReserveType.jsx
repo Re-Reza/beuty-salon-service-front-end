@@ -1,7 +1,7 @@
-import React, { useState} from "react";
+import React, { useState, useContext } from "react";
 
 import { SelectByEmployee, SelectByDate } from "../reserve";
-
+import reserveContext from "./reserveContext";
 import styles from "../../../public/styles/reservePage.module.css";
 
 export function ChooesReserveType() {
@@ -14,6 +14,15 @@ export function ChooesReserveType() {
         setState({
             ...state,
             selectByEm : value
+        });
+        resetData();
+    }
+
+    const { dispatch } = useContext(reserveContext);
+
+    function resetData(){
+        dispatch({
+            type : "RESET_DATA"
         });
     }
 

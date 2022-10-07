@@ -9,7 +9,7 @@ import styles from "../../../public/styles/reservePage.module.css";
 
 export const ReserveResult = () => {
 
-    const { date, employee, service} = useContext ( reserveContext ).userChoiceState;
+    const { userChoiceState : {date, employee, service}, dispatch} = useContext ( reserveContext );
     const [ state, setState ] = useState({ 
         showToast : false,
         msg: null,
@@ -41,6 +41,9 @@ export const ReserveResult = () => {
                 msg :  "رزرو با موفقیت ثبت شد",
                 error : false
             });
+            dispatch({
+                type : "SET_DATE_REQUEST"
+            })
             hideToast();
         }).catch( err => {
             console.log(err.response.status);

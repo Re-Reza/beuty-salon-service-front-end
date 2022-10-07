@@ -25,4 +25,8 @@ export function addNewEmployee(newEmployee){
     return axiosInstance.post(`admin/addNewEmployee?token=${getCookie()}`, newEmployee );
 }
 
+export function searchEmployee(data){
+    return axiosInstance.get(`admin/searchEmployee?data=${data}&token=${getCookie()}`)
+}
+
 //}?token=${getCookie()}

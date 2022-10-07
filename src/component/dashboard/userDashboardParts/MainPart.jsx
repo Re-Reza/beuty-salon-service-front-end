@@ -40,7 +40,7 @@ export function MainPart(props){
     useEffect(() => {
         if(props.isEmployee == true || props.isAdmin == true){
             provideEmployeeInfo().then(response => {    
-                // console.log(response)
+                console.log(response)
                 // console.log(Object.entries(response.data.result));
                 setState({
                     ...state,
@@ -103,7 +103,7 @@ export function MainPart(props){
                     profileImg: response.data.result,
                     newProfileImg : null,
                 });
-                
+                props.setRequest();
                 hideToast(response.data.result);
             }).catch(err => {
                 setState({
@@ -134,6 +134,7 @@ export function MainPart(props){
                 profileImg : null,
                 newProfileImg :null
             });
+            props.setRequest();
         }).catch( err => {
             console.log(err)
         })
