@@ -29,4 +29,9 @@ export function searchEmployee(data){
     return axiosInstance.get(`admin/searchEmployee?data=${data}&token=${getCookie()}`)
 }
 
+export function sendMessageFromAdmin(messageData){
+    console.log("api")
+    return axiosInstance.post(`admin/sendMessage?token=${getCookie()}`, messageData);
+}
+
 //}?token=${getCookie()}

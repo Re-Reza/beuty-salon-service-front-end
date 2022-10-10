@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-import {  EmployeeCustomerReserve, Notifications } from "../employeeDashboardParts";
-import { MainPart } from "../userDashboardParts"
+import {  EmployeeCustomerReserve } from "../employeeDashboardParts";
+import { MainPart, Notifications } from "../userDashboardParts"
 import { HeadPart } from "../HeadPart";
 import { ChangeAccountInfo } from "../userDashboardParts";
 
@@ -26,17 +26,6 @@ const EmployeeDashboard = () => {
             request : !showState.request
         })
     }
-    
-    const [employeeInfo, setEmployeeInfo ] = useState( {
-        notifications : [
-            {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 5, day: 1} },
-            {title: "مدیریت سایت", message: "تغییر زمان کاری", date:{year: 1401, month: 5, day: 10} },
-            {title: "مدیریت سایت", message: "جلسه جدید در سالن برگزار می گردد", date:{year: 1401, month: 6, day: 5} },
-            {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 6, day: 12} },
-            {title: "مدیریت سایت", message: "جلسه جدید در سالن برگزار می گردد", date:{year: 1401, month: 7, day: 18} },
-            {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 8, day: 14} }
-          ]
-    } );
 
     const asideRef = useRef(null);
 
@@ -98,7 +87,7 @@ const EmployeeDashboard = () => {
                         <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             اعلانات
                             <div className={styles["notification-box"]} >
-                                <span className={styles["notification-count"]}>{convertEnToPe(employeeInfo.notifications.length)}</span>
+                                <span className={styles["notification-count"]}>{convertEnToPe(6)}</span>
                                 <div className={styles["notification-bell"]}>
                                     <span className={styles["bell-top"]}></span>
                                     <span className={styles["bell-middle"]}></span>
@@ -117,7 +106,7 @@ const EmployeeDashboard = () => {
                             {/* <Loading2/> */}
                             <></>
                         </div>
-                        :<ActivePartComponent setRequest={setRequest} employeeInfo={ employeeInfo} isEmployee={true} />
+                        :<ActivePartComponent setRequest={setRequest} isEmployee={true} />
                     }
                 </section>
 

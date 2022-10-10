@@ -95,8 +95,8 @@ const ReserveItem = ( props ) => {
                 <td>{status == "cancelled" ? "کنسل شده" : "انجام شده" }</td>
                 :
                 <>
-                    <td className={styles['employee-date-modifier']} style={{minWidth:"150px"}}>
-                            <DatePicker onChange={setCustomerDate} animations = {[
+                    <td style={{minWidth:"150px"}}>
+                        <DatePicker onChange={setCustomerDate} animations = {[
                                 opacity(),
                                 transition({
                                 from: 40,
@@ -136,7 +136,7 @@ const ReserveItem = ( props ) => {
                    
                     </td>
                     <td style={{minWidth:"100px"}}>
-                        <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال</button>
+                        <button onClick={ sendNewCustomerDate } style={ {marginTop:"0"} } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال</button>
                     </td>
                 </>
             }

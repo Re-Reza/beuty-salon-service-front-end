@@ -25,3 +25,7 @@ export function changeUserInfo(newData){
 export function provideGeneralInfo(){
     return axiosInstance.get(`userDashboard/generalInfo?token=${getCookie()}`);
 }
+
+export function provideMessages(){
+    return axiosInstance.get(`userDashboard/userMessages?token=${getCookie()}`);
+}

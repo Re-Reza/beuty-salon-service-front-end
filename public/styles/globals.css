@@ -156,6 +156,13 @@ p{
     background-color: var(--yellow) !important;
     font-size: 1.2em; 
 }
+textarea{
+    resize: none !important;
+}
+textarea:focus{
+    outline: none;
+}
+
 @keyframes showToast{
     0%{
         right: -15%;

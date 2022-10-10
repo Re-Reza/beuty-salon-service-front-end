@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-import { EmployeesList, ReserveList } from "../adminDashboardParts";
-import { Notifications } from '../employeeDashboardParts/Notifications';
+import { EmployeesList, ReserveList, SendMessage } from "../adminDashboardParts";
+import { Notifications } from '../userDashboardParts';
 import { HeadPart, MainPart, ChangeAccountInfo } from '../userDashboardParts';
 import Footer from "../../footer/Footer";
 
@@ -12,11 +12,12 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const AdminDashboard = () => {
 
     const [showState, setShowState] = useState({
-      main: true,
+      main: false,
       reserveCustomer: false,
       changeInfo : false,
-      notification: false,
+      notification: true,
       employeeList: false,
+      sendMessage : false,
       request : false
   });
 
@@ -24,7 +25,7 @@ const AdminDashboard = () => {
     setShowState({
         ...showState,
         request : !showState.request
-    })
+    });
   }
 
   const asideRef = useRef(null);
@@ -43,7 +44,7 @@ const AdminDashboard = () => {
       asideRef.current.classList.remove( styles["show-aside"] );
   }
 
-  const { main, changeInfo, reserveCustomer, notification, employeeList} = showState;
+  const { main, changeInfo, reserveCustomer, notification, employeeList, sendMessage} = showState;
 
   let ActivePartComponent;
     if(main)
@@ -55,7 +56,9 @@ const AdminDashboard = () => {
     else if(notification)
         ActivePartComponent = Notifications;
     else if(reserveCustomer) 
-        ActivePartComponent = ReserveList;
+        ActivePartComponent = ReserveList;  
+    else if(sendMessage) 
+        ActivePartComponent = SendMessage;
   
   return (
     <>
@@ -101,11 +104,21 @@ const AdminDashboard = () => {
                             </div>
                         </div>
                     </li>
-                    <li onClick={()=>{switchPart('employeeList')}} className={employeeList?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+
+                    <li onClick={()=>{switchPart('employeeList')}} style={ {paddingLeft: "0"} } className={employeeList?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                           لیست کارمندان
                         <img style={ {width:"45px"} } src="/imgs/icons/employee.png" alt="employeeList" />
                     </li>
+
+                    <li onClick={()=>{switchPart('sendMessage')}} className={sendMessage?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+                        ارسال پیام به کاربران
+                        <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                    </li>
+
                 </ul>
+                <div>
+                    خروج از حساب
+                </div>
             </aside>
 
             <section className={ styles["dashboard-content-section"]} >

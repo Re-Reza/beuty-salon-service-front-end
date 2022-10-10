@@ -1,30 +1,45 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 
 import NotificationItem from './NotificationItem';
-
+import { provideMessages } from "../../../dataService/userDashboardProvider";
 import styles from "../../../../public/styles/dashboard.module.css";
 
-export const Notifications = () => {
+export const Notifications = (props) => {
   
-  const [ notificationState, setNotificationState ] = useState({
-
-    notifications : [
-      {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 5, day: 1} },
-      {title: "مدیریت سایت", message: "تغییر زمان کاری", date:{year: 1401, month: 5, day: 10} },
-      {title: "مدیریت سایت", message: "جلسه جدید در سالن برگزار می گردد", date:{year: 1401, month: 6, day: 5} },
-      {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 6, day: 12} },
-      {title: "مدیریت سایت", message: "جلسه جدید در سالن برگزار می گردد", date:{year: 1401, month: 7, day: 18} },
-      {title: "ثبت مشتری جدید", message: "مشتری جدید به لیست رزرو شما اضافه گردید", date:{year: 1401, month: 8, day: 14} }
-    ]
-
+  const [ state, setState ] = useState({
+    notifications : [],
+    loading : true
   });
 
+  useEffect(() => {
+    
+    provideMessages().then( response => {
+      console.log(response);
+      setState({
+        notifications : response.data.result,
+        loading : false
+      });
+    }).catch( err => {
+      console.log(err);
+    });
+
+  }, []);
+
+  let role;
+  if( props.isAdmin)
+    role = 1;
+  else if(props.isEmployee)
+    role = 2;
+  else 
+    role = 3;
+
   return (
+    state.loading ? <div>loading</div>:
     <div className={ styles["nofication-container"] }>
       
       <ul className={ styles["nofications-list"] }>
       {
-        notificationState.notifications.map( (item, index ) => <NotificationItem key={index} item={item}/>)
+        state.notifications.map( (item, index ) => <NotificationItem role={role} key={index} item={item}/>)
       }
       </ul>
 
