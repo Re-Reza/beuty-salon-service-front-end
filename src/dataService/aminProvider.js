@@ -30,8 +30,15 @@ export function searchEmployee(data){
 }
 
 export function sendMessageFromAdmin(messageData){
-    console.log("api")
     return axiosInstance.post(`admin/sendMessage?token=${getCookie()}`, messageData);
+}
+
+export function deleteMessage(messageId){
+    return axiosInstance.delete(`admin/deleteMessage/${messageId}?token=${getCookie()}`);
+}
+
+export function provideAllAdminMessages(){
+    return axiosInstance.get(`admin/allAdminMessages?token=${getCookie()}`);
 }
 
 //}?token=${getCookie()}

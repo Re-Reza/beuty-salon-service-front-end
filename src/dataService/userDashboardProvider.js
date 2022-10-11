@@ -29,3 +29,7 @@ export function provideGeneralInfo(){
 export function provideMessages(){
     return axiosInstance.get(`userDashboard/userMessages?token=${getCookie()}`);
 }
+
+export function readMessage(data){
+    return axiosInstance.post(`userDashboard/readMessage?token=${getCookie()}`, data);
+}

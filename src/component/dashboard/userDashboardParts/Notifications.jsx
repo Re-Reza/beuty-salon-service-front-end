@@ -25,6 +25,20 @@ export const Notifications = (props) => {
 
   }, []);
 
+  function deleteNotification(id){
+    const filteredList = state.notifications.filter( item => {
+      if(item.reserveId)
+        return item
+      if(item.id != id)
+        return item;
+    });
+    console.log(filteredList);
+    setState({
+      ...state,
+      notifications: filteredList
+    });
+  }
+
   let role;
   if( props.isAdmin)
     role = 1;
@@ -34,14 +48,18 @@ export const Notifications = (props) => {
     role = 3;
 
   return (
-    state.loading ? <div>loading</div>:
+    state.loading ? <div>loading</div> :
     <div className={ styles["nofication-container"] }>
       
+    {
+      state.notifications.length > 0 ?
       <ul className={ styles["nofications-list"] }>
       {
-        state.notifications.map( (item, index ) => <NotificationItem role={role} key={index} item={item}/>)
+        state.notifications.map( (item, index ) => <NotificationItem deleteNotification={deleteNotification} role={role} key={index} item={item}/>)
       }
-      </ul>
+      </ul>:
+      <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>اعلان جدیدی پیدا نشد <span className='notFoundItem'>:)</span></div>
+    }
 
     </div>
   )

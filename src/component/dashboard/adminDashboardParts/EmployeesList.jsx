@@ -67,8 +67,8 @@ export const EmployeesList = () => {
                 </div>
 
                 <div className={styles["employeeLiat-container"] }>
-                    <div className={"table-responsive"}>
-                        <table className={"table"}>
+                    <div className="table-responsive">
+                        <table className="table">
                             <thead className={"bg-dark text-white "+styles['font-responsive']} >
                                 <tr>
                                     <th>ردیف</th>

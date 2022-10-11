@@ -2,13 +2,14 @@ import React from 'react';
 
 import { convertEnToPe } from "persian-number";
 
+import { readMessage } from "../../../dataService/userDashboardProvider";
+
 import styles from "../../../../public/styles/dashboard.module.css";
 
-
 const NotificationItem = (props) => {
-    
+
     const { item : {reserveId, reserveDate, status, reserveTime, customerName, employeeName,  serviceTitle,
-        title, text, createdTime }, role } = props;
+        title, text, createdTime,id }, role } = props;
     let mTitle = reserveId ? "گزارش سیسستم" : title;
     let mText;
     if(text)
@@ -33,12 +34,20 @@ const NotificationItem = (props) => {
         }   
     }
 
-    let mDate = createdTime ? createdTime : ""; 
+    function callReadMessageApi(){
+        const data = {
+            isReserve : reserveId ? 1 : 0,
+            messageId : reserveId ? reserveId : id
+        };
+        console.log(data)
+        readMessage(data).then( response => {
+            props.deleteNotification(data.messageId);
+        }).catch( err => {
+            // console.log(err);
+        });
+    }   
 
-    const deleteNotification = () => {
-        //delete Notification
-        alert(title)
-    }
+    let mDate = createdTime ? createdTime : ""; 
 
     return (
         <li className={styles["notification-item"]} >
@@ -50,13 +59,13 @@ const NotificationItem = (props) => {
                 
                 <div className={styles["notifiation-info"]} >
                     <span>{mTitle}</span>
-                    <span style={{wordBreak : "break-all"}}>{mText}</span>
+                    <span style={{wordBreak : "break-word"}}>{mText}</span>
                 </div>
             </div>
 
-            <div className="d-flex flex-column align-items-end">
-                <span title='حذف اعلان' onClick={deleteNotification} className="mb-1 text-danger" role="button">
-                    <i className="fa fa-trash-o" aria-hidden="true"></i>
+            <div  className={id? "d-flex flex-column align-items-end justify-content-between" : "d-flex flex-column align-items-end justify-content-end"} style={{height:"100%"}}>
+                <span onClick={callReadMessageApi} title='خوانده شده' style={ {cursor:"pointer"} }>
+                    <img style={{ width:"28px"}}src="/imgs/icons/read-msg.png" alt="read" />
                 </span>
                 <span style={{borderBottom:"1px solid #3d3d3d"}}>
                 {

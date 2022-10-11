@@ -6,7 +6,7 @@ function Toast(props) {
 
 
     return <div className={error? "toastContainer errorToast" : "toastContainer successToast"}>
-        {message}
+        <i className='fa fa-check-circle'></i> <span>{message}</span>  
     </div>
 }
 
