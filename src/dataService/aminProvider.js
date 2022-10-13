@@ -41,4 +41,25 @@ export function provideAllAdminMessages(){
     return axiosInstance.get(`admin/allAdminMessages?token=${getCookie()}`);
 }
 
+export function provideCategoriesServices(){
+    return axiosInstance.get(`admin/provideCategoriesServices?token=${getCookie()}`);
+}
+
+export function removeService (id, deleteSevice){
+    return axiosInstance.delete(`admin/deleteService?id=${id}&deleteSevice=${deleteSevice}&token=${getCookie()}`);
+}
+
+export function addNewCategory(data){
+    return axiosInstance.post(`admin/addNewServiceCategoey?token=${getCookie()}`, data);
+}
+
+export function searchReserveByEmOrCustomer(isEmployee){
+    return axiosInstance.get(`admin/searchReservesByNameOrPhone?isEmployee=${isEmployee}&token=${getCookie()}`);
+}
+
+export function searchReserveByDate(reserveDate, searchAll, history){
+    console.log(history)
+    return axiosInstance.get(`admin/searchInReservesByDate?reserveDate=${reserveDate}&searchAll=${searchAll}&history=${history}&token=${getCookie()}`);
+}
+
 //}?token=${getCookie()}

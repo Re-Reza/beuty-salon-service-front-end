@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-import { EmployeesList, ReserveList, SendMessage } from "../adminDashboardParts";
+import { EmployeesList, ReserveList, SendMessage, Service } from "../adminDashboardParts";
 import { Notifications } from '../userDashboardParts';
 import { HeadPart, MainPart, ChangeAccountInfo } from '../userDashboardParts';
 import Footer from "../../footer/Footer";
@@ -13,11 +13,12 @@ const AdminDashboard = () => {
 
     const [showState, setShowState] = useState({
       main: false,
-      reserveCustomer: false,
+      reserveCustomer: true,
       changeInfo : false,
-      notification: true,
+      notification: false,
       employeeList: false,
       sendMessage : false,
+      services : false,
       request : false
   });
 
@@ -44,7 +45,7 @@ const AdminDashboard = () => {
       asideRef.current.classList.remove( styles["show-aside"] );
   }
 
-  const { main, changeInfo, reserveCustomer, notification, employeeList, sendMessage} = showState;
+  const { main, changeInfo, services,reserveCustomer, notification, employeeList, sendMessage} = showState;
 
   let ActivePartComponent;
     if(main)
@@ -59,6 +60,8 @@ const AdminDashboard = () => {
         ActivePartComponent = ReserveList;  
     else if(sendMessage) 
         ActivePartComponent = SendMessage;
+    else if(services)
+        ActivePartComponent = Service;
   
   return (
     <>
@@ -113,10 +116,14 @@ const AdminDashboard = () => {
                     <li onClick={()=>{switchPart('sendMessage')}} className={sendMessage?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                         ارسال پیام به کاربران
                         <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                    </li>            
+                    
+                    <li onClick={()=>{switchPart('services')}} className={services?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+                        لیست خدمات
+                        <img src="/imgs/icons/service.png" alt="service" />
                     </li>
-
                 </ul>
-                <div>
+                <div >
                     خروج از حساب
                 </div>
             </aside>

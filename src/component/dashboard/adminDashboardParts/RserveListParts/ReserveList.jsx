@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import ReseveItem from './ReseveItem';
-import styles from "../../../../public/styles/dashboard.module.css";
-import { provideReserveList } from "../../../dataService/aminProvider";
+import ReserveSearch from './ReserveSearch';
+import { provideReserveList } from "../../../../dataService/aminProvider";
+
+import styles from "../../../../../public/styles/dashboard.module.css";
 
 export const ReserveList = () => {
   
@@ -14,10 +16,10 @@ export const ReserveList = () => {
         reRequest : false
     });
     
+
     const [ currentReserve, setCurrentReserve ] = useState (true);
 
     useEffect( () => {
-        console.log("requesting")
         const statusCodition = currentReserve ?  ["waiting", "finalized" ] : ["cancelled", "done"]
         provideReserveList(statusCodition).then( response =>{
             console.log(response);
@@ -51,11 +53,8 @@ export const ReserveList = () => {
 
             <div>
 
-                {/* <div className='position-relative mb-4'>
-                    <input id={styles["EmployeeModalProfile-History-search-input"]} type="text" placeholder="جستجو"/>
-                    <span className={styles["EmployeeModalProfile-searchIcon"]}><i className="fa fa-search" aria-hidden="true"></i></span>
-                </div> */}
-
+                <ReserveSearch currentReserve={currentReserve}start={customersList.start} end={customersList.end}/>
+                
                 <div className={ styles["dashboard-reserveList"] }>
                     
                     <div className={styles["dashboard-reserveBtnContainer"]}>

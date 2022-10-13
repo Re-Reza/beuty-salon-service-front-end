@@ -1,4 +1,5 @@
 export * from "./EmployeesList";
-export * from "./ReserveList";
-export * from "./ReseveItem";
+export * from "./RserveListParts/ReserveList";
+export * from "./RserveListParts/ReseveItem";
 export * from "./SendMessage";
+export * from "./Service";

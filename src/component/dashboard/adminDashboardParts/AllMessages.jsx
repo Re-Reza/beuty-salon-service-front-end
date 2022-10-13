@@ -81,8 +81,8 @@ function AllMessages( props ){
                         
                             state.messageList.map( (item, index) => <tr key={index}>
                             <th scope="row">{++index}</th>
-                            <td>{item.title}</td>
-                            <td>{item.text}</td>
+                            <td style={{wordBreak:"break-word",  minWidth : "150px", maxWidth:"220px"}}>{item.title}</td>
+                            <td style={ { minWidth : "400px", maxWidth:"500px", wordBreak:"break-word"} }>{item.text}</td>
                             <td>{item.createdTime}</td>
                             <td>{defineMassegeReaders(item.messageType)}</td>
                             <td>

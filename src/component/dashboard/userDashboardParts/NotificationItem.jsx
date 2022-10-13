@@ -57,9 +57,9 @@ const NotificationItem = (props) => {
                     <img src="/imgs/notification-message.png" className={styles["notification-icon"]} alt={title} />
                 </div>
                 
-                <div className={styles["notifiation-info"]} >
+                <div style={{wordBreak : "break-word"}} className={styles["notifiation-info"]} >
                     <span>{mTitle}</span>
-                    <span style={{wordBreak : "break-word"}}>{mText}</span>
+                    <span>{mText}</span>
                 </div>
             </div>
 

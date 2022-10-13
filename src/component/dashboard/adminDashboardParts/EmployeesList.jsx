@@ -42,13 +42,12 @@ export const EmployeesList = () => {
 
     function submitSearch(){
         const data = searchInput.current.value;
-        console.log(data);
         searchEmployee(data).then( response => {
             setState({
                 ...state,
                 employeeList : response.data.result
             })
-        }).catch( err => console.log(err) );
+        }).catch( err => {});
     }
 
     return (

@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react'
 
 import { convertEnToPe } from "persian-number";
-import { setFinalTime } from "../../../dataService/employeeProvider";
+import { setFinalTime } from "../../../../dataService/employeeProvider";
 import DatePicker from "react-multi-date-picker";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import transition from "react-element-popper/animations/transition";
 import opacity from "react-element-popper/animations/opacity";
-import "react-multi-date-picker/styles/colors/yellow.css"
-import styles from "../../../../public/styles/dashboard.module.css"
+import "react-multi-date-picker/styles/colors/yellow.css";
+import styles from "../../../../../public/styles/dashboard.module.css";
 import { useMediaQuery } from 'react-responsive';
 
 const ReserveItem = ( props ) => {
