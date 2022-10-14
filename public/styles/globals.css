@@ -213,9 +213,15 @@ input[type="radio"]:checked{
     border-color: var(--yellow);
 }
 input[type="radio"]:focus{
-    box-shadow : none;
+    box-shadow : none; 
 }
-
+.hover-red{
+    transition: all 0.4s;
+    cursor: pointer;
+}
+.hover-red:hover{
+    color: red !important;
+}
 
 @keyframes showToast{
     0%{

@@ -29,7 +29,6 @@ export function HeadTop(){
         }
       }, []);
 
-    console.log(contextState);
     function logout(){
         removeCookie();
         dispatch({

@@ -46,14 +46,21 @@ export const ReserveList = () => {
             reRequest: !customersList.reRequest
         });
     }
-    
+
+    function setNewList(newList){
+        setcustomersList({
+            ...customersList,
+            list : newList
+        });
+    }
+
     return (
         customersList.loading? 
             <div>loading</div>:
 
             <div>
 
-                <ReserveSearch currentReserve={currentReserve}start={customersList.start} end={customersList.end}/>
+                <ReserveSearch setNewList={ setNewList} currentReserve={currentReserve}start={customersList.start} end={customersList.end}/>
                 
                 <div className={ styles["dashboard-reserveList"] }>
                     

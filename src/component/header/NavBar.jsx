@@ -20,7 +20,8 @@ export function NavBar(){
             if( window.pageYOffset >= navPosition)
             {
                 nav.classList.add(styles["sticky"])
-            }else {
+            }
+            else {
                 nav.classList.remove(styles["sticky"])
             }
         });

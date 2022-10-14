@@ -27,6 +27,13 @@
     padding: 2em;
     padding-top: 2.5em;
 }
+.dashboard-aside::-webkit-scrollbar {
+    display: none;
+}
+.dashboard-aside {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 .aside-title{
     color: #2c3e50;
     text-align: center;

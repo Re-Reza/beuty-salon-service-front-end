@@ -20,6 +20,9 @@ function ReserveSearch(props){
         date:null
     });
 
+    const selectRef = useRef(null);
+    const inputRef = useRef(null);
+
     function changeSearchType(event){
         console.log(event.target.value)
         setState({
@@ -29,27 +32,40 @@ function ReserveSearch(props){
     }
 
     const setSearchDtate = (event) => {
-        const { year, month, day, hour, minute } = event;
-        setState({
-            ...state,
-            date : year+"/"+month.number+"/"+day
-        });
+        try{
+            const { year, month, day, hour, minute } = event;
+            setState({
+                ...state,
+                date : year+"/"+month.number+"/"+day
+            });
+        }
+        catch( err ){
+            setState({
+                ...state,
+                date : null
+            });
+        }
     }
 
     function sreachSubmit(){
+        const isHistory = props.currentReserve ? 0 : 1;
         if( state.searchByDate ){
-            if( state.searchByDate != null){
-                searchReserveByDate(state.date, 0,props.currentReserve ? 0 : 1).then(response => {
-                    console.log(response);
+            console.log(state.searchByDate)
+            if( state.searchByDate != null ){
+                searchReserveByDate(state.date, 0, isHistory).then(response => {
+                    props.setNewList(response.data.result);
                 }).catch( err => console.log(err));
             }
         }
         else{       
+            const isEmployee = selectRef.current.options[selectRef.current.selectedIndex].value;
+            searchReserveByEmOrCustomer(isEmployee, isHistory,inputRef.current.value).then( response => {
+                console.log("first")
+                props.setNewList(response.data.result);
+            }).catch(err => console.log(err) ); 
 
         }
     }
-
-    const selectRef = useRef(null);
 
     return(
         <div className="d-flex flex-column">
@@ -88,12 +104,12 @@ function ReserveSearch(props){
                         // render={<InputIcon/>}
                         format="YYYY/MM/DD"
                         className="yellow"
-                        mapDays={ ({date}) => {     
-                            if(date.weekDay.number == 7) 
-                                return{
-                                        disabled: true,
-                                } 
-                        }}
+                        // mapDays={ ({date}) => {     
+                        //     if(date.weekDay.number == 7) 
+                        //         return{
+                        //                 disabled: true,
+                        //         } 
+                        // }}
                         inputClass={styles["calendarInput"]}
                         minDate={ props.start } maxDate = { props.end }
                         calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
@@ -104,10 +120,10 @@ function ReserveSearch(props){
                 :
                 <>
                     <div className='position-relative mb-4 '>
-                        <input id={styles["EmployeeModalProfile-History-search-input"]} type="text" placeholder={"نام یا شماره تلفن"} />
-                        <span onClick={sreachSubmit}className={styles["EmployeeModalProfile-searchIcon"]}><i className="fa fa-search" aria-hidden="true"></i></span>
+                        <input id={styles["EmployeeModalProfile-History-search-input"]} type="text" ref={inputRef} placeholder={"نام یا شماره تلفن"} />
+                        <span onClick={sreachSubmit} className={styles["EmployeeModalProfile-searchIcon"]}><i className="fa fa-search" aria-hidden="true"></i></span>
                     </div>
-                    <select ref={selectRef}className="form-select me-md-4 mb-4 mb-md-0" style={ {width:"180px", boxShadow:"0 0 8px #bdbcbc"} }>
+                    <select ref={selectRef} className="form-select me-md-4 mb-4 mb-md-0" style={ {width:"180px", boxShadow:"0 0 8px #bdbcbc"} }>
                         <option value="1">کارمند</option>
                         <option value="0">مشتری</option>
                     </select>

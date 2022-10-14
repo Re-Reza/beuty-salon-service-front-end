@@ -40,7 +40,6 @@ export function ReseveList(){
     }
 
     function deleteReserve(reserveId){
-        console.log("here")
         const filteredReserves = state.reserveList.filter( item => item.id != reserveId );
         setState({
             ...state,

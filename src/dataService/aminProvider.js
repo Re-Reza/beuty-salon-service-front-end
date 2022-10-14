@@ -53,12 +53,11 @@ export function addNewCategory(data){
     return axiosInstance.post(`admin/addNewServiceCategoey?token=${getCookie()}`, data);
 }
 
-export function searchReserveByEmOrCustomer(isEmployee){
-    return axiosInstance.get(`admin/searchReservesByNameOrPhone?isEmployee=${isEmployee}&token=${getCookie()}`);
+export function searchReserveByEmOrCustomer(isEmployee, history, value){
+    return axiosInstance.get(`admin/searchReservesByNameOrPhone?isEmployee=${isEmployee}&history=${history}&searchValue=${value}&token=${getCookie()}`);
 }
 
 export function searchReserveByDate(reserveDate, searchAll, history){
-    console.log(history)
     return axiosInstance.get(`admin/searchInReservesByDate?reserveDate=${reserveDate}&searchAll=${searchAll}&history=${history}&token=${getCookie()}`);
 }
 

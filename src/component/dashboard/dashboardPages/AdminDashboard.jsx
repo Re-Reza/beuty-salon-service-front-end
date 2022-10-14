@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { EmployeesList, ReserveList, SendMessage, Service } from "../adminDashboardParts";
 import { Notifications } from '../userDashboardParts';
 import { HeadPart, MainPart, ChangeAccountInfo } from '../userDashboardParts';
+import LogOut from "../LogOut";
 import Footer from "../../footer/Footer";
 
 import { convertEnToPe } from "persian-number";
@@ -123,9 +124,9 @@ const AdminDashboard = () => {
                         <img src="/imgs/icons/service.png" alt="service" />
                     </li>
                 </ul>
-                <div >
-                    خروج از حساب
-                </div>
+
+                <LogOut/>
+
             </aside>
 
             <section className={ styles["dashboard-content-section"]} >

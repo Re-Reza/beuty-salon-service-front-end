@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 
 import {  EmployeeCustomerReserve } from "../employeeDashboardParts";
-import { MainPart, Notifications } from "../userDashboardParts"
+import { MainPart, Notifications, ReseveList } from "../userDashboardParts"
 import { HeadPart } from "../HeadPart";
 import { ChangeAccountInfo } from "../userDashboardParts";
+import LogOut from "../LogOut";
 
 import { convertEnToPe } from "persian-number";
 
@@ -17,6 +18,7 @@ const EmployeeDashboard = () => {
         reserveCustomer: false,
         changeInfo : false,
         notification: false,
+        myReserves : false,
         request : false
     });
 
@@ -44,7 +46,7 @@ const EmployeeDashboard = () => {
         asideRef.current.classList.remove( styles["show-aside"] );
     }
 
-    const { main, changeInfo, reserveCustomer, notification} = showState;
+    const { main, changeInfo, reserveCustomer, notification, myReserves } = showState;
 
     let ActivePartComponent;
     if(main)
@@ -55,6 +57,8 @@ const EmployeeDashboard = () => {
         ActivePartComponent = EmployeeCustomerReserve;
     else if(notification)
         ActivePartComponent = Notifications;
+    else if(myReserves)
+        ActivePartComponent = ReseveList;
 
     return (
         <>        
@@ -76,9 +80,13 @@ const EmployeeDashboard = () => {
                             اطلاعات کارمند
                             <i className="fa fa-user" aria-hidden="true"></i>
                         </li>
-                        <li onClick={()=>{switchPart('reserveCustomer')}} className={ reserveCustomer ? styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"] }>
+                        <li onClick={()=>{switchPart('reserveCustomer')}} style={{paddingLeft:"0"}}className={ reserveCustomer ? styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"] }>
                             رزرو مشتریان  
-                            <i className="fa fa-calendar-check-o" aria-hidden="true"></i>                          
+                            <img src="/imgs/icons/reserve.png" alt="reserve-icon" />               
+                        </li>
+                        <li onClick={()=>{switchPart('myReserves')}} className={myReserves?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+                            رزرو های من
+                            <i className="fa fa-calendar-check-o" aria-hidden="true"></i> 
                         </li>
                         <li onClick={()=>{switchPart('changeInfo')}} className={changeInfo?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             تغییر اطلاعات حساب
@@ -97,6 +105,7 @@ const EmployeeDashboard = () => {
                             </div>
                         </li>
                     </ul>
+                    <LogOut/>
                 </aside>
                 
                 <section className={ styles["dashboard-content-section"]} >

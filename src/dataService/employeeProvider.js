@@ -13,7 +13,3 @@ export function setFinalTime(reserveId, newData){
     return axiosInstance.put(`employeeDashboard/editDateAndTime/${reserveId}?token=${getCookie()}`, newData);
 }
 
-//reserves that belongs to employee its self
-export function provideEmployeeReserves(employeeId){
-    return axiosInstance.get(`employeeDashboard/extractReserves/${employeeId}?token=${getCookie()}`);
-}

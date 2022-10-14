@@ -27,6 +27,7 @@ const EmployeeResItem = ( props ) => {
     });
 
     const ws = useRef(null);
+    const selectRef = useRef(null);
 
     const isPhone = useMediaQuery({
         query: "(max-width: 550px)"
@@ -108,8 +109,8 @@ const EmployeeResItem = ( props ) => {
                         minDate={ props.start } maxDate = { props.end }
                         calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
                     />
-                    <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال تاریخ</button>
-                        </>
+                    
+                    </>
                     :<>تاریخ نهایی شده و قابل تغییر نیست</>
                     }
                     </td>
@@ -117,8 +118,18 @@ const EmployeeResItem = ( props ) => {
                     {
                         //convertToPersian(newDateState.reserveTime )
                         newDateState.status == "finalized" ?
-                        newDateState.reserveTime: ""
+                        "newDateState.reserveTime": ""
                     }
+                    </td>
+                    <td>                        
+                        <select ref={selectRef} className="form-select form-select-sm">
+                            <option value="null">انتخاب کنید</option>
+                            <option value="done">انجام شده</option>
+                            <option value="cancelled">کنسل شده</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button onClick={ sendNewCustomerDate } className={styles["reserve-send-newDate-btn"]+" me-4"}>اعمال</button>
                     </td>
                 </>
             }

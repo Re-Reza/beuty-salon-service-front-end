@@ -39,7 +39,7 @@ export const EmployeeCustomerReserve = () => {
         filteredList = customersList.list.filter( item => item.status == 'waiting' || item.status == 'finalized');   
     else 
         filteredList = customersList.list.filter( item => item.status == 'done' || item.status == 'cancelled');
-    console.log(filteredList)
+    
     return (
         customersList.loading? 
             <div>loading</div>:
@@ -63,8 +63,9 @@ export const EmployeeCustomerReserve = () => {
                             <th scope="col">خدمت</th>
                             <th scope="col">نام مشتری</th>
                             <th scope="col">تاریخ انتخابی مشتری</th>
-                            <th scope="col">تغییر تاریخ</th>
                             <th scope="col">تاریخ نهایی</th>
+                            <th scope='col' style={{minWidth:"100px"}}>تغییر وضعیت رزرو</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
 
