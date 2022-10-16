@@ -1,0 +1,106 @@
+.dashboard-plan{
+    padding:2em 2em;
+    background-color: #ffff; 
+    border-radius: 8px;
+    box-shadow: 0 0 12px #d5d3d3;
+    color: var(--dark);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.plan-week{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5em;
+    box-shadow: 0 0 6px rgb(149 144 144);
+    border-radius: 9px;
+}
+.plan-week-title{
+    width: 100%;
+    text-align: center;
+    border-radius: 9px 9px 0 0;
+    background-color: var(--yellow);
+    color: #fff;
+    padding-top: .5em;
+    font-size: 1.11em;
+    font-weight: 600;
+    padding: .9em 0;
+}
+.plan-week-list{
+    width: 100%;
+    padding: 2em;
+    display: grid;
+    margin-bottom: 0;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 120px) );
+    grid-row-gap: 20px;
+    grid-column-gap: 25px;
+    border-radius: 0 0 9px 9px;
+    background-color: rgba(238, 238, 238, 0.324);
+    justify-items: canter;
+    justify-content: center;
+}
+.plan-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+.plan-item-top{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--dark);
+    font-size: .83em;
+    border-radius: 9px 9px 0 0;
+    padding: .3em;
+    color: #fff;
+}
+.plan-item-input{
+    width: 75px;
+    border: none;
+    border-radius: 9px;
+    background-color: #fff;
+    margin-top: .8em;
+    text-align: center;
+}
+.plan-item-input::-webkit-inner-spin-button, 
+.plan-item-input::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+.plan-item-input-container{
+    background: var(--yellow);
+    padding-bottom: 0.8em;
+    border-radius: 0 0 9px 9px;
+}
+.plan-week-submit{
+    width: 80%;
+    background-color: var(--dark);
+    margin-bottom: 1em;
+    color: #fff;
+    border-radius: 9px;
+    padding: .2em;
+}
+@media only screen and (max-width: 850px){
+    .plan-week{
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 769px){
+    .plan-week{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 500px){
+    .plan-week{
+        width: 99%;
+    }
+    .plan-week-list{
+        padding: 2em .8em;
+    }
+}

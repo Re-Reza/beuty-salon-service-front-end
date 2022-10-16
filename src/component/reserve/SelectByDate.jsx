@@ -9,11 +9,10 @@ export function SelectByDate(){
     const [ state, setState ] = useState({
         employeeList : [],
         date : {},
-
     });
 
     const { employee, date, service, requestDate}  = useContext(reserveContext).userChoiceState;
-    console.log(requestDate);
+
     useEffect(() => {
         
         provideDateRange().then( response => {
@@ -30,8 +29,9 @@ export function SelectByDate(){
     }, [requestDate]);
 
     useEffect(()=> {
-        
+        console.log("herreerer");
         if(date.day){
+            console.log(date.year+"/"+date.month+"/"+date.day, service.id)
             provideEmployeesOfDate(date.year+"/"+date.month+"/"+date.day, service.id).then( response => {
                 console.log(response);
                 setState({

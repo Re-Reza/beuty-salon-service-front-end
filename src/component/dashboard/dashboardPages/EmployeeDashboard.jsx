@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 
-import {  EmployeeCustomerReserve } from "../employeeDashboardParts";
+import {  EmployeeCustomerReserve, Plan } from "../employeeDashboardParts";
 import { MainPart, Notifications, ReseveList } from "../userDashboardParts"
 import { HeadPart } from "../HeadPart";
 import { ChangeAccountInfo } from "../userDashboardParts";
 import LogOut from "../LogOut";
-
+// import moment from 'jalali-moment'
 import { convertEnToPe } from "persian-number";
 
 import styles from "../../../../public/styles/dashboard.module.css";
@@ -19,7 +19,8 @@ const EmployeeDashboard = () => {
         changeInfo : false,
         notification: false,
         myReserves : false,
-        request : false
+        request : false,
+        plan : false
     });
 
     function setRequest(){
@@ -32,7 +33,6 @@ const EmployeeDashboard = () => {
     const asideRef = useRef(null);
 
     function switchPart(selected){
-        const notSelectedItems = {};
          Object.keys(showState).forEach(key => {
             showState[key] = false;
         });
@@ -46,7 +46,7 @@ const EmployeeDashboard = () => {
         asideRef.current.classList.remove( styles["show-aside"] );
     }
 
-    const { main, changeInfo, reserveCustomer, notification, myReserves } = showState;
+    const { main, changeInfo, reserveCustomer, notification, myReserves, plan } = showState;
 
     let ActivePartComponent;
     if(main)
@@ -59,6 +59,8 @@ const EmployeeDashboard = () => {
         ActivePartComponent = Notifications;
     else if(myReserves)
         ActivePartComponent = ReseveList;
+    else if(plan) 
+        ActivePartComponent = Plan;
 
     return (
         <>        
@@ -88,6 +90,10 @@ const EmployeeDashboard = () => {
                             رزرو های من
                             <i className="fa fa-calendar-check-o" aria-hidden="true"></i> 
                         </li>
+                        <li onClick={()=>{switchPart('plan')}} style={{paddingLeft:"0.3em"}} className={plan?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+                            برنامه کاری من     
+                            <img src="/imgs/icons/plan-iicon.png" alt="plan-icon" />
+                        </li>
                         <li onClick={()=>{switchPart('changeInfo')}} className={changeInfo?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             تغییر اطلاعات حساب
                             <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -106,6 +112,9 @@ const EmployeeDashboard = () => {
                         </li>
                     </ul>
                     <LogOut/>
+                    <div>{
+                    //  moment.from('1367/04/11', 'fa', 'YYYY/MM/DD')
+                    }</div>
                 </aside>
                 
                 <section className={ styles["dashboard-content-section"]} >

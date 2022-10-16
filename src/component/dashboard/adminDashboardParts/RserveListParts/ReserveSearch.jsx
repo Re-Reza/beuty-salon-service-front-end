@@ -33,10 +33,12 @@ function ReserveSearch(props){
 
     const setSearchDtate = (event) => {
         try{
-            const { year, month, day, hour, minute } = event;
+            const { year, month, day } = event;
+            const m = month.number<10 ? "0"+month.number : month.number;
+            const d = day<10 ? "0"+day : day;
             setState({
                 ...state,
-                date : year+"/"+month.number+"/"+day
+                date : year+"/"+m+"/"+d
             });
         }
         catch( err ){
@@ -51,16 +53,20 @@ function ReserveSearch(props){
         const isHistory = props.currentReserve ? 0 : 1;
         if( state.searchByDate ){
             console.log(state.searchByDate)
-            if( state.searchByDate != null ){
-                searchReserveByDate(state.date, 0, isHistory).then(response => {
-                    props.setNewList(response.data.result);
-                }).catch( err => console.log(err));
-            }
+            searchReserveByDate(state.date ? state.date : "", props.isAdmin ? 0 : 1, isHistory).then(response => {
+                props.setNewList(response.data.result);
+            }).catch( err => console.log(err));
+            
         }
         else{       
-            const isEmployee = selectRef.current.options[selectRef.current.selectedIndex].value;
-            searchReserveByEmOrCustomer(isEmployee, isHistory,inputRef.current.value).then( response => {
-                console.log("first")
+            let isEmployee;
+            if( props.isAdmin == true)
+                isEmployee = selectRef.current.options[selectRef.current.selectedIndex].value;
+            else
+                isEmployee = 0;
+            console.log(isEmployee);
+                searchReserveByEmOrCustomer(isEmployee, isHistory,inputRef.current.value, props.isAdmin ? 0 : 1).then( response => {
+                    console.log(response);
                 props.setNewList(response.data.result);
             }).catch(err => console.log(err) ); 
 
@@ -75,7 +81,9 @@ function ReserveSearch(props){
                     <input checked={!state.searchByDate} onClick={changeSearchType} value="0" className="form-check-input" name="searchInput" id="employeeSearch" type="radio" />
                     
                     <label className="form-check-label" htmlFor="employeeSearch">
-                    جستجو بر اساس کارمند یا مشتری  
+                    {
+                        props.isAdmin ? "جستجو بر اساس کارمند یا مشتری  " : "جستجو بر اساس مشتری"
+                    }
                     </label>
                 </div>
 
@@ -111,7 +119,7 @@ function ReserveSearch(props){
                         //         } 
                         // }}
                         inputClass={styles["calendarInput"]}
-                        minDate={ props.start } maxDate = { props.end }
+                        // minDate={ props.start } maxDate = { props.end }
                         calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
                     />
                     <button onClick={ sreachSubmit } className="me-2"><i className="fa fa-search" style={{color:"var(--dark)"}} aria-hidden="true"></i></button>
@@ -123,10 +131,13 @@ function ReserveSearch(props){
                         <input id={styles["EmployeeModalProfile-History-search-input"]} type="text" ref={inputRef} placeholder={"نام یا شماره تلفن"} />
                         <span onClick={sreachSubmit} className={styles["EmployeeModalProfile-searchIcon"]}><i className="fa fa-search" aria-hidden="true"></i></span>
                     </div>
-                    <select ref={selectRef} className="form-select me-md-4 mb-4 mb-md-0" style={ {width:"180px", boxShadow:"0 0 8px #bdbcbc"} }>
-                        <option value="1">کارمند</option>
-                        <option value="0">مشتری</option>
-                    </select>
+                    {
+                        props.isAdmin ? 
+                        <select ref={selectRef} className="form-select me-md-4 mb-4 mb-md-0" style={ {width:"180px", boxShadow:"0 0 8px #bdbcbc"} }>
+                            <option value="1">کارمند</option>
+                            <option value="0">مشتری</option>
+                        </select> : <></>
+                    }
                 </>
             }
             </div>

@@ -35,15 +35,15 @@ const ReserveItem = ( props ) => {
     const setCustomerDate = (event) => {
         const { year, month, day, hour, minute } = event;
         newDateState.year = year;
-        // newDateState.month = month<10? "0"+month.number : month.number;
-        // newDateState.day = day<10? "0"+day : day;
-        // newDateState.hour = hour<10? "0"+hour : hour;
-        // newDateState.minute = minute<10? "0"+minute : minute;
+        newDateState.month = month<10? "0"+month.number : month.number;
+        newDateState.day = day<10? "0"+day : day;
+        newDateState.hour = hour<10? "0"+hour : hour;
+        newDateState.minute = minute<10? "0"+minute : minute;
 
-        newDateState.month = month.number;
-        newDateState.day = day;
-        newDateState.hour = hour;
-        newDateState.minute = minute;
+        // newDateState.month = month.number;
+        // newDateState.day = day;
+        // newDateState.hour = hour;
+        // newDateState.minute = minute;
     }
 
     const sendNewCustomerDate = () => {
@@ -52,7 +52,7 @@ const ReserveItem = ( props ) => {
    
         let newData = {};
         if(year)
-            newData.newTime = hour+":"+minute+"|"+year+"/"+month+"/"+day;
+            newData.newTime = hour+":"+minute+" "+year+"/"+month+"/"+day;
         if(selectRef.current.options[selectRef.current.selectedIndex].value !== "null")
             newData.newStatus = selectRef.current.options[selectRef.current.selectedIndex].value;
     
@@ -82,13 +82,14 @@ const ReserveItem = ( props ) => {
         }
     }
 
-    const dateParts = splitDate(reserveDate);
+    // const dateParts = splitDate(reserveDate);
     return (
         <tr>
             <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
             <td style={{minWidth:"100px"}}>{customerName +" "+ customerLastname}</td>
-            <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td>
+            {/* <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td> */}
+            <td>{reserveDate}</td>
             <td style={{minWidth:"150px"}}>{employeeFname+" "+employeeLname}</td>
             {
                 props.history ? 
@@ -124,7 +125,7 @@ const ReserveItem = ( props ) => {
                     {
                         //convertToPersian(newDateState.reserveTime )
                         status == "finalized" ?
-                        convertToPersian(reserveTime): ""
+                        reserveTime: ""
                     }
                     </td>
                     <td style={{minWidth:"100px"}}>

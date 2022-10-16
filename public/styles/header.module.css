@@ -13,7 +13,7 @@
     font-family: Vazir;
 }
 .home-header{
-    height: 90vh;
+    height: 82vh;
 }
 .navbarContainer{
     width: 100%;
@@ -58,7 +58,7 @@
 }
 .slider{
     position: relative;
-    grid-row: 4 / 8;
+    grid-row: 3 / 8;
     grid-column-start: 2;
     grid-column-end: 7;
 }

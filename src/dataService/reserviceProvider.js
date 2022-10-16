@@ -17,8 +17,6 @@ export function provideEmployeeTimeWork(serviceId, employeeId){
     return axiosInstance.get(`reserve/getTimeWorkOfEmployee?serviceId=${serviceId}&employeeId=${employeeId}`)
 }
 
-//زمانی که رزرو انجام شد  باید تقویم کارمند اپدیت شود چون ممکن است روز پرشده باشد
-//رزرو کلی باگ داره
 export function confirmReserve( reserveData ){
     const token = getCookie()
     return axiosInstance.post(`reserve/addReserve?token=${token}`, reserveData);

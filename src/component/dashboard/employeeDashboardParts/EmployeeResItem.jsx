@@ -9,8 +9,9 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import transition from "react-element-popper/animations/transition";
 import opacity from "react-element-popper/animations/opacity";
 import "react-multi-date-picker/styles/colors/yellow.css"
-import styles from "../../../../public/styles/dashboard.module.css"
+import styles from "../../../../public/styles/dashboard.module.css";
 import { useMediaQuery } from 'react-responsive';
+
 
 const EmployeeResItem = ( props ) => {
 
@@ -22,8 +23,8 @@ const EmployeeResItem = ( props ) => {
         day: null,
         hour: null,
         minute:null,
-        reserveTime : reserveTime ? reserveTime : null, 
-        status : status
+        // reserveTime : reserveTime ? reserveTime : null, 
+        // status : status
     });
 
     const ws = useRef(null);
@@ -40,44 +41,68 @@ const EmployeeResItem = ( props ) => {
         newDateState.day = day<10? "0"+day : day;
         newDateState.hour = hour<10? "0"+hour : hour;
         newDateState.minute = minute<10? "0"+minute : minute;
-        console.log(newDateState);
+        // newDateState.year = year
+        // newDateState.month = month.number;
+        // newDateState.day = day;
+        // newDateState.hour = hour;
+        // newDateState.minute = minute;
     }
 
     const sendNewCustomerDate = () => {
-        console.log(newDateState);
+
         const { year, month, day, hour, minute } = newDateState;
-        const newData = hour+":"+minute+"|"+year+"/"+month+"/"+day
+        let newData = {};
+
+        if(year)
+            newData.newTime = hour+":"+minute+" "+year+"/"+month+"/"+day;
+        if(selectRef.current.options[selectRef.current.selectedIndex].value !== "null")
+            newData.newStatus = selectRef.current.options[selectRef.current.selectedIndex].value;
         console.log(newData);
-        setFinalTime(id, newData).then( response => {
-            setNewDate({
-                reserveTime : response.data.result,
-                status : "finalized"
-            })
-        }).catch( err => {
-            console.log(err);
-        })
+        if(Object.keys(newData).length > 0 )
+        {
+            setFinalTime(id, newData).then( response => {
+                // if(newData.newStatus){
 
+                // }
+                // else{
+                //     setNewDate({
+                //         ...newDateState,
+                //         year: null,
+                //         month: null,
+                //         day: null,
+                //         hour: null,
+                //         minute:null,
+                //         reserveTime : response.data.result.reserveTime,
+                //         status : "finalized"
+                //     });                    
+                // }
+                props.setRequest();
+            }).catch( err => {
+                console.log(err);
+            });
+        }
     }
 
-    function splitDate(date){
-        return date.split('/')
-    }
+    // function splitDate(date){
+    //     return date.split('/')
+    // }
 
-    function convertToPersian(value){
-        console.log(value);
-        const parts = value.split('|');
-        console.log(parts)
-        console.log( splitDate(parts[1]) );
+    // function convertToPersian(value){
+    //     console.log(value);
+    //     const parts = value.split('|');
+    //     console.log(parts)
+    //     console.log( splitDate(parts[1]) );
         
-    }
+    // }
 
-    const dateParts = splitDate(reserveDate);
+    // const dateParts = splitDate(reserveDate);
     return (
         <tr>
             <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
             <td>{customerName +" "+ customerLastname}</td>
-            <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td>
+            {/* <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td> */}
+            <td>{reserveDate}</td>
             {
                 props.history ? 
                 <td>{status == "cancelled" ? "کنسل شده" : "انجام شده" }</td>
@@ -85,7 +110,7 @@ const EmployeeResItem = ( props ) => {
                 <>
                     <td className={styles['employee-date-modifier']}>
                     {
-                        newDateState.status == "waiting" ? 
+                        status == "waiting" ? 
                         <>
                         <DatePicker ref={ws} onChange={setCustomerDate} animations = {[
                             opacity(),
@@ -111,14 +136,7 @@ const EmployeeResItem = ( props ) => {
                     />
                     
                     </>
-                    :<>تاریخ نهایی شده و قابل تغییر نیست</>
-                    }
-                    </td>
-                    <td>
-                    {
-                        //convertToPersian(newDateState.reserveTime )
-                        newDateState.status == "finalized" ?
-                        "newDateState.reserveTime": ""
+                    :<>{reserveTime}</>
                     }
                     </td>
                     <td>                        

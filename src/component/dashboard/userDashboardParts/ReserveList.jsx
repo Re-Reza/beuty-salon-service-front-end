@@ -61,14 +61,16 @@ export function ReseveList(){
                 
             {
                 currentReserve ? 
-
+                
+                state.reserveList.length > 0 ?
                 <table className={"table "+styles['table-font']}>
                     <thead>
                         <tr>
                             <th scope="col">ردیف</th>
                             <th scope="col">خدمت</th>
                             <th scope="col">کارمند</th>
-                            <th scope="col">تاریخ</th>
+                            <th scope="col">تاریخ انتخابی شما</th>
+                            <th scope="col">تاریخ نهایی</th>
                             <th scope="col">وضعیت</th>
                             <th></th>
                         </tr>
@@ -80,10 +82,11 @@ export function ReseveList(){
                     }
                     </tbody>
 
-                </table>
+                </table>:
+                <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>آیتمی پیدا نشد <span className='notFoundItem'>:)</span></div>
 
                 :
-                
+                state.reserveList.length > 0 ? 
                 <table className={"table "+styles['table-font']}>
                     <thead>
                         <tr>
@@ -101,8 +104,8 @@ export function ReseveList(){
                     }
                     </tbody>
 
-                </table>
-
+                </table>:
+                <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>آیتمی پیدا نشد <span className='notFoundItem'>:)</span></div>
             }
             </div>
 

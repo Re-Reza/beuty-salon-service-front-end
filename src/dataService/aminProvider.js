@@ -53,12 +53,14 @@ export function addNewCategory(data){
     return axiosInstance.post(`admin/addNewServiceCategoey?token=${getCookie()}`, data);
 }
 
-export function searchReserveByEmOrCustomer(isEmployee, history, value){
-    return axiosInstance.get(`admin/searchReservesByNameOrPhone?isEmployee=${isEmployee}&history=${history}&searchValue=${value}&token=${getCookie()}`);
+export function searchReserveByEmOrCustomer(isEmployee, history, value, employeeIsSearching){
+    console.log(isEmployee);
+    console.log(employeeIsSearching);
+    return axiosInstance.get(`admin/searchReservesByNameOrPhone?isEmployee=${isEmployee}&history=${history}&searchValue=${value}&employeeIsSearching=${employeeIsSearching}&token=${getCookie()}`);
 }
 
-export function searchReserveByDate(reserveDate, searchAll, history){
-    return axiosInstance.get(`admin/searchInReservesByDate?reserveDate=${reserveDate}&searchAll=${searchAll}&history=${history}&token=${getCookie()}`);
+export function searchReserveByDate(reserveDate, employeeIsSearching, history){
+    return axiosInstance.get(`admin/searchInReservesByDate?reserveDate=${reserveDate}&employeeIsSearching=${employeeIsSearching}&history=${history}&token=${getCookie()}`);
 }
 
 //}?token=${getCookie()}

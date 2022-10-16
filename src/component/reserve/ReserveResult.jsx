@@ -41,9 +41,7 @@ export const ReserveResult = () => {
                 msg :  "رزرو با موفقیت ثبت شد",
                 error : false
             });
-            dispatch({
-                type : "SET_DATE_REQUEST"
-            })
+ 
             hideToast();
         }).catch( err => {
             console.log(err.response.status);
@@ -67,8 +65,11 @@ export const ReserveResult = () => {
             setState({
                 showToast : false
             });
+            dispatch({
+                type : "RESET_DATA",
+            });
 
-        }, 3000);
+        }, 1500);
     }
 
     return (

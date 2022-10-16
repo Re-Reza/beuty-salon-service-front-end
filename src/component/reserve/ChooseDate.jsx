@@ -19,24 +19,38 @@ export const ChooseDate = (props) => {
     const { userChoiceState, dispatch } = useContext( reserveContext ); 
  
     const { start, end, freeDays } = props.date;
+    console.log(props)
     const calenderRef = useRef(null);
 
     useEffect ( ()=> {
         calenderRef.current.querySelector("input").focus();
     }, []);
-
+    
 
     function setDate(event){
-        const { day, month: {number}, year } = event;
-        // console.log(day, number , year)
-        dispatch({
-            type : props.isDate ? "SET_DATE_2" : "SET_DATE",
-            payload : {
-                day: day,
-                month : number,
-                year : year
+        try{
+            const { day, month: {number}, year } = event;
+            const date = {
+                year : year,
+                month : number<10? "0"+ number : number,
+                day : day<10? "0"+day : day
             }
-        })
+            dispatch({
+                type : props.isDate ? "SET_DATE_2" : "SET_DATE",
+                payload : date 
+            });
+        }
+        catch(e){
+            const date = {
+                year : null,
+                month : null,
+                day : null
+            }
+            dispatch({
+                type : props.isDate ? "SET_DATE_2" : "SET_DATE",
+                payload : date 
+            });
+        }
     }
 
 
@@ -76,7 +90,7 @@ export const ChooseDate = (props) => {
                 }
             }}
             ref={calenderRef} inputClass={styles["calendarInput"]}
-            minDate={ start } maxDate = { end }
+            minDate={start} maxDate = {end}
             calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
             />
         </div>

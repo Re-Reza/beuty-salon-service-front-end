@@ -21,7 +21,7 @@ export function ReserveItem(props) {
     });
 
     const { id, reserveDate, status, employeefName, employeelName, employeeId, service, reserveTime } = props.item;
-
+    console.log(props.item);
     const deleteReservation = () =>{
         cancelReservation(id).then( response => {
 
@@ -69,6 +69,7 @@ export function ReserveItem(props) {
                 <td>{service}</td>
                 <td style={{minWidth:"110px"}}>{employeefName + " "+ employeelName }</td>
                 <td>{convertEnToPe(parseInt(dateParts[0]))+"/"+convertEnToPe(parseInt(dateParts[1]))+"/"+convertEnToPe(parseInt(dateParts[2]))}</td>
+                <td>{reserveTime}</td>
                 <td style={{minWidth:"110px"}}>{ state[status] }</td>
                 {
                     props.history  || status == "finalized" ?

@@ -60,7 +60,7 @@ export const ReserveList = () => {
 
             <div>
 
-                <ReserveSearch setNewList={ setNewList} currentReserve={currentReserve}start={customersList.start} end={customersList.end}/>
+                <ReserveSearch isAdmin={true} setNewList={setNewList} currentReserve={currentReserve}start={customersList.start} end={customersList.end}/>
                 
                 <div className={ styles["dashboard-reserveList"] }>
                     
