@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import { ChooseEmployee, ChooseDate, ReserveResult} from "../reserve";
 import reserveContext from "./reserveContext";
-import { provideDateRange, provideEmployeesOfDate } from "../../dataService/reserviceProvider";
+import { provideDateRange, provideEmployeesOfDate } from "../../dataService/reserveProvider";
 
 export function SelectByDate(){
 
@@ -16,7 +16,6 @@ export function SelectByDate(){
     useEffect(() => {
         
         provideDateRange().then( response => {
-            console.log(response)
             setState({
                 ...state,
                 date : response.data.result
@@ -29,9 +28,8 @@ export function SelectByDate(){
     }, [requestDate]);
 
     useEffect(()=> {
-        console.log("herreerer");
+
         if(date.day){
-            console.log(date.year+"/"+date.month+"/"+date.day, service.id)
             provideEmployeesOfDate(date.year+"/"+date.month+"/"+date.day, service.id).then( response => {
                 console.log(response);
                 setState({

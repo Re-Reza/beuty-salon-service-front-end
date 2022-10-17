@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import ReserveItem from "./ReserveItem";
 import { provideReserveList } from "../../../dataService/userDashboardProvider";
-
+import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
 
 export function ReseveList(){
@@ -49,7 +49,9 @@ export function ReseveList(){
 
     return(
         state.loading?
-        <div>loading...</div>
+        <div className="w-100 pt-5 d-flex justify-content-center">
+            <Loading />
+        </div> 
         :
         <div className={styles["dashboard-reserveList"]}>
             <div className={styles["dashboard-reserveBtnContainer"]}>

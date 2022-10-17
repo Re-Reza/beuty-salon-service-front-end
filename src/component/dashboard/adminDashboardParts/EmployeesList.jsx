@@ -4,7 +4,7 @@ import EmployeeItem from "./EmployeeItem";
 import AddEmployeeModal from './AddEmployeeModal';
 
 import { provideEmployeeList, searchEmployee } from "../../../dataService/aminProvider";
-
+import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
 
 export const EmployeesList = () => {
@@ -52,7 +52,9 @@ export const EmployeesList = () => {
 
     return (
         state.loading?
-        <div>loading</div>:
+        <div className="w-100 pt-5 d-flex justify-content-center">
+            <Loading />
+        </div> :
         <>
             <div className={'d-flex flex-column '+styles["employeeList-container"]}>
                 <div className='align-self-end d-flex mb-4 w-100 justify-content-between'>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import ReseveItem from './ReseveItem';
 import ReserveSearch from './ReserveSearch';
 import { provideReserveList } from "../../../../dataService/aminProvider";
-
+import Loading from "../../../elements/Loading";
 import styles from "../../../../../public/styles/dashboard.module.css";
 
 export const ReserveList = () => {
@@ -56,7 +56,9 @@ export const ReserveList = () => {
 
     return (
         customersList.loading? 
-            <div>loading</div>:
+        <div className="w-100 pt-5 d-flex justify-content-center">
+        <Loading />
+        </div> :
 
             <div>
 

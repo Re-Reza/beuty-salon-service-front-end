@@ -4,7 +4,9 @@
 */
 /* @import-normalize; */
 @import url("./vazir_fonts/font-face.css");
-/* @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css'); */
+@import url("./vazir_font2/Farsi-Digits/Vazirmatn-FD-font-face.css");
+/* @import url('https://v1.fontapi.ir/css/VazirFD'); */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,6 +26,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    font-family: Vazirmatn FD;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -53,7 +56,7 @@ table {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: Vazir;
+	font-family: Vazirmatn FD;
 }
 a{
 	text-decoration: none !important;
@@ -223,6 +226,38 @@ input[type="radio"]:focus{
 .hover-red:hover{
     color: red !important;
 }
+/*-------------------------------------------- loading ------------------------------- */
+.lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 32px solid var(--yellow);
+    border-color: var(--yellow) transparent var(--yellow) transparent;
+    animation: lds-hourglass 1.2s infinite;
+  }
+  @keyframes lds-hourglass {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
 
 @keyframes showToast{
     0%{

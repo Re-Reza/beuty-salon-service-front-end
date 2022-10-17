@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import EmployeeResItem from './EmployeeResItem';
 import { provideCustomerReserves } from "../../../dataService/employeeProvider";
 import ReserveSearch from ".././adminDashboardParts/RserveListParts/ReserveSearch";
-
+import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
 
 export const EmployeeCustomerReserve = () => {
@@ -63,7 +63,9 @@ export const EmployeeCustomerReserve = () => {
     
     return (
         customersList.loading? 
-            <div>loading</div>:
+         <div className="w-100 pt-5 d-flex justify-content-center">
+            <Loading />
+            </div> :
 
             <div>
 

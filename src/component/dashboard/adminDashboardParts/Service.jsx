@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import Accordion from 'react-bootstrap/Accordion';
 import ServiceItem from './ServiceItem';
-
+import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
 import {  provideCategoriesServices, addNewCategory, removeService } from "../../../dataService/aminProvider";
 
@@ -88,7 +88,10 @@ export function Service(){
 
     return (
         state.loading ? 
-        <div>loading</div> :
+        <div className="w-100 pt-5 d-flex justify-content-center">
+        <Loading />
+        </div>  :
+
         <div className={styles['dashboard-reserveList']} >
             
             <div className={styles['newCategory-container']+ " flex-column flex-md-row align-items-md-start"}>

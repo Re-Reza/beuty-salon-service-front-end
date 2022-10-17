@@ -10,6 +10,7 @@ import axiosInstance from "../../../dataService/axiosInstance";
 import { getCookie } from "../../../dataService/cookieProvider";
 import { ProgressBar } from "react-bootstrap";
 import { convertEnToPe } from "persian-number"
+import Loading from "../../elements/Loading";
 
 export function MainPart(props){
 
@@ -142,7 +143,9 @@ export function MainPart(props){
 
     return(
         state.loading? 
-        <div>loading</div>
+        <div className="w-100 pt-5 d-flex justify-content-center">
+            <Loading />
+        </div>
         :
         <>
         {

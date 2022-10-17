@@ -6,7 +6,6 @@ import { HeadPart } from "../HeadPart";
 import { ChangeAccountInfo } from "../userDashboardParts";
 import LogOut from "../LogOut";
 // import moment from 'jalali-moment'
-import { convertEnToPe } from "persian-number";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -101,7 +100,7 @@ const EmployeeDashboard = () => {
                         <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
                             اعلانات
                             <div className={styles["notification-box"]} >
-                                <span className={styles["notification-count"]}>{convertEnToPe(6)}</span>
+                                {/* <span className={styles["notification-count"]}>{}</span> */}
                                 <div className={styles["notification-bell"]}>
                                     <span className={styles["bell-top"]}></span>
                                     <span className={styles["bell-middle"]}></span>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import reserveContext from "./reserveContext";
-import { provideCategories, provideServiceOfCategory } from "../../dataService/reserviceProvider";
+import { provideCategories, provideServiceOfCategory } from "../../dataService/reserveProvider";
 
 import DropDown from "../elements/dropDown";
 

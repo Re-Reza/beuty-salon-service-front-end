@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { ChooseEmployee, ChooseDate, ReserveResult} from "../reserve";
 import reserveContext from "./reserveContext";
-import { provideEmployessOfServive, provideEmployeeTimeWork } from "../../dataService/reserviceProvider";
+import { provideEmployessOfServive, provideEmployeeTimeWork } from "../../dataService/reserveProvider";
 
 import styles from "../../../public/styles/reservePage.module.css";
 

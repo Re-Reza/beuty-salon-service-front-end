@@ -27,5 +27,6 @@ export function provideDateRange(){
 }
 
 export function provideEmployeesOfDate(date, serviceId){
+    console.log("requesting")
     return axiosInstance.get(`reserve/getEmployeesOfDate?date=${date}&serviceId=${serviceId}`);
 }

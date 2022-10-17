@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { provideAllAdminMessages } from "../../../dataService/aminProvider"; 
 import { deleteMessage } from "../../../dataService/aminProvider";
-
+import Loading from "../../elements/Loading";
 function AllMessages( props ){
 
     const [ state, setState ] = useState({
@@ -52,7 +52,9 @@ function AllMessages( props ){
     }
 
     return(
-        state.loading? <div>loading</div>:
+        state.loading?   <div className="w-100 pt-5 d-flex justify-content-center">
+        <Loading />
+      </div> :
         <div className='d-flex flex-column'>
 
             <div className='d-flex justify-content-end mb-3'>

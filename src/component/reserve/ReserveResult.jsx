@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect, useState } from 'react';
 
 import reserveContext from './reserveContext';
-import { confirmReserve } from "../../dataService/reserviceProvider";
+import { confirmReserve } from "../../dataService/reserveProvider";
 import  Toast  from "../elements/Toast";
 
 import PN from "persian-number";

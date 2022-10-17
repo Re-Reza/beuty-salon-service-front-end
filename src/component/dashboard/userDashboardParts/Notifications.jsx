@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react';
 import NotificationItem from './NotificationItem';
 import { provideMessages } from "../../../dataService/userDashboardProvider";
 import styles from "../../../../public/styles/dashboard.module.css";
+import Loading from "../../elements/Loading";
 
 export const Notifications = (props) => {
   
@@ -48,7 +49,10 @@ export const Notifications = (props) => {
     role = 3;
 
   return (
-    state.loading ? <div>loading</div> :
+    state.loading ?       
+    <div className="w-100 pt-5 d-flex justify-content-center">
+      <Loading />
+    </div> :
     <div className={ styles["nofication-container"] }>
       
     {
