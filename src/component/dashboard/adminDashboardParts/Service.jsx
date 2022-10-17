@@ -52,7 +52,7 @@ export function Service(){
             addNewCategory(data).then( response=>{
                 
                 const { createdCategory,createdService } = response.data.result;
-                return setState({
+                setState({
                     ...state,
                     categoryList : [
                         ...state.categoryList,

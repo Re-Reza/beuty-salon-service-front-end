@@ -33,3 +33,7 @@ export function provideMessages(){
 export function readMessage(data){
     return axiosInstance.post(`userDashboard/readMessage?token=${getCookie()}`, data);
 }
+
+export function searchByDate(date, isHistory){
+    return axiosInstance.get(`userDashboard/searhReserveByDate?&date=${date}&isHistory=${isHistory}&token=${getCookie()}`);
+}

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';  
 
-import { convertEnToPe } from "persian-number";
-
 import { cancelReservation } from "../../../dataService/userDashboardProvider";
 
 import Toast from '../../elements/Toast';
@@ -21,7 +19,7 @@ export function ReserveItem(props) {
     });
 
     const { id, reserveDate, status, employeefName, employeelName, employeeId, service, reserveTime } = props.item;
-    console.log(props.item);
+
     const deleteReservation = () =>{
         cancelReservation(id).then( response => {
 
@@ -58,17 +56,16 @@ export function ReserveItem(props) {
         }, 2000);
     }
 
-    const dateParts = reserveDate.split('/');
     return (
         <>
             {
                 state.showToast ? <Toast toatData={ { error:state.error, message:state.msg} }/> : <></>
             }
             <tr>
-                <th scope="row">{convertEnToPe(props.row)}</th>
+                <th scope="row">{props.row}</th>
                 <td>{service}</td>
                 <td style={{minWidth:"110px"}}>{employeefName + " "+ employeelName }</td>
-                <td>{convertEnToPe(parseInt(dateParts[0]))+"/"+convertEnToPe(parseInt(dateParts[1]))+"/"+convertEnToPe(parseInt(dateParts[2]))}</td>
+                <td>{reserveDate}</td>
                 <td>{reserveTime}</td>
                 <td style={{minWidth:"110px"}}>{ state[status] }</td>
                 {

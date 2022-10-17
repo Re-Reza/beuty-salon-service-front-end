@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import ReserveItem from "./ReserveItem";
 import { provideReserveList } from "../../../dataService/userDashboardProvider";
+import SearchReserve from "./SearchReserve";
 import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
 
@@ -39,6 +40,13 @@ export function ReseveList(){
         }
     }
 
+    function setNewData(data){
+        setState({
+            ...state,
+            reserveList : data
+        });
+    }
+
     function deleteReserve(reserveId){
         const filteredReserves = state.reserveList.filter( item => item.id != reserveId );
         setState({
@@ -53,62 +61,66 @@ export function ReseveList(){
             <Loading />
         </div> 
         :
-        <div className={styles["dashboard-reserveList"]}>
-            <div className={styles["dashboard-reserveBtnContainer"]}>
-                <button onClick={ ()=>{toggleReserve(false)} } className={ !currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]} >تاریخچه </button>
-                <button onClick={()=>{toggleReserve(true)} } className={ currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]}>رزرو های جاری</button>
-            </div>
-            
-            <div className="table-responsive-xl">   
+        <div>
+            <SearchReserve setNewData={setNewData} currentReserve={currentReserve}/>
+            <div className={styles["dashboard-reserveList"]}>
+                <div className={styles["dashboard-reserveBtnContainer"]}>
+                    <button onClick={ ()=>{toggleReserve(false)} } className={ !currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]} >تاریخچه </button>
+                    <button onClick={()=>{toggleReserve(true)} } className={ currentReserve ? styles["reserve-btn-category"]+" "+styles['selected-reserve']: styles["reserve-btn-category"]}>رزرو های جاری</button>
+                </div>
                 
-            {
-                currentReserve ? 
-                
-                state.reserveList.length > 0 ?
-                <table className={"table "+styles['table-font']}>
-                    <thead>
-                        <tr>
-                            <th scope="col">ردیف</th>
-                            <th scope="col">خدمت</th>
-                            <th scope="col">کارمند</th>
-                            <th scope="col">تاریخ انتخابی شما</th>
-                            <th scope="col">تاریخ نهایی</th>
-                            <th scope="col">وضعیت</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                <div className="table-responsive-xl">   
+                    
+                {
+                    currentReserve ? 
+                    
+                    state.reserveList.length > 0 ?
+                    <table className={"table "+styles['table-font']}>
+                        <thead>
+                            <tr>
+                                <th scope="col">ردیف</th>
+                                <th scope="col">خدمت</th>
+                                <th scope="col">کارمند</th>
+                                <th scope="col">تاریخ انتخابی شما</th>
+                                <th scope="col">تاریخ نهایی</th>
+                                <th scope="col">وضعیت</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                    {
-                        reserveList.map((item, index) => <ReserveItem deleteReserve={deleteReserve} history={false} key={index} item = {item} row= {++index } /> )
-                    }
-                    </tbody>
+                        <tbody>
+                        {
+                            reserveList.map((item, index) => <ReserveItem deleteReserve={deleteReserve} history={false} key={index} item = {item} row= {++index } /> )
+                        }
+                        </tbody>
 
-                </table>:
-                <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>آیتمی پیدا نشد <span className='notFoundItem'>:)</span></div>
+                    </table>:
+                    <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>آیتمی پیدا نشد <span className='notFoundItem'>:)</span></div>
 
-                :
-                state.reserveList.length > 0 ? 
-                <table className={"table "+styles['table-font']}>
-                    <thead>
-                        <tr>
-                            <th scope="col">ردیف</th>
-                            <th scope="col">خدمت</th>
-                            <th scope="col">کارمند</th>
-                            <th scope="col">تاریخ</th>
-                            <th>وضعیت</th>
-                        </tr>
-                    </thead>
+                    :
+                    state.reserveList.length > 0 ? 
+                    <table className={"table "+styles['table-font']}>
+                        <thead>
+                            <tr>
+                                <th scope="col">ردیف</th>
+                                <th scope="col">خدمت</th>
+                                <th scope="col">کارمند</th>
+                                <th scope="col">تاریخ</th>
+                                <th>وضعیت</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                    {
-                        reserveList.map((item, index) => <ReserveItem  deleteReserve={deleteReserve} history={true} key={index} item = {item} row = {++index} /> )
-                    }
-                    </tbody>
+                        <tbody>
+                        {
+                            reserveList.map((item, index) => <ReserveItem  deleteReserve={deleteReserve} history={true} key={index} item = {item} row = {++index} /> )
+                        }
+                        </tbody>
 
-                </table>:
-                <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>آیتمی پیدا نشد <span className='notFoundItem'>:)</span></div>
-            }
+                    </table>:
+                    <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>آیتمی پیدا نشد <span className='notFoundItem'>:)</span></div>
+                }
+                </div>
+
             </div>
 
         </div>

@@ -13,25 +13,24 @@ export function SendMessage() {
         error : false,
         areaError : null,
         msg : null,
-        showAllMessages : false
     });
+
+    const [ showAllMessages,  setShowAllMessages ] = useState(false);
 
     function hideToast(){
         setTimeout(()=>{
+            console.log(state)
             setState({
                 ...state,
                 showToast : false,
                 areaError : null,
             });
 
-        }, 2000);
+        }, 1500);
     }
 
     function toggleShow(){
-        setState({
-            ...state,
-            showAllMessages : !state.showAllMessages
-        });
+        setShowAllMessages(!showAllMessages);
     }
 
     const messageRef = useRef(null);
@@ -90,7 +89,7 @@ export function SendMessage() {
         }
         <div className={styles['dashboard-reserveList']+" "+styles['sendMessageContainer']}> 
         {
-            state.showAllMessages ?
+            showAllMessages ?
             <AllMessages toggleShow={toggleShow}/> 
             :
             <>

@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { HeadPart, MainPart, ChangeAccountInfo, ReseveList, Notifications } from "../userDashboardParts";
 import Footer from  "../../footer/Footer";
 import styles from "../../../../public/styles/dashboard.module.css";
-
+import LogOut from "../LogOut";
 
 function UserDashboard () {
 
@@ -61,38 +61,41 @@ function UserDashboard () {
 
                 <aside ref={asideRef} className={styles["dashboard-aside"]} >
 
-                    <div className="d-flex flex-column w-100">
-                        <div className="d-flex justify-content-between">  
-                            <h3 className={styles["aside-title"]}>پنل حساب کاربری</h3>
-                            <span onClick={hideAside} className={styles["close-aside-btn"]}><i className="fa fs-2 text-danger fa-times" aria-hidden="true"></i></span>
-                        </div>
+                    <div className="d-flex flex-column justify-content-between">
+                        <div className="d-flex flex-column w-100">
+                            <div className="d-flex justify-content-between">  
+                                <h3 className={styles["aside-title"]}>پنل حساب کاربری</h3>
+                                <span onClick={hideAside} className={styles["close-aside-btn"]}><i className="fa fs-2 text-danger fa-times" aria-hidden="true"></i></span>
+                            </div>
 
-                        <ul className={styles["dashboard-aside-itemsContainer"]}>
-                            <li onClick={()=>{switchPart('main')}} className={main?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"]}>
-                                اطلاعات حساب
-                                <i className="fa fa-user" aria-hidden="true"></i>
-                            </li>
-                            <li onClick={()=>{switchPart('reservedList')}} className={ reservedList ? styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"] }>
-                                لیست رزرو ها
-                                <i className="fa fa-calendar-check-o" aria-hidden="true"></i>
-                            </li>
-                            <li onClick={()=>{switchPart('changeInfo')}} className={changeInfo?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
-                                تغییر اطلاعات حساب
-                                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </li>
-                            <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
-                                اعلانات
-                                <div className={styles["notification-box"]} >
-                                    {/* <span className={styles["notification-count"]}>{}</span> */}
-                                    <div className={styles["notification-bell"]}>
-                                        <span className={styles["bell-top"]}></span>
-                                        <span className={styles["bell-middle"]}></span>
-                                        <span className={styles["bell-bottom"]}></span>
-                                        <span className={styles["bell-rad"]}></span>
+                            <ul className={styles["dashboard-aside-itemsContainer"]}>
+                                <li onClick={()=>{switchPart('main')}} className={main?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"]}>
+                                    اطلاعات حساب
+                                    <i className="fa fa-user" aria-hidden="true"></i>
+                                </li>
+                                <li onClick={()=>{switchPart('reservedList')}} className={ reservedList ? styles["selected"]+ " "+ styles["dashboard-aside-partBtn"] : styles["dashboard-aside-partBtn"] }>
+                                    لیست رزرو ها
+                                    <i className="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                </li>
+                                <li onClick={()=>{switchPart('changeInfo')}} className={changeInfo?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+                                    تغییر اطلاعات حساب
+                                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </li>
+                                <li onClick={()=>{switchPart('notification')}} className={notification?styles["selected"]+ " "+ styles["dashboard-aside-partBtn"]: styles["dashboard-aside-partBtn"]}>
+                                    اعلانات
+                                    <div className={styles["notification-box"]} >
+                                        {/* <span className={styles["notification-count"]}>{}</span> */}
+                                        <div className={styles["notification-bell"]}>
+                                            <span className={styles["bell-top"]}></span>
+                                            <span className={styles["bell-middle"]}></span>
+                                            <span className={styles["bell-bottom"]}></span>
+                                            <span className={styles["bell-rad"]}></span>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <LogOut/>
                     </div>
 
                 </aside>

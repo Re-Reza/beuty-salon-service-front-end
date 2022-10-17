@@ -30,7 +30,7 @@ function Employee( props ){
     
     return (
         <div onClick={setEmployee} className={ comStyle || styles["reserve-employee"]}>
-            <img className={styles["reserve-employee-img"]+"  rounded-circle"} src={profileImg? "http://localhost:4000/"+profileImg: "/imgs/service-imgs/makeup1.png" }alt={fName+lName}/>
+            <img className={styles["reserve-employee-img"]+"  rounded-circle"} src={profileImg? "http://localhost:4000/"+profileImg: "/imgs/user.png" }alt={fName+lName}/>
             <div className={styles["reserve-employee-info"]}>
                 <p style={{marginBottom:"0"}} className="text-break">{fName} {lName}</p>
                 <p style={{marginBottom:"0"}} className="text-break">شماره موبایل : {phone}</p>

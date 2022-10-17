@@ -93,7 +93,7 @@ export const ReserveList = () => {
         
                             <tbody>
                             {
-                                customersList.list.map((item, index) => <ReseveItem setReRequest={setReRequest} start={customersList.start} end={customersList.end} history={false} key={index} item = {{...item ,  row: ++index }} /> )
+                                customersList.list.map((item, index) => <ReseveItem setReRequest={setReRequest} start={customersList.start} history={false} key={index} item = {{...item ,  row: ++index }} /> )
                             }
                             </tbody>
         

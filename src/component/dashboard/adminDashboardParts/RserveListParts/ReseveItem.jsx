@@ -31,7 +31,7 @@ const ReserveItem = ( props ) => {
     const isPhone = useMediaQuery({
         query: "(max-width: 550px)"
     });
-
+    console.log(props);
     const setCustomerDate = (event) => {
         const { year, month, day, hour, minute } = event;
         newDateState.year = year;
@@ -39,11 +39,6 @@ const ReserveItem = ( props ) => {
         newDateState.day = day<10? "0"+day : day;
         newDateState.hour = hour<10? "0"+hour : hour;
         newDateState.minute = minute<10? "0"+minute : minute;
-
-        // newDateState.month = month.number;
-        // newDateState.day = day;
-        // newDateState.hour = hour;
-        // newDateState.minute = minute;
     }
 
     const sendNewCustomerDate = () => {
@@ -63,32 +58,11 @@ const ReserveItem = ( props ) => {
         })
 
     }
-
-    function splitDate(date){
-        return date.split('/')
-    }
-
-    function splitTime(time){
-        return time.split(':')
-    }
-
-    function convertToPersian(value){
-        if(value!=null && value != undefined )
-        {
-            const parts = value.split('|');
-            const splitedDate = splitDate(parts[1]);
-            const splitedTime = splitTime(parts[0])
-            return convertEnToPe(parseInt(splitedTime[0]) )+":"+convertEnToPe(parseInt(splitedTime[1])+" "+convertEnToPe(parseInt(splitedDate[0]) ) +"/"+ convertEnToPe(parseInt(splitedDate[1])) +"/"+ convertEnToPe(parseInt(splitedDate[2])) );
-        }
-    }
-
-    // const dateParts = splitDate(reserveDate);
     return (
         <tr>
             <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
             <td style={{minWidth:"100px"}}>{customerName +" "+ customerLastname}</td>
-            {/* <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td> */}
             <td>{reserveDate}</td>
             <td style={{minWidth:"150px"}}>{employeeFname+" "+employeeLname}</td>
             {
@@ -116,7 +90,7 @@ const ReserveItem = ( props ) => {
                                     } 
                             }}
                             inputClass={styles["calendarInput"]}
-                            minDate={ props.start } maxDate = { props.end }
+                            minDate={ props.start } 
                             calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
                         />
                        

@@ -52,7 +52,7 @@ function ReserveSearch(props){
     function sreachSubmit(){
         const isHistory = props.currentReserve ? 0 : 1;
         if( state.searchByDate ){
-            console.log(state.searchByDate)
+            
             searchReserveByDate(state.date ? state.date : "", props.isAdmin ? 0 : 1, isHistory).then(response => {
                 props.setNewList(response.data.result);
             }).catch( err => console.log(err));
@@ -122,7 +122,7 @@ function ReserveSearch(props){
                         // minDate={ props.start } maxDate = { props.end }
                         calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
                     />
-                    <button onClick={ sreachSubmit } className="me-2"><i className="fa fa-search" style={{color:"var(--dark)"}} aria-hidden="true"></i></button>
+                    <button onClick={ sreachSubmit } style={{background : "inherit"}} className="me-2"><i className="fa fa-search" style={{color:"var(--dark)"}} aria-hidden="true"></i></button>
                     
                     </div>
                 :

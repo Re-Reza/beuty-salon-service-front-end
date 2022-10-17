@@ -12,7 +12,6 @@ export const EmployeeCustomerReserve = () => {
         list : [],
         loading : true,
         start : null,
-        end : null,
         request : false
     });
 
@@ -21,13 +20,11 @@ export const EmployeeCustomerReserve = () => {
     useEffect( () => {
 
         provideCustomerReserves().then( response =>{
-            console.log(response);
             setcustomersList({
                 ...customersList,
                 list : response.data.result,
                 loading : false,
                 start : response.data.start,
-                end : response.data.end
             });
         }).catch( err => {
             console.log(err);

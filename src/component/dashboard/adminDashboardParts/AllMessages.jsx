@@ -73,7 +73,7 @@ function AllMessages( props ){
                             <th scope="col">عنوان</th>
                             <th scope="col">متن پیام</th>
                             <th scope="col">تاریخ ارسال</th>
-                            <th scope="col">ارسال برای</th>
+                            <th scope="col">ارسال به</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -99,7 +99,7 @@ function AllMessages( props ){
 
                 </div> :
 
-                <div className='text-yellow text-center fs-3'>پیامی موجود نیست <span className='notFoundItem'>:)</span></div>
+                <div className='text-yellow w-100 d-flex justify-content-center align-items-center h-100 fs-3'>پیامی موجود نیست <span className='notFoundItem'>:)</span></div>
             }
 
         </div>

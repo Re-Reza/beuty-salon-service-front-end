@@ -23,8 +23,6 @@ const EmployeeResItem = ( props ) => {
         day: null,
         hour: null,
         minute:null,
-        // reserveTime : reserveTime ? reserveTime : null, 
-        // status : status
     });
 
     const ws = useRef(null);
@@ -41,11 +39,6 @@ const EmployeeResItem = ( props ) => {
         newDateState.day = day<10? "0"+day : day;
         newDateState.hour = hour<10? "0"+hour : hour;
         newDateState.minute = minute<10? "0"+minute : minute;
-        // newDateState.year = year
-        // newDateState.month = month.number;
-        // newDateState.day = day;
-        // newDateState.hour = hour;
-        // newDateState.minute = minute;
     }
 
     const sendNewCustomerDate = () => {
@@ -83,25 +76,11 @@ const EmployeeResItem = ( props ) => {
         }
     }
 
-    // function splitDate(date){
-    //     return date.split('/')
-    // }
-
-    // function convertToPersian(value){
-    //     console.log(value);
-    //     const parts = value.split('|');
-    //     console.log(parts)
-    //     console.log( splitDate(parts[1]) );
-        
-    // }
-
-    // const dateParts = splitDate(reserveDate);
     return (
         <tr>
             <th scope="row">{convertEnToPe(row)}</th>
             <td>{serviceTitle}</td>
             <td>{customerName +" "+ customerLastname}</td>
-            {/* <td>{` ${convertEnToPe(dateParts[0])}/${convertEnToPe(dateParts[1])}/${convertEnToPe(dateParts[2])} `}</td> */}
             <td>{reserveDate}</td>
             {
                 props.history ? 
@@ -131,7 +110,7 @@ const EmployeeResItem = ( props ) => {
                                 } 
                         }}
                         inputClass={styles["calendarInput"]}
-                        minDate={ props.start } maxDate = { props.end }
+                        minDate={ props.start }
                         calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
                     />
                     

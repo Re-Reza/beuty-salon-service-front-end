@@ -12,15 +12,15 @@ import styles from "../../../../public/styles/dashboard.module.css";
 const AdminDashboard = () => {
 
     const [showState, setShowState] = useState({
-      main: false,
-      reserveCustomer: true,
+      main: true,
+      reserveCustomer: false,
       changeInfo : false,
       notification: false,
       employeeList: false,
       sendMessage : false,
       services : false,
       request : false
-  });
+    });
 
   function setRequest(){
     setShowState({
