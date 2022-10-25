@@ -1,24 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { useFormik } from "formik";
+import contextStore from '../EmployeeListContext';
 import { provideServices } from "../../../../dataService/aminProvider";
 import styles from "../../../../../public/styles/dashboard.module.css";
 import { object, string, ref } from "yup";
 import { changeEmployeeInfo } from "../../../../dataService/aminProvider";
+import Toast from "../../../elements/Toast";
 
 const EmInfo = (props) =>{
 
     const { fName, lName,services, phone, nationalId, perosnId} = props.info;
 
     const[ chageInfoState, setChangeInfoState ] = useState({
-        changeMode: false,
         allServices: [],
-        selectedServices : services
+        selectedServices : services,
+        showToast : false,
+        error : false,
+        msg : null
     });
 
+    const { dispatch } = useContext(contextStore);
+    const [ mode, setMode ] = useState( false );
+
     useEffect(()=>{
+        console.log("first")
         provideServices().then(response=>{
-            console.log(response.data.result)
             setChangeInfoState({
                 ...chageInfoState,
                 allServices  : response.data.result
@@ -26,12 +33,6 @@ const EmInfo = (props) =>{
         }).catch(err=> console.log(err) );
     }, []);
 
-    // const schema = object().shape({
-    //     fName : string().required("نام الزامی است"),
-    //     lName : string().required("نام خانوادگی الزامی است"),
-    //     phone :  string().required("شماره موبایل الزامی است"), 
-    //     nationalId :  string().required("کد ملی الزامی است")
-    // });
 
     const formik = useFormik({
         initialValues : {
@@ -42,21 +43,49 @@ const EmInfo = (props) =>{
         },
         // validationSchema:schema,
         onSubmit : values => {
+            console.log("in herererere")
             changeEmployeeInfo({...values, newServices : chageInfoState.selectedServices}, perosnId).then( response => {
                 console.log(response);
+                setChangeInfoState({
+                    ...chageInfoState,
+                    error : false,
+                    msg : "تغییرات با موفقیت اعمال شد",
+                    showToast : true,
+                });
+                dispatch({
+                    type : "setReRequest"
+                });
+
+                hideToast();
+
             }).catch( err => {
-                console.log(err);
-            })
+                setChangeInfoState({
+                    ...chageInfoState,
+                    error : true,
+                    msg : "خطایی رخ داده است",
+                    showToast : true,
+                });
+                hideToast();
+
+            });
         }
       });
 
-    const changeInfoMode = () => {
-        setChangeInfoState({
-            ...chageInfoState,
-            changeMode : true
-        });
+    function hideToast(){
+        setTimeout(()=>{
+            setChangeInfoState({
+                ...chageInfoState,
+                showToast : false
+            });
+        }, 2000);
     }
-    // console.log(formik.errors);
+
+    const changeInfoMode = () => {
+
+        console.log("mode changed");
+        setMode(true);
+    }
+
     
     function isChecked(id){
         const foundItem = chageInfoState.selectedServices.find(item => item.id == id);
@@ -77,62 +106,70 @@ const EmInfo = (props) =>{
                 newService,
             ]; 
         }
-        console.log(chageInfoState);
+
         setChangeInfoState({
             ...chageInfoState
         });
     }
 
     return(
-        <div className={styles['employeeModal-InfoPart']}>
-            <form onSubmit={formik.handleSubmit}>
-                <div className='d-flex flex-column mb-4'>
-                    <label htmlFor="EmployeeName" className='mb-2'>نام</label>
-                    <input defaultValue={fName} onChange={formik.handleChange} id="fName" name="fName" className={styles['Employee-info-input']} type="text" readOnly={chageInfoState.changeMode ? false : true} />
-                </div>
-
-                <div className='d-flex flex-column mb-4'>
-                    <label htmlFor="EmployeeName" className='mb-2'> نام خانوادگی</label>
-                    <input onChange={formik.handleChange} defaultValue={lName} name="lName" className={styles['Employee-info-input']} type="text" id="EmployeeName" readOnly={chageInfoState.changeMode ? false : true} />
-                </div>
-    
-                <div className='d-flex flex-column mb-4'>
-                    <label htmlFor="EmployeePhone" className='mb-2'>شماره موبایل</label>
-                    <input onChange={formik.handleChange} name="phone" defaultValue={phone} className={styles['Employee-info-input']} type="tel" id="EmployeePhone" readOnly={chageInfoState.changeMode ? false : true} />
-                </div>
-
-                <div className='d-flex flex-column mb-4'>
-                    <label htmlFor="EmployeePhone" className='mb-2'>کدملی</label>
-                    <input onChange={formik.handleChange} name="nationalId" defaultValue={nationalId} className={styles['Employee-info-input']} type="tel" id="EmployeePhone" readOnly={chageInfoState.changeMode ? false : true} />
-                </div>
-
-                {
-                    chageInfoState.changeMode ?
+        <>
+        {
+            chageInfoState.showToast ? 
+            
+                <Toast toatData={ { error : chageInfoState.error, message : chageInfoState.msg } }/> : <></> 
+        }
+            <div className={styles['employeeModal-InfoPart']}>
+                <form action='#'>
                     <div className='d-flex flex-column mb-4'>
-                        <label className='mb-3'>خدمات</label>
-                        <div className={styles['services-container']}>
-                            {
-                                chageInfoState.allServices.map((service, index) => {
-                                    const check = isChecked(service.id);
-                                    return <span className='ms-5' key={index}>
-                                    <label arial-role="button "className='ms-2' htmlFor={'service'+index}>{service.serviceTitle}</label>
-                                    <input onChange={()=>checkSerice(service.id)} checked={check} className='form-check-input' value={service.id} id={'service'+index} type="checkbox"/>
-                                </span>
-                                })
-                            }
-                        </div>
-                    </div>:
-                    <></>
-                }
+                        <label htmlFor="EmployeeName" className='mb-2'>نام</label>
+                        <input defaultValue={fName} onChange={formik.handleChange} id="fName" name="fName" className={styles['Employee-info-input']} type="text" readOnly={mode ? false : true} />
+                    </div>
 
-                <div className="d-flex justify-content-end mt-3">
-                {
-                    chageInfoState.changeMode ? <button onClick={formik.handleSubmit} type='submit' className='btn btn-success'>اعمال تغییرات</button>
-                    :<button className={'btn btn-warning text-white '+styles["font-responsive"]} onClick={changeInfoMode }>تغییر اطلاعات</button>
-                }
-                </div>
-            </form>
-        </div>
+                    <div className='d-flex flex-column mb-4'>
+                        <label htmlFor="EmployeeName" className='mb-2'> نام خانوادگی</label>
+                        <input onChange={formik.handleChange} defaultValue={lName} name="lName" className={styles['Employee-info-input']} type="text" id="EmployeeName" readOnly={mode ? false : true} />
+                    </div>
+
+                    <div className='d-flex flex-column mb-4'>
+                        <label htmlFor="EmployeePhone" className='mb-2'>شماره موبایل</label>
+                        <input onChange={formik.handleChange} name="phone" defaultValue={phone} className={styles['Employee-info-input']} type="tel" id="EmployeePhone" readOnly={mode ? false : true} />
+                    </div>
+
+                    <div className='d-flex flex-column mb-4'>
+                        <label htmlFor="EmployeePhone" className='mb-2'>کدملی</label>
+                        <input onChange={formik.handleChange} name="nationalId" defaultValue={nationalId} className={styles['Employee-info-input']} type="tel" id="EmployeePhone" readOnly={chageInfoState ? false : true} />
+                    </div>
+
+                    {
+                        mode ?
+                        <div className='d-flex flex-column mb-4'>
+                            <label className='mb-3'>خدمات</label>
+                            <div className={styles['services-container']}>
+                                {
+                                    chageInfoState.allServices.map((service, index) => {
+                                        const check = isChecked(service.id);
+                                        return <span className='ms-5' key={index}>
+                                        <label arial-role="button "className='ms-2' htmlFor={'service'+index}>{service.serviceTitle}</label>
+                                        <input onChange={()=>checkSerice(service.id)} checked={check} className='form-check-input' value={service.id} id={'service'+index} type="checkbox"/>
+                                    </span>
+                                    })
+                                }
+                            </div>
+                        </div>:
+                        <></>
+                    }
+
+                    <div className="d-flex justify-content-end mt-3">
+                    {
+                        mode ? <button  type='submit' onClick={formik.handleSubmit} className='btn btn-success'>اعمال تغییرات</button>
+                        :<div role="button" onClick={changeInfoMode} className={'btn btn-warning text-white '+styles["font-responsive"]} >تغییر اطلاعات</div>
+                    }
+                    </div>
+                </form>
+            </div>
+        </>
+        
         
     )
 }

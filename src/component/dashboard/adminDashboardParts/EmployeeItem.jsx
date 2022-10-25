@@ -14,8 +14,7 @@ const EmployeeItem = ( props ) => {
     let data="";
     services.forEach( (item, index) => {
         data = data.concat( item.serviceTitle + (index==services.length-1? "" : "، ") )
-    })
-    
+    });
 
     //یک کانتکس اینجاتغریف کن و پراپس ها رو در ان بریز
     return (
@@ -40,7 +39,7 @@ const EmployeeItem = ( props ) => {
             </tr>
             {
                 openMoal? 
-                <EmployeeModalProfile openMoal={openMoal} setOpenMoal={setOpenMoal} employee={props.item}/> 
+                <EmployeeModalProfile  openMoal={openMoal} setOpenMoal={setOpenMoal} employee={props.item}/> 
                 :<></>
             }
         </>
