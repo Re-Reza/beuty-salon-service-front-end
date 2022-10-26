@@ -9,6 +9,11 @@ function Slider(){
     const [ contentState, setContentState ] = useState({
         content : [
             {
+                slideTitle : "بهترین ها را با ما تجربه کنید ",
+                slideDescription : "ارایشگاه ایتوک با بهرمندی از بهترین و به روز ترین امکاتان ارایشی  و مرغوب ترین مواد ارایشی تایید شده از سازمان غذا و دارو اروپا و امریکا با بهرگیری از فرمولاسیون جدید و ارگانیگ از جمله مواد تتو کراتین رنگ مو و کراتین و..... به خدمت شما مشتری محترم در اماده است",
+                btnInfo : "مشاهده سرویس"
+            },
+            {
                 slideTitle : "خدمات مو و اکستنشن",
                 btnInfo : "مشاهده سرویس",
                 slideDescription : "بهترین خدمات مو و اکستنشن در مجموعه ما"
@@ -19,10 +24,10 @@ function Slider(){
                 slideDescription : "زیبایی ناخن و کاشت ناخن در مجموعه ما"
             },
             {
-                slideTitle : "رنگ مو کاشت مو",
+                slideTitle : "رنگ مو و کاشت مو",
                 btnInfo : "مشاهده سرویس",
                 slideDescription : "بهترین خدمات کاشت مو و رنگ مو در مجموعه ما"
-            }
+            },
         ],
         showSlide : 0
     });
@@ -33,7 +38,7 @@ function Slider(){
                 ...contentState, 
                 showSlide: (contentState.showSlide+1) % contentState.content.length
             });
-        }, 3000);
+        }, 4500);
     }, [contentState.showSlide] );
 
     return (

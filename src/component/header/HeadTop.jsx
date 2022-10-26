@@ -40,24 +40,31 @@ export function HeadTop(){
         <div className={styles["header-topPart"]}>
 
             <div className={styles["header-logo"] }>
-                <h1>
-                    سالن زیبایی
-                </h1>
+                <h1 className={styles["header-logo-h1"]}>
+                    <span>سالن بیوتی ایتوک </span>
+                    <span className={styles["icon-size"]} style={{margin : "0 6px"}}>
+                        <img className={styles["icon-size"]}  style={{width:"30px"}} src="/imgs/logo.png" alt="logo" />
+                    </span>
+
+                    <span className={styles["icon-size"]} >
+                        <img  className={styles["icon-size"]} role="button" style={{ paddingRight:"6px", borderRight : "2px solid var(--purple)" }}  src="/imgs/icons/searchIcon.png" alt="searchIcon" />
+                    </span>
+
+                </h1>   
             </div>
             
-            {/* exit from account */}
-            <div className={styles["nav-link-hover"]}>
+            <div  className={styles["logoutFont"]} role="button">
             {
                 contextState.fName? 
                 <div onClick={logout}>
                     خروج از حساب
-                    <i className="fa fa-sign-out me-2 text-danger" aria-hidden="true"></i>
+                    <i className="fa fa-sign-out me-2" style={{color:"var(--purple)"}} aria-hidden="true"></i>
                 </div>
                 :
                 <Link href="/signin">
                     <a>
                         ورود به حساب     
-                        <i className="fa fa-sign-in me-2" aria-hidden="true"></i> 
+                        <img className={styles["icon-size"]+" me-2"} role="button"  src="/imgs/icons/loginIcon.png" alt="" />
                     </a>
                 </Link>
             }

@@ -74,12 +74,13 @@ button{
 	border: none;
 }
 :root {
-    --yellow: #ffcc54;
-    --dark : #323232;
-    /* --secondary: white;
-    --font-primary: #8e8e8e;
-    --gradient:  linear-gradient(90deg, #eee, #6b40ce3b);
-    --fontFamily : '' */
+    /* --yellow: #ffcc54; */
+    /* --dark : #323232; */
+    --pink : #FFE8F0;
+    --purple : #AF4960;
+    --grey : #6A6767;
+    /* --gradient:  linear-gradient(90deg, #eee, #6b40ce3b); */
+    /* --fontFamily : '' ; */
 }
 .carousel {
 	width: 50%;
@@ -300,3 +301,6 @@ input[type="radio"]:focus{
         padding: 20px 30px;
     }
 }
+
+/* ----------------------- new version ----------------------------- */
+
