@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Aos from "aos";
 import { useCountUp } from "react-countup";
+import IntroducitonMovie from "./IntroducitonMovie";
 import "aos/dist/aos.css";
 
 import styles from "../../../public/styles/home.module.css";
@@ -67,7 +68,7 @@ export function Introduction (){
 
             <div className={styles["introduction-middlePart"]}>
  
-                <div className="introduction-middlePart-right">
+                <div className={styles["introduction-middlePart-right"]}>
 
                     <div style={ {fontWeight:"500" }}>
 
@@ -98,7 +99,10 @@ export function Introduction (){
                     <ul className="d-flex">
                     {
                         state.statics.map( (item, index ) => <li style={ {borderLeft: index == state.statics.length-1 ? "" : "2.8px solid var(--purple)"} } className="d-flex flex-column text-center ms-4 ps-4" key={index}>
-                            <span style={{color:"#000", fontWeight:"600"}} id={"statics"+index}><img style={ { width:"20px"}} src="/imgs/icons/plusIcon.png" alt="plus" /> {item.quantity}</span>
+                            <div>
+                                <img style={ { width:"20px", marginLeft : ".2em"}} src="/imgs/icons/plusIcon.png" alt="plus" />
+                                <span style={{color:"#000", fontWeight:"700"}} id={"statics"+index}></span>
+                            </div>
                             <span style={{color:"var(--grey)"}}>{item.title}</span>
                         </li>)
                     }
@@ -107,6 +111,11 @@ export function Introduction (){
                 </div>
 
                 <div className={styles["introduction-middlePart-left"]}>
+                    <div className={styles["introduction-img-2"]}></div>
+                    <div className={styles["introduction-img-1"]}></div>
+                    <div className={ styles["introductionMovieContainer"] }>
+                        <IntroducitonMovie/>
+                    </div>
                 </div>
 
  

@@ -11,19 +11,20 @@ function Footer() {
         <footer className={styles.footer}>
 
             <section>
+                <div className={styles['footer-title'] }> تماس با ما</div>
 
                 <div className={styles['footer-part'] }>
-                    <span className={styles['footer-title']}>آدرس</span>
+                    <span className={styles['footer-part-title']}>آدرس</span>
                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان </p>
                 </div>
 
                 <div className={styles['footer-part']}>
-                    <span className={styles['footer-title']}>شماره تماس</span>
+                    <span className={styles['footer-part-title']}>شماره تماس</span>
                     <span>0000000</span>
                 </div>
 
                 <div className={styles['footer-part']}>
-                    <span className={styles['footer-title']}>ایمیل</span>
+                    <span className={styles['footer-part-title']}>ایمیل</span>
                     <Link  href="#" onClick={(e)=> {
                         window.location.href = "mailto:aaa@gmail.com" ;
                         e.preventDefault();
@@ -39,7 +40,7 @@ function Footer() {
             <section>
 
                 <span className={styles['footer-title']}>
-                     سالن زیبایی
+                     سالن ایتوک
                 </span>
 
                 <ul className={styles["footer-linkList"] +' mt-4'}>
@@ -50,7 +51,7 @@ function Footer() {
                     </li>
                     <li className={styles['footer-hover']}>
                         <Link  href="/">
-                            <a>خدمات</a>
+                            <a>پرسش و پاسخ ها</a>
                         </Link>
                     </li>
                     <li className={styles['footer-hover']}>
@@ -67,8 +68,15 @@ function Footer() {
 
             </section>
 
-            <section>   
+            <section className='d-flex flex-column'>  
+
+                <span className={styles['footer-title']+" mb-3"}>
+                    شبکه های اجتماعی
+                </span> 
+
                 <div className={styles["footer-bottom-iconContainer"]}>
+      
+
                     <span className={styles["footer-social-container"]+" "+styles["facebook"]}>
                             <Link href="#">
                                 <a className={styles["footer-icon"]}><i className={styles["footer-social-icon"]+" fa fa-facebook"} aria-hidden="true"></i></a>
@@ -95,7 +103,7 @@ function Footer() {
 
                 </div>
                     
-                <p className={styles["footer-text"]+" "+"text-center text-muted"}>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام </p>
+                <p className={styles["footer-text"]+" "+"text-center text-muted"}>طراحی شده در شرکت توسعه نرم افزار ایتوک هرگونه کپی برداری از این طرح پیگرد قانونی دارد </p>
 
             </section>
 

@@ -21,7 +21,7 @@ function Home(){
                 <Introduction/>
                 <Reservation/>
                 <WhyUsPart/>
-                <CustomerSatisfaction/> 
+                {/* <CustomerSatisfaction/>  */}
                 <Footer/>
             </div>
         </>
