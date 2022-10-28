@@ -1,4 +1,4 @@
 export * from "./Introduction";
-export * from "./Details";
+export * from "./Reservation";
 export * from "./CustomerSatisfaction";
-export * from "./Gallery";
+export * from "./WhyUsPart";

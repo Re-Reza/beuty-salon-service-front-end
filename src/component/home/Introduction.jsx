@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Aos from "aos";
+import { useCountUp } from "react-countup";
 import "aos/dist/aos.css";
 
 import styles from "../../../public/styles/home.module.css";
@@ -13,12 +14,44 @@ export function Introduction (){
             duration : 1200, //each animation takes two seconds to complete
             once: true,
         });
-
     }, []);
 
     const [ state, setState] = useState({
-
+        statics : [
+            { title : "تعداد عروس", quantity : 100},
+            { title : "ساعات باز بوده", quantity : 200},
+            { title : "تعداد مشتری", quantity : 300}
+        ]
     });
+    const [ item1, item2, item3] = state.statics;
+
+    const {} = useCountUp({
+        start:0, 
+        duration: 3,
+        end:item1.quantity,
+        scrollSpyOnce: true,
+        enableScrollSpy: true,
+        ref: "statics0", 
+    });
+
+    const {} = useCountUp({
+        start:0, 
+        scrollSpyOnce: true,
+        duration: 3,
+        end:item2.quantity,
+        enableScrollSpy: true,
+        ref: "statics1", 
+    });
+
+    const {} = useCountUp({
+        start:0, 
+        scrollSpyOnce: true,
+        duration: 3,
+        end:item3.quantity,
+        enableScrollSpy: true,
+        ref: "statics2", 
+    });
+
 
     return (
         <section className={styles["introduction-section"]}>
@@ -62,23 +95,28 @@ export function Introduction (){
 
                     </div>
 
-                    <div>
-
-
-
-                    </div>
+                    <ul className="d-flex">
+                    {
+                        state.statics.map( (item, index ) => <li style={ {borderLeft: index == state.statics.length-1 ? "" : "2.8px solid var(--purple)"} } className="d-flex flex-column text-center ms-4 ps-4" key={index}>
+                            <span style={{color:"#000", fontWeight:"600"}} id={"statics"+index}><img style={ { width:"20px"}} src="/imgs/icons/plusIcon.png" alt="plus" /> {item.quantity}</span>
+                            <span style={{color:"var(--grey)"}}>{item.title}</span>
+                        </li>)
+                    }
+                    </ul>
 
                 </div>
 
                 <div className={styles["introduction-middlePart-left"]}>
-
                 </div>
 
  
             </div>
             
-            <div className={styles["introduction-bottomPart"]}>
-
+            <div className="d-flex justify-content-center">
+                <div className={styles["introduction-bottomPart"]}>
+                    سالن ایتوک دارای تیم مجرب و با بهترین مواد ارایشی ایرانی و خارجی اماده هرگونه خدمت رسانی به شما دوست گرامی است       
+                    {/* <img src="/imgs/logo.png" alt="logo" /> */}
+                </div>
             </div>
             
         </section>
