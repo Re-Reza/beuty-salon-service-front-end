@@ -8,7 +8,7 @@ import { headerRequest } from "../../dataService/homeProvider";
 import styles from  "../../../public/styles/header.module.css";
 
 
-export function HeadTop(){
+export function HeadTop(props){
 
     const {contextState, dispatch} = useContext( contextStore );
 
@@ -37,7 +37,7 @@ export function HeadTop(){
     }
     return (
 
-        <div className={styles["header-topPart"]}>
+        <div className={props.homePage ? styles["header-topPart"] : styles["header-topPart"]+" "+ styles["service-header-topPart"]}>
 
             <div className={styles["header-logo"] }>
                 <h1 className={styles["header-logo-h1"]}>
@@ -53,7 +53,7 @@ export function HeadTop(){
                 </h1>   
             </div>
             
-            <div  className={styles["logoutFont"]} role="button">
+            <div className={styles["logoutFont"]} role="button">
             {
                 contextState.fName? 
                 <div onClick={logout}>
