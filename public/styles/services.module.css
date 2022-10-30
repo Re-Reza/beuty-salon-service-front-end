@@ -1,10 +1,91 @@
 .service{
+    width: 100%;
     font-family: Vazir;
     overflow-x: hidden;
     overflow-y: hidden;
 }
+.topEmployeesContainer{
+    padding: 1.5em 2.5em;
+}
 .reserve-topEmployees-right{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    padding: 2em 0;
+    width:40%;
+    justify-content: center;
+}
+.reserve-topEmployees-left{
+    width: 60%;
+}
+.topEmployee-item{
+    display: flex;
+    padding: 1em;
+    padding-right: 2.8em;
+    background-color: var(--pink);
+    border-radius: 500px;
+}
+.topEmployee-item-profile{
+    width: 35%;
+    border-radius: 50%;
+    height: 100%;
+}
+.topEmployee-item-profile-img{
+    /* width: 300px; */
+    /* border-radius: 50%; */
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(44% at 50% 50%);
+    object-fit: cover;
+    /* height: 300px; */
+}
+.topEmployee-item-info{
+    width: 65%;
+}
+.topEmployee-head-title{
+    color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 550;
+    margin-bottom: .5em;
+}
+.topEmployee-item-feature-list{
+    list-style: none;
+    /* margin-right: 2.1em; */
+    margin-top: 1.3em;
+}
+.topEmployee-item-feature-list-item{
+    display: flex;
+    align-items: center;
+    color: var(--grey);
+    height: 33px;
+    font-size: .8em;
+    font-weight: 600;
+}
+.topEmployee-item-feature-list-item::before{
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: var(--purple); 
+    font-weight: bold; 
+    font-size: 2em;
+    display: inline-block; 
+    margin-left: .3em;
+}
+.topEmployee-item-biography{
+    font-size: .7em;
+    border-right: 3px solid var(--purple);
+    text-align: start;
+    font-weight: 450;
+    color: var(--grey);
+    padding-right: .5em;
+}
+.reserve-topEmployees-reserBtn{
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: .5em 2em;
+    transition: .4s all;
+}
+.reserve-topEmployees-reserBtn:hover{
+    background-color: var(--pink);
+    color: var(--purple) !important;
 }

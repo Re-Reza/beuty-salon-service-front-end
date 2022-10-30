@@ -59,7 +59,6 @@ export function Reservation() {
                         clickable: true,
                     }}
                     modules={[Pagination]}
-                    className="mySwiper"
                 >
                 {
                     state.content.map( (item, index) => <SwiperSlide key={index}>

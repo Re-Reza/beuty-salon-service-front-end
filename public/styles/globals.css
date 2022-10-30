@@ -311,9 +311,17 @@ input[type="radio"]:focus{
     background-color: var(--pink);
     color: var(--purple) !important;
 }
+.purple-btn{
+    padding: .3em .8em; 
+    background-color: var(--purple);
+    color: #fff !important;
+}
 .text-purple{
     color: var(--purple);
 }
 .swiper-pagination-bullet-active{
-    background-color: var(--purple) !important;
+    /* background-color: var(--purple) !important; */
+}
+.text-grey{
+    color: var(--grey);
 }

@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 //components
 import Header from "../../component/header/Header";
 import Footer from "../../component/footer/Footer";
-import { TopEmployees } from "../../component/servicesParts";
+import { TopEmployees, PopularServices } from "../../component/servicesParts";
 
 import styles from "../../../public/styles/services.module.css";
 
@@ -70,14 +70,49 @@ function Service( props) {
         employees : [
             {
                 fName : "مینا",
-                lName : "",
+                lName : "احمدی",
+                biography : "مینا احمدی هستم سلامت مو خیلی مهمه و لازمه هر چند وقت یکبار کوتاه بشه تا از موخوره و اسیب های زیاد جلوگیری بشه ",
+                featurList : ["دارای مدرک معتبر بین المللی ", "با سابقه 10 سال در کوتاهی مو ", "با اخلاق خوش "],
+                profileImg : "/imgs/gallery-img2.png",
+                rate : "9.8",
+                professions : []
+            },
+            {
+                fName : "مریم",
+                lName : "احمدی",
                 biography : "مینا احمدی هستم سلامت مو خیلی مهمه و لازمه هر چند وقت یکبار کوتاه بشه تا از موخوره و اسیب های زیاد جلوگیری بشه ",
                 featurList : ["دارای مدرک معتبر بین المللی ", "با سابقه 10 سال در کوتاهی مو ", "با اخلاق خوش "],
                 profileImg : "/imgs/gallery-img2.png",
                 rate : "9.8",
                 professions : []
             }
-        ] 
+        ],
+        popularServices : [
+            {
+                serviceTitle : "شنیون",
+                employee: "مینا احمدی",
+                rate : "8",
+                img : "/imgs/gallery-img1.jpg"
+            },
+            {
+                serviceTitle : "شنیون",
+                employee: "مینا احمدی",
+                rate : "8",
+                img : "/imgs/gallery-img1.jpg"
+            },
+            {
+                serviceTitle : "شنیون",
+                employee: "مینا احمدی",
+                rate : "8",
+                img : "/imgs/gallery-img1.jpg"
+            },
+            {
+                serviceTitle : "شنیون",
+                employee: "مینا احمدی",
+                rate : "8",
+                img : "/imgs/gallery-img1.jpg"
+            }
+        ]
     });
 
     useEffect( () => {
@@ -107,8 +142,9 @@ function Service( props) {
             
             <div className={styles["service"]}>
                 
-                <TopEmployees data = {state.employees}/> 
-
+                <TopEmployees data = {state.employees} /> 
+                
+                <PopularServices data={state.popularServices} />
 
             </div>
             
