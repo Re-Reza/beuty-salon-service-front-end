@@ -5,6 +5,9 @@ import { HeadTop, NavBar, HeaderContact } from "../header"
 import Slider from "./slider/Slider";
 import styles from  "../../../public/styles/header.module.css";
 import HeaderLabel from "../elements/HeaderLabel";
+
+import { motion } from "framer-motion";
+
 // import Link from "next/link";
 
 function Header(props){
@@ -17,10 +20,11 @@ function Header(props){
             <div className={styles['headerContainer']}>
 
                 {
-                    homePage == true ? 
-                    <div className={styles['home-page-header-imgContainer']}>
+                    homePage == true ?                              //ease
+                    <motion.div animate={{ rotate : 9, top : "-88px" }} initial={{rotate : 180, top : "-80%"}} transition={ {duration :.8} }
+                    className={styles['home-page-header-imgContainer']}>
                         <img src="/imgs/home-header-img.jpg" className={styles['home-page-header-img']} alt="header-image" />
-                    </div>
+                    </motion.div>
                     :
                     <></>
                 }
@@ -37,9 +41,15 @@ function Header(props){
                         <div className={homePage == true ? "" : styles["service-header-contentContainer"]}>
                             <NavBar/>
                             <div className="d-flex flex-column align-items-end">
-                                <HeaderLabel />
-                                <HeaderLabel />
-                                <HeaderLabel />
+                                <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"0" } } transition={ {duration : .3, delay: .4} }>
+                                    <HeaderLabel/>
+                                </motion.div>
+                                <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"-3%" } } transition={ {duration : .3, delay: .6} }>
+                                    <HeaderLabel/>
+                                </motion.div>
+                                <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"-6%" } } transition={ {duration : .3, delay: .8} }>
+                                    <HeaderLabel/>
+                                </motion.div>
                             </div>
                             <div className={homePage ==true ? styles["slider-container"] : styles["slider-container"]+ " d-fle"}>
                                 <Slider homePage = {homePage} />

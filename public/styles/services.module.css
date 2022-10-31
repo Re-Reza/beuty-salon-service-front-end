@@ -131,7 +131,8 @@
     display: grid;
     justify-items: center;
     grid-template-columns: 1;
-    grid-row-gap: 25px;
+    grid-row-gap: 45px;
+    margin-bottom: 3.5em;
 }
 .service-deatilBox{
     width: 58%;
@@ -145,11 +146,13 @@
 }
 .service-deatilBox:hover{
     margin: 0 !important;
+    /* width: 65%; */
+    transform: scale(1.05);
 }
 .service-deatilBox-right{
     width: 60%;
     height: 100%;
-    justify-content: space-around;
+    justify-content: space-around; 
 }
 .service-deatilBox-left{
     width: calc(27% - 1em);

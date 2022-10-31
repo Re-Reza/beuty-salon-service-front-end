@@ -10,6 +10,7 @@
     grid-column-gap: 45px;
     grid-row-gap: 50px;
     justify-items: center;
+    border-top: 5px dashed var(--pink);
     font-family: Vazir;
 }
 .footer-title{
