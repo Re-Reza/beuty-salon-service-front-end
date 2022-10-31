@@ -309,7 +309,7 @@ input[type="radio"]:focus{
     padding: .3em .8em;
     border-radius: 8px;
     background-color: var(--pink);
-    color: var(--purple) !important;
+    color: var(--purple) ;
 }
 .purple-btn{
     padding: .3em .8em; 

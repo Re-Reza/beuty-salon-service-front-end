@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 //components
 import Header from "../../component/header/Header";
 import Footer from "../../component/footer/Footer";
-import { TopEmployees, PopularServices } from "../../component/servicesParts";
+import { TopEmployees, PopularServices, DetailBox } from "../../component/servicesParts";
 
 import styles from "../../../public/styles/services.module.css";
 
@@ -92,26 +92,45 @@ function Service( props) {
                 serviceTitle : "شنیون",
                 employee: "مینا احمدی",
                 rate : "8",
-                img : "/imgs/gallery-img1.jpg"
+                img : "/imgs/gallery-img4.jpg"
             },
             {
                 serviceTitle : "شنیون",
                 employee: "مینا احمدی",
                 rate : "8",
-                img : "/imgs/gallery-img1.jpg"
+                img : "/imgs/gallery-img4.jpg"
             },
             {
                 serviceTitle : "شنیون",
                 employee: "مینا احمدی",
                 rate : "8",
-                img : "/imgs/gallery-img1.jpg"
+                img : "/imgs/gallery-img4.jpg"
             },
             {
                 serviceTitle : "شنیون",
                 employee: "مینا احمدی",
                 rate : "8",
-                img : "/imgs/gallery-img1.jpg"
+                img : "/imgs/gallery-img4.jpg"
+            },
+            {
+                serviceTitle : "شنیون",
+                employee: "مینا احمدی",
+                rate : "8",
+                img : "/imgs/gallery-img4.jpg"
+            },
+            {
+                serviceTitle : "شنیون",
+                employee: "مینا احمدی",
+                rate : "8",
+                img : "/imgs/gallery-img4.jpg"
             }
+        ],
+        serviceDetails : [
+            { serviceTitle: "کراتین مو", description : "بسیاری از شما ممکن است موهای مجعد و فری داشته باشید که گاهی حتی استفاده از نرم کننده‌ها و اتو مو هم برای صاف کردن و از بین بردن وز آنها افاقه نکند و موهایتان آنطور که می‌خواهید و انتظار دارید لخت و صاف نشود پیشنهاد من به شما کراتین کردن مو هست ", img:"/imgs/hairService.jpeg"},
+            { serviceTitle: "کراتین مو", description : "بسیاری از شما ممکن است موهای مجعد و فری داشته باشید که گاهی حتی استفاده از نرم کننده‌ها و اتو مو هم برای صاف کردن و از بین بردن وز آنها افاقه نکند و موهایتان آنطور که می‌خواهید و انتظار دارید لخت و صاف نشود پیشنهاد من به شما کراتین کردن مو هست ", img:"/imgs/hairService.jpeg"},
+            { serviceTitle: "کراتین مو", description : "بسیاری از شما ممکن است موهای مجعد و فری داشته باشید که گاهی حتی استفاده از نرم کننده‌ها و اتو مو هم برای صاف کردن و از بین بردن وز آنها افاقه نکند و موهایتان آنطور که می‌خواهید و انتظار دارید لخت و صاف نشود پیشنهاد من به شما کراتین کردن مو هست ", img:"/imgs/hairService.jpeg"},
+            { serviceTitle: "کراتین مو", description : "بسیاری از شما ممکن است موهای مجعد و فری داشته باشید که گاهی حتی استفاده از نرم کننده‌ها و اتو مو هم برای صاف کردن و از بین بردن وز آنها افاقه نکند و موهایتان آنطور که می‌خواهید و انتظار دارید لخت و صاف نشود پیشنهاد من به شما کراتین کردن مو هست ", img:"/imgs/hairService.jpeg"},
+            { serviceTitle: "کراتین مو", description : "بسیاری از شما ممکن است موهای مجعد و فری داشته باشید که گاهی حتی استفاده از نرم کننده‌ها و اتو مو هم برای صاف کردن و از بین بردن وز آنها افاقه نکند و موهایتان آنطور که می‌خواهید و انتظار دارید لخت و صاف نشود پیشنهاد من به شما کراتین کردن مو هست ", img:"/imgs/hairService.jpeg"}
         ]
     });
 
@@ -145,6 +164,12 @@ function Service( props) {
                 <TopEmployees data = {state.employees} /> 
                 
                 <PopularServices data={state.popularServices} />
+
+                <section className={styles["service-detailBox-container"]}>
+                {
+                    state.serviceDetails.map( (item, index )=> <DetailBox indx={index+1} item={item} key={index}/> )
+                }
+                </section>
 
             </div>
             

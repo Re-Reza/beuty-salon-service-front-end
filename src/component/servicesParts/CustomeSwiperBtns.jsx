@@ -4,7 +4,7 @@ import { useSwiper } from 'swiper/react';
 
 //useSwiper must be used by components inside a Swiper element.
 
-const CustomeSwiperBtns = (props) => {
+function CustomeSwiperBtns(props) {
 
     const swiper = useSwiper();
   

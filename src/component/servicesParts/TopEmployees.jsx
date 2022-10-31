@@ -60,7 +60,6 @@ export const TopEmployees = ( props ) => {
                     }}
                     modules={[ Autoplay ]}
                     onSlideChange={(e) => changeCurrentEmployee(e.activeIndex)}
-                    // onSwiper={(swiper) => console.log(swiper)}
                     >
                     {
                         data.map( (item, index) => {
