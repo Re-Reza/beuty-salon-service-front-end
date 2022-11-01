@@ -1,21 +1,108 @@
 import React, { useEffect, useState } from "react";
 
-import Link from "next/link";
-import Aos from "aos";
+// import Link from "next/link";
 import { useCountUp } from "react-countup";
 import IntroducitonMovie from "./IntroducitonMovie";
-import "aos/dist/aos.css";
-
+import { motion } from "framer-motion";
 import styles from "../../../public/styles/home.module.css";
 
 export function Introduction (){
 
-    useEffect( ()=> {
-        Aos.init({
-            duration : 1200, //each animation takes two seconds to complete
-            once: true,
-        });
-    }, []);
+    // const controls = useAnimation();
+    // const [ref, inView] = useInView();
+  
+    // useEffect(() => {
+    //   if (inView) {
+    //     controls.start("onscreen");
+    //   }
+    // }, [controls, inView]);
+
+    const varientLogoRigth = {
+        onscreen: {
+            right : 0,
+            transition: {
+              type: "spring",
+              duration : 1.5, delay: 0.2
+            }
+        },
+        offscreen: {
+            right : "-100%",
+        },
+    };
+
+    const varientLogoLeft = { 
+        onscreen : {
+            left : 0,
+            transition : {
+                type: "spring",
+                duration : 1.5, delay: 0.2
+            }
+        },
+        offscreen : {
+            left : "-100%"
+        }
+    }
+
+    const varientTitle = { 
+        onscreen : {
+            bottom : "0vh",
+            transition : {
+                type: "spring",
+                duration : .7
+            }
+        },
+        offscreen : {
+            bottom: "-30vh"
+        }
+    }
+
+    const sunVar = {
+        onscreen : {
+            rotate : 360,
+            transition : {
+                duration : 2,
+                delay : 0,
+                repeat : Infinity,
+                // repeatType: Infinity,
+                repeatDelay: 0,
+                ease: "linear",
+            }
+        },
+        offscreen : {
+            rotate : 0
+        }
+    }
+
+    const moonVAr = {
+        onscreen : {
+            scale : 1.5,
+            transition : {
+                type: "spring",
+                duration : 3,
+                delay : 0,
+                repeat : Infinity,
+                // repeatType: Infinity,
+                repeatDelay: 0,
+            }
+        },
+        offscreen : {
+            scale : 0
+        }
+    }
+
+    const imgBoxVar = { 
+        onscreen : {
+            opacity : 1,
+            transition : {
+                type: "spring",
+                duration : 4,
+                delay : .1
+            }
+        },
+        offscreen : {
+            opacity : 0,
+        }
+    }
 
     const [ state, setState] = useState({
         statics : [
@@ -58,11 +145,20 @@ export function Introduction (){
         <section className={styles["introduction-section"]}>
             
             <div className="d-flex w-100 justify-content-center">
+
                 <h2 className={styles["home-introduction-title"]}>
-                    <span className="ms-3">به سالن زیبایی ایتوک خوش آمدید</span>
-                    <span>
+                    <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>
                         <img style={{width:"40px"}} src="/imgs/logo.png" alt="" />
-                    </span>
+                    </motion.span>
+
+                    <motion.span variants={varientTitle}
+                     whileInView="onscreen" viewport={{ once: true, amount: 1 }}  initial="offscreen" style={{position: "relative"}} className="ms-3 me-3">به سالن زیبایی ایتوک خوش آمدید</motion.span>
+
+                    <motion.span whileInView="onscreen"
+            viewport={{ once: true, amount: 1 }} variants={varientLogoLeft} initial="offscreen" style={{position: "relative"}}>
+                        <img style={{width:"40px"}} src="/imgs/logo.png" alt="" />
+                    </motion.span>
+
                 </h2>
             </div>
 
@@ -74,7 +170,7 @@ export function Introduction (){
 
                         <div className="d-flex justify-content-between" style={{width:"170px"}}>
                             <span className="ms-3">
-                                <img className="ms-2" style={{ width: "20px"}} src="/imgs/icons/sunIcon.png" alt="open" />
+                                <motion.img variants={sunVar} initial="offscreen" whileInView="onscreen" className="ms-2" style={{ width: "20px"}} src="/imgs/icons/sunIcon.png" alt="open" />
                                 ساعت باز
                             </span>
 
@@ -85,7 +181,7 @@ export function Introduction (){
 
                         <div className="d-flex justify-content-between"  style={{width:"170px"}}>
                             <span className="ms-3">
-                            <img className="ms-2" style={{ width: "20px"}}  src="/imgs/icons/moonIcon.png" alt="close" />
+                            <motion.img initial="offscreen"  whileInView="onscreen" className="ms-2" style={{ width: "20px"}}  src="/imgs/icons/moonIcon.png" alt="close" />
                                 ساعت بسته
                             </span>
 
@@ -111,21 +207,23 @@ export function Introduction (){
                 </div>
 
                 <div className={styles["introduction-middlePart-left"]}>
-                    <div className={styles["introduction-img-2"]}></div>
-                    <div className={styles["introduction-img-1"]}></div>
-                    <div className={ styles["introductionMovieContainer"] }>
+                    <motion.div initial="offscreen"  whileInView="onscreen" viewport={{ once: true, amount: 1 } } variants={imgBoxVar} className={styles["introduction-img-2"]}></motion.div>
+                    
+                    <motion.div initial="offscreen"  whileInView="onscreen" variants={imgBoxVar} viewport={{ once: true, amount: 1 }} className={styles["introduction-img-1"]}></motion.div>
+                    
+                    <motion.div initial="offscreen"  whileInView="onscreen" variants={imgBoxVar} viewport={{ once: true, amount: 1 }} className={ styles["introductionMovieContainer"] }>
                         <IntroducitonMovie/>
-                    </div>
+                    </motion.div>
                 </div>
 
  
             </div>
             
             <div className="d-flex justify-content-center">
-                <div className={styles["introduction-bottomPart"]}>
+                <motion.div variants={varientTitle} initial="offscreen"  whileInView="onscreen" viewport={{ once: true, amount: 1 }} style={{position : "relative"}} className={styles["introduction-bottomPart"]}>
                     سالن ایتوک دارای تیم مجرب و با بهترین مواد ارایشی ایرانی و خارجی اماده هرگونه خدمت رسانی به شما دوست گرامی است       
                     {/* <img src="/imgs/logo.png" alt="logo" /> */}
-                </div>
+                </motion.div>
             </div>
             
         </section>

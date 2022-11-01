@@ -10,7 +10,7 @@ export function WhyUsPart(){
     useEffect(() => {
         
         Aos.init({
-            duration : 1500,
+            duration : 800,
             once : true
         });
 
@@ -21,17 +21,17 @@ export function WhyUsPart(){
             
             <div className={styles["whyus-right"]}>
 
-                <h4 className="text-purple">چرا ما ؟</h4>
+                <h4 className="text-purple" data-aos="fade-up" data-aos-delay="300">چرا ما ؟</h4>
 
-                <p className={styles["whyus-des"]}>
+                <p data-aos="fade-left" data-aos-delay="500" className={styles["whyus-des"]}>
 ارایشگاه ایتوک با بهرمندی از بهترین و به روز ترین امکاتان ارایشی  و مرغوب ترین مواد ارایشی تایید شده از سازمان غذا و دارو اروپا و امریکا با بهرگیری از فرمولاسیون جدید و ارگانیگ 
 به خدمت شما مشتری محترم در اماده است              
                 </p>
 
                 <ul className={styles["whyus-list"]}>
-                    <li className={styles["whyus-list-item"] }>دارای کادر حرفه ای و مجرب </li>
-                    <li className={styles["whyus-list-item"] }>دارای مواد ارگانیگ و با کیفیت </li>
-                    <li className={styles["whyus-list-item"] }>دارای هزینه ی معقول و به صرفه </li>
+                    <li data-aos="fade-up" data-aos-delay="600" className={styles["whyus-list-item"] }>دارای کادر حرفه ای و مجرب </li>
+                    <li data-aos="fade-up" data-aos-delay="750" className={styles["whyus-list-item"] }>دارای مواد ارگانیگ و با کیفیت </li>
+                    <li data-aos="fade-up" data-aos-delay="900" className={styles["whyus-list-item"] }>دارای هزینه ی معقول و به صرفه </li>
                 </ul>
                 
                 <div>
@@ -43,11 +43,11 @@ export function WhyUsPart(){
             </div>
             
             <div className={styles["whyus-left"]} >
-                <div className={styles['gallery-img-1']+" "+styles['gallery-img']}></div>
-                <div className={styles['gallery-img-2']+" "+styles['gallery-img']}></div>
-                <div className={styles['gallery-img-3']+" "+styles['gallery-img']}></div>
-                <div className={styles['gallery-img-4']+" "+styles['gallery-img']}></div>
-                <div className={styles['gallery-img-5']+" "+styles['gallery-img']}></div>
+                <div data-aos="fade-right" data-aos-delay="400" className={styles['gallery-img-1']+" "+styles['gallery-img']}></div>
+                <div data-aos="fade-left" data-aos-delay="500" className={styles['gallery-img-2']+" "+styles['gallery-img']}></div>
+                <div data-aos="fade-right" data-aos-delay="600" className={styles['gallery-img-3']+" "+styles['gallery-img']}></div>
+                <div data-aos="zoom-in-up" data-aos-delay="900" className={styles['gallery-img-4']+" "+styles['gallery-img']}></div>
+                <div data-aos="fade-left" data-aos-delay="700"  className={styles['gallery-img-5']+" "+styles['gallery-img']}></div>
             </div>
         
         </section>

@@ -3,8 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 // import { useRouter } from "next/router";
-import Aos from "aos";
-import "aos/dist/aos.css";
+
 //components
 import Header from "../../component/header/Header";
 import Footer from "../../component/footer/Footer";
@@ -134,22 +133,6 @@ function Service( props) {
         ]
     });
 
-    useEffect( () => {
-        if( counter.current == 0)
-        {
-            console.log("init")
-            Aos.init({
-                duration : 1200, //each animation takes two seconds to complete
-                once: true,
-            });
-        }
-        counter.current++;
-        setTimeout( ()=> {
-            console.log("refresh")
-            Aos.refresh();
-        }, 2000)
-
-    }, [service ]);
 
     return(
         <>

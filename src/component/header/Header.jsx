@@ -34,22 +34,26 @@ function Header(props){
                     <div className={homePage == true ? "" : styles["service-header-headBottom"]}>
                         {
                         homePage == true ? <></> :
-                        <div className={styles["service-header-imgContainer"]}>
+                        <motion.div style={{position:"relative"}} animate={{  left:"0" }} initial={{left:"50%"}} transition={ {duration : 1.5, type: "spring",} } className={styles["service-header-imgContainer"]}>
                             <img className={styles["service-header-img"]} src="/imgs/service-header.png" alt="header-img" />
-                        </div>
+                        </motion.div>
                         }
                         <div className={homePage == true ? "" : styles["service-header-contentContainer"]}>
                             <NavBar/>
-                            <div className="d-flex flex-column align-items-end">
+                            <div className="d-flex flex-column align-items-end" style={{overflowX:"hidden"}}>
+                                
                                 <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"0" } } transition={ {duration : .3, delay: .4} }>
                                     <HeaderLabel/>
                                 </motion.div>
+
                                 <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"-3%" } } transition={ {duration : .3, delay: .6} }>
                                     <HeaderLabel/>
                                 </motion.div>
+
                                 <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"-6%" } } transition={ {duration : .3, delay: .8} }>
                                     <HeaderLabel/>
                                 </motion.div>
+
                             </div>
                             <div className={homePage ==true ? styles["slider-container"] : styles["slider-container"]+ " d-fle"}>
                                 <Slider homePage = {homePage} />

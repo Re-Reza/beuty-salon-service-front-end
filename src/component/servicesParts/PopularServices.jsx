@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Autoplay } from "swiper";
 
 import Link from 'next/link';
-
+import { motion } from "framer-motion";
 import SwipeBtn from "./SwipeBtn";
 
 import styles from "../../../public/styles/services.module.css";
@@ -30,13 +30,52 @@ export function PopularServices(props) {
         })
     }
 
+    const varientLogoRigth = {
+        onscreen: {
+            right : 0,
+            transition: {
+              type: "spring",
+              duration : 1.5, delay: 0.2
+            }
+        },
+        offscreen: {
+            right : -500,
+        },
+    };
+
+    const varientLogoLeft = { 
+        onscreen : {
+            left : 0,
+            transition : {
+                type: "spring",
+                duration : 1.5, delay: 0.2
+            }
+        },
+        offscreen : {
+            left : -500
+        }
+    }
+
+    const varientTitle = { 
+        onscreen : {
+            bottom : "0vh",
+            transition : {
+                type: "spring",
+                duration : .7
+            }
+        },
+        offscreen : {
+            bottom: "-20vh"
+        }
+    }
+
     return(
         <section className={styles["service-popularService"]}>
 
             <h2 className={styles["service-popularService-title"]}>
-                <span><img styles={{width:"50px"}} className="ms-2" src="/imgs/logo.png" alt="logo" /></span>
-                <span>محبوب ترین خدمات عنوان</span>
-                <span><img styles={{width:"50px"}}  className="me-2"  src="/imgs/logo.png" alt="logo" /></span>
+                <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}><img styles={{width:"50px"}} className="ms-2" src="/imgs/logo.png" alt="logo" /></motion.span>
+                <motion.span variants={varientTitle} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>محبوب ترین خدمات عنوان</motion.span>
+                <motion.span variants={varientLogoLeft} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative" }} ><img styles={{width:"50px"}} className="me-2"  src="/imgs/logo.png" alt="logo" /></motion.span>
             </h2>
 
             <div className="mt-5 d-flex align-items-center">

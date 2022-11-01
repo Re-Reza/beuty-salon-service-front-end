@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-
+import { motion } from "framer-motion";
 import styles from "../../../public/styles/home.module.css";
 
 export function Reservation() {
@@ -42,12 +42,26 @@ export function Reservation() {
         ]
     });
 
+    const varientLogoLeft = { 
+        onscreen : {
+            left : 0,
+            transition : {
+                type: "spring",
+                duration : 1.5, 
+                delay: 0.2
+            }
+        },
+        offscreen : {
+            left : -500
+        }
+    }
+
     return (
         <section className={styles["reserveSection"]}>
 
             <div className="d-flex justify-content-center align-items-center mb-5">
                 <h3 className={styles['reserveSectoinTitle']}>نوبت دهی</h3>
-                <img style={{width:"38px"}} src="/imgs/logo.png" alt="" />
+                <motion.img whileInView="onscreen" viewport={{ once: true, amount: .5 }} variants={varientLogoLeft} initial="offscreen" style={{width:"38px", position : "relative"}} src="/imgs/logo.png" />
             </div>
 
             <div className={styles["swiperContainer"]+" mt-2"}>

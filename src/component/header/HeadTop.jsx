@@ -6,7 +6,7 @@ import contextStore from "../../context/contextStore";
 import { removeCookie } from "../../dataService/cookieProvider";
 import { headerRequest } from "../../dataService/homeProvider";
 import styles from  "../../../public/styles/header.module.css";
-
+import { motion } from "framer-motion";
 
 export function HeadTop(props){
 
@@ -35,16 +35,63 @@ export function HeadTop(props){
             type : "DELETE_DATA",
         });
     }
+
+    function provideVarient(delay){
+        return {
+            onscreen : {
+                rotate : 150,
+                transition : {
+                    type: "spring",
+                    duration : .5,
+                    delay :.2
+                }
+            },
+            offscreen : {
+                // right : "-100px",
+                rotate : 0
+            }
+        }
+    }
+
+    let tt = {
+        onscreen : {
+            rotate : 150,
+            transition : {
+                type: "spring",
+                duration : .5,
+                delay :.2
+            }
+        },
+        offscreen : {
+            // right : "-100px",
+            rotate : 0
+        }
+    }
+
+    // const varientLogoRigth = {
+    //     onscreen: {
+    //         right : 0,
+    //         transition: {
+    //           type: "spring",
+    //           duration : 1.5, delay: 0.2
+    //         }
+    //     },
+    //     offscreen: {
+    //         right : "-100%",
+    //     },
+    // };
+
     return (
 
         <div className={props.homePage ? styles["header-topPart"] : styles["header-topPart"]+" "+ styles["service-header-topPart"]}>
 
             <div className={styles["header-logo"] }>
                 <h1 className={styles["header-logo-h1"]}>
-                    <span>سالن بیوتی ایتوک </span>
-                    <span className={styles["icon-size"]} style={{margin : "0 6px"}}>
+                    
+                    <motion.span animate={{right: "0"}}  transition={ {duration :.8} } initial={{right : "-50%"}}style={{position:"relative"}}>سالن بیوتی ایتوک </motion.span>
+                    <motion.span className={styles["icon-size"]} style={{margin : "0 6px", position:"relative"}}>
                         <img className={styles["icon-size"]}  style={{width:"30px"}} src="/imgs/logo.png" alt="logo" />
-                    </span>
+                    </motion.span>
 
                     <span className={styles["icon-size"]} >
                         <img  className={styles["icon-size"]} role="button" style={{ paddingRight:"6px", borderRight : "2px solid var(--purple)" }}  src="/imgs/icons/searchIcon.png" alt="searchIcon" />

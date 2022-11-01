@@ -201,9 +201,7 @@
     display: flex;
     padding: 2em 2em;
     color: var(--grey);
-}
-.whyus-section-title{
-
+    margin-bottom: 2em;
 }
 .whyus-des{
     margin-top: 2.5em;

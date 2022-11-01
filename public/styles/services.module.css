@@ -144,11 +144,10 @@
     padding: 1em 3em;
     transition: all .5s ;
 }
-.service-deatilBox:hover{
+/* .service-deatilBox:hover{
     margin: 0 !important;
-    /* width: 65%; */
     transform: scale(1.05);
-}
+} */
 .service-deatilBox-right{
     width: 60%;
     height: 100%;
