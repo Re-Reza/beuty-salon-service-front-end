@@ -34,6 +34,8 @@
 }
 .slider-container{
     height: 310px;
+    margin-top: 5em;
+    margin-bottom: 1.5em;
     display: grid;
     grid-template-rows: repeat(8, 1fr);
     grid-template-columns: repeat(12, 1fr);
@@ -62,23 +64,23 @@
     visibility: visible;
 }
 .slide-btn{
-    background-color: var(--pink) !important;
-    color: var(--purple) !important;
+    background-color: var(--grey) !important;
+    color: #fff !important;
     margin-top: 1em;
-    border-radius: 20px !important;
-    padding: .8em 1em !important;
-    border: 1px solid var(--purple);
+    border-radius: 28px !important;
+    padding: .8em 1.5em !important;
+    border: 1px solid var(--grey);
     transition: all .5s !important;
 }
 .slide-btn:hover{
-    background-color: var(--purple) !important;
-    color: #fff !important;
+    background-color: #fff !important;
+    color: var(--grey) !important;
 }
 .slide-title{
     font-size:2.5em;
     line-height: 1.2;
     font-weight: 600;
-    color: var(--purple);
+    color: var(--grey);
     margin-bottom: .8em;
 }
 .slide-description{
@@ -94,6 +96,7 @@
     border-radius: 10px;
     width: 141px;
     opacity: 0;
+    font-size: 1.3em;
     visibility: hidden;
     transform: translate(0px, -20px);
     transition: .5s all;
@@ -263,7 +266,7 @@
     width: 74%;
 }
 .icon-size{
-    width: 25px;
+    width: 35px;
 }
 .header-topPart{
     display: flex;
@@ -271,10 +274,10 @@
     align-items: center;
     margin-bottom: 1.1em;
     padding:  .5em .8em;
-    color: var(--purple);
+    color: var(--pinkT2);
 }
 .header-logo-h1{
-    color: inherit;
+    color: var(--pinkT2);
     font-size: 25px;
     font-weight : 580 !important;
 }
@@ -285,15 +288,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--pink);
+    background-color: var(--lightPurple);
     width: 88%;
     padding: .6em 1.4em;
     border-radius: 16px;
-    color: var(--purple);
+    color: var(--grey);
 }
 .active-link{
     padding-bottom: .4em;
-    border-bottom: 2px solid var(--purple);
+    border-bottom: 3px solid var(--pinkT2);
 }
 /* -------------------------------- service page ------------------------------- */
 .service-header-img-container{

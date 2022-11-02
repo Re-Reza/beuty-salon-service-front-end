@@ -88,13 +88,13 @@ export function HeadTop(props){
             <div className={styles["header-logo"] }>
                 <h1 className={styles["header-logo-h1"]}>
                     
-                    <motion.span animate={{right: "0"}}  transition={ {duration :.8} } initial={{right : "-50%"}}style={{position:"relative"}}>سالن بیوتی ایتوک </motion.span>
+                    <motion.span animate={{right: "0"}}  transition={ {duration :.8} } initial={{right : "-50%"}} style={{position:"relative"}}>سالن زیبایی ایتوک </motion.span>
                     <motion.span className={styles["icon-size"]} style={{margin : "0 6px", position:"relative"}}>
                         <img className={styles["icon-size"]}  style={{width:"30px"}} src="/imgs/logo.png" alt="logo" />
                     </motion.span>
 
                     <span className={styles["icon-size"]} >
-                        <img  className={styles["icon-size"]} role="button" style={{ paddingRight:"6px", borderRight : "2px solid var(--purple)" }}  src="/imgs/icons/searchIcon.png" alt="searchIcon" />
+                        <img  className={styles["icon-size"]} role="button" style={{ paddingRight:"6px", borderRight : "3px solid var(--pinkT2)" }}  src="/imgs/icons/searchIcon.png" alt="searchIcon" />
                     </span>
 
                 </h1>   
@@ -105,13 +105,13 @@ export function HeadTop(props){
                 contextState.fName? 
                 <div onClick={logout}>
                     خروج از حساب
-                    <i className="fa fa-sign-out me-2" style={{color:"var(--purple)"}} aria-hidden="true"></i>
+                    <i className="fa fa-sign-out me-2" style={{color:"var(--pinkT2)"}} aria-hidden="true"></i>
                 </div>
                 :
                 <Link href="/signin">
                     <a>
                         ورود به حساب     
-                        <img className={styles["icon-size"]+" me-2"} role="button"  src="/imgs/icons/loginIcon.png" alt="" />
+                        <img className={styles["icon-size"]+" me-2"} style={{width:"30px"}} role="button"  src="/imgs/icons/loginIcon.png" alt="" />
                     </a>
                 </Link>
             }

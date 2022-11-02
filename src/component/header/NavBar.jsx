@@ -61,13 +61,13 @@ export function NavBar(){
                 </Link>
             </li>
 
-            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+            <li onClick={()=>{setShowState(false)}}  className={styles["nav-link-hover"]+ " mb-2"}>
                 <Link href="/service/skin">
                     <a>پوست</a>
                 </Link>
             </li>
 
-            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+            <li onClick={()=>{setShowState(false)}}  className={styles["nav-link-hover"]+ " mb-2"}>
                 <Link href="/service/makeup">
                     <a>میکاپ</a>
                 </Link>
@@ -86,7 +86,7 @@ export function NavBar(){
             </div>
 
 
-            <ul className={showNavState ? styles["nav-links-container"]+" "+ styles["showNavMenu"]: styles["nav-links-container"]}>
+            <ul style={{fontSize:"1.1em"}}  className={showNavState ? styles["nav-links-container"]+" "+ styles["showNavMenu"]: styles["nav-links-container"]}>
                 
                 {
                     links.map( (item, index) => {

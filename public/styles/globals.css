@@ -78,7 +78,9 @@ button{
     /* --dark : #323232; */
     --pink : #FFE8F0;
     --purple : #AF4960;
-    --grey : #6A6767;
+    --grey : #066255;
+    --pinkT2 : #E49EB7;
+    --lightPurple : #FAD3D8;
     /* --gradient:  linear-gradient(90deg, #eee, #6b40ce3b); */
     /* --fontFamily : '' ; */
 }

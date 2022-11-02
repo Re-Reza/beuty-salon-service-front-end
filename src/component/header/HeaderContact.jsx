@@ -11,36 +11,36 @@ export function HeaderContact(){
             <div className={styles["header-bottom-contact"]}>
                 
                 <div>
-                    <img src="/imgs/logo.png" styles={{width:"30px"}} alt="logo" />
-                    <span style={{fontWeight : "550"}}> با مدیریت مدیری</span>
+                    <img src="/imgs/logoGreen.png" style={{width:"65px", marginLeft : "1em"}} alt="logo" />
+                    <span style={{fontWeight : "700", fontSize:"1.28em"}}> با مدیریت مدیری</span>
                 </div>
                 
                 <div>
                     <span className="me-3">
                         <Link href="#">
                             <a>
-                                <img  style={{width:"24px"}} src="/imgs/icons/phoneIcon.png" alt="phone" />
+                                <img  style={{width:"32px"}} src="/imgs/icons/phoneIcon.png" alt="phone" />
                             </a>
                         </Link>
                     </span>
                     <span  className="me-3">
                         <Link href="#">
                             <a>
-                                <img  style={{width:"25px"}} src="/imgs/icons/insIcon.png/" alt="instragram" />
+                                <img  style={{width:"32px"}} src="/imgs/icons/insIcon.png/" alt="instragram" />
                             </a>
                         </Link>
                     </span>
                     <span className="me-3">
                         <Link href="#">
                             <a>
-                                <img  style={{width:"25px"}} src="/imgs/icons/whatsAppIcon.png/" alt="whatsapp" />
+                                <img  style={{width:"32px"}} src="/imgs/icons/whatsAppIcon.png/" alt="whatsapp" />
                             </a>
                         </Link>
                     </span>
                     <span  className="me-3">
                         <Link href="#">
                             <a>
-                                <img style={{width:"29px"}} src="/imgs/icons/telegramIcon.png/" alt="telegram" />
+                                <img style={{width:"32px"}} src="/imgs/icons/telegramIcon.png/" alt="telegram" />
                             </a>
                         </Link>
                     </span>

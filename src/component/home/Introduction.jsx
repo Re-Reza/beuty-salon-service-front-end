@@ -39,7 +39,7 @@ export function Introduction (){
             }
         },
         offscreen : {
-            left : "-100%"
+            left : "-200"
         }
     }
 
@@ -144,19 +144,19 @@ export function Introduction (){
     return (
         <section className={styles["introduction-section"]}>
             
-            <div className="d-flex w-100 justify-content-center">
+            <div className="d-flex w-100 justify-content-start">
 
                 <h2 className={styles["home-introduction-title"]}>
-                    <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>
+                    {/* <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>
                         <img style={{width:"40px"}} src="/imgs/logo.png" alt="" />
-                    </motion.span>
+                    </motion.span> */}
 
                     <motion.span variants={varientTitle}
                      whileInView="onscreen" viewport={{ once: true, amount: 1 }}  initial="offscreen" style={{position: "relative"}} className="ms-3 me-3">به سالن زیبایی ایتوک خوش آمدید</motion.span>
 
                     <motion.span whileInView="onscreen"
             viewport={{ once: true, amount: 1 }} variants={varientLogoLeft} initial="offscreen" style={{position: "relative"}}>
-                        <img style={{width:"40px"}} src="/imgs/logo.png" alt="" />
+                        <img style={{width:"50px"}} src="/imgs/logo.png" alt="" />
                     </motion.span>
 
                 </h2>
@@ -166,11 +166,11 @@ export function Introduction (){
  
                 <div className={styles["introduction-middlePart-right"]}>
 
-                    <div style={ {fontWeight:"500" }}>
+                    <div style={ {fontWeight:"500", fontSize : "1.3em", marginRight:"1em" }}>
 
-                        <div className="d-flex justify-content-between" style={{width:"170px"}}>
-                            <span className="ms-3">
-                                <motion.img variants={sunVar} initial="offscreen" whileInView="onscreen" className="ms-2" style={{ width: "20px"}} src="/imgs/icons/sunIcon.png" alt="open" />
+                        <div className="d-flex justify-content-between" style={{width:"220px"}}>
+                            <span className="ms-3 mb-2">
+                                <motion.img variants={sunVar} initial="offscreen" whileInView="onscreen" className="ms-3" style={{ width: "30px"}} src="/imgs/icons/sunIcon.png" alt="open" />
                                 ساعت باز
                             </span>
 
@@ -179,9 +179,9 @@ export function Introduction (){
                             </span>
                         </div>
 
-                        <div className="d-flex justify-content-between"  style={{width:"170px"}}>
+                        <div className="d-flex justify-content-between"  style={{width:"220px"}}>
                             <span className="ms-3">
-                            <motion.img initial="offscreen"  whileInView="onscreen" className="ms-2" style={{ width: "20px"}}  src="/imgs/icons/moonIcon.png" alt="close" />
+                            <motion.img initial="offscreen"  whileInView="onscreen" className="ms-3" style={{ width: "30px"}}  src="/imgs/icons/moonIcon.png" alt="close" />
                                 ساعت بسته
                             </span>
 
@@ -194,12 +194,12 @@ export function Introduction (){
 
                     <ul className="d-flex">
                     {
-                        state.statics.map( (item, index ) => <li style={ {borderLeft: index == state.statics.length-1 ? "" : "2.8px solid var(--purple)"} } className="d-flex flex-column text-center ms-4 ps-4" key={index}>
+                        state.statics.map( (item, index ) => <li style={ {borderLeft: index == state.statics.length-1 ? "" : "2.8px solid var(--grey)"} } className="d-flex flex-column text-center ms-4 ps-4" key={index}>
                             <div>
-                                <img style={ { width:"20px", marginLeft : ".2em"}} src="/imgs/icons/plusIcon.png" alt="plus" />
-                                <span style={{color:"#000", fontWeight:"700"}} id={"statics"+index}></span>
+                                <img style={ { width:"30px", marginLeft : ".2em"}} src="/imgs/icons/plusIcon.png" alt="plus" />
+                                <span style={{color:"#00312E", fontSize:"1.25em", fontWeight:"750"}} id={"statics"+index}></span>
                             </div>
-                            <span style={{color:"var(--grey)"}}>{item.title}</span>
+                            <span style={{color:"var(--pinkT2)", fontWeight:"500"}}>{item.title}</span>
                         </li>)
                     }
                     </ul>
