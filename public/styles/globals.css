@@ -81,6 +81,7 @@ button{
     --grey : #066255;
     --pinkT2 : #E49EB7;
     --lightPurple : #FAD3D8;
+    --grey2 : #6A6767;
     /* --gradient:  linear-gradient(90deg, #eee, #6b40ce3b); */
     /* --fontFamily : '' ; */
 }
@@ -168,6 +169,9 @@ p{
 }
 .rmdp-week .rmdp-week-day{
     color : var(--dark)!important;
+}
+.swiper-scrollbar-drag{
+    background-color: rgba(0, 0, 0, .3) !important;
 }
 .progress-bar{
     background-color: var(--yellow) !important;

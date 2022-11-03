@@ -49,25 +49,25 @@ export function NavBar(){
         <span onClick={toggleServiceList} className={ styles["nav-link-hover"]}> خدمات  &nbsp;<i className={showState? "fa fa-angle-up" : "fa fa-angle-down"} aria-hidden="true"></i></span>
 
         <ul className={showState ? styles["nav-services"]+" "+ styles["show-nav-serive"] : styles["nav-services"]}>
-            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+            <li onClick={()=>{setShowState(false)}} style={ { fontSize : ".75em"} } className={styles["nav-link-hover"]+ " mb-2"}>
                 <Link href="/service/hair">
                     <a>مو</a>
                 </Link>
             </li>
 
-            <li onClick={()=>{setShowState(false)}} className={styles["nav-link-hover"]+ " mb-2"}>
+            <li onClick={()=>{setShowState(false)} }  style={ { fontSize : ".75em"} } className={styles["nav-link-hover"]+ " mb-2"}>
                 <Link  href="/service/nail">
                     <a>ناخن</a>
                 </Link>
             </li>
 
-            <li onClick={()=>{setShowState(false)}}  className={styles["nav-link-hover"]+ " mb-2"}>
+            <li onClick={()=>{setShowState(false)}}  style={ { fontSize : ".75em"} }  className={styles["nav-link-hover"]+ " mb-2"}>
                 <Link href="/service/skin">
                     <a>پوست</a>
                 </Link>
             </li>
 
-            <li onClick={()=>{setShowState(false)}}  className={styles["nav-link-hover"]+ " mb-2"}>
+            <li onClick={()=>{setShowState(false)}}  style={ { fontSize : ".75em"} } className={styles["nav-link-hover"]+ " mb-2"}>
                 <Link href="/service/makeup">
                     <a>میکاپ</a>
                 </Link>

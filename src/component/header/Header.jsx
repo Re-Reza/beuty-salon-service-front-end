@@ -41,7 +41,9 @@ function Header(props){
                         <div className={homePage == true ? "" : styles["service-header-contentContainer"]}>
                             <NavBar/>
                             
-                            {/* <div className="d-flex flex-column align-items-end" style={{overflowX:"hidden"}}>
+                            {
+                                homePage ? <></> : 
+                                <div className="d-flex flex-column align-items-end mt-3" style={{overflowX:"hidden"}}>
                                 
                                 <motion.div style={{position: "relative"}} initial={{left:"-50%"}} animate={ { left:"0" } } transition={ {duration : .3, delay: .4} }>
                                     <HeaderLabel/>
@@ -55,9 +57,10 @@ function Header(props){
                                     <HeaderLabel/>
                                 </motion.div>
 
-                            </div> */}
+                            </div>
 
-                            <div className={homePage ==true ? styles["slider-container"] : styles["slider-container"]+ " d-fle"}>
+                            }
+                            <div className={homePage ==true ? styles["slider-container"] : styles["slider-container"]+ " mt-4"}>
                                 <Slider homePage = {homePage} />
                             </div>
                         </div>

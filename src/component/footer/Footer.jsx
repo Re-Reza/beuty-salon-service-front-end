@@ -15,12 +15,12 @@ function Footer() {
 
                 <div className={styles['footer-part'] }>
                     <span className={styles['footer-part-title']}>آدرس</span>
-                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان </p>
+                    <p className={styles["footer-item"]}>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان </p>
                 </div>
 
                 <div className={styles['footer-part']}>
                     <span className={styles['footer-part-title']}>شماره تماس</span>
-                    <span>0000000</span>
+                    <span className={styles["footer-item"]}>0000000</span>
                 </div>
 
                 <div className={styles['footer-part']}>
@@ -29,7 +29,7 @@ function Footer() {
                         window.location.href = "mailto:aaa@gmail.com" ;
                         e.preventDefault();
                     }}>
-                        <a className={styles['footer-hover']}>
+                        <a className={styles["footer-item"]+" "+styles['footer-hover']}>
                             aaa@gmail.com
                         </a>
                     </Link>
@@ -44,24 +44,24 @@ function Footer() {
                 </span>
 
                 <ul className={styles["footer-linkList"] +' mt-4'}>
-                    <li className={styles['footer-hover']}>
+                    <li >
                         <Link  href="/">
-                            <a>درباره ما</a>
+                            <a className={styles['footer-hover']+" "+styles["footer-item"]}>درباره ما</a>
                         </Link>
                     </li>
-                    <li className={styles['footer-hover']}>
+                    <li >
                         <Link  href="/">
-                            <a>پرسش و پاسخ ها</a>
+                            <a className={styles['footer-hover']+" "+styles["footer-item"]}>پرسش و پاسخ ها</a>
                         </Link>
                     </li>
-                    <li className={styles['footer-hover']}>
+                    <li >
                         <Link  href="/">
-                            <a>شرایط و قواعد</a>
+                            <a className={styles['footer-hover']+" "+styles["footer-item"]}>شرایط و قواعد</a>
                         </Link>
                     </li>
-                    <li className={styles['footer-hover']}>
+                    <li >
                         <Link  href="/">
-                            <a>همکاری با ما</a>
+                            <a className={styles['footer-hover']+" "+styles["footer-item"]}>همکاری با ما</a>
                         </Link>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@ function Footer() {
 
             <section className='d-flex flex-column'>  
 
-                <span className={styles['footer-title']+" mb-3"}>
+                <span className={styles['footer-title']+" mb-4"}>
                     شبکه های اجتماعی
                 </span> 
 
@@ -103,7 +103,7 @@ function Footer() {
 
                 </div>
                     
-                <p className={styles["footer-text"]+" "+"text-center text-muted"}>طراحی شده در شرکت توسعه نرم افزار ایتوک هرگونه کپی برداری از این طرح پیگرد قانونی دارد </p>
+                <p className={styles["footer-text"]+" "+styles["footer-item"]}>طراحی شده در شرکت توسعه نرم افزار ایتوک هرگونه کپی برداری از این طرح پیگرد قانونی دارد </p>
 
             </section>
 

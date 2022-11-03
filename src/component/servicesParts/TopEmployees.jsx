@@ -35,14 +35,14 @@ export const TopEmployees = ( props ) => {
             <div className={styles["reserve-topEmployees-right"]}>
 
                 <div className='mb-5'>
-                    <img style={{width:"110px"}} src="/imgs/logo.png" alt="logo" />
+                    <img style={{width:"110px"}} src="/imgs/logoGreen.png" alt="logo" />
                 </div>
 
                 <div className='d-flex flex-column align-items-center'> 
 
-                    <p className='mb-4' style={{fontWeight:"500", fontSize:"1.1em", color:"var(--grey)"}}>رزرو نوبت با {state.currentEmployee}</p>
+                    <p className='mb-4' style={{fontWeight:"650", fontSize:"1.2em", color:"var(--grey)"}}>برای رزرو نوبت با {state.currentEmployee} کلیک کنید</p>
                     <Link href="/reserve">
-                        <a className={styles["reserve-topEmployees-reserBtn"]+" purple-btn"}>رزرو نوبت</a>
+                        <a className={styles["reserve-topEmployees-reserBtn"]}>رزرو نوبت</a>
                     </Link>
 
                 </div>
@@ -73,10 +73,10 @@ export const TopEmployees = ( props ) => {
                                         <div className='d-flex flex-column'>
                                             <h5 className={styles["topEmployee-head-title"]}>
                                                 <span>معرفی کارمند</span>
-                                                <img style={ {width:"50px"} } className="me-2" src="/imgs/logo.png" alt="logo" />
+                                                <img style={ {width:"53px"} } className="me-2" src="/imgs/logoGreen.png" alt="logo" />
                                             </h5>
-                                            <div className='d-flex justify-content-around' style={{ marginTop:".4em", fontWeight:"450"} }>
-                                                <span className='text-purple'>{fName+" "+lName}</span>
+                                            <div className={'d-flex justify-content-around '+styles["topEmployee-head-title-info"]} >
+                                                <span className='text-grey'>{fName+" "+lName}</span>
                                                 <span className='text-grey'>مختصص مو</span>
                                             </div>
                                         </div>
@@ -94,9 +94,9 @@ export const TopEmployees = ( props ) => {
 
                                         <div className='d-flex flex-column'>
                 
-                                            <div className='d-flex justify-content-around mb-3' style={{padding:"0 3.8em", fontSize:".9em", fontWeight:"500"}}>
+                                            <div className='d-flex justify-content-around mb-3' style={{padding:"0 3.8em", color:"#000", fontSize:"1.1em", fontWeight:"550"}}>
                                                 <span>رضایت مشتری</span>
-                                                <span className='text-purple'>{rate}/10</span>
+                                                <span>{rate}/10</span>
                                             </div>
                                             
                                             <CustomeSwiperBtns allSlideLength={data.length}/>

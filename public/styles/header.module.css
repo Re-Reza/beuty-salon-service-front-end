@@ -273,12 +273,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.1em;
-    padding:  .5em .8em;
+    padding:  .8em .8em;
     color: var(--pinkT2);
 }
 .header-logo-h1{
     color: var(--pinkT2);
     font-size: 25px;
+    margin-right: 5.2em;
     font-weight : 580 !important;
 }
 .logoutFont{

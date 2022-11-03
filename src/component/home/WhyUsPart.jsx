@@ -10,7 +10,7 @@ export function WhyUsPart(){
     useEffect(() => {
         
         Aos.init({
-            duration : 800,
+            duration : 700,
             once : true
         });
 
@@ -21,7 +21,7 @@ export function WhyUsPart(){
             
             <div className={styles["whyus-right"]}>
 
-                <h4 className="text-purple" data-aos="fade-up" data-aos-delay="300">چرا ما ؟</h4>
+                <h4 className={styles["whyus-right-title"]} data-aos="fade-up" data-aos-delay="300">چرا ما ؟</h4>
 
                 <p data-aos="fade-left" data-aos-delay="500" className={styles["whyus-des"]}>
 ارایشگاه ایتوک با بهرمندی از بهترین و به روز ترین امکاتان ارایشی  و مرغوب ترین مواد ارایشی تایید شده از سازمان غذا و دارو اروپا و امریکا با بهرگیری از فرمولاسیون جدید و ارگانیگ 
@@ -35,7 +35,7 @@ export function WhyUsPart(){
                 </ul>
                 
                 <div>
-                    <button className={"pink-btn "+styles['whyus-btn']}>
+                    <button className={styles['whyus-btn']}>
                         ادامه مطلب
                     </button>
                 </div>
