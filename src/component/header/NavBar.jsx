@@ -62,7 +62,7 @@ export function NavBar(){
             </li>
 
             <li onClick={()=>{setShowState(false)}}  style={ { fontSize : ".75em"} }  className={styles["nav-link-hover"]+ " mb-2"}>
-                <Link href="/service/skin">
+                <Link href="/service/skin" className="">
                     <a>پوست</a>
                 </Link>
             </li>

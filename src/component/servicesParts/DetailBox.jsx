@@ -23,11 +23,11 @@ export function DetailBox (props) {
 
             <div className={styles["service-deatilBox-right"]+' d-flex flex-column'} >
 
-                <h5 className='text-purple' style={{fontWeigh:"550"}}>{serviceTitle}</h5>
-                <p>{description}</p>
+                <h5 className='text-grey' style={{fontWeigh:"700", fontSize : "1.4em"}}>{serviceTitle}</h5>
+                <p className={styles["service-deatilBox-description"]}>{description}</p>
                 <div className='d-flex justify-content-end'>
                     <Link href="/reserve">
-                        <a style={{border:"1px solid var(--purple)"}}className={'purple-btn '+styles["reserve-topEmployees-reserBtn"]}>رزرو نوبت</a>
+                        <a style={{border:"1px solid var(--grey)"}} className={'purple-btn '+styles["reserve-topEmployees-reserBtn"]}>رزرو نوبت</a>
                     </Link>
                 </div>
 

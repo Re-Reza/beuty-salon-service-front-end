@@ -10,7 +10,6 @@ function SwipeBtn(props) {
     const swiper = useSwiper();
 
     ( function (){
-        console.log("TEESTING")
         if(next)
         {
             swiper.slidePrev();

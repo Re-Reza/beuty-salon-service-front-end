@@ -6,7 +6,7 @@ import { Autoplay } from "swiper";
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import SwipeBtn from "./SwipeBtn";
-
+import { useRouter } from "next/router";
 import styles from "../../../public/styles/services.module.css";
 
 export function PopularServices(props) {
@@ -29,6 +29,21 @@ export function PopularServices(props) {
             next : false
         })
     }
+
+    const [ routeState, setRouteState ] = useState({
+        routes : [ 
+            { path : "/hair" , title : "مو" },
+            { path : "/nail" , title : "ناخن" },
+            { path : "/skin" , title : "پوست" },
+            { path : "/makeup" , title : "میکاپ" }
+        ]
+    });
+    
+
+
+    const router = useRouter();
+    const { service } = router.query;
+    console.log(router.query.service)
 
     const varientLogoRigth = {
         onscreen: {
@@ -69,24 +84,48 @@ export function PopularServices(props) {
         }
     }
 
+    const linksVarient = {
+        onscreen : {
+            left : 0,
+            transition : {
+                type: "",
+                duration : .8
+            }
+        },
+        offscreen : {
+            left : "100%"
+        }
+    }
+
     return(
         <section className={styles["service-popularService"]}>
 
             <h2 className={styles["service-popularService-title"]}>
-                <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}><img styles={{width:"50px"}} className="ms-2" src="/imgs/logo.png" alt="logo" /></motion.span>
+                <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}><img style={{width:"62px"}} className="ms-2" src="/imgs/logoGreen.png" alt="logo" /></motion.span>
                 <motion.span variants={varientTitle} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>محبوب ترین خدمات عنوان</motion.span>
-                <motion.span variants={varientLogoLeft} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative" }} ><img styles={{width:"50px"}} className="me-2"  src="/imgs/logo.png" alt="logo" /></motion.span>
+                <motion.span variants={varientLogoLeft} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative" }} ><img style={{width:"62px"}} className="me-2"  src="/imgs/logoGreen.png" alt="logo" /></motion.span>
             </h2>
+
+            <motion.ul variants={linksVarient} whileInView="onscreen" viewport={{ once: true }} initial="offscreen" style={{position: "relative"}} className={styles["service-popularService-servicesLinks"]}>
+            {
+                routeState.routes.map((item, index) => <li key={index} className={item.path == "/"+service ? styles["service-popularService-servicesLinks-li"]+" "+ styles["active-link"] : styles["service-popularService-servicesLinks-li"]}>
+                <Link href={`/service${item.path}`}>
+                    <a>{item.title}</a>
+                </Link>
+            </li>)
+            }
+            </motion.ul>
 
             <div className="mt-5 d-flex align-items-center">
 
                 <div  onClick={()=> swipeSlide("next")} className='ms-2' role="button">
-                    <i style={{fontSize:"1.5em", color:"var(--purple)"}} className="fa fa-chevron-right ttt" aria-hidden="true"></i>
+                    {/* <i style={{fontSize:"1.5em", color:"var(--purple)"}} className="fa fa-chevron-right ttt" aria-hidden="true"></i> */}
+                    <img style={{width:"40px"}} src="/imgs/icons/servie-swiper-aR.png" alt="arrowRigth" />
                 </div>
 
                 <Swiper
                     slidesPerView={4}
-                    spaceBetween={20}
+                    spaceBetween={35}
                     autoplay={{
                         delay: 4000,
                         disableOnInteraction: false,
@@ -103,15 +142,15 @@ export function PopularServices(props) {
                             <div className={styles["service-popularService-swiperItem"]} style={ { backgroundImage : `url(${img})` } }>
 
                                 <div className={styles["service-popularService-swiperItem-info"]}>
-                                    <div style={{color:"var(--purple)", fontSize:"1.1em", fontWeight:"500"}}>{serviceTitle}</div>
+                                    <div style={{color:"#000", fontSize:"1.1em", fontWeight:"700"}}>{serviceTitle}</div>
 
-                                    <div className='d-flex justify-content-around text-grey w-100 mt-2 mb-2' style={{fontSize:".8em"}}>
+                                    <div className='d-flex justify-content-around text-grey w-100 mt-2 mb-2' style={{fontSize:".8em", color: "var(--grey2)", fontWeight : "650" }}>
                                         <span>{employee}</span>
                                         <span> رضایت {rate}/10</span>
                                     </div>
 
                                     <Link href="/reserve">
-                                        <a className='pink-btn mt-1' style={{color: "var(--grey) !important", fontSize:".9em"}}>رزرو نوبت</a>
+                                        <a className='green-btn mt-1' style={{fontSize:"1em", padding : " .3em 1.4em", borderRadius:"10px"}}>رزرو نوبت</a>
                                     </Link>
 
                                 </div>
@@ -131,7 +170,7 @@ export function PopularServices(props) {
 
                 <div onClick={()=> swipeSlide("prev")} className='me-2' role="button">
                     {/* <SwipeBtn next={false}> */}
-                    <i style={{fontSize:"1.5em", color:"var(--purple)"}} className="fa fa-chevron-left" aria-hidden="true"></i>   
+                    <img style={{width:"32px"}} src="/imgs/icons/servie-swiper-aL.png" alt="arrowLeft" />
                     {/* </SwipeBtn> */}
                 </div> 
          

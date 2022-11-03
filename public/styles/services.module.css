@@ -85,8 +85,8 @@
     padding-right: .5em;
 }
 .reserve-topEmployees-reserBtn{
-    font-size: 1.2em;
-    font-weight: 500;
+    font-size: 1.1em;
+    font-weight: 450;
     background-color: var(--grey);
     color: #fff !important;
     border: 1px solid var(--grey);
@@ -99,16 +99,16 @@
     color: var(--grey) !important;
 }
 .service-popularService{
-    margin-top: 3.5em;
+    margin-top: 4.3em;
     padding: .5em 2em;
 }
 .service-popularService-title{
-    font-size: 1.7em;
-    color: var(--purple);
+    font-size: 1.8em;
+    color: var(--grey);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 700;
 }
 .service-popularService-swiperItem{
     width: 100%;
@@ -122,7 +122,7 @@
     justify-content: center;
 }
 .service-popularService-swiperItem-info{
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: #fff;
     border: 1px solid #ffffff73;
     border-radius: 14px;
     width: 100%;
@@ -131,6 +131,25 @@
     align-items: center;
     justify-content: center;
     padding: .8em;
+}
+.service-popularService-servicesLinks{
+    background-color: var(--lightPurple);
+    border-radius: 8px;
+    margin-top: 1.9em;
+    padding: .65em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.service-popularService-servicesLinks-li{
+    color: var(--grey);
+    font-weight: 650;
+    margin-left: 1.8em;
+    font-size: 1.2em;
+    padding: 0 .3em .2em .3em;
+}
+.active-link{
+    border-bottom: 2.7px solid var(--grey);
 }
 
 .service-detailBox-container{
@@ -148,15 +167,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--pink);
+    background-color: var(--lightPurple);
     border-radius: 10px;
     padding: 1em 3em;
     transition: all .5s ;
 }
-/* .service-deatilBox:hover{
-    margin: 0 !important;
-    transform: scale(1.05);
-} */
+.service-deatilBox:hover{
+    /* margin: 0 !important;
+    transform: scale(1.05); */
+    box-shadow: 0 0 10px #e498b3;
+    transition-duration: .5s ;
+}
 .service-deatilBox-right{
     width: 60%;
     height: 100%;
@@ -173,4 +194,10 @@
     border-radius: 14px;
     height: 200px;
     box-shadow: 0 0 5px #af496054;
+}
+.service-deatilBox-description{
+    font-weight: 550;
+    font-size: 1em;
+    line-height: 2;
+    color: #000;
 }

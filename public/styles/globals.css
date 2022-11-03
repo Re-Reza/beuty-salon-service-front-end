@@ -331,3 +331,15 @@ input[type="radio"]:focus{
 .text-grey{
     color: var(--grey);
 }
+.green-btn{
+    background-color: var(--grey);
+    color: #fff !important;
+    transition: all .4s;
+    font-weight: 500;
+    border: 1px solid var(--grey);
+    border-radius: 8px; 
+}
+.green-btn:hover{
+    background-color: #fff !important;
+    color: var(--grey) !important;
+}
