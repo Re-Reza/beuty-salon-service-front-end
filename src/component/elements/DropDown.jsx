@@ -29,9 +29,9 @@ function DropDown( props ){
                 }
                 {
                     state.show?
-                    <i className="fa fa-angle-up" aria-hidden="true"></i>
+                    <i className="fa fa-angle-up" style={{fontWeight : "700", fontSize: "1.6em"}} aria-hidden="true"></i>
                     :
-                    <i className="fa fa-angle-down" aria-hidden="true"></i>
+                    <i className="fa fa-angle-down" style={{fontWeight : "700", fontSize: "1.6em"}} aria-hidden="true"></i>
                 }
             </div>
                 

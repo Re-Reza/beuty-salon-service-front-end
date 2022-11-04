@@ -1,103 +1,89 @@
-import React, { useState}  from 'react';
+import React, { useState, useContext } from 'react';
 
 import Link from 'next/link';
-
-import Hamburger from 'hamburger-react';
+import { removeCookie } from "../../dataService/cookieProvider";
+// import Hamburger from 'hamburger-react';
+import reserveContext from "./reserveContext";
 
 import styles from "../../../public/styles/reservePage.module.css";
 
-export function ReserveNav() {
+function ReserveNav(props) {
 
+    function logout(){
+        removeCookie();
+        dispatch({
+            type : "DELETE_DATA",
+        });
+    }
+    
+    const { userChoiceState: { selectByEm } , dispatch } = useContext( reserveContext );
 
-    const [show, setShow ] = useState(false);
-
-    function toggleShow(){
-        setShow(!show);
+    const changeReserveType = (value) => {
+        if( value != selectByEm) {
+            dispatch({
+                type : "SET_RESERVE_TYPE" ,
+                payload : value
+            });
+        }
     }
 
     return (
         <nav className={styles['reserveNav']}>
-            <div className={styles['reserveNav-mobile']} >
-                <div onClick={toggleShow} className='d-inline-block'>
-                    <Hamburger />
+
+            <div className={styles["reserveNav-right"]}>
+
+                <div>
+
+                    <span style={{fontSize : "1.3em"}}>
+                        سالن زیبایی ایتوک
+                    </span>
+
+                    <span className={styles["border-left"]} >
+                        <img className={styles["icon-size"]}  src="/imgs/logo.png" alt="logo" />
+                    </span>
+
+                    <span className={styles["border-left"]} >
+                        <img className={styles["icon-size"]} role="button" src="/imgs/icons/searchIcon.png" alt="search" />
+                    </span>
+
                 </div>
 
-                <ul className={ show ? styles['reserveNav-mobile-links'] +" "+styles['show-mobile-nav'] : styles['reserveNav-mobile-links'] }>
-                    <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/">
-                            <a>صفحه اصلی</a>
-                        </Link>
-                    </li>
+                <div className='d-flex align-items-center me-4'>
 
-                    <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/dashboard">
-                            <a>پنل کاربری</a>
-                        </Link>
-                    </li>
+                    <div onClick={()=> {changeReserveType(false)}} role="button" style={{paddingBottom : ".3em"}} className={selectByEm ? "ms-3" : "ms-3 "+styles["selectedReserveType"]}>
+                        رزرو بر حسب تاریخ
+                    </div>
 
-                    
-                    <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/services/hair">
-                            <a>خدمات</a>
-                        </Link>
-                    </li>
+                    <div onClick={()=> {changeReserveType(true)}} role="button" style={{paddingBottom : ".3em"}} className={selectByEm ? styles["selectedReserveType"] : ""}>
+                        رزرو برحسب کارمند
+                    </div>
 
-                    <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/about-us">
-                            <a>درباره ما</a>
-                        </Link>
-                    </li>
+                </div>
 
-                    {/* <li className={styles['reserveNav-mobile-link']}>
-                        <Link href="/">
-                            <a>ارتباط با ما</a>
-                        </Link>
-                    </li> */}
-
-                </ul>
-            
             </div>
 
-            <div className={styles['reserveNav-linkContainer']}>
-                <ul className={styles['reserveNav-linkList']}>
-                    <li className={styles['reserveNav-Link'] }>
-                        <Link href="/">
-                            <a>صفحه اصلی</a>
-                        </Link>
-                    </li>
 
-                    <li  className={styles['reserveNav-Link'] }>
-                        <Link href="/dashboard">
-                            <a>پنل کاربری</a>
-                        </Link>
-                    </li>
+            <div className={styles["reserveNav-left"]}>
+            {
+                props.logedIn ? 
 
-                </ul>
+                <div onClick={logout}>
+                    خروج از حساب
+                    <i className="fa fa-sign-out me-2" style={{color:"var(--pinkT2)"}} aria-hidden="true"></i>
+                </div>
+                :
+                <Link href="/signin">
+                    <a>
+                        ورود به حساب     
+                        <img className={styles["icon-size"]+" me-2"} style={{width:"30px"}} role="button"  src="/imgs/icons/loginIcon.png" alt="" />
+                    </a>
+                </Link>
                 
-
-                <ul className={styles["reserveNav-linkList"]}>
-                
-                    <li className={styles['reserveNav-Link'] }>
-                        <Link href="/service/hair">
-                            <a>خدمات</a>
-                        </Link>
-                    </li>
-                
-                    <li className={styles['reserveNav-Link'] }>
-                        <Link href="/about-us">
-                            <a>درباره ما</a>
-                        </Link>
-                    </li>
-
-                    {/* <li className={styles['reserveNav-Link'] }>
-                        <Link href="/">
-                            <a>ارتباط با ما</a>
-                        </Link>
-                    </li> */}
-
-                </ul>
+            }
             </div>
 
         </nav>
     );
 }
+
+export default ReserveNav;

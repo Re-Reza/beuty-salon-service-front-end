@@ -4,13 +4,14 @@ import Head from "next/head";
 
 // Component 
 import Footer from "../component/footer/Footer";
-import { ChooseService, ChooesReserveType, ReserveNav} from "../component/reserve";
+import { ChooseService, ChooesReserveType, ReserveHeader } from "../component/reserve";
+
 
 import reserveContext from "../component/reserve/reserveContext";
 import reserveReducer from "../component/reserve/reserveReducer";
 
 import styles from "../../public/styles/reservePage.module.css";
-// import axios from 'axios';
+
 //انتخاب خدمات
 // کارمند مورد نظر
 //انتخاب تاریخ و ساعت خالی برای کارمند انتخاب شده
@@ -41,7 +42,8 @@ const ReservePage = () => {
             month: null,
             year: null  
         },
-        requestDate : false
+        requestDate : false,
+        selectByEm : false
     }); 
 
     return (
@@ -52,12 +54,12 @@ const ReservePage = () => {
 
             <reserveContext.Provider value = { {
                 userChoiceState,
-                dispatch
+                dispatch 
             } }> 
             
                 <div className={ styles['reserve-page']}>
                 
-                    <ReserveNav />
+                    <ReserveHeader />
                     
                     <div className={styles.reserveSelectionContainer}>
         

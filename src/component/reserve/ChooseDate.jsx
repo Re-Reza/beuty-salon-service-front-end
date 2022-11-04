@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useContext } from 'react'
 
 import reserveContext from './reserveContext';
 
-import DatePicker from "react-multi-date-picker";
+// import DatePicker from "react-multi-date-picker";
+import { Calendar } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "react-multi-date-picker/styles/colors/yellow.css"
@@ -68,7 +69,7 @@ export const ChooseDate = (props) => {
                 <label className={'mb-3 '+styles['result-label']}>تقویم کاری کارمند :</label> 
             }
             
-            <DatePicker onChange={ setDate }  animations = {[
+            <Calendar onChange={ setDate }  animations = {[
                 opacity(),
                 transition({
                 from: 40,

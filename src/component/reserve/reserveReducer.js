@@ -72,6 +72,12 @@ function reserveReducer(state, action){
                 requestDate : !state.requestDate
             }
 
+        case "SET_RESERVE_TYPE": 
+            return {
+                ...state,
+                selectByEm : action.payload
+            }
+
         default: 
             return state;
     }

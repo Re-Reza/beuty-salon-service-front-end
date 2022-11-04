@@ -5,4 +5,4 @@ export * from "./ChooseReserveType";
 export * from "./SelectByDate";
 export * from "./SelectByEmployee";
 export * from "./ReserveResult";
-export * from "./ReserveNav";
+export * from "./ReserveHeader";

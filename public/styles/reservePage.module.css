@@ -1,7 +1,6 @@
 .reserve-page{
-    background-color: rgba(0, 0, 0, .5);
-    background-image:  url("/imgs/reserve-right.jpg");
-    background-image:  linear-gradient( rgba(0 0, 0, .5) ,  rgba(0 0, 0, .5) ), url("/imgs/reserve-background.png")  ;
+    background-color: #fff;
+    /* background-image:  linear-gradient( rgba(0 0, 0, .5) ,  rgba(0 0, 0, .5) ), url("/imgs/reserve-background.png")  ; */
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -10,19 +9,15 @@
     font-family: Vazir;
     display: grid;
     grid-template-columns: repeat(14, 1fr);
-    grid-template-rows: 70px max-content;
-    grid-row-gap: 20px; 
+    grid-template-rows: 350px max-content;
+    /* grid-row-gap: 20px;  */
     position: relative;
+    padding: 1.2em 1.5em;
     min-height: 80vh;
 }
-.reserve-page::after{
-    content:"";
-    background-color: rgba(0, 0, 0, .3);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.selectedReserveType{
+    /* padding-bottom: .6em; */
+    border-bottom: 2.8px solid var(--purple);
 }
 .reserve-stepsContainer{
     grid-column: 5 /10;
@@ -30,6 +25,41 @@
 .reserve-step{
     cursor: pointer;
 }
+.reserve-header{
+    grid-column: 1/-1;
+}
+.reserveNav{
+    width: 100%;
+    display: flex;
+    color: var(--purple);
+    font-weight: 600;
+    justify-content: space-between;
+}
+.reserveNav-right{
+    display: flex;
+}
+.icon-size{
+    width: 35px;
+}
+.border-left{
+    border-left: 2.7px solid var(--purple) ;
+    padding: .5em .6em;
+}
+.header-bottom{
+    width: 100%;
+    background: url("../imgs/reserve-headerBack.png");
+    height: 237px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: 2em;
+    padding-top: 5em;
+}
+.header-bottom-nav{
+    background-color: rgba(250, 211, 216, 0.72);;
+}
+
+
 .selected-step{
     border-bottom: 2px solid #ffcc54;
     padding-bottom: .3em;
@@ -103,7 +133,7 @@
 .reserveSelectionContainer{
     display: flex;
     height: max-content;
-    grid-column: 4 /12;
+    grid-column: -2 / -14;
     grid-row-start: 3;
     flex-direction: column;
     /* background: rgba(255, 255, 255, 0.4);
@@ -192,22 +222,25 @@
 .chooseService-section{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 12px;
+    grid-column-gap: 20px;
 }
 .DropDown{
     position:relative;
-    color: #fff;
-    border-radius: 5px;
+    color: var(--grey2);
+    border-radius: 10px;
 }
 .DropDown-select{
     padding:.5em 1em;
-    color: #fff;
-    background-color: #323232;
+    color: var(--grey2);
+    background-color: #fff;
     display: flex;
+    font-weight: 700;
     justify-content: space-between;
+    /* border: 1px solid var(--grey2); */
+    box-shadow: 0 0 7px #0000002f;
     align-items: center;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .DropDown-options{
     width: 100%;
@@ -221,8 +254,10 @@
     grid-auto-columns: 160px;
     grid-column-gap: .8em;
     justify-items: start;
-    border-radius: 3px;
-    background-color:#323232;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 7px #0000002f;
+    margin-top: 1em;
     transition:all .5s;
     visibility:hidden;
     transform: translateY(-30px);
@@ -246,86 +281,15 @@
     transform: translateY(4px);
 }
 /* -------------------------------reserve nav------------------------------------------*/
-.reserveNav{
-    grid-row-start: 1;
-    grid-column: 1/-1;
-    position: sticky;
-    top: 0;
-    z-index: 4;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7.5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding:0 2.3em;
-}
-.reserveNav-linkContainer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-.reserveNav-linkList{
-    display: flex;
-    margin-bottom: 0;
-    padding: 0;
-    width: 20%;
-    justify-content: space-between;
-}
-.reserveNav-Link{
-    transition: all .3s;
-    padding: .3em .8em;
-    cursor: pointer;
-    color: #323232;
-}
-.reserveNav-Link:hover{
-    /* color: #f9ad03; */
-    border-radius: 5px;
-    background-color: #ffcc54;
-    color: #fff;
-
-}
-.reserveNav-mobile{
-    display: none;
-    width: 100%;
-    position: relative;
-}
-.reserveNav-mobile-links{
-    position: absolute;
-    width: 100%;
-    transition: all .5s;
-    background-color: #eee;
-    opacity: 0;
-    border-radius: 5px;
-    visibility: hidden;
-    padding: .7em 1.1em;
-}
-.show-mobile-nav{
-    opacity: 1;
-    visibility: visible;
-}
-.reserveNav-mobile-link{
-    margin-bottom: 1em;
-    transition: all .3s;
-}
-.reserveNav-mobile-link:hover{
-    color: #f9ad03;
-}
 .choose-date-container{
     display: flex;
     flex-direction: column;
     margin-bottom: 3em;
 }
 /* ----------------------------------- media queries --------------------------------*/
-@media only screen and (max-width:1200px ){
-    .reserveNav-linkList{
-        width: 30%;
-    }
-}
+
 @media only screen and (max-width:1050px ){
-    .reserveSelectionContainer {
-        grid-column: 3 /13;
-    }
+
 }
 @media  only screen and (max-width:870px ){
     .reserve-page{
@@ -346,12 +310,6 @@
     .reserveSelectionContainer{
         padding: 2.2em .8em;
     }
-    .reserveNav-linkList{
-        width: 40%;
-    }
-    .reserveNav-Link{
-        padding: .3em .5em;
-    }
     .chooseService-section{
         grid-template-columns: 1fr;
         grid-row-gap: 38px;
@@ -359,20 +317,8 @@
 }
 
 @media only screen and (max-width:690px ){
-    .reserveNav{
-        background:none;
-        border: none;
-        backdrop-filter: none;
-        box-shadow: none;
-    }
     .reserve-page{
         grid-row-gap: 13px;
-    }
-    .reserveNav-mobile{
-        display: block;
-    }
-    .reserveNav-linkContainer{
-        display: none;
     }
 }
 

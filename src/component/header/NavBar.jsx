@@ -46,6 +46,7 @@ export function NavBar(){
     }
 
     const linkItem = <li>
+        
         <span onClick={toggleServiceList} className={ styles["nav-link-hover"]}> خدمات  &nbsp;<i className={showState? "fa fa-angle-up" : "fa fa-angle-down"} aria-hidden="true"></i></span>
 
         <ul className={showState ? styles["nav-services"]+" "+ styles["show-nav-serive"] : styles["nav-services"]}>
