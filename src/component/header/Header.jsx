@@ -12,8 +12,8 @@ import { motion } from "framer-motion";
 
 function Header(props){
 
-    const { homePage } = props;
-
+    const { homePage, aboutUs } = props;
+    console.log(aboutUs);
     return (
         <header className={ homePage ? styles["header"] + " "+styles["home-header"] : styles["header"]}>
 
@@ -33,10 +33,22 @@ function Header(props){
                     <HeadTop homePage={homePage}/>
                     <div className={homePage == true ? "" : styles["service-header-headBottom"]}>
                         {
-                        homePage == true ? <></> :
+                        homePage == true || aboutUs == true ? <></> : 
                         <motion.div style={{position:"relative"}} animate={{  left:"0" }} initial={{left:"50%"}} transition={ {duration : 1.5, type: "spring",} } className={styles["service-header-imgContainer"]}>
                             <img className={styles["service-header-img"]} src="/imgs/service-header.png" alt="header-img" />
                         </motion.div>
+                        }
+                        {
+                            aboutUs == true ? 
+                            <div className={styles["header-aboutUs-right-imgContainer"] } >
+                                <div className={styles["header-aboutUs-imgContainer"]}>
+                                    <img className={styles["header-aboutUs-img"]} src="/imgs/gallery-img3.png" alt="headerimg1" />
+                                </div>
+                                <div className={styles["header-aboutUs-imgContainer"]}>
+                                    <img style={{ margin: " 6em 1.3em 0 0"}} className={styles["header-aboutUs-img"]} src="/imgs/about-usHeader.png" alt="headerimg2" />
+                                </div>
+                            </div>
+                            :<></>
                         }
                         <div className={homePage == true ? "" : styles["service-header-contentContainer"]}>
                             <NavBar/>
@@ -60,9 +72,18 @@ function Header(props){
                             </div>
 
                             }
-                            <div className={homePage ==true ? styles["slider-container"] : styles["slider-container"]+ " mt-4"}>
-                                <Slider homePage = {homePage} />
-                            </div>
+                            {
+                                aboutUs != true ? 
+                                <div className={homePage ==true ? styles["slider-container"] : styles["slider-container"]+ " mt-4"}>
+                                    <Slider homePage = {homePage} />
+                                </div> 
+                                : 
+                                <div className={styles["header-aboutUs-intro"]}>
+                                    <h2 className={styles["header-aboutUs-intro-h2"]}>زیبایی خود را به ما بسپارید </h2>
+                                    <p className={styles["header-aboutUs-intro-p"]}>ارایشگاه ایتوک با بهرمندی از بهترین و به روز ترین امکاتان ارایشی  و مرغوب ترین مواد ارایشی تایید شده از سازمان غذا و دارو اروپا و امریکا با بهرگیری از فرمولاسیون جدید و ارگانیگ 
+از جمله مواد تتو کراتین رنگ مو و کراتین و..... به خدمت شما مشتری محترم در اماده است     </p>
+                                </div>
+                            }
                         </div>
                     </div>
 

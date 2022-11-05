@@ -30,7 +30,7 @@ function About() {
                 <title>درباره ما</title>
             </Head>
             
-            <Header homePage={false}/>
+            <Header aboutUs={true} homePage={false}/>
 
             <div className={styles['aboutUs-page']+" mt-5"}>
 
