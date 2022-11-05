@@ -54,7 +54,7 @@ export function ChooseService() {
             }
         });
     }
-
+    console.log(state.categoryList);
     return ( 
 
         <section className={styles["chooseService-section"]}>

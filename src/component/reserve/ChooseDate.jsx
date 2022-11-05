@@ -23,9 +23,9 @@ export const ChooseDate = (props) => {
     console.log(props)
     const calenderRef = useRef(null);
 
-    useEffect ( ()=> {
-        calenderRef.current.querySelector("input").focus();
-    }, []);
+    // useEffect ( ()=> {
+    //     calenderRef.current.querySelector("input").focus();
+    // }, []);
     
 
     function setDate(event){
@@ -62,37 +62,31 @@ export const ChooseDate = (props) => {
     }
 
     return (
-        <div className={styles['choose-date-container']}>
+        <div className={styles['choose-date-container']+" calender-parent"}>
             {
                 props.isDate ? 
                 <label className={'mb-3 '+styles['result-label']}>انتخاب تاریخ :</label> :
                 <label className={'mb-3 '+styles['result-label']}>تقویم کاری کارمند :</label> 
             }
             
-            <Calendar onChange={ setDate }  animations = {[
-                opacity(),
-                transition({
-                from: 40,
-                transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
-                }),
-            ]}
-            className="yellow"
-            mapDays={ ({date}) => {     
-                if(date.weekDay.number == 7) 
-                    return{
-                            disabled: true,
-                    } 
-                if(props.isDate == false){
-               
-                    const result = validateDay(date.day);
-                    return {
-                        disabled : result,
+            <Calendar onChange={ setDate } 
+                // className="yellow"
+                mapDays={ ({date}) => {     
+                    if(date.weekDay.number == 7) 
+                        return{
+                                disabled: true,
+                        } 
+                    if(props.isDate == false){
+                
+                        const result = validateDay(date.day);
+                        return {
+                            disabled : result,
+                        }
                     }
-                }
-            }}
-            ref={calenderRef} inputClass={styles["calendarInput"]}
-            minDate={start} maxDate = {end}
-            calenderPosition="bottom-right" calendar={persian} locale={persian_fa} 
+                }}
+
+                minDate={start} maxDate = {end}
+                calendar={persian} locale={persian_fa} 
             />
         </div>
     )

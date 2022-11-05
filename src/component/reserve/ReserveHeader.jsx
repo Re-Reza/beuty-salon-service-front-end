@@ -11,7 +11,7 @@ import styles from "../../../public/styles/reservePage.module.css"
 export function ReserveHeader(){
     
     const { contextState : {fName}, dispatch } = useContext( contextStore );
-
+    
     return (
         <header className={styles["reserve-header"]} >
 

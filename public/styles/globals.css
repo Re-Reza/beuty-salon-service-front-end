@@ -164,12 +164,7 @@ p{
 .successToast {
     background-color: rgb(31, 150, 31);
 }
-.rmdp-day.rmdp-deactive, .rmdp-day.rmdp-disabled span{
-    text-decoration: 1px  line-through rgb(67, 61, 61) !important;
-}
-.rmdp-week .rmdp-week-day{
-    color : var(--dark)!important;
-}
+
 .swiper-scrollbar-drag{
     background-color: rgba(0, 0, 0, .3) !important;
 }
@@ -342,4 +337,49 @@ input[type="radio"]:focus{
 .green-btn:hover{
     background-color: #fff !important;
     color: var(--grey) !important;
+}
+/* ------------------------ calnder customization ---------------------------- */
+/* .rmdp-wrapper{
+    width: 100% !important;
+}
+.rmdp-day-picker{
+    width: 100% !important;
+} */
+.calender-parent .rmdp-wrapper {
+    width: 100%;
+}
+.calender-parent .rmdp-calendar{
+    width: 100%;
+}
+.calender-parent .rmdp-day-picker > div:first-of-type{
+    width: 100%;
+}
+.calender-parent .rmdp-day-picker .rmdp-week:first-of-type {
+    margin-bottom: 1em !important;
+}
+.calender-parent .rmdp-day-picker .rmdp-week:first-of-type .rmdp-week-day{
+    color: #005A55 !important;
+}   
+.calender-parent .rmdp-day-picker .rmdp-week:first-of-type .rmdp-week-day{
+    font-weight: 700 !important;
+    font-size: 1.055em;
+}
+.calender-parent .rmdp-day-picker .rmdp-week .rmdp-day span{
+    color: #04B199 !important;
+    font-weight: 700 !important;
+    /* padding:  !important; */
+    font-size: 1.05em !important;
+    transition: all .2s !important;
+}
+.calender-parent .rmdp-day-picker .rmdp-week .rmdp-day span:hover{
+    background-color: var(--lightPurple) !important;
+}
+.calender-parent .rmdp-day-picker .rmdp-day.rmdp-deactive, .calender-parent .rmdp-day-picker .rmdp-day.rmdp-disabled span{
+    text-decoration: 1.5px  line-through rgba(0, 0, 0, 0.358) !important;
+    color: rgba(0, 0, 0, 0.306) !important;
+}
+.calender-parent .rmdp-header .rmdp-header-values span{
+    color: var(--grey2) !important;
+    font-weight: 800;
+    font-size: 1.2em;
 }

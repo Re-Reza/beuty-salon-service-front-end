@@ -244,10 +244,10 @@
 }
 .DropDown-options{
     width: 100%;
-    padding: 1em;
-    z-index: 3;
+    padding: 0;
+    z-index: 300;
     position:absolute;
-    grid-row-gap: 18px;
+    /* grid-row-gap: 18px; */
     display: grid;
     grid-template-columns:1fr;
     grid-auto-flow:row;
@@ -262,6 +262,7 @@
     visibility:hidden;
     transform: translateY(-30px);
     opacity: 0;
+    overflow: hidden;
 }
 .test{
     position: absolute;
@@ -271,9 +272,16 @@
     /* margin-bottom: 20px; */
     cursor: pointer;
     transition:all .3s;
+    padding: .8em;
+    color: var(--grey);
+    font-weight: 700;
+    font-style: 1.1em;
+}
+.option-border {
+    border-bottom: 1px solid #a5a5a55e;
 }
 .DropDown-options-options:hover{
-    color: #f9ad03;
+    background-color: var(--lightPurple);
 }
 .show{
     visibility:visible;
@@ -283,6 +291,7 @@
 /* -------------------------------reserve nav------------------------------------------*/
 .choose-date-container{
     display: flex;
+    width: 37%;
     flex-direction: column;
     margin-bottom: 3em;
 }

@@ -8,7 +8,7 @@ function DropDown( props ){
         show : false,
     });
 
-    const { chooseItem, list, selected, type } = props;
+    const { chooseItem, list, selected, type, element } = props;
 
     function selectOption(event){
         const value = event.target.innerHTML;
@@ -16,7 +16,7 @@ function DropDown( props ){
         setState({ show: false });
         chooseItem({ value, id } , type);
     }
-
+    
     return (
         <div className={styles['DropDown']}>
             
@@ -37,8 +37,9 @@ function DropDown( props ){
                 
             <ul className={state.show?styles["show"] +" "+ styles["DropDown-options"] : styles["DropDown-options"]}>
             {
-                list.map( (item, index) => <option key={index} className={styles["DropDown-options-options"]} 
-                onClick={selectOption} value={item.id}>{type == "CATEGORY" ? item.categoryTitle : item.serviceTitle}</option>)
+                list.map( (item, index) => <option key={index} className={index == list.length ? styles["DropDown-options-options"] : styles["DropDown-options-options"]+" "+styles["option-border"] } 
+                onClick={selectOption} value={item.id}>{type == "CATEGORY" ? item.categoryTitle : item.serviceTitle}
+                </option>)
             }
             </ul>
 
