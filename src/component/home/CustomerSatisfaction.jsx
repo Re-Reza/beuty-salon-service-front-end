@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import PN from "persian-number";
 
-import {useCountUp} from "react-countup";
+import { useCountUp } from "react-countup";
 
 import styles from "../../../public/styles/home.module.css";
 

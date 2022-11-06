@@ -1,1 +1,1 @@
-export * from "./TopPart";
+export * from "./RateStatics";

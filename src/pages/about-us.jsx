@@ -7,7 +7,7 @@ import EmployeeSwiper from "../component/aboutus/EmployeeSwiper";
 
 import Header from "../component/header/Header";
 import Footer from "../component/footer/Footer";
-import { TopPart } from "../component/aboutus";
+import { RateStatics } from "../component/aboutus";
 
 import styles from "../../public/styles/aboutUs.module.css";
 import "aos/dist/aos.css";
@@ -34,7 +34,7 @@ function About() {
 
             <div className={styles['aboutUs-page']+" mt-5"}>
 
-                <TopPart/>
+                <RateStatics/>
 
                 <EmployeeSwiper/>
 

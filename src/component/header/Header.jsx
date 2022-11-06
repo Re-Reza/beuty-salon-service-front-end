@@ -13,7 +13,33 @@ import { motion } from "framer-motion";
 function Header(props){
 
     const { homePage, aboutUs } = props;
-    console.log(aboutUs);
+    
+    const aboutImgRVar = {
+        onscreen : {    
+            top : 0,
+            transition : {
+                type: "spring",
+                duration : 1,
+            }
+        },
+        offscreen : {
+            top : 500
+        }
+    };
+
+    const aboutImgLVar = {
+        onscreen : {    
+            bottom : 0,
+            transition : {
+                type: "spring",
+                duration : 1,
+            }
+        },
+        offscreen : {
+            bottom : 500
+        }
+    };
+
     return (
         <header className={ homePage ? styles["header"] + " "+styles["home-header"] : styles["header"]}>
 
@@ -41,12 +67,15 @@ function Header(props){
                         {
                             aboutUs == true ? 
                             <div className={styles["header-aboutUs-right-imgContainer"] } >
-                                <div className={styles["header-aboutUs-imgContainer"]}>
-                                    <img className={styles["header-aboutUs-img"]} src="/imgs/gallery-img3.png" alt="headerimg1" />
-                                </div>
-                                <div className={styles["header-aboutUs-imgContainer"]}>
-                                    <img style={{ margin: " 6em 1.3em 0 0"}} className={styles["header-aboutUs-img"]} src="/imgs/about-usHeader.png" alt="headerimg2" />
-                                </div>
+                                
+                                <motion.div style={{position:"relative"}} initial={{top : "100%"}} animate={{ top:"0", transition : {duration : 1.5, type: "spring",  delay : .2 } }} className={styles["header-aboutUs-imgContainer"]}>
+                                    <img className={styles["header-aboutUs-img"]} src="/imgs/about-usHeader.png" alt="headerimg1" />
+                                </motion.div>
+
+                                <motion.div style={{position:"relative"}} initial={{top : "-100%"}} animate={{  top :"0", transition : {duration : 1.5, type: "spring", delay : .2 }  }} className={styles["header-aboutUs-imgContainer"]}>
+                                    <img style={{ margin: " 6em 1.3em 0 0"}} className={styles["header-aboutUs-img"]} src="/imgs/gallery-img3.png" alt="headerimg2" />
+                                </motion.div>
+                            
                             </div>
                             :<></>
                         }
