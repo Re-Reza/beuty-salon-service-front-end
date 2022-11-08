@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Head from "next/head";
 
@@ -7,7 +7,7 @@ import EmployeeSwiper from "../component/aboutus/EmployeeSwiper";
 
 import Header from "../component/header/Header";
 import Footer from "../component/footer/Footer";
-import { RateStatics } from "../component/aboutus";
+import { RateStatics, EmployeesAccordion } from "../component/aboutus";
 
 import styles from "../../public/styles/aboutUs.module.css";
 import "aos/dist/aos.css";
@@ -24,6 +24,15 @@ function About() {
 
     }, []);
 
+    const [ state, setState ] = useState({
+        employees : [
+            { fName : "سارینا", lName: "حیدری", email : "aaa@gmail.com", phone  : "0930000", servicesSaticsfaction : [ { title: "سشوار", rate : "50"},  { title: "کوتاهی", rate : "65"},  { title: "بافت", rate : "72"} ] , workInfo : [{title : "ساعات کاری", quan :"4200"}, {title : "رضایت مشتری", quan :"4200"}, {title : "مشتری ها", quan :"4200"} ] },
+            { fName : "سارینا", lName: "حیدری", email : "aaa@gmail.com", phone  : "0930000", servicesSaticsfaction : [ { title: "سشوار", rate : "50"},  { title: "کوتاهی", rate : "65"},  { title: "بافت", rate : "72"} ] , workInfo : [{title : "ساعات کاری", quan :"4200"}, {title : "رضایت مشتری", quan :"4200"}, {title : "مشتری ها", quan :"4200"} ] } ,
+            { fName : "سارینا", lName: "حیدری", email : "aaa@gmail.com", phone  : "0930000", servicesSaticsfaction : [ { title: "سشوار", rate : "50"},  { title: "کوتاهی", rate : "65"},  { title: "بافت", rate : "72"} ] , workInfo : [{title : "ساعات کاری", quan :"4200"}, {title : "رضایت مشتری", quan :"4200"}, {title : "مشتری ها", quan :"4200"} ] } ,
+            { fName : "سارینا", lName: "حیدری", email : "aaa@gmail.com", phone  : "0930000", servicesSaticsfaction : [ { title: "سشوار", rate : "50"},  { title: "کوتاهی", rate : "65"},  { title: "بافت", rate : "72"} ] , workInfo : [{title : "ساعات کاری", quan :"4200"}, {title : "رضایت مشتری", quan :"4200"}, {title : "مشتری ها", quan :"4200"} ] }  
+        ]
+    })
+
     return (
         <>
             <Head>
@@ -36,7 +45,9 @@ function About() {
 
                 <RateStatics/>
 
-                <EmployeeSwiper/>
+                {/* <EmployeeSwiper/> */}
+
+                <EmployeesAccordion data={state.employees}/>
 
             </div>
 
