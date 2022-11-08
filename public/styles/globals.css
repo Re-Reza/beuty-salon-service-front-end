@@ -383,3 +383,33 @@ input[type="radio"]:focus{
     font-weight: 800;
     font-size: 1.2em;
 }
+
+.ratecolumnContainer-V{
+    display:flex;
+    height:300px;
+    flex-direction: column;
+    align-items: center;
+}
+.ratecolumnContainer-H{
+    display:flex;
+    height:30px;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+.rate-column{
+    display: flex;
+   
+    padding: 0 !important;
+    border-radius: 5px;
+    border: 1.4px solid var(--grey);
+}
+.rate-V{
+    align-items: flex-end;
+    height: 100%;
+    width: 15px;
+}
+.rate-H{
+    justify-content: flex-end;
+    height: 15px;
+    width: 80%;
+}
