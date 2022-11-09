@@ -39,7 +39,7 @@ function RateColumn(props) {
     }
 
     return (
-        <div className={props.horizontal? "ratecolumnContainer-H" : "ratecolumnContainer-V" }  >
+        <div style={{height:props.rateOfSalon ? "22px" : ""}} className={props.horizontal? "ratecolumnContainer-H" : "ratecolumnContainer-V" }  >
             <div className={props.horizontal  ? "rate-column rate-H" : "rate-column rate-V"}>
                 <motion.div variants={columnVarient} initial="offscreen" viewport={{once : true}} whileInView="onscreen" style={props.horizontal ? hStl : stl}></motion.div>
             </div>

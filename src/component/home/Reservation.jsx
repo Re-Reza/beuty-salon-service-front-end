@@ -40,6 +40,76 @@ export function Reservation() {
                 title : "مو",
                 satisfaction : "7"
             },
+            {
+                img : "/hairService.jpeg",
+                title : "مو",
+                satisfaction : "7"
+            },
+            {
+                img : "/hairService.jpeg",
+                title : "مو",
+                satisfaction : "7"
+            },
+            {
+                img : "/hairService.jpeg",
+                title : "مو",
+                satisfaction : "7"
+            },
+            {
+                img : "/skinService.jpg",
+                title : "پوست",
+                satisfaction : "4"
+            },
+            {
+                img : "/nailService.jpeg",
+                title : "ناخن",
+                satisfaction : "8"
+            },
+            {
+                img : "/hairService.jpeg",
+                title : "مو",
+                satisfaction : "7"
+            },
+            {
+                img : "/skinService.jpg",
+                title : "پوست",
+                satisfaction : "4"
+            },
+            {
+                img : "/nailService.jpeg",
+                title : "ناخن",
+                satisfaction : "8"
+            },
+            {
+                img : "/hairService.jpeg",
+                title : "مو",
+                satisfaction : "7"
+            },
+            {
+                img : "/skinService.jpg",
+                title : "پوست",
+                satisfaction : "4"
+            },
+            {
+                img : "/nailService.jpeg",
+                title : "ناخن",
+                satisfaction : "8"
+            },
+            {
+                img : "/hairService.jpeg",
+                title : "مو",
+                satisfaction : "7"
+            },
+            {
+                img : "/skinService.jpg",
+                title : "پوست",
+                satisfaction : "4"
+            },
+            {
+                img : "/nailService.jpeg",
+                title : "ناخن",
+                satisfaction : "8"
+            },
         ]
     });
 

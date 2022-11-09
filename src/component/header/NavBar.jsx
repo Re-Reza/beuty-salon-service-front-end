@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from  "../../../public/styles/header.module.css";
  
-export function NavBar(){
+export function NavBar(props){
 
     const navRef = useRef( null );
     const [showState, setShowState ] = useState(false); 
@@ -76,9 +76,9 @@ export function NavBar(){
         </ul>
     </li> ;
 
-
+// style={{color: props.homePage ? "" :"var(--grey2)"}}
     return (
-        <nav ref={navRef} id="nav" className={styles["navbarContainer"]}>
+        <nav ref={navRef} id="nav" className={styles["navbarContainer"]} >
             
             <div className={styles["nav-menu-icon-container"]}>
                 <div onClick={toggleMenuShowState} className={ showNavState ? styles["nav-menu-icon"] + " " +styles["show-modeicon"]: styles["nav-menu-icon"] }>

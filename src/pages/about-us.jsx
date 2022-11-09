@@ -7,7 +7,7 @@ import EmployeeSwiper from "../component/aboutus/EmployeeSwiper";
 
 import Header from "../component/header/Header";
 import Footer from "../component/footer/Footer";
-import { RateStatics, EmployeesAccordion, RatesOfSalon } from "../component/aboutus";
+import { RateStatics, EmployeesAccordion, RatesOfSalon, CommentSwiper } from "../component/aboutus";
 
 import styles from "../../public/styles/aboutUs.module.css";
 import "aos/dist/aos.css";
@@ -48,7 +48,10 @@ function About() {
                 {/* <EmployeeSwiper/> */}
 
                 <EmployeesAccordion data={state.employees}/>
+                
                 <RatesOfSalon/>
+
+                <CommentSwiper/>
                 
             </div>
 

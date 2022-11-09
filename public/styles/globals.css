@@ -321,7 +321,7 @@ input[type="radio"]:focus{
     color: var(--purple);
 }
 .swiper-pagination-bullet-active{
-    background-color: var(--purple) !important;
+    background-color: var(--grey) !important;
 }
 .text-grey{
     color: var(--grey);

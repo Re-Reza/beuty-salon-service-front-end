@@ -80,7 +80,7 @@ function Header(props){
                             :<></>
                         }
                         <div className={homePage == true ? "" : styles["service-header-contentContainer"]}>
-                            <NavBar/>
+                            <NavBar homePage={homePage}/>
                             
                             {
                                 homePage ? <></> : 
