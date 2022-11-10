@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
 import CustomeSwiperBtns from "../servicesParts/CustomeSwiperBtns";
 import styles from "../../../public/styles/aboutUs.module.css";
 
@@ -20,7 +19,6 @@ function AccordinSwiper (){
         <div>
             <Swiper
             onSlideChange={()=>setState([...state])}
-                // modules={[Pagination, Navigation]}
             >
             {
                 state.map( ( item, index) => <SwiperSlide key={index}>
@@ -31,8 +29,6 @@ function AccordinSwiper (){
                 <CustomeSwiperBtns allSlideLength={state.length}/>
             </Swiper>
             
-
-
         </div>
     );
 }

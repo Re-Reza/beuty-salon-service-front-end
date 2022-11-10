@@ -105,7 +105,6 @@
     transition: max-height 0.2s ease-out;  
 }
 .show-acordion{
-    border-bottom: 1.5px solid #000;
     display: flex;
     justify-content: space-between;
     padding:2em 1.5em;

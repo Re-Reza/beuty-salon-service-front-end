@@ -25,7 +25,7 @@ function Accordion(props) {
     return(
         <il className={styles["acordion-item"]}>
             
-            <div onClick={toggleAcordion} className={styles["acordion-item-button"]} style={{borderBottom:props.isLast || state.show ? "" : "1.5px solid #000"}}>
+            <div onClick={toggleAcordion} className={styles["acordion-item-button"]}  style={{borderBottom: props.isLast == true || state.show ? "" : "1.5px solid #000"}}>
                 <div className={styles["acordion-item-button-icon"]}>
                 {
                     state.show ? 
@@ -61,7 +61,7 @@ function Accordion(props) {
             
             </div>
 
-            <div ref={contentRef} style={{maxHeight : state.show ? contentRef.current.scrollHeight+"px" : "0px"}} className={state.show ? styles["acordion-item-content"]+" "+styles["show-acordion"] : styles["acordion-item-content"]}>
+            <div ref={contentRef} style={{maxHeight : state.show ? contentRef.current.scrollHeight+"px" : "0px", borderBottom: props.isLast == true || !state.show ? "" : "1.5px solid #000" }} className={state.show ? styles["acordion-item-content"]+" "+styles["show-acordion"] : styles["acordion-item-content"]}>
 
                 <div className={styles["accordinSwiper-container"]}>
                     <AccordinSwiper/>

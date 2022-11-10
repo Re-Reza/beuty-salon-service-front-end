@@ -30,7 +30,7 @@ export function CommentSwiper () {
                 spaceBetween={20}
                 pagination={{
                     dynamicBullets: true,
-                  }}
+                }}
                 modules={[Pagination]}
             >
             {
