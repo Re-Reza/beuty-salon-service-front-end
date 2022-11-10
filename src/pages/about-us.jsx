@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 
 import Aos from "aos";
-import EmployeeSwiper from "../component/aboutus/EmployeeSwiper";
 
 import Header from "../component/header/Header";
 import Footer from "../component/footer/Footer";

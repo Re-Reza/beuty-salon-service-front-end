@@ -42,12 +42,19 @@ export function WhyUsPart(){
 
             </div>
             
-            <div className={styles["whyus-left"]} >
-                <div data-aos="fade-right" data-aos-delay="400" className={styles['gallery-img-1']+" "+styles['gallery-img']}></div>
-                <div data-aos="fade-left" data-aos-delay="500" className={styles['gallery-img-2']+" "+styles['gallery-img']}></div>
-                <div data-aos="fade-right" data-aos-delay="600" className={styles['gallery-img-3']+" "+styles['gallery-img']}></div>
-                <div data-aos="zoom-in-up" data-aos-delay="900" className={styles['gallery-img-4']+" "+styles['gallery-img']}></div>
-                <div data-aos="fade-left" data-aos-delay="700"  className={styles['gallery-img-5']+" "+styles['gallery-img']}></div>
+            <div className={styles["whyus-left-container"]}>
+                <div className={styles["whyus-left"]} >
+                    <div data-aos="fade-right" data-aos-delay="400" className={styles['gallery-img-1']+" "+styles['gallery-img']}></div>
+                    <div data-aos="fade-left" data-aos-delay="500" className={styles['gallery-img-2']+" "+styles['gallery-img']}></div>
+                    <div data-aos="fade-right" data-aos-delay="600" className={styles['gallery-img-3']+" "+styles['gallery-img']}></div>
+                    <div data-aos="zoom-in-up" data-aos-delay="900" className={styles['gallery-img-4']+" "+styles['gallery-img']}></div>
+                    <div  className={styles['gallery-img-5']+" "+styles['gallery-img']}></div>
+                    <div className={styles['gallery-img-6']+" "+styles['gallery-img']}></div>
+                    <div className={styles['gallery-img-7']+" "+styles['gallery-img']}></div>
+                    <div className={styles['gallery-img-8']+" "+styles['gallery-img']}></div>
+                    <div className={styles['gallery-img-9']+" "+styles['gallery-img']}></div>
+                    <div className={styles['gallery-img-10']+" "+styles['gallery-img']}></div>
+                </div>
             </div>
         
         </section>

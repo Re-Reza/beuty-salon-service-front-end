@@ -2,11 +2,12 @@ import React, { useState, useRef } from 'react'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+import CustomeSwiperBtns from "../servicesParts/CustomeSwiperBtns";
 import styles from "../../../public/styles/aboutUs.module.css";
 
 function AccordinSwiper (){
 
-    const [ state ] = useState([
+    const [ state, setState ] = useState([
         "/imgs/gallery-img5.png",
         "/imgs/gallery-img2.png",
         "/imgs/gallery-img3.png",
@@ -14,31 +15,20 @@ function AccordinSwiper (){
         "/imgs/gallery-img4.jpg"
     ]);
 
-    const navigationPrevRef = useRef(null);
-    const navigationNextRef = useRef(null);
 
     return (
         <div>
             <Swiper
-                  onInit={(swiper) => {
-                    swiper.params.navigation.prevEl = navigationPrevRef.current;
-                    swiper.params.navigation.nextEl = navigationNextRef.current;
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                  }}
-            
-                modules={[Pagination, Navigation]}
-                navigation={{
-                    prevEl: navigationPrevRef.current,
-                    nextEl: navigationNextRef.current
-                  }}
+            onSlideChange={()=>setState([...state])}
+                // modules={[Pagination, Navigation]}
             >
             {
                 state.map( ( item, index) => <SwiperSlide key={index}>
                     <img className={styles["acordion-swiper-img"]} src={item} alt={"accordinImg"+index} />
-                    {/* <div className='nextTT' ref={navigationNextRef}>next</div> */}
+
                 </SwiperSlide>)
             }
+                <CustomeSwiperBtns allSlideLength={state.length}/>
             </Swiper>
             
 
