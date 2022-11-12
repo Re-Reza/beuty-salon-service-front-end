@@ -16,16 +16,16 @@ function ReserveNav(props) {
         });
     }
     
-    const { userChoiceState: { selectByEm } , dispatch } = useContext( reserveContext );
+    // const { userChoiceState: { selectByEm } , dispatch } = useContext( reserveContext );
 
-    const changeReserveType = (value) => {
-        if( value != selectByEm) {
-            dispatch({
-                type : "SET_RESERVE_TYPE" ,
-                payload : value
-            });
-        }
-    }
+    // const changeReserveType = (value) => {
+    //     if( value != selectByEm) {
+    //         dispatch({
+    //             type : "SET_RESERVE_TYPE" ,
+    //             payload : value
+    //         });
+    //     }
+    // }
 
     return (
         <nav className={styles['reserveNav']}>
@@ -42,13 +42,13 @@ function ReserveNav(props) {
                         <img className={styles["icon-size"]}  src="/imgs/logo.png" alt="logo" />
                     </span>
 
-                    <span className={styles["border-left"]} >
+                    <span className='me-2'>
                         <img className={styles["icon-size"]} role="button" src="/imgs/icons/searchIcon.png" alt="search" />
                     </span>
 
                 </div>
 
-                <div className='d-flex align-items-center me-4'>
+                {/* <div className='d-flex align-items-center me-4'>
 
                     <div onClick={()=> {changeReserveType(false)}} role="button" style={{paddingBottom : ".3em"}} className={selectByEm ? "ms-3" : "ms-3 "+styles["selectedReserveType"]}>
                         رزرو بر حسب تاریخ
@@ -58,7 +58,7 @@ function ReserveNav(props) {
                         رزرو برحسب کارمند
                     </div>
 
-                </div>
+                </div> */}
 
             </div>
 

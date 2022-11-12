@@ -1,4 +1,6 @@
-
+.header{
+    background-color: #fff;
+}
 .home-header{
     height: 93vh;
     background-color: #fff;
@@ -42,10 +44,11 @@
 }
 .slider{
     display: flex;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     position: relative;
-    grid-row: 1 / 7;
+    grid-row: 1 / 8;
     grid-column-start: 3;
     grid-column-end: 9;
 }
@@ -55,6 +58,11 @@
 .slideItem{
     position: absolute;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
     visibility: hidden;
     transition: 1.2s all;
     text-align: center;

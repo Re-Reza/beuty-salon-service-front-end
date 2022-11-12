@@ -54,19 +54,19 @@ export function ChooseService() {
             }
         });
     }
-    console.log(state.categoryList);
+    // console.log(state.categoryList);                       
     return ( 
 
         <section className={styles["chooseService-section"]}>
 
             <div>
-                <h6 className="mb-3">دسته بندی خدمات</h6>
-                <DropDown chooseItem={chooseItem} type="CATEGORY" list={state.categoryList} selected={category.value}/>
+                {/* <h6 className="mb-3">دسته بندی خدمات</h6> */}
+                <DropDown dropTitle={"خدمات"} chooseItem={chooseItem} type="CATEGORY" list={state.categoryList} selected={category.value}/>
             </div>
 
             <div>
-                <h6 className="mb-3">سرویس ها</h6>
-                <DropDown chooseItem={chooseItem} type="SERVICE" list={state.serviceList} selected={service.value}/>
+                {/* <h6 className="mb-3">سرویس ها</h6> */}
+                <DropDown dropTitle={"سرویس ها"} chooseItem={chooseItem} type="SERVICE" list={state.serviceList} selected={service.value}/>
             </div>
 
         </section>

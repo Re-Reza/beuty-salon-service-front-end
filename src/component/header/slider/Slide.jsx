@@ -8,8 +8,10 @@ function Slide(props){
     
     return (
         <div className={styles["slideItem"]+ " "+styles[props.showSlide]}>
-            <h3 className={styles["slide-title"]}>{slideTitle}</h3>
-            <p className={styles["slide-description"]}>{slideDescription}</p>
+            <div>
+                <h3 className={styles["slide-title"]}>{slideTitle}</h3>
+                <p className={styles["slide-description"]}>{slideDescription}</p>
+            </div>
             <button className={"btn "+styles["slide-btn"]}>{btnInfo}</button>
         </div>
     )

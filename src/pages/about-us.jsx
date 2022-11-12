@@ -38,23 +38,25 @@ function About() {
                 <title>درباره ما</title>
             </Head>
             
-            <Header aboutUs={true} homePage={false}/>
+            <div className="pink-round">
+                <Header aboutUs={true} homePage={false}/>
 
-            <div className={styles['aboutUs-page']+" mt-5"}>
+                <div className={styles['aboutUs-page']+" mt-5"}>
 
-                <RateStatics/>
+                    <RateStatics/>
 
-                {/* <EmployeeSwiper/> */}
-
-                <EmployeesAccordion data={state.employees}/>
+                    {/* <EmployeeSwiper/> */}
+        
+                    <EmployeesAccordion data={state.employees}/>
                 
-                <RatesOfSalon/>
+                    <RatesOfSalon/>
 
-                <CommentSwiper/>
-                
+                    <CommentSwiper/>
+                    
+                </div>
+
+                <Footer/>
             </div>
-
-            <Footer/>
 
            
         </>

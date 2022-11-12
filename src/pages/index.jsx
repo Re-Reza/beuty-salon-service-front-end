@@ -16,13 +16,15 @@ function Home(){
             <Head>
                 <title>صفحه اصلی</title>
             </Head>
-            <div className={styles.home}>
-                <Header homePage={ true } /> 
-                <Introduction/>
-                <Reservation/>
-                <WhyUsPart/>
-                {/* <CustomerSatisfaction/>  */}
-                <Footer/>
+            <div className="pink-round">
+                <div className={styles.home}>
+                    <Header homePage={ true } /> 
+                    <Introduction/>
+                    <Reservation/>
+                    <WhyUsPart/>
+                    {/* <CustomerSatisfaction/>  */}
+                    <Footer/>
+                </div>
             </div>
         </>
     )

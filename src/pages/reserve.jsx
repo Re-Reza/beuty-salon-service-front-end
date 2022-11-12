@@ -51,32 +51,34 @@ const ReservePage = () => {
             <Head>
                 <title>رزرو</title>
             </Head>
-
-            <reserveContext.Provider value = { {
-                userChoiceState,
-                dispatch 
-            } }> 
             
-                <div className={ styles['reserve-page']}>
-                
-                    <ReserveHeader />
+            <div className='pink-round'>
+                <reserveContext.Provider value = { {
+                    userChoiceState,
+                    dispatch 
+                } }> 
                     
-                    <div className={styles.reserveSelectionContainer}>
-        
-                        <ChooseService />
+                    <div className={ styles['reserve-page']}>
                         
-                        {
-                            userChoiceState.service.id !=null ? 
-                            <ChooesReserveType /> : <></>
-                        }
+                        <ReserveHeader />
                         
+                        <div className={styles.reserveSelectionContainer}>
+            
+                            <ChooseService />
+                            
+                            {
+                                userChoiceState.service.id !=null ? 
+                                <ChooesReserveType /> : <></>
+                            }
+                            
+                        </div>
+
                     </div>
 
-                </div>
-
-            </reserveContext.Provider>
-            
-            <Footer/>
+                </reserveContext.Provider>
+                
+                <Footer/>
+            </div>
         </>
     )
 }

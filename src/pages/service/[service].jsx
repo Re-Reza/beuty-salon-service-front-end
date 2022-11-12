@@ -140,23 +140,25 @@ function Service( props) {
                 <title>خدمات {"title"}</title>
             </Head>
 
-            <Header homePage={false}/>
+            <div className="pink-round">
+                <Header homePage={false}/>
             
-            <div className={styles["service"]}>
-                
-                <TopEmployees data = {state.employees} /> 
-                
-                <PopularServices data={state.popularServices} />
+                <div className={styles["service"]}>
+                    
+                    <TopEmployees data = {state.employees} /> 
+                    
+                    <PopularServices data={state.popularServices} />
 
-                <section className={styles["service-detailBox-container"]}>
-                {
-                    state.serviceDetails.map( (item, index )=> <DetailBox indx={index+1} item={item} key={index}/> )
-                }
-                </section>
+                    <section className={styles["service-detailBox-container"]}>
+                    {
+                        state.serviceDetails.map( (item, index )=> <DetailBox indx={index+1} item={item} key={index}/> )
+                    }
+                    </section>
 
+                </div>
+                
+                <Footer/>
             </div>
-            
-            <Footer/>
         </>
     ); 
 
