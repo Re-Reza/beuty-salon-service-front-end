@@ -20,7 +20,7 @@ export function SelectByEmployee () {
     const { userChoiceState, dispatch } = useContext( reserveContext );
     // const { date } = useContext( reserveContext ).userChoiceState;
     const { service, employee, date, requestDate } = userChoiceState;
-    console.log(requestDate)
+    
     useEffect(() => {
         
         provideEmployessOfServive(service.id).then(response => {

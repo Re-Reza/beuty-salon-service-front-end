@@ -41,7 +41,7 @@ function About() {
             <div className="pink-round">
                 <Header aboutUs={true} homePage={false}/>
 
-                <div className={styles['aboutUs-page']+" mt-5"}>
+                <div className={styles['aboutUs-page']}>
 
                     <RateStatics/>
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import DropDownItem from './DropDownItem';
+
 import styles from "../../../public/styles/reservePage.module.css";
 
 function DropDown( props ){
@@ -9,15 +11,15 @@ function DropDown( props ){
     });
 
     const { chooseItem, list, selected, type, element, dropTitle } = props;
-    console.log(dropTitle);
 
-    function selectOption(event){
-        const value = event.target.innerHTML;
-        const id = event.target.value;
+    function selectOption(value, id){
+        console.log("gdfsdfsd")
         setState({ show: false });
         chooseItem({ value, id } , type);
     }
     
+
+
     return (
         <div className={styles['DropDown']}>
             
@@ -39,23 +41,8 @@ function DropDown( props ){
                 
             <ul className={state.show?styles["show"] +" "+ styles["DropDown-options"] : styles["DropDown-options"]}>
             {
-                list.map( (item, index) => 
-                <option key={index} className={index == list.length-1 ? styles["DropDown-options-options"] : styles["DropDown-options-options"]+" "+styles["option-border"] } 
-                onClick={selectOption} value={item.id}>
-                    <div>
-                        <img src="/imgs/about-3.png" alt="option-img" />
-                    </div>
-                    <div>
-                        <div>{type == "CATEGORY" ? item.categoryTitle : item.serviceTitle}</div>
-                        <div>
-                            <span>
-                                رضایت مشتری
-                            </span>
-
-                            <span>9.8/10</span>
-                        </div>
-                    </div>
-                </option>)
+                list.map( (item, index) => <DropDownItem isLast={index == list.length-1 ? true : false } selectOption={selectOption} item={item} type={type} key={index}/>
+                )
             }
             </ul>
 

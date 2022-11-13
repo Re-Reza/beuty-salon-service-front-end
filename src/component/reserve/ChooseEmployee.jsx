@@ -5,15 +5,13 @@ import Employee from './Employee';
 import axios from "axios";
 // npm i node-fetch@2.6.1
 import fetch from 'node-fetch';
-import PN from "persian-number";
-
 
 import reserveContext from "./reserveContext";
+import DropDown from '../elements/dropDown';
 
 import styles from "../../../public/styles/reservePage.module.css";
 
 export function ChooseEmployee ( props ) {
-
 
     const [ state, setState ] = useState({
         loading: false,
@@ -22,11 +20,10 @@ export function ChooseEmployee ( props ) {
     const { userChoiceState, dispatch }  = useContext( reserveContext );
     const { date } = userChoiceState;
     
-    console.log(props.employeeList);
-    
+    console.log(props)
     return (
         <div className={styles['chooseEmployee-section']}>
-            {
+            {/* {
                 props.isDate ? 
                 <label className={'mb-3 '+styles['result-label']}>آرایشگران قابل انتخاب در تاریخ : {`${PN.convertEnToPe(date.year)}/${PN.convertEnToPe(date.month)}/${PN.convertEnToPe(date.day)} `}</label>
                 :
@@ -40,7 +37,10 @@ export function ChooseEmployee ( props ) {
                 // :
                 props.employeeList.map((employee, index) => <Employee employeeData={employee} key={index}/> )
             }
-            </div>
+            </div> */}
+{/* DropDown dropTitle={"خدمات"} chooseItem={chooseItem} type="CATEGORY"  selected={category.value} */}
+            <DropDown dropTitle={"انتخاب کارمند"} list={props.list}/> 
+            
         </div>
     )
 }
