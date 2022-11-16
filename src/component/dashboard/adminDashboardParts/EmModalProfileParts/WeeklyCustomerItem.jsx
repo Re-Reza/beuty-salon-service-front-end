@@ -88,7 +88,7 @@ function WeeklyCustimerItem( props ){
     return(
         <li className={styles["weeklycustomerItem"]}>
             <div className={'d-flex flex-column justify-content-center align-items-center '+styles["weeklycustomerItem-date"]}>
-                <span className='fs-5'>{convertEnToPe(parseInt(day))}</span>
+                <span className='fs-5'>{day}</span>
                 <span className='fs-5'>{new pd([parseInt(year),parseInt(month),parseInt(day)]).toLocale('fa').format('MMMM')}</span>
             </div>
 

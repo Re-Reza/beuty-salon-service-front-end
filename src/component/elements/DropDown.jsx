@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import DropDownItem from './DropDownItem';
 
 import styles from "../../../public/styles/reservePage.module.css";
+import DropDownEmployeeItem from './DropDownEmployeeItem';
 
 function DropDown( props ){
 
@@ -13,12 +14,9 @@ function DropDown( props ){
     const { chooseItem, list, selected, type, element, dropTitle } = props;
 
     function selectOption(value, id){
-        console.log("gdfsdfsd")
         setState({ show: false });
         chooseItem({ value, id } , type);
     }
-    
-
 
     return (
         <div className={styles['DropDown']}>
@@ -28,8 +26,7 @@ function DropDown( props ){
                     selected ? 
                     <span>{selected}</span>
                     :
-                    <span>{dropTitle ? dropTitle : "انتحاب کنید"}</span>     
-                    // <span>dsadsa</span>       
+                    <span>{dropTitle}</span>           
                 }
                 {
                     state.show?
@@ -41,7 +38,7 @@ function DropDown( props ){
                 
             <ul className={state.show?styles["show"] +" "+ styles["DropDown-options"] : styles["DropDown-options"]}>
             {
-                list.map( (item, index) => <DropDownItem isLast={index == list.length-1 ? true : false } selectOption={selectOption} item={item} type={type} key={index}/>
+                list.map( (item, index) => props.selectEmployee == true ? <DropDownEmployeeItem  isLast={index == list.length-1 ? true : false }  key={index} item={item} chooseEmployee={props.chooseEmployee}/> : <DropDownItem isLast={index == list.length-1 ? true : false } selectOption={selectOption} item={item} type={type} key={index}/>
                 )
             }
             </ul>

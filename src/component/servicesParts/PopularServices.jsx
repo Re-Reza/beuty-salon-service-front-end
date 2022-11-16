@@ -169,9 +169,7 @@ export function PopularServices(props) {
                 </Swiper>
 
                 <div onClick={()=> swipeSlide("prev")} className='me-2' role="button">
-                    {/* <SwipeBtn next={false}> */}
                     <img style={{width:"32px"}} src="/imgs/icons/servie-swiper-aL.png" alt="arrowLeft" />
-                    {/* </SwipeBtn> */}
                 </div> 
          
             </div>

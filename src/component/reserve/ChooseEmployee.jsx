@@ -17,30 +17,28 @@ export function ChooseEmployee ( props ) {
         loading: false,
     });
 
+    console.log(props.employeeList)
     const { userChoiceState, dispatch }  = useContext( reserveContext );
-    const { date } = userChoiceState;
-    
-    console.log(props)
+    const { date, employee } = userChoiceState;
+    console.log(employee);
+    const selectedEmployee = employee.fName ?  employee.fName+" "+employee.lName : null;
+
+    function chooseEmployee( employeeId, personId, fName, lName){
+        dispatch({
+            type :"SET_EMPLOYEE",
+            payload : {
+                employeeId,
+                personId,
+                fName,
+                lName
+            }
+        });
+    }
+
     return (
         <div className={styles['chooseEmployee-section']}>
-            {/* {
-                props.isDate ? 
-                <label className={'mb-3 '+styles['result-label']}>آرایشگران قابل انتخاب در تاریخ : {`${PN.convertEnToPe(date.year)}/${PN.convertEnToPe(date.month)}/${PN.convertEnToPe(date.day)} `}</label>
-                :
-                <label className={'mb-3 '+styles['result-label']}>انتخاب آرایشگر :</label>
-            }
-            <div className={styles['chooseEmployee-container']}>
-            {
-                // state.loading ? <div>
-                //     loding...
-                // </div>
-                // :
-                props.employeeList.map((employee, index) => <Employee employeeData={employee} key={index}/> )
-            }
-            </div> */}
-{/* DropDown dropTitle={"خدمات"} chooseItem={chooseItem} type="CATEGORY"  selected={category.value} */}
-            <DropDown dropTitle={"انتخاب کارمند"} list={props.list}/> 
-            
+            {/* DropDown dropTitle={"خدمات"} chooseItem={chooseItem} type="CATEGORY"  selected={category.value} */}
+            <DropDown chooseEmployee={ chooseEmployee } type="SET_EMPLOYEE" selectEmployee={true} selected={selectedEmployee} dropTitle={"انتخاب کارمند"} list={props.employeeList}/> 
         </div>
     )
 }

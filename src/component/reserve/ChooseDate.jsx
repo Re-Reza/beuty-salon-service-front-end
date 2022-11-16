@@ -13,6 +13,8 @@ import "react-multi-date-picker/styles/colors/yellow.css"
 import transition from "react-element-popper/animations/transition";
 import opacity from "react-element-popper/animations/opacity";
 
+import DateBoxSwiper from "./DateBoxSwiper";
+
 import styles from "../../../public/styles/reservePage.module.css";
 
 export const ChooseDate = (props) => {
@@ -21,12 +23,20 @@ export const ChooseDate = (props) => {
  
     const { start, end, freeDays } = props.date;
     console.log(props)
-    const calenderRef = useRef(null);
+    // const calenderRef = useRef(null);
 
     // useEffect ( ()=> {
     //     calenderRef.current.querySelector("input").focus();
     // }, []);
-    
+    let year;
+    let month;
+    if(start)
+    {
+        console.log(start)
+        const splitedDate = start.split('/');
+        month = splitedDate[1];
+        year = splitedDate[0];       
+    }
 
     function setDate(event){
         try{
@@ -54,40 +64,50 @@ export const ChooseDate = (props) => {
         }
     }
 
-
     function validateDay(day){
         //check that giving day is in free days or not
-        const result = freeDays.find( item => item == day);
+        const result = freeDays.split('/')[2].find( item => item == day);
         return result ? false : true;
     }
 
     return (
         <div className={styles['choose-date-container']+" calender-parent"}>
-            {
+            {/* {
                 props.isDate ? 
                 <label className={'mb-3 '+styles['result-label']}>انتخاب تاریخ :</label> :
                 <label className={'mb-3 '+styles['result-label']}>تقویم کاری کارمند :</label> 
+            } */}
+            {
+                props.isDate ? 
+                    <Calendar onChange={ setDate } 
+                    // className="yellow"
+                    mapDays={ ({date}) => {     
+                        if(date.weekDay.number == 7) 
+                            return{
+                                    disabled: true,
+                            } 
+                        if(props.isDate == false){
+                    
+                            const result = validateDay(date.day);
+                            return {
+                                disabled : result,
+                            }
+                        }
+                    }}
+
+                    minDate={start} maxDate = {end}
+                    calendar={persian} locale={persian_fa} 
+                /> :
+                <>
+                {
+                    freeDays.length == 0 ? <div style={{fontWeight:"700", fontSize:"1.2em", color:"var(--grey2)"}} className='text-center'>تایم کاری کارمند پر است!</div>:
+                    <DateBoxSwiper initialMonth={month} days={freeDays} year={year}/>
+                }
+                </>
+
             }
             
-            <Calendar onChange={ setDate } 
-                // className="yellow"
-                mapDays={ ({date}) => {     
-                    if(date.weekDay.number == 7) 
-                        return{
-                                disabled: true,
-                        } 
-                    if(props.isDate == false){
-                
-                        const result = validateDay(date.day);
-                        return {
-                            disabled : result,
-                        }
-                    }
-                }}
 
-                minDate={start} maxDate = {end}
-                calendar={persian} locale={persian_fa} 
-            />
         </div>
     )
 }

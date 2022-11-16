@@ -53,19 +53,21 @@ export function SelectByEmployee () {
         
     }, [employee.employeeId, requestDate]);
 
-    return (
+    return (    
         <div className={styles.selectedByEmployee}> 
-            <div className="d-flex flex-wrap justify-content-between">
+            <div className={styles['reserve-reserveType-selection']}>
                 <ChooseEmployee employeeList={state.employeeList} />
                 { 
                     employee.employeeId ? 
                     <ChooseDate isDate={false} date={state.date} />  : <></>
                 }
             </div>
-            {
-                date.day &&  employee.employeeId ?
-                <ReserveResult /> : <></>
-            }
+            
+            <ReserveResult />
+
+            <div className="reserve-note">در اسرع وقت جهت مشاوره باهاتون تماس گرفته میشه </div>
+
+            
         </div>
     );
 }

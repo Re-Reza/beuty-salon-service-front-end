@@ -20,12 +20,12 @@ export const ReserveResult = () => {
 
     const resultRef = useRef(null)
 
-    useEffect(() => {
-        setTimeout ( () => {
-            const container = resultRef.current;
-            container.classList.add( styles['show-reserve-result'] );
-        }, 500 );
-    }, []);
+    // useEffect(() => {
+    //     setTimeout ( () => {
+    //         const container = resultRef.current;
+    //         container.classList.add( styles['show-reserve-result'] );
+    //     }, 500 );
+    // }, []);
 
     function submitReserve(){
         const reserveData = {
@@ -78,25 +78,10 @@ export const ReserveResult = () => {
                 state.showToast ? <Toast toatData={ { message: state.msg, error:state.error } }/> 
                 : <></>
             }
-            <div ref={resultRef} className={styles['reserve-result']}>
-            
-                <div className='d-flex flex-column'>
-                    <label className={'mb-3 '+styles['result-label']}>نوع خدمت :</label>
-                    <span className={styles['reserve-result-input']}>{service.value}</span>
-                </div>
-                
-                <div className='d-flex flex-column'>
-                    <label className={'mb-3 '+styles['result-label']}>کارمند :</label>
-                    <span className={styles['reserve-result-input']}>{employee.fName+" "+employee.lName}</span>
-                </div>
-                
-                <div className='d-flex flex-column'>
-                    <label className={'mb-3 '+styles['result-label']}>تاریخ :</label>
-                    <span className={styles['reserve-result-input']}>{selectedDate}</span>
-                </div>
-                {/* <div className='d-flex justify-content-end'> */}
-                    <button onClick={submitReserve} className={styles['confirm-reserve']+" "+'btn btn-success mt-3'}>تایید رزرو</button>
-                {/* </div> */}
+            <div className={styles["confirm-reserve-container"]}>
+                <button className={styles["submit-reserve-btn"]}>
+                    ثبت نوبت
+                </button>
             </div>
         </>
     )

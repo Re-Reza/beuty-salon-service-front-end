@@ -21,7 +21,7 @@ function AccordinSwiper (){
             onSlideChange={()=>setState([...state])}
             >
             {
-                state.map( ( item, index) => <SwiperSlide key={index}>
+                state.map( ( item, index) => <SwiperSlide key={index+"a"}>
                     <img className={styles["acordion-swiper-img"]} src={item} alt={"accordinImg"+index} />
 
                 </SwiperSlide>)
