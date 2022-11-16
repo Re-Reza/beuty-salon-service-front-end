@@ -16,23 +16,18 @@ import opacity from "react-element-popper/animations/opacity";
 import DateBoxSwiper from "./DateBoxSwiper";
 
 import styles from "../../../public/styles/reservePage.module.css";
+import ReserveResult from './ReserveResult';
 
 export const ChooseDate = (props) => {
 
-    const { userChoiceState, dispatch } = useContext( reserveContext ); 
- 
-    const { start, end, freeDays } = props.date;
-    console.log(props)
-    // const calenderRef = useRef(null);
+    const { userChoiceState: { date}, dispatch } = useContext( reserveContext ); 
 
-    // useEffect ( ()=> {
-    //     calenderRef.current.querySelector("input").focus();
-    // }, []);
+    const { start, end, freeDays } = props.date;
+
     let year;
     let month;
     if(start)
     {
-        console.log(start)
         const splitedDate = start.split('/');
         month = splitedDate[1];
         year = splitedDate[0];       
@@ -71,14 +66,9 @@ export const ChooseDate = (props) => {
     }
 
     return (
-        <div className={styles['choose-date-container']+" calender-parent"}>
-            {/* {
-                props.isDate ? 
-                <label className={'mb-3 '+styles['result-label']}>انتخاب تاریخ :</label> :
-                <label className={'mb-3 '+styles['result-label']}>تقویم کاری کارمند :</label> 
-            } */}
+        <div style={{margin:props.isDate ? "" : "auto"}} className={styles['choose-date-container']+" calender-parent"}>
             {
-                props.isDate ? 
+                props.isDate == true ? 
                     <Calendar onChange={ setDate } 
                     // className="yellow"
                     mapDays={ ({date}) => {     
@@ -101,12 +91,20 @@ export const ChooseDate = (props) => {
                 <>
                 {
                     freeDays.length == 0 ? <div style={{fontWeight:"700", fontSize:"1.2em", color:"var(--grey2)"}} className='text-center'>تایم کاری کارمند پر است!</div>:
-                    <DateBoxSwiper initialMonth={month} days={freeDays} year={year}/>
+                    <DateBoxSwiper selectedDate={date} initialMonth={month} days={freeDays} year={year}/>
                 }
                 </>
 
             }
             
+            {
+                props.isDate ? <></> :
+                <div style={{marginTop: "3em"}}>
+                {
+                    freeDays.length != 0 ? <ReserveResult/> : <></>
+                }
+                </div>
+            }
 
         </div>
     )

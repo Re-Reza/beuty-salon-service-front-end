@@ -37,10 +37,10 @@ const AddEmployeeModal = ( props ) => {
         }
     };
 
-        const schema = object().shape({
-        fName : string().required("نام الزامی است").min(2, "نام باید حداقل شامل دو کاراکتر باشد").max(100, "نام بیش از حد مجاز").trim(),
-        lName : string().required("نام خانوادگی الزامی است").min(2, "نام خانوادگی باید حداقل شامل دو کاراکتر باشد").max(100, "نام خانوادگی بیش از حد مجاز").trim(), 
-        phone :  string().required("شماره موبایل الزامی است"), 
+    const schema = object().shape({
+    fName : string().required("نام الزامی است").min(2, "نام باید حداقل شامل دو کاراکتر باشد").max(100, "نام بیش از حد مجاز").trim(),
+    lName : string().required("نام خانوادگی الزامی است").min(2, "نام خانوادگی باید حداقل شامل دو کاراکتر باشد").max(100, "نام خانوادگی بیش از حد مجاز").trim(), 
+    phone :  string().required("شماره موبایل الزامی است"), 
         // nationalId :  string().required("کد ملی الزامی است")
     });
 

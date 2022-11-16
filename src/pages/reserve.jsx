@@ -6,7 +6,6 @@ import Head from "next/head";
 import Footer from "../component/footer/Footer";
 import { ChooseService, ChooesReserveType, ReserveHeader } from "../component/reserve";
 
-
 import reserveContext from "../component/reserve/reserveContext";
 import reserveReducer from "../component/reserve/reserveReducer";
 
@@ -53,6 +52,7 @@ const ReservePage = () => {
             </Head>
             
             <div className='pink-round'>
+
                 <reserveContext.Provider value = { {
                     userChoiceState,
                     dispatch 
@@ -78,6 +78,7 @@ const ReservePage = () => {
                 </reserveContext.Provider>
                 
                 <Footer/>
+
             </div>
         </>
     )

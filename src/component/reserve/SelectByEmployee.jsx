@@ -55,18 +55,17 @@ export function SelectByEmployee () {
 
     return (    
         <div className={styles.selectedByEmployee}> 
-            <div className={styles['reserve-reserveType-selection']}>
+
+            <div className={styles['reserve-reserveType-selection']} style={{minHeight:"250px"}}>
                 <ChooseEmployee employeeList={state.employeeList} />
                 { 
                     employee.employeeId ? 
                     <ChooseDate isDate={false} date={state.date} />  : <></>
                 }
             </div>
-            
-            <ReserveResult />
+        
 
             <div className="reserve-note">در اسرع وقت جهت مشاوره باهاتون تماس گرفته میشه </div>
-
             
         </div>
     );

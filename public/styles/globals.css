@@ -74,8 +74,8 @@ button{
 	border: none;
 }
 :root {
-    /* --yellow: #ffcc54; */
-    /* --dark : #323232; */
+    --yellow: #ffcc54;
+    --dark : #323232;
     --pink : #FFE8F0;
     --purple : #AF4960;
     --grey : #066255;
@@ -137,7 +137,6 @@ p{
     justify-content: space-between;
     color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    position: absolute;
     bottom: 2%;
     position: fixed;
     right: 2%;
@@ -148,7 +147,7 @@ p{
     align-items: center;
     border-radius: 8px;
     padding: 25px 45px;
-    z-index: 10;
+    z-index: 6000;
     animation: showToast .5s forwards;
 }
 .toastContainer span{
@@ -417,16 +416,23 @@ input[type="radio"]:focus{
     padding: 2em;
     background-color: var(--lightPurple)
 }
+.calender-parent .swiper-slide {
+
+    height: 105px !important;
+}
 .reserve-note{
     color: var(--grey);
     font-weight: 620;
     text-align: center;
-    font-size: 1.65em;
+    font-size: 1.58em;
     margin-top: 2.5em;
 }
-/* .calender-parent .swiper-wrapper{
+.swiper-wrapper{
+    display: flex;
+}
+.calender-parent .swiper-wrapper{
     justify-content: center;
-} */
+}
 /* 
 .swiper-container {
     width: 100%; height: 100%;

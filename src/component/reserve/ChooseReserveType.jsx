@@ -33,7 +33,7 @@ export function ChooesReserveType() {
                 <button className =  { !state.selectByEm ? styles.chooseTypeBtn : styles.chooseTypeBtn +" " + styles.selectBtn  } onClick={()=>{toggleSelectType(true)} } > رزرو برحسب آرایشگر</button>
             </div>
             
-            <div>
+            <div style={{position:"relative", zIndex:"5"}}>
             {
                 state.selectByEm? 
                 <SelectByEmployee /> :

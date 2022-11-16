@@ -197,7 +197,7 @@ export function Introduction (){
                         state.statics.map( (item, index ) => <li style={ {borderLeft: index == state.statics.length-1 ? "" : "2.8px solid var(--grey)"} } className="d-flex flex-column text-center ms-4 ps-4" key={index}>
                             <div>
                                 <img style={ { width:"30px", marginLeft : ".2em"}} src="/imgs/icons/plusIcon.png" alt="plus" />
-                                <span style={{color:"var(--grey", fontSize:"1.25em", fontWeight:"750"}} id={"statics"+index}></span>
+                                <span style={{color:"var(--grey)", fontSize:"1.25em", fontWeight:"750"}} id={"statics"+index}></span>
                             </div>
                             <span style={{color:"var(--pinkT2)", fontWeight:"500"}}>{item.title}</span>
                         </li>)

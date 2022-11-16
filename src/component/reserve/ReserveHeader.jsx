@@ -45,7 +45,7 @@ export function ReserveHeader(){
                             <Link href="/">
                                 <a>
                                     <span>پنل کاربری</span>
-                                    <img src="/imgs/icons/userIcon.png" alt="usericon" />
+                                    <img style={{width:"29px"}} src="/imgs/icons/userIcon.png" alt="usericon" />
                                 </a>
                             </Link>
                             :

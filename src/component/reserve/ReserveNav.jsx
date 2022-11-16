@@ -3,7 +3,6 @@ import React, { useState, useContext } from 'react';
 import Link from 'next/link';
 import { removeCookie } from "../../dataService/cookieProvider";
 // import Hamburger from 'hamburger-react';
-import reserveContext from "./reserveContext";
 
 import styles from "../../../public/styles/reservePage.module.css";
 
@@ -11,7 +10,7 @@ function ReserveNav(props) {
 
     function logout(){
         removeCookie();
-        dispatch({
+        props.dispatch({
             type : "DELETE_DATA",
         });
     }
@@ -39,11 +38,11 @@ function ReserveNav(props) {
                     </span>
 
                     <span className={styles["border-left"]} >
-                        <img className={styles["icon-size"]}  src="/imgs/logo.png" alt="logo" />
+                        <img className={styles["icon-size"]}  src="/imgs/icons/purpleLogo.png" alt="logo" />
                     </span>
 
                     <span className='me-2'>
-                        <img className={styles["icon-size"]} role="button" src="/imgs/icons/searchIcon.png" alt="search" />
+                        <img className={styles["icon-size"]} style={{width:"32px"}}role="button" src="/imgs/icons/purpleSearch.png" alt="search" />
                     </span>
 
                 </div>
@@ -67,9 +66,9 @@ function ReserveNav(props) {
             {
                 props.logedIn ? 
 
-                <div onClick={logout}>
+                <div role="button" onClick={logout}>
                     خروج از حساب
-                    <i className="fa fa-sign-out me-2" style={{color:"var(--pinkT2)"}} aria-hidden="true"></i>
+                    <i className="fa fa-sign-out me-2" style={{color:"var(--purple)"}} aria-hidden="true"></i>
                 </div>
                 :
                 <Link href="/signin">

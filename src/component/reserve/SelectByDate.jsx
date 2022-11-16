@@ -46,7 +46,7 @@ export function SelectByDate(){
 
     return (
         <div className={'d-flex flex-column '} style={ {display:"grid", gridTemplateColumns:"repeat(2, 1fr)"} } >
-            <div className='d-flex  flex-wrap justify-content-between'>
+            <div className='d-flex  flex-wrap justify-content-between' style={{minHeight:"250px"}}>
                 <ChooseDate date={state.date} isDate={true} />
                 {
                     date.day ? <ChooseEmployee employeeList={state.employeeList} isDate={true} />
@@ -55,12 +55,7 @@ export function SelectByDate(){
      
             </div> 
 
-            <ReserveResult />
-
-
             <div className="reserve-note">در اسرع وقت جهت مشاوره باهاتون تماس گرفته میشه </div>
-
-            
 
         </div>
     )

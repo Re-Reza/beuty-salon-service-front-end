@@ -9,7 +9,6 @@ const EmployeeItem = ( props ) => {
     
     const [openMoal, setOpenMoal ] = useState(false);
 
-    console.log(props)
     const { row, phone, fName, lName, profileImg, services } = props.item;
     let data="";
     services.forEach( (item, index) => {

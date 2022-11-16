@@ -8,6 +8,7 @@ import fetch from 'node-fetch';
 
 import reserveContext from "./reserveContext";
 import DropDown from '../elements/dropDown';
+import ReserveResult from './ReserveResult';
 
 import styles from "../../../public/styles/reservePage.module.css";
 
@@ -17,10 +18,9 @@ export function ChooseEmployee ( props ) {
         loading: false,
     });
 
-    console.log(props.employeeList)
     const { userChoiceState, dispatch }  = useContext( reserveContext );
     const { date, employee } = userChoiceState;
-    console.log(employee);
+
     const selectedEmployee = employee.fName ?  employee.fName+" "+employee.lName : null;
 
     function chooseEmployee( employeeId, personId, fName, lName){
@@ -39,6 +39,13 @@ export function ChooseEmployee ( props ) {
         <div className={styles['chooseEmployee-section']}>
             {/* DropDown dropTitle={"خدمات"} chooseItem={chooseItem} type="CATEGORY"  selected={category.value} */}
             <DropDown chooseEmployee={ chooseEmployee } type="SET_EMPLOYEE" selectEmployee={true} selected={selectedEmployee} dropTitle={"انتخاب کارمند"} list={props.employeeList}/> 
+            {
+                props.isDate ?           
+                <div>
+                    <ReserveResult/>
+                </div>
+                :<></>
+            }
         </div>
     )
 }

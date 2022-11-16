@@ -12,7 +12,7 @@ import styles from "../../../public/styles/reservePage.module.css";
 
 function DateBoxSwiper(props){
 
-    const { days } = props; 
+    const { days, selectedDate } = props; 
 
     // const temp = [...days, ...days, ...days];
 
@@ -67,7 +67,7 @@ function DateBoxSwiper(props){
                 days.map((item, index) => {
                     const [year, month, day] = item.split("/");
                     return <SwiperSlide key={index}>
-                    <div onClick={()=> selectDateHandler(item) } className={styles["date-box-item"]}>
+                    <div onClick={()=> selectDateHandler(item) } className={ (selectedDate.day) == day && (selectedDate.month) == month && (selectedDate.year) == year ? styles["date-box-item"]+" "+styles["selected-date-box-item"] : styles["date-box-item"]}>
                         <div>
                         {
                             new pd([parseInt(year),parseInt(month),parseInt(day)]).toLocale('fa').format('dddd')
