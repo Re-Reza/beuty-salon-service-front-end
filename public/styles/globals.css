@@ -397,7 +397,7 @@ input[type="radio"]:focus{
 }
 .rate-column{
     display: flex;
-   
+
     padding: 0 !important;
     border-radius: 5px;
     border: 1.4px solid var(--grey);
@@ -427,31 +427,3 @@ input[type="radio"]:focus{
     font-size: 1.58em;
     margin-top: 2.5em;
 }
-.swiper-wrapper{
-    display: flex;
-}
-.calender-parent .swiper-wrapper{
-    justify-content: center;
-}
-/* 
-.swiper-container {
-    width: 100%; height: 100%;
-    margin-left: auto; margin-right: auto;
-    }
-    
-    .swiper-slide {
-    max-width: 1200px;
-    height: auto;
-    text-align: center;
-    line-height: 0;
-    }
-    
-    .swiper-slide img {
-    height: 550px;
-    width: auto;
-    }
-    
-    .swiper-slide:nth-child(1n) {
-    height: 550px;
-    width: auto;
-    } */

@@ -9,6 +9,7 @@ import SwipeBtn from "../servicesParts/SwipeBtn";
 import reserveContext from "./reserveContext";
 
 import styles from "../../../public/styles/reservePage.module.css";
+import 'swiper/css';
 
 function DateBoxSwiper(props){
 

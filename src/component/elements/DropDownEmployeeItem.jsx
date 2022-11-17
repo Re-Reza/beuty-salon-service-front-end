@@ -9,6 +9,7 @@ function DropDownEmployeeItem(props) {
     const { chooseEmployee, isLast} = props; 
     
     function selectHandler(){
+        props.closeDrop();
         chooseEmployee( employeeId, personId, fName, lName);
     }
 

@@ -137,7 +137,7 @@ function Service( props) {
     return(
         <>
             <Head>
-                <title>خدمات {"title"}</title>
+                <title>خدمات {service}</title>
             </Head>
 
             <div className="pink-round">
@@ -158,6 +158,7 @@ function Service( props) {
                 </div>
                 
                 <Footer/>
+                
             </div>
         </>
     ); 

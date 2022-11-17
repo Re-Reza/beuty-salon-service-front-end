@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
+
 import styles from "../../../public/styles/aboutUs.module.css";
+
+import 'swiper/css';
+import "swiper/css/pagination";
+
 
 export function CommentSwiper () {
 
@@ -26,12 +31,11 @@ export function CommentSwiper () {
             
             <Swiper
                 slidesPerView={4}
-                
                 spaceBetween={20}
                 pagination={{
                     dynamicBullets: true,
                 }}
-                modules={[Pagination]}
+                modules={[Pagination, Navigation]}
             >
             {
                 state.comments.map( (item, index) => <SwiperSlide key={index}>

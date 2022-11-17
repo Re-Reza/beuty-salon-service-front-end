@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { useRouter } from "next/router";
+
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
+import { provideCategories } from "../../dataService/reserveProvider";
 
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import SwipeBtn from "./SwipeBtn";
-import { useRouter } from "next/router";
 import styles from "../../../public/styles/services.module.css";
 
 export function PopularServices(props) {
@@ -23,27 +25,29 @@ export function PopularServices(props) {
         });
     }
 
+    const [ servicesLinks, setLinks ] = useState([]);
+
+    useEffect(()=>{
+        provideCategories().then( response => {
+            const servicesLinksList = response.data.result.map(item => ({
+                title : item.categoryTitle,
+                path: "/"+item.categoryTitle.trim()
+            }) );
+
+            setLinks(servicesLinksList);
+
+        }).catch(err => console.log(err) );
+
+    }, []);
+
+    const { query: { service } } = useRouter();
+
     function swipeDone(){
         setState({
             prev : false,
             next : false
         })
     }
-
-    const [ routeState, setRouteState ] = useState({
-        routes : [ 
-            { path : "/hair" , title : "مو" },
-            { path : "/nail" , title : "ناخن" },
-            { path : "/skin" , title : "پوست" },
-            { path : "/makeup" , title : "میکاپ" }
-        ]
-    });
-    
-
-
-    const router = useRouter();
-    const { service } = router.query;
-    console.log(router.query.service)
 
     const varientLogoRigth = {
         onscreen: {
@@ -54,7 +58,7 @@ export function PopularServices(props) {
             }
         },
         offscreen: {
-            right : -500,
+            right : -350,
         },
     };
 
@@ -67,7 +71,7 @@ export function PopularServices(props) {
             }
         },
         offscreen : {
-            left : -500
+            left : -350
         }
     }
 
@@ -102,13 +106,13 @@ export function PopularServices(props) {
 
             <h2 className={styles["service-popularService-title"]}>
                 <motion.span variants={varientLogoRigth} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}><img style={{width:"62px"}} className="ms-2" src="/imgs/logoGreen.png" alt="logo" /></motion.span>
-                <motion.span variants={varientTitle} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>محبوب ترین خدمات عنوان</motion.span>
+                <motion.span variants={varientTitle} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative"}}>محبوب ترین خدمات {service}</motion.span>
                 <motion.span variants={varientLogoLeft} whileInView="onscreen" viewport={{ once: true, amount: 1 }} initial="offscreen" style={{position: "relative" }} ><img style={{width:"62px"}} className="me-2"  src="/imgs/logoGreen.png" alt="logo" /></motion.span>
             </h2>
 
             <motion.ul variants={linksVarient} whileInView="onscreen" viewport={{ once: true }} initial="offscreen" style={{position: "relative"}} className={styles["service-popularService-servicesLinks"]}>
             {
-                routeState.routes.map((item, index) => <li key={index} className={item.path == "/"+service ? styles["service-popularService-servicesLinks-li"]+" "+ styles["active-link"] : styles["service-popularService-servicesLinks-li"]}>
+                servicesLinks.map((item, index) => <li key={index} className={item.path == "/"+service ? styles["service-popularService-servicesLinks-li"]+" "+ styles["active-link"] : styles["service-popularService-servicesLinks-li"]}>
                 <Link href={`/service${item.path}`}>
                     <a>{item.title}</a>
                 </Link>

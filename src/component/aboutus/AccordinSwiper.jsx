@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import CustomeSwiperBtns from "../servicesParts/CustomeSwiperBtns";
 import styles from "../../../public/styles/aboutUs.module.css";
+import 'swiper/css';
 
 function AccordinSwiper (){
 

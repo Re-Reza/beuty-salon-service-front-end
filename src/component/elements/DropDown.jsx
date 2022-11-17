@@ -38,7 +38,7 @@ function DropDown( props ){
                 
             <ul className={state.show?styles["show"] +" "+ styles["DropDown-options"] : styles["DropDown-options"]}>
             {
-                list.map( (item, index) => props.selectEmployee == true ? <DropDownEmployeeItem  isLast={index == list.length-1 ? true : false }  key={index} item={item} chooseEmployee={props.chooseEmployee}/> : <DropDownItem isLast={index == list.length-1 ? true : false } selectOption={selectOption} item={item} type={type} key={index}/>
+                list.map( (item, index) => props.selectEmployee == true ? <DropDownEmployeeItem closeDrop={()=>{setState(false)}} isLast={index == list.length-1 ? true : false }  key={index} item={item} chooseEmployee={props.chooseEmployee}/> : <DropDownItem isLast={index == list.length-1 ? true : false } selectOption={selectOption} item={item} type={type} key={index}/>
                 )
             }
             </ul>

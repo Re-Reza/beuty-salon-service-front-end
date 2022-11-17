@@ -154,7 +154,7 @@ export function Reservation() {
                                     <div className="w-100 d-flex justify-content-center align-items-end pb-3 h-100">
                                         <div className={ styles["reserveSwiperItem-boxItem"] }>
                                             <h6 className={styles["reserveSwiperItem-boxItem-title"]}>خدمات {item.title}</h6>
-                                            <div className="mb-3 mt-2 w-100 d-flex justify-content-between">
+                                            <div className="mb-3 mt-2 w-100 d-flex justify-content-between" style={{fontWeight:"660"}}>
                                                 <span>رضایت مشتری:</span>
                                                 <span>{item.satisfaction}/10</span>
                                             </div>
