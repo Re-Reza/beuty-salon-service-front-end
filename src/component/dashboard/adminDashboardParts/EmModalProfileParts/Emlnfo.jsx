@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import contextStore from '../EmployeeListContext';
 import { provideServices } from "../../../../dataService/aminProvider";
 import styles from "../../../../../public/styles/dashboard.module.css";
-import { object, string, ref } from "yup";
+// import { object, string, ref } from "yup";
 import { changeEmployeeInfo } from "../../../../dataService/aminProvider";
 import Toast from "../../../elements/Toast";
 
@@ -24,7 +24,6 @@ const EmInfo = (props) =>{
     const [ mode, setMode ] = useState( false );
 
     useEffect(()=>{
-        console.log("first")
         provideServices().then(response=>{
             setChangeInfoState({
                 ...chageInfoState,

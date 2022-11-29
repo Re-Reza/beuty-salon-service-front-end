@@ -62,5 +62,8 @@ export function searchReserveByEmOrCustomer(isEmployee, history, value, employee
 export function searchReserveByDate(reserveDate, employeeIsSearching, history){
     return axiosInstance.get(`admin/searchInReservesByDate?reserveDate=${reserveDate}&employeeIsSearching=${employeeIsSearching}&history=${history}&token=${getCookie()}`);
 }
-provideReserveList
+
+export function provideEmployeeListForPdf(){
+    return axiosInstance.get(`admin/provideFullInfoOfEmployees?token=${getCookie()}`);
+}
 //}?token=${getCookie()}

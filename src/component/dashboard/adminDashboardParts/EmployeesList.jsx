@@ -3,9 +3,12 @@ import React, { useState, useEffect, useRef, useReducer } from 'react';
 import EmployeeItem from "./EmployeeItem";
 import AddEmployeeModal from './AddEmployeeModal';
 import contextStore from './EmployeeListContext';
-import { provideEmployeeList, searchEmployee } from "../../../dataService/aminProvider";
+import { provideEmployeeList, searchEmployee, provideEmployeeListForPdf } from "../../../dataService/aminProvider";
 import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
+
+import EmployeeListPdf from './EmployeeListPdf';
+import { PDFDownloadLink } from "@react-pdf/renderer"
 
 export const EmployeesList = () => {
     
@@ -13,6 +16,8 @@ export const EmployeesList = () => {
         employeeList:[],
         loading: true,
         reRequset : false,
+        employeeListPdf : [],
+        requestPdfData : false
     });
 
     const searchInput = useRef(null);
@@ -31,9 +36,8 @@ export const EmployeesList = () => {
     }, {
         reRequset : false
     });
-    console.log(ctxState);
+
     useEffect(()=> {
-        console.log("rerquset")
         provideEmployeeList().then( response => {
             console.log(response);
             setState({
@@ -45,6 +49,20 @@ export const EmployeesList = () => {
         }).catch(err => console.log(err));
 
     }, [state.reRequset, ctxState.reRequset]);
+
+
+    useEffect(() => {
+
+        provideEmployeeListForPdf().then( response => {
+            
+            setState({
+                ...state, 
+                employeeListPdf : response.data.result
+            });
+
+        }).catch( err => console.log(err) );
+
+    }, [state.requestPdfData]);
 
     const [ addEmModal, setAddEmModal ] = useState(false);
 
@@ -65,6 +83,7 @@ export const EmployeesList = () => {
         }).catch( err => {});
     }
 
+
     return (
         state.loading?
         <div className="w-100 pt-5 d-flex justify-content-center">
@@ -80,7 +99,24 @@ export const EmployeesList = () => {
                             <span onClick={submitSearch} className={styles["EmployeeModalProfile-searchIcon"]}><i className="fa fa-search" aria-hidden="true"></i></span>
                         </div>
 
-                        <button onClick={ ()=> { setAddEmModal(true)} } className={'d-flex justify-content-center btn btn-success '+styles["font-responsive"]}>افزودن کارمند جدید<i className="align-self-center me-2 fa fa-plus" aria-hidden="true"></i></button>
+                        <div className='d-flex align-items-center'> 
+
+                            <button onClick={ ()=> { setAddEmModal(true)} } className={'d-flex justify-content-center btn btn-success '+styles["font-responsive"]}>افزودن کارمند جدید<i className="align-self-center me-2 fa fa-plus" aria-hidden="true"></i></button>
+                            
+                            <div className='me-3 '>
+                            {
+                                state.employeeListPdf.length > 0 ? 
+                                
+                                <PDFDownloadLink  document={<EmployeeListPdf employeeList={state.employeeListPdf}/>} fileName="employeeList">
+                                    {({loading}) => loading ? <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>  : <div className='btn text-white btn-warning'>دریافت فایل <i className="fa me-1 fa-file-pdf-o" aria-hidden="true"></i></div>}
+                                </PDFDownloadLink>
+
+                                : <button className='btn text-white btn-warning' type='button' onClick={()=> setState({...state, requestPdfData: true})}>دانلود لیست کارمندان<i className="fa me-1 fa-download" aria-hidden="true"></i></button>
+                            }
+                            </div>
+
+                        </div>
+                    
                     </div>
 
                     <div className={styles["employeeLiat-container"] }>
@@ -105,6 +141,9 @@ export const EmployeesList = () => {
                             </table>
                         </div>
                     </div>
+
+                  
+
                 </div>
                 {
                     addEmModal ?
