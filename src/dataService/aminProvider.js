@@ -45,6 +45,10 @@ export function provideCategoriesServices(){
     return axiosInstance.get(`admin/provideCategoriesServices?token=${getCookie()}`);
 }
 
+export function editService(id, cost){
+    return axiosInstance.put(`admin/editService?token=${getCookie()}`, {id, cost});
+}
+
 export function removeService (id, deleteSevice){
     return axiosInstance.delete(`admin/deleteService?id=${id}&deleteSevice=${deleteSevice}&token=${getCookie()}`);
 }

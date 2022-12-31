@@ -1,18 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import ReserveNav from './ReserveNav';
 
 import Link from 'next/link';
-
+import { headerRequest } from "../../dataService/homeProvider";
 import contextStore from "../../context/contextStore";
 import styles from "../../../public/styles/reservePage.module.css"
 
 
 export function ReserveHeader(){
     
-    const { contextState : {fName}, dispatch } = useContext( contextStore );
-    console.log(fName)
+    const { contextState : {fName}, dispatch} = useContext( contextStore );
     
+    useEffect(() => {
+        //to avoid sending unnecessary requests
+        if( fName == null)
+        {
+            headerRequest().then( response => {
+                console.log(response);
+                console.log(response);
+                const { data: {result} } = response;
+                dispatch({
+                    type : "SET_DATA",
+                    payload : result
+                });
+        
+            }).catch( err => console.log(err) );
+        }
+      }, []);
+
     return (
         <header className={styles["reserve-header"]} >
 
@@ -42,7 +58,7 @@ export function ReserveHeader(){
                         <il className={styles["header-bottom-nav-linkItem"]}>
                         {
                             fName ?                        
-                            <Link href="/">
+                            <Link href="/dashboard">
                                 <a>
                                     <span>پنل کاربری</span>
                                     <img style={{width:"29px"}} src="/imgs/icons/userIcon.png" alt="usericon" />

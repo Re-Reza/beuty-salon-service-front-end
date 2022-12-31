@@ -33,7 +33,7 @@ export function ChooseService() {
         
         if(userChoiceState.category.id){
             provideServiceOfCategory(userChoiceState.category.id).then(response => {
-                
+                console.log(response);
                 setState( prevState => ({
                     ...prevState,
                     serviceList : response.data.result

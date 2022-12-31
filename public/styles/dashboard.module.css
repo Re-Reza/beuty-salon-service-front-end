@@ -1018,19 +1018,40 @@ position: absolute;
 }
 .services-item-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
     grid-column-gap: 20px;
     grid-row-gap: 20px;
 }
 .service-item{
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5em;
+    border-radius: 8px;
+}
+.service-item-title{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #eee;
     padding: 0.3em 0.5em;
     color: var(--dark);
     border-radius: 15px;
     word-break: break-word;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #a5a5a5;
+}
+.service-item-costInput{
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+}
+.service-item-costInput:focus{
+    box-shadow:0 0 5px var(--yellow) !important;
 }
 .newCategory-container{
     display: flex;

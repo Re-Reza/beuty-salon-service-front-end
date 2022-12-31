@@ -52,7 +52,7 @@ const ReserveResult = () => {
 
     return (
         <>
-          {
+        {
             state.showToast ? <Toast toatData={ { message: state.msg, error:state.error } }/> 
             : <></>
         }

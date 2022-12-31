@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import Accordion from 'react-bootstrap/Accordion';
-import ServiceItem from './ServiceItem';
+import CategoryItem from './CategoryItem';
 import Loading from "../../elements/Loading";
 import styles from "../../../../public/styles/dashboard.module.css";
 import {  provideCategoriesServices, addNewCategory, removeService } from "../../../dataService/aminProvider";
@@ -13,7 +13,7 @@ export function Service(){
         categoryList : [],
         categoryErr : null,  
         serviceErr : null 
-    }) 
+    });
 
     const categoryRef = useRef(null);
     const serviceRef = useRef(null);
@@ -21,6 +21,7 @@ export function Service(){
     useEffect(() => {
 
         provideCategoriesServices().then( response => {
+            console.log(response);
             setState({
                 loading : false,
                 categoryList : response.data.result
@@ -122,7 +123,7 @@ export function Service(){
                 <Accordion alwaysOpen>
                 <ul className={styles['services-listContainer']} >
                 {
-                    state.categoryList.map( (item, index) => <ServiceItem removeCategory={removeCategory} eKey={index} item={item} key={index} />)
+                    state.categoryList.map( (item, index) => <CategoryItem removeCategory={removeCategory} eKey={index} item={item} key={index} />)
                 }
                 </ul>
                 </Accordion>
