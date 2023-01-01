@@ -42,7 +42,6 @@ const EmInfo = (props) =>{
         },
         // validationSchema:schema,
         onSubmit : values => {
-            console.log("in herererere")
             changeEmployeeInfo({...values, newServices : chageInfoState.selectedServices}, perosnId).then( response => {
                 console.log(response);
                 setChangeInfoState({
@@ -80,8 +79,6 @@ const EmInfo = (props) =>{
     }
 
     const changeInfoMode = () => {
-
-        console.log("mode changed");
         setMode(true);
     }
 

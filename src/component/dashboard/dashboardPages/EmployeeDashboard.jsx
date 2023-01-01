@@ -9,7 +9,6 @@ import LogOut from "../LogOut";
 
 import styles from "../../../../public/styles/dashboard.module.css";
 
-//هر کامپوننت باید  اطلاعات مربوط به خودش را زمان اپلود شدنش از ای پی ای بگیرد
 const EmployeeDashboard = () => {
 
     const [showState, setShowState] = useState({

@@ -15,7 +15,12 @@ import { useMediaQuery } from 'react-responsive';
 
 const EmployeeResItem = ( props ) => {
 
-    const { id, serviceTitle, reserveDate, row, customerId , customerName, customerLastname, customerPhone, reserveTime, status, serviceId } = props.item;
+    const { id, serviceTitle, reserveDate, row, customerId ,payment ,customerName, 
+        customerLastname, customerPhone, reserveTime, status, serviceId } = props.item;
+    
+        console.log(props.item)
+    
+    const paymentInputRef = useRef(null);
 
     const [newDateState , setNewDate ] = useState({
         year: null,
@@ -44,7 +49,10 @@ const EmployeeResItem = ( props ) => {
     const sendNewCustomerDate = () => {
 
         const { year, month, day, hour, minute } = newDateState;
-        let newData = {};
+        const payment = paymentInputRef.current.value.trim() == "" ? null : paymentInputRef.current.value.trim()
+        let newData = {
+            payment
+        };
 
         if(year)
             newData.newTime = hour+":"+minute+" "+year+"/"+month+"/"+day;
@@ -117,6 +125,9 @@ const EmployeeResItem = ( props ) => {
                     </>
                     :<>{reserveTime}</>
                     }
+                    </td>
+                    <td>
+                        <input defaultValue={parseFloat(payment).toLocaleString} ref={ paymentInputRef }  c className={styles["change-info-input"]+" "+styles["cost-input"]} type="number" />
                     </td>
                     <td>                        
                         <select ref={selectRef} className="form-select form-select-sm">

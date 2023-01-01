@@ -6,8 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 
 import EmInfo from "./Emlnfo";
 import WeeklyCustomersList from "./WeeklyCustomersList";
-
-
+import FinancialReport from "./FinancialReport";
+ 
 import styles from "../../../../../public/styles/dashboard.module.css";
 
 
@@ -25,7 +25,8 @@ function EmployeeModalProfile( props ){
     const [ showOptionState, setShowOptionState ] = useState({
         info:true,
         history:false,
-        weeklyCustomers:false
+        weeklyCustomers:false,
+        financialReport:false
     });
 
     const customStyles = {
@@ -56,7 +57,7 @@ function EmployeeModalProfile( props ){
         });
     }
 
-    const { info, history, weeklyCustomers} = showOptionState; 
+    const { info, history, weeklyCustomers, financialReport} = showOptionState; 
     
     let ActiveComponent;
     if( info )
@@ -65,6 +66,8 @@ function EmployeeModalProfile( props ){
         ActiveComponent = WeeklyCustomersList;
     else if( history )
         ActiveComponent = WeeklyCustomersList;
+    else if( financialReport ) 
+        ActiveComponent = FinancialReport;
 
     Modal.setAppElement("#__next");
 
@@ -93,7 +96,8 @@ function EmployeeModalProfile( props ){
                         <div className={styles["employeeModal-btn-container"]}>
                             <button onClick={()=>{changeInfoOption("info")}} className={ info ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button"> مشخصات کارمند</button>
                             <button onClick={()=>{changeInfoOption("weeklyCustomers")}} className={ weeklyCustomers ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">لیست هفتگی مشتریان</button>
-                            <button onClick={()=>{changeInfoOption("history")}} className={ history ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">تاریخچه فعالیت ها</button>    
+                            <button onClick={()=>{changeInfoOption("history")}} className={ history ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">تاریخچه فعالیت ها</button>  
+                            <button onClick={()=>{changeInfoOption("financialReport")}} className={ financialReport ? styles["modal-option-btn"]+" "+styles["selected-m-btn"] : styles["modal-option-btn"]} type="button">گزارش مالی کارمند</button>    
                         </div>
                         
                         <div className="w-100 d-flex justify-content-center mt-5">

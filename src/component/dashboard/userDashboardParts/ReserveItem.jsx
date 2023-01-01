@@ -65,11 +65,18 @@ export function ReserveItem(props) {
                 <th scope="row">{props.row}</th>
                 <td>{service}</td>
                 <td style={{minWidth:"110px"}}>{employeefName + " "+ employeelName }</td>
-                <td>{reserveDate}</td>
-                <td>{reserveTime}</td>
+                {
+                    props.history ? 
+                    <td>{reserveTime ? reserveTime : reserveDate }</td>
+                    :
+                    <>
+                        <td>{reserveDate}</td>
+                        <td>{reserveTime}</td>
+                    </>
+                }
                 <td style={{minWidth:"110px"}}>{ state[status] }</td>
                 {
-                    props.history  || status == "finalized" ?
+                    props.history || status == "finalized" ?
                     <></>
                     :
                     <td title='کنسل کردن رزرو' className="fs-5" role="button" onClick={deleteReservation}>

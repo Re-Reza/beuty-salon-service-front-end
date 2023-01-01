@@ -1063,3 +1063,31 @@ position: absolute;
 .reserve-searchContainer{
     color: var(--dark);
 }
+
+.modalProfile-financialReport-container{
+    width: 100%;
+    padding: 0em 3em 1.5em 3em;
+}
+.modalProfile-financialReport-reportTypeContainer{
+    display: flex;
+    justify-content: center;
+    padding-right: 2.5em;
+    align-items: baseline;
+}
+.cost-input::-webkit-inner-spin-button, 
+.cost-input::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    appearance: none; 
+}
+.cost-input{
+    padding: 0;
+    width: 90%;
+    -moz-appearance: textfield;
+}
+.modalProfile-finanalReport-salaryItem{
+    background-color: #eee;
+    border-radius: 8px;
+    padding: .5em;
+    margin-top: .8em;
+    font-weight: 500;
+}

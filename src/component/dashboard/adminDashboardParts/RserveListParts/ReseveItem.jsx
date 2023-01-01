@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 
-import { convertEnToPe } from "persian-number";
 import { setFinalTime } from "../../../../dataService/employeeProvider";
 import DatePicker from "react-multi-date-picker";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
@@ -16,8 +15,10 @@ const ReserveItem = ( props ) => {
 
     const { id, serviceTitle, reserveDate, row, customerId , 
         customerName, customerLastname, customerPhone, 
-        reserveTime, status, serviceId, employeeFname, employeeLname, employeeId } = props.item;
+        reserveTime, status, serviceId, payment, employeeFname, employeeLname, employeeId } = props.item;
     
+        console.log(props.item);
+
     const [newDateState , setNewDate ] = useState({
         year: null,
         month: null,
@@ -27,11 +28,12 @@ const ReserveItem = ( props ) => {
     });
 
     const selectRef = useRef(null);
+    const paymentInputRef = useRef(null);
 
     const isPhone = useMediaQuery({
         query: "(max-width: 550px)"
     });
-    console.log(props);
+
     const setCustomerDate = (event) => {
         const { year, month, day, hour, minute } = event;
         newDateState.year = year;
@@ -42,15 +44,17 @@ const ReserveItem = ( props ) => {
     }
 
     const sendNewCustomerDate = () => {
-        console.log(newDateState);
+
         const { year, month, day, hour, minute } = newDateState;
-   
-        let newData = {};
+        const payment = paymentInputRef.current.value.trim() == "" ? null : paymentInputRef.current.value.trim()
+        let newData = {
+            payment
+        };
+
         if(year)
             newData.newTime = hour+":"+minute+" "+year+"/"+month+"/"+day;
         if(selectRef.current.options[selectRef.current.selectedIndex].value !== "null")
             newData.newStatus = selectRef.current.options[selectRef.current.selectedIndex].value;
-    
         setFinalTime(id, newData).then( response => {
             props.setReRequest();
         }).catch( err => {
@@ -60,14 +64,17 @@ const ReserveItem = ( props ) => {
     }
     return (
         <tr>
-            <th scope="row">{convertEnToPe(row)}</th>
+            <th scope="row">{row}</th>
             <td>{serviceTitle}</td>
             <td style={{minWidth:"100px"}}>{customerName +" "+ customerLastname}</td>
             <td>{reserveDate}</td>
             <td style={{minWidth:"150px"}}>{employeeFname+" "+employeeLname}</td>
             {
                 props.history ? 
-                <td>{status == "cancelled" ? "کنسل شده" : "انجام شده" }</td>
+                <>
+                    <td>{payment ? parseFloat(payment).toLocaleString():""}</td>
+                    <td>{status == "cancelled" ? "کنسل شده" : "انجام شده" }</td>
+                </>
                 :
                 <>
                     <td style={{minWidth:"150px"}}>
@@ -101,6 +108,9 @@ const ReserveItem = ( props ) => {
                         status == "finalized" ?
                         reserveTime: ""
                     }
+                    </td>
+                    <td>
+                        <input defaultValue={parseFloat(payment)} ref={ paymentInputRef }  className={styles["change-info-input"]+" "+styles["cost-input"]} type="number" />
                     </td>
                     <td style={{minWidth:"100px"}}>
                         <select ref={selectRef} className="form-select form-select-sm">

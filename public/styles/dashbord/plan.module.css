@@ -70,8 +70,10 @@
 .plan-item-input::-webkit-inner-spin-button, 
 .plan-item-input::-webkit-outer-spin-button { 
     -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none; 
+}
+.plan-item-input{
+    -moz-appearance: textfield;
 }
 .plan-item-input-container{
     background: var(--yellow);

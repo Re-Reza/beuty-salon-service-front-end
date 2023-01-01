@@ -26,6 +26,7 @@ function WeeklyCustimersList (props) {
     }, []);
 
     let filteredList;
+    
     if(props.history)
         filteredList = state.reserveList.filter( item => item.status == 'done' || item.status == 'cancelled');
     else 

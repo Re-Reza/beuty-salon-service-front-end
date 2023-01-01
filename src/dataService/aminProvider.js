@@ -70,4 +70,8 @@ export function searchReserveByDate(reserveDate, employeeIsSearching, history){
 export function provideEmployeeListForPdf(){
     return axiosInstance.get(`admin/provideFullInfoOfEmployees?token=${getCookie()}`);
 }
+
+export function provideEmployeeFinancialReport(id){
+    return axiosInstance.get(`admin/employeeFinancialReport?employeeId=${id}&token=${getCookie()}`)
+}
 //}?token=${getCookie()}

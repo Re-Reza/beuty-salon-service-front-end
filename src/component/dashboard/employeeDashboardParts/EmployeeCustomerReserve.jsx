@@ -34,7 +34,6 @@ export const EmployeeCustomerReserve = () => {
 
 
     function setRequest (){
-        console.log("herererere")
         setcustomersList({
             ...customersList,
             request : !customersList.request
@@ -88,6 +87,7 @@ export const EmployeeCustomerReserve = () => {
                                     <th scope="col">نام مشتری</th>
                                     <th scope="col">تاریخ انتخابی مشتری</th>
                                     <th scope="col">تاریخ نهایی</th>
+                                    <th>وجه دریافتی</th>
                                     <th scope='col' style={{minWidth:"100px"}}>تغییر وضعیت رزرو</th>
                                     <th scope="col"></th>
                                 </tr>
