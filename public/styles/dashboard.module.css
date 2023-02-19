@@ -224,7 +224,8 @@
     }
     .dashboard-aside{
         visibility:hidden;
-        width:0;
+        max-width:0;
+        overflow: hidden;
         height:100%;
         position:fixed;
         padding:0;
@@ -243,7 +244,8 @@
     }
  }
 .show-aside{
-    width: 300px;
+    min-width: 300px;
+    max-width: 300px !important;
     padding-top: 2.5em;
     padding-left:1em;
     padding-right: 1em;
